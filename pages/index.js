@@ -2,7 +2,6 @@ import { getHomepage } from "../lib/graphcms";
 import Head from "next/head";
 export default function Home({ homepage }) {
   const data = homepage[0];
-  console.log(data.socialLinks);
   return (
     <>
       <Head>
