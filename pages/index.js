@@ -1,6 +1,8 @@
 import { getHomepage } from "../lib/graphcms";
 import Head from "next/head";
-import NavBar from "../components/nav";
+import FilledNav from "@/components/fillednav";
+import Link from "next/link";
+import DatedItem from "@/components/datedItem";
 export default function Home({ homepage }) {
   const data = homepage[0];
   return (
@@ -8,11 +10,8 @@ export default function Home({ homepage }) {
       <Head>
         <title>Sam Robbins</title>
       </Head>
-      <NavBar
-        title="Sam Robbins"
-        text={[{ title: "Portfolio", path: "portfolio" }]}
-      />
-      <div className="pt-6 px-2">
+      <FilledNav />
+      <div className="py-6 px-2 max-w-85ch mx-auto">
         <h1 className="text-center text-4xl font-semibold">{data.name}</h1>
         <h2 className="text-lg text-gray-800 text-center">
           {data.description}
@@ -27,6 +26,41 @@ export default function Home({ homepage }) {
               />
             </a>
           ))}
+        </div>
+        <div className="pt-4">
+          <h2 className="text-4xl font-black">Projects</h2>
+          <div class="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-x-4">
+            {data.portfolios.map((item) => (
+              <Link href={"/portfolio/" + item.slug}>
+                <a class="w-full sm:w-2/3 lg:w-1/3 border border-gray-300 rounded hover:shadow-lg">
+                  <img
+                    class="h-32 w-full object-contain p-4"
+                    src={item.coverImage.url}
+                  />
+                  <hr class="my-4" />
+                  <div class="px-4">
+                    <h2 class="font-semibold h-16">{item.title}</h2>
+                    <p class="text-gray-600 pb-4">{item.description}</p>
+                  </div>
+                </a>
+              </Link>
+            ))}
+          </div>
+        </div>
+        <div>
+          <h2 class=" text-4xl font-black pb-4">Achievements</h2>
+          <div class="flex justify-center flex-col gap-y-8">
+            {data.achievements.map((item) => (
+              <DatedItem
+                colour={item.backgroundColour.hex}
+                image={item.image}
+                description={item.description}
+                achievement={item.achievement}
+                description={item.description}
+                date={item.date}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </>

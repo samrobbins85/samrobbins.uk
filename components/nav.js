@@ -8,7 +8,7 @@ export default function NavBar({ text, title }) {
         </a>
       </Link>
       {text.map((item) => (
-        <Link href={item.path}>
+        <Link href={"/" + item.path}>
           <a>
             <span>{item.title}</span>
           </a>
