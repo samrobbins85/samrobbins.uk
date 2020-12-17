@@ -1,5 +1,6 @@
 import { getHomepage } from "../lib/graphcms";
 import Head from "next/head";
+import NavBar from "../components/nav";
 export default function Home({ homepage }) {
   const data = homepage[0];
   return (
@@ -7,6 +8,10 @@ export default function Home({ homepage }) {
       <Head>
         <title>Sam Robbins</title>
       </Head>
+      <NavBar
+        title="Sam Robbins"
+        text={[{ title: "Portfolio", path: "portfolio" }]}
+      />
       <div className="pt-6 px-2">
         <h1 className="text-center text-4xl font-semibold">{data.name}</h1>
         <h2 className="text-lg text-gray-800 text-center">

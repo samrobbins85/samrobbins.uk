@@ -8,13 +8,17 @@
     "export": "next build && next export"
   },
   "dependencies": {
+    "@samrobbins/typography": "^1.1.0",
+    "@tailwindcss/typography": "^0.3.1",
     "autoprefixer": "^10.1.0",
     "classnames": "2.2.6",
     "date-fns": "2.10.0",
     "next": "latest",
     "postcss": "^8.2.1",
     "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "react-dom": "^16.13.0",
+    "remark": "^13.0.0",
+    "remark-html": "^13.0.1"
   },
   "devDependencies": {
     "postcss-preset-env": "^6.7.0",

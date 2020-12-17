@@ -1,15 +1,37 @@
 import { getPortfolios } from "@/lib/graphcms";
+import NavBar from "@/components/nav";
 
 export default function Portfolio({ portfolios }) {
   return (
-    <div className="pt-6 px-2">
-      <h1 className="text-4xl font-semibold text-center">Portfolio</h1>
-      <div className="grid grid-cols-6 container mx-auto">
-        {portfolios.map((item) => (
-          <div className="shadow h-20">{item.title}</div>
-        ))}
+    <>
+      <NavBar
+        title="Sam Robbins"
+        text={[{ title: "Portfolio", path: "portfolio" }]}
+      />
+      <div className="pt-6 px-2">
+        <h1 className="text-4xl font-semibold text-center">Portfolio</h1>
+        <div>
+          <div class="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-x-4">
+            {portfolios.map((item) => (
+              <a
+                href={"/portfolio/" + item.slug}
+                class="w-full sm:w-2/5 lg:w-1/5 border border-gray-300 rounded hover:shadow-lg"
+              >
+                <img
+                  class="h-32 w-full object-contain p-4"
+                  src={item.coverImage.url}
+                />
+                <hr class="my-4" />
+                <div class="px-4">
+                  <h2 class="font-semibold h-16">{item.title}</h2>
+                  <p class="text-gray-600 pb-4">{item.description}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
