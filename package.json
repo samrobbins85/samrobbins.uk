@@ -8,6 +8,7 @@
     "export": "next build && next export"
   },
   "dependencies": {
+    "@mapbox/rehype-prism": "^0.5.0",
     "@samrobbins/typography": "^1.1.0",
     "@tailwindcss/typography": "^0.3.1",
     "autoprefixer": "^10.1.0",
@@ -17,8 +18,13 @@
     "postcss": "^8.2.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "rehype-stringify": "^8.0.0",
     "remark": "^13.0.0",
-    "remark-html": "^13.0.1"
+    "remark-html": "^13.0.1",
+    "remark-parse": "^9.0.0",
+    "remark-react": "^8.0.0",
+    "remark-rehype": "^8.0.0",
+    "unified": "^9.2.0"
   },
   "devDependencies": {
     "postcss-preset-env": "^6.7.0",

@@ -1,8 +1,11 @@
 import { getPortfolio, getAllPortfoliosWithSlug } from "@/lib/graphcms";
 import remark from "remark";
-import html from "remark-html";
+// import html from "remark-html";
 import NavBar from "@/components/nav";
 import Head from "next/head";
+var remark2rehype = require("remark-rehype");
+var html = require("rehype-stringify");
+const rehypePrism = require("@mapbox/rehype-prism");
 export default function Portfolio({ data, contentHtml }) {
   return (
     <>
@@ -29,7 +32,11 @@ export default function Portfolio({ data, contentHtml }) {
 
 export async function getStaticProps({ params }) {
   const data = await getPortfolio(params.slug);
-  const output = await remark().use(html).process(data.markdown);
+  const output = await remark()
+    .use(remark2rehype)
+    .use(rehypePrism)
+    .use(html)
+    .process(data.markdown);
   const contentHtml = output.toString();
   return {
     props: {
