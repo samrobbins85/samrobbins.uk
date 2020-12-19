@@ -1,13 +1,10 @@
 import { getPortfolios } from "@/lib/graphcms";
-import NavBar from "@/components/nav";
+import FilledNav from "@/components/fillednav";
 import Link from "next/link";
 export default function Portfolio({ portfolios }) {
   return (
     <>
-      <NavBar
-        title="Sam Robbins"
-        text={[{ title: "Portfolio", path: "portfolio" }]}
-      />
+      <FilledNav />
       <div className="pt-6 px-2">
         <h1 className="text-4xl font-semibold text-center">Portfolio</h1>
         <div>

@@ -6,6 +6,29 @@ import FilledNav from "@/components/fillednav";
 var remark2rehype = require("remark-rehype");
 var html = require("rehype-stringify");
 const rehypePrism = require("@mapbox/rehype-prism");
+import useSWR from "swr";
+
+const fetcher = (...args) => fetch(...args).then((res) => res.json());
+function Name({ username }) {
+  const { data, error } = useSWR(
+    "https://api.github.com/users/" + username,
+    fetcher
+  );
+  if (error) return <div>failed to load</div>;
+  if (!data) return <div></div>;
+  return (
+    <div className="flex flex-col">
+      <p>{data.name}</p>
+      <a
+        className="text-blue-700 hover:underline"
+        href={`https://github.com/${username}`}
+      >
+        <p>{username}</p>
+      </a>
+    </div>
+  );
+}
+
 export default function Portfolio({ data, contentHtml }) {
   return (
     <>
@@ -15,7 +38,7 @@ export default function Portfolio({ data, contentHtml }) {
       <FilledNav />
 
       <div className="p-4 max-w-85ch mx-auto">
-        <h1 className="text-7xl text-center font-bold pt-20">{data.title}</h1>
+        <h1 className="text-7xl text-center font-bold pt-10">{data.title}</h1>
         <h2 className="text-center text-gray-600 text-lg pt-6">
           {data.description}
         </h2>
@@ -33,11 +56,32 @@ export default function Portfolio({ data, contentHtml }) {
             </a>
           ) : undefined}
         </div>
+        {data.coders.length !== 0 && (
+          <div className="pt-4">
+            <h2 className="text tracking-widest text-center uppercase ">
+              Made by
+            </h2>
+            <div className="flex justify-center py-4">
+              <div class="flex space-x-2 overflow-hidden gap-x-4">
+                {data.coders.map((coder) => (
+                  <div className="flex items-center gap-x-2">
+                    <img
+                      class="inline-block h-10 w-10 rounded-full"
+                      src={"https://github.com/" + coder + ".png"}
+                      alt={coder}
+                    />
+                    <Name username={coder} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
         <div className="py-2 pt-10">
           <h2 className="text tracking-widest text-center uppercase ">
-            Made with
+            Made using
           </h2>
-          <div className="flex justify-center gap-x-8">
+          <div className="flex justify-center gap-x-8 flex-wrap gap-y-4 py-4">
             {data.technologies.map((item) => (
               <a href={item.link}>
                 <img
@@ -49,6 +93,7 @@ export default function Portfolio({ data, contentHtml }) {
             ))}
           </div>
         </div>
+        <hr className="py-2" />
         <div
           className="prose mx-auto"
           dangerouslySetInnerHTML={{ __html: contentHtml }}
