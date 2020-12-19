@@ -25,11 +25,13 @@ export default function Portfolio({ data, contentHtml }) {
               GitHub
             </div>
           </a>
-          <a href={data.website}>
-            <div className=" px-8 py-2 rounded bg-cyan-700 text-white text-lg tracking-wide hover:shadow hover:bg-cyan-800">
-              Website
-            </div>
-          </a>
+          {data.website ? (
+            <a href={data.website}>
+              <div className=" px-8 py-2 rounded bg-cyan-700 text-white text-lg tracking-wide hover:shadow hover:bg-cyan-800">
+                Website
+              </div>
+            </a>
+          ) : undefined}
         </div>
         <div className="py-2 pt-10">
           <h2 className="text tracking-widest text-center uppercase ">
