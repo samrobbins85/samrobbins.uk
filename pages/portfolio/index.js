@@ -11,7 +11,7 @@ export default function Portfolio({ portfolios }) {
       <div className="pt-6 px-2">
         <h1 className="text-4xl font-semibold text-center">Portfolio</h1>
         <div>
-          <div class="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-x-4">
+          <div class="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
             {portfolios.map((item) => (
               <Link href={"/portfolio/" + item.slug}>
                 <a class="w-full sm:w-2/5 lg:w-1/5 border border-gray-300 rounded hover:shadow-lg">
