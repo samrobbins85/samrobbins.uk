@@ -84,19 +84,11 @@ export default function Portfolio({ data, contentHtml }) {
           <div className="flex justify-center gap-x-8 flex-wrap gap-y-4 py-4">
             {data.technologies.map((item) => (
               <a className="relative" href={item.link}>
-                {item.image.width !== 0 && item.image.height !== 0 ? (
-                  <GraphImg
-                    className="h-20 w-40 object-contain"
-                    image={item.image}
-                    alt={item.name}
-                  />
-                ) : (
-                  <img
-                    className="h-20 w-40 object-contain"
-                    src={item.image.url}
-                    alt={item.name}
-                  />
-                )}
+                <img
+                  className="h-20 w-40 object-contain"
+                  src={item.image.url}
+                  alt={item.name}
+                />
               </a>
             ))}
           </div>
