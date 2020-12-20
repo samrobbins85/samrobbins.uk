@@ -1,5 +1,5 @@
 import Image from "next/image";
-
+import GraphImg from "graphcms-image";
 export default function DatedItem({
   image,
   colour,
@@ -15,22 +15,12 @@ export default function DatedItem({
           style={{ backgroundColor: colour }}
         >
           {image.width !== 0 && image.height !== 0 ? (
-            <div className="p-2 self-center">
-              <Image
-                class="h-10 w-10 sm:h-16 sm:w-16 object-contain"
-                src={image.url}
-                alt={description}
-                width={image.width}
-                height={image.height}
-              />
+            <div className="h-20 w-20 self-end">
+              <GraphImg image={image} maxWidth={800} />
             </div>
           ) : (
             <div className="relative p-5 sm:p-8">
-              <Image
-                className=" object-contain self-center"
-                src={image.url}
-                layout={"fill"}
-              />
+              <Image className="object-contain" src={image.url} layout="fill" />
             </div>
           )}
         </div>
