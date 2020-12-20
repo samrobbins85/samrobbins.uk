@@ -15,7 +15,7 @@ export default function Portfolio({ portfolios, categories }) {
       <FilledNav />
       <div className="pt-6 px-2">
         <h1 className="text-4xl font-semibold text-center">Portfolio</h1>
-        <div className="flex justify-center gap-x-4 text-lg py-2">
+        <div className="flex justify-center gap-x-4 text-lg py-2 flex-wrap gap-y-2">
           <AnimateSharedLayout>
             <motion.div
               className="cursor-pointer"
