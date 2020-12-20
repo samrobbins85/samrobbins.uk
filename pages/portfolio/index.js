@@ -1,6 +1,8 @@
 import { getPortfolios } from "@/lib/graphcms";
 import FilledNav from "@/components/fillednav";
 import Link from "next/link";
+import GraphImg from "graphcms-image";
+
 export default function Portfolio({ portfolios }) {
   return (
     <>

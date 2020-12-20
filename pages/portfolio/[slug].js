@@ -7,7 +7,7 @@ var remark2rehype = require("remark-rehype");
 var html = require("rehype-stringify");
 const rehypePrism = require("@mapbox/rehype-prism");
 import useSWR from "swr";
-
+import GraphImg from "graphcms-image";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 function Name({ username }) {
   const { data, error } = useSWR(
@@ -83,12 +83,20 @@ export default function Portfolio({ data, contentHtml }) {
           </h2>
           <div className="flex justify-center gap-x-8 flex-wrap gap-y-4 py-4">
             {data.technologies.map((item) => (
-              <a href={item.link}>
-                <img
-                  className="h-20 w-40 object-contain"
-                  src={item.image.url}
-                  alt={item.name}
-                />
+              <a className="relative" href={item.link}>
+                {item.image.width !== 0 && item.image.height !== 0 ? (
+                  <GraphImg
+                    className="h-20 w-40 object-contain"
+                    image={item.image}
+                    alt={item.name}
+                  />
+                ) : (
+                  <img
+                    className="h-20 w-40 object-contain"
+                    src={item.image.url}
+                    alt={item.name}
+                  />
+                )}
               </a>
             ))}
           </div>
