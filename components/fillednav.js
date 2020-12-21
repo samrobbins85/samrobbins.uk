@@ -6,6 +6,7 @@ export default function FilledNav() {
       text={[
         { title: "About", path: "about" },
         { title: "Portfolio", path: "portfolio" },
+        { title: "Writing", path: "writing" },
       ]}
     />
   );

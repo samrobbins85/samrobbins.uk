@@ -1,0 +1,553 @@
+/*!
+ * LaTeX.css (https://latex.now.sh/)
+ *
+ * Source: https://github.com/vincentdoerig/latex-css
+ * Licensed under MIT (https://github.com/vincentdoerig/latex-css/blob/master/LICENSE)
+*/
+
+@font-face {
+  font-family: "Latin Modern";
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url("/fonts/LM-regular.woff2") format("woff2"),
+    url("/fonts/LM-regular.woff") format("woff"),
+    url("/fonts/LM-regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Latin Modern";
+  font-style: italic;
+  font-weight: normal;
+  font-display: swap;
+  src: url("/fonts/LM-italic.woff2") format("woff2"),
+    url("/fonts/LM-italic.woff") format("woff"),
+    url("/fonts/LM-italic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Latin Modern";
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: url("/fonts/LM-bold.woff2") format("woff2"),
+    url("/fonts/LM-bold.woff") format("woff"),
+    url("/fonts/LM-bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Latin Modern";
+  font-style: italic;
+  font-weight: bold;
+  font-display: swap;
+  src: url("/fonts/LM-bold-italic.woff2") format("woff2"),
+    url("/fonts/LM-bold-italic.woff") format("woff"),
+    url("/fonts/LM-bold-italic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Libertinus";
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+  src: url("/fonts/Libertinus-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Libertinus";
+  font-style: italic;
+  font-weight: normal;
+  font-display: swap;
+  src: url("/fonts/Libertinus-italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Libertinus";
+  font-style: normal;
+  font-weight: bold;
+  font-display: swap;
+  src: url("/fonts/Libertinus-bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Libertinus";
+  font-style: italic;
+  font-weight: bold;
+  font-display: swap;
+  src: url("/fonts/Libertinus-bold-italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Libertinus";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/Libertinus-semibold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Libertinus";
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/Libertinus-semibold-italic.woff2") format("woff2");
+}
+
+/* Make default font-size 1rem and add smooth scrolling to anchors */
+.latex-style {
+  font-size: 1rem;
+  scroll-behavior: smooth;
+}
+
+.latex-style.libertinus {
+  font-family: "Libertinus", Georgia, Cambria, "Times New Roman", Times, serif;
+}
+
+.latex-style {
+  font-family: "Latin Modern", Georgia, Cambria, "Times New Roman", Times, serif;
+  line-height: 1.8;
+
+  max-width: 80ch;
+  min-height: 100vh;
+  overflow-x: hidden;
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
+
+  counter-reset: theorem;
+  counter-reset: definition;
+  counter-reset: sidenote-counter;
+
+  color: hsl(0, 5%, 10%);
+
+  text-rendering: optimizeLegibility;
+}
+
+/* Justify and hyphenate all paragraphs */
+.latex-style p {
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  margin-top: 1rem;
+}
+
+/* A elements that don't have a class get default styles */
+.latex-style a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make links red */
+.latex-style a,
+.latex-style a:visited {
+  color: #a00;
+}
+
+.latex-style a:focus {
+  outline-offset: 2px;
+  outline: 2px solid hsl(220, 90%, 52%);
+}
+
+/* Make images easier to work with */
+.latex-style img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+.latex-style input,
+.latex-style button,
+.latex-style textarea,
+.latex-style select {
+  font: inherit;
+}
+
+/* Prevent textarea from overflowing */
+.latex-style textarea {
+  width: 100%;
+}
+
+/* Natural flow and rhythm in articles by default */
+.latex-style article > * + * {
+  margin-top: 1em;
+}
+
+/* Styles for inline code or code snippets */
+.latex-style code,
+.latex-style pre,
+.latex-style kbd {
+  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
+    monospace;
+  font-size: 85%;
+}
+.latex-style pre {
+  padding: 1rem 1.4rem;
+  max-width: 100%;
+  overflow: auto;
+  border-radius: 4px;
+  background: hsl(210, 28%, 93%);
+}
+.latex-style pre code {
+  font-size: 95%;
+  position: relative;
+}
+.latex-style kbd {
+  background: hsl(210, 5%, 100%);
+  border: 1px solid hsl(210, 5%, 70%);
+  border-radius: 2px;
+  padding: 2px 4px;
+  font-size: 75%;
+}
+
+/* Better tables */
+.latex-style table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: auto;
+  max-width: 100%;
+  border-top: 2.27px solid black;
+  border-bottom: 2.27px solid black;
+  /* display: block; */
+  overflow-x: auto; /* does not work because element is not block */
+  /* white-space: nowrap; */
+  counter-increment: caption;
+}
+/* add bottom border on column table headings  */
+.latex-style table tr > th[scope="col"] {
+  border-bottom: 1.36px solid black;
+}
+/* add right border on row table headings  */
+.latex-style table tr > th[scope="row"] {
+  border-right: 1.36px solid black;
+}
+.latex-style table > tbody > tr:first-child > td,
+.latex-style table > tbody > tr:first-child > th {
+  border-top: 1.36px solid black;
+}
+.latex-style table > tbody > tr:last-child > td,
+.latex-style table > tbody > tr:last-child > th {
+  border-bottom: 1.36px solid black;
+}
+
+.latex-style th,
+.latex-style td {
+  text-align: left;
+  padding: 0.5rem;
+  line-height: 1.1;
+}
+/* Table caption */
+.latex-style caption {
+  text-align: left;
+  font-size: 0.923em;
+  /* border-bottom: 2pt solid #000; */
+  padding: 0 0.25em 0.25em;
+  width: 100%;
+  margin-left: 0;
+}
+
+.latex-style caption::before {
+  content: "Table " counter(caption) ". ";
+  font-weight: bold;
+}
+
+/* allow scroll on the x-axis */
+.latex-style .scroll-wrapper {
+  overflow-x: auto;
+}
+
+/* if a table is wrapped in a scroll wrapper,
+  the table cells shouldn't wrap */
+.latex-style .scroll-wrapper > table td {
+  white-space: nowrap;
+}
+
+/* Center align the title */
+.latex-style h1:first-child {
+  text-align: center;
+}
+
+/* Nested ordered list for ToC */
+.latex-style nav ol {
+  counter-reset: item;
+  padding-left: 2rem;
+}
+.latex-style nav li {
+  display: block;
+}
+.latex-style nav li:before {
+  content: counters(item, ".") " ";
+  counter-increment: item;
+  padding-right: 0.85rem;
+}
+
+/* Center definitions (most useful for display equations) */
+.latex-style dl dd {
+  text-align: center;
+}
+
+/* Theorem */
+.latex-style .theorem {
+  counter-increment: theorem;
+  display: block;
+  margin: 12px 0;
+  font-style: italic;
+}
+.latex-style .theorem::before {
+  content: "Theorem " counter(theorem) ". ";
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Lemma */
+.latex-style .lemma {
+  counter-increment: theorem;
+  display: block;
+  margin: 12px 0;
+  font-style: italic;
+}
+.latex-style .lemma::before {
+  content: "Lemma " counter(theorem) ". ";
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Proof */
+.latex-style .proof {
+  display: block;
+  margin: 12px 0;
+  font-style: normal;
+  position: relative;
+}
+.latex-style .proof::before {
+  content: "Proof. " attr(title);
+  font-style: italic;
+}
+.latex-style .proof:after {
+  content: "◾️";
+  position: absolute;
+  right: -12px;
+  bottom: -2px;
+}
+
+/* Definition */
+.latex-style .definition {
+  counter-increment: definition;
+  display: block;
+  margin: 12px 0;
+  font-style: normal;
+}
+.latex-style .definition::before {
+  content: "Definition " counter(definition) ". ";
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* Center align author name, use small caps and add vertical spacing  */
+.latex-style .author {
+  margin: 0.85rem 0;
+  font-variant-caps: small-caps;
+  text-align: center;
+}
+
+/* Sidenotes */
+
+.latex-style .sidenote {
+  font-size: 0.8rem;
+  float: right;
+  clear: right;
+  width: 18vw;
+  margin-right: -20vw;
+  margin-bottom: 1em;
+}
+
+.latex-style .sidenote.left {
+  float: left;
+  margin-left: -20vw;
+  margin-bottom: 1em;
+}
+
+/* (WIP) add border when a sidenote is clicked on */
+.latex-style .sidenote:target {
+  border: hsl(55, 55%, 70%) 1.5px solid;
+  padding: 0 0.5rem;
+  scroll-margin-block-start: 10rem;
+}
+
+/* sidenote counter */
+.latex-style .sidenote-number {
+  counter-increment: sidenote-counter;
+}
+
+.latex-style .sidenote-number::after,
+.latex-style .sidenote::before {
+  position: relative;
+  vertical-align: baseline;
+}
+
+/* add number in main content */
+.latex-style .sidenote-number::after {
+  content: counter(sidenote-counter);
+  font-size: 0.7rem;
+  top: -0.5rem;
+  left: 0.1rem;
+}
+
+/* add number in front of the sidenote */
+.latex-style .sidenote-number ~ .sidenote::before {
+  content: counter(sidenote-counter) " ";
+  font-size: 0.7rem;
+  top: -0.5rem;
+}
+
+.latex-style label.sidenote-toggle:not(.sidenote-number) {
+  display: none;
+}
+
+/* sidenotes inside blockquotes are indented more */
+.latex-style blockquote .sidenote {
+  margin-right: -24vw;
+  width: 18vw;
+}
+
+.latex-style label.sidenote-toggle {
+  display: inline;
+  cursor: pointer;
+}
+
+.latex-style input.sidenote-toggle {
+  display: none;
+}
+
+@media (max-width: 1050px) {
+  .latex-style label.sidenote-toggle:not(.sidenote-number) {
+    display: inline;
+  }
+  .latex-style .sidenote {
+    display: none;
+  }
+  .latex-style .sidenote-toggle:checked + .sidenote {
+    display: block;
+    margin: 0.5rem 1.25rem 1rem 0.5rem;
+    float: left;
+    left: 1rem;
+    clear: both;
+    width: 95%;
+  }
+  /* tweak indentation of sidenote inside a blockquote */
+  .latex-style blockquote .sidenote {
+    margin-right: -25vw;
+    width: 16vw;
+  }
+}
+
+/* Make footnote text smaller and left align it (looks bad with long URLs) */
+.latex-style .footnotes p {
+  text-align: left;
+  line-height: 1.5;
+  font-size: 85%;
+  margin-bottom: 0.4rem;
+}
+.latex-style .footnotes {
+  border-top: 1px solid hsl(0, 0%, 39%);
+}
+
+/* Center title and paragraph */
+.latex-style .abstract,
+.latex-style .abstract p {
+  text-align: center;
+  margin-top: 0;
+}
+.latex-style .abstract {
+  margin: 2.25rem 0;
+}
+.latex-style .abstract > h2 {
+  font-size: 1rem;
+  margin-bottom: -0.2rem;
+}
+
+/* Format the LaTeX symbol correctly (a higher up, e lower) */
+.latex-style .latex span:nth-child(1) {
+  text-transform: uppercase;
+  font-size: 0.75em;
+  vertical-align: 0.28em;
+  margin-left: -0.48em;
+  margin-right: -0.15em;
+  line-height: 1ex;
+}
+
+.latex-style .latex span:nth-child(2) {
+  text-transform: uppercase;
+  vertical-align: -0.5ex;
+  margin-left: -0.1667em;
+  margin-right: -0.125em;
+  line-height: 1ex;
+}
+
+/* Heading typography */
+.latex-style h1 {
+  font-size: 2.5rem;
+  line-height: 3.25rem;
+  margin-bottom: 1.625rem;
+}
+
+.latex-style h2 {
+  font-size: 1.7rem;
+  line-height: 2rem;
+  margin-top: 3rem;
+}
+
+.latex-style h3 {
+  font-size: 1.4rem;
+  margin-top: 2.5rem;
+}
+
+.latex-style h4 {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
+.latex-style h5 {
+  font-size: 1rem;
+  margin-top: 1.8rem;
+}
+
+.latex-style h6 {
+  font-size: 1rem;
+  font-style: italic;
+  font-weight: normal;
+  margin-top: 2.5rem;
+}
+
+.latex-style h3,
+.latex-style h4,
+.latex-style h5,
+.latex-style h6 {
+  line-height: 1.625rem;
+}
+
+.latex-style h1 + h2 {
+  margin-top: 1.625rem;
+}
+
+.latex-style h2 + h3,
+.latex-style h3 + h4,
+.latex-style h4 + h5 {
+  margin-top: 0.8rem;
+}
+
+.latex-style h5 + h6 {
+  margin-top: -0.8rem;
+}
+
+.latex-style h2,
+.latex-style h3,
+.latex-style h4,
+.latex-style h5,
+.latex-style h6 {
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+}
+
+.latex-style ol {
+  list-style: numeric !important;
+}
