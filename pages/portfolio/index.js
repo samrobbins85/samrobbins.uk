@@ -2,12 +2,8 @@ import { getPortfolios, getPortfolioCategories } from "@/lib/graphcms";
 import FilledNav from "@/components/fillednav";
 import Link from "next/link";
 import { useState } from "react";
-import {
-  motion,
-  AnimateSharedLayout,
-  MotionConfig,
-  AnimatePresence,
-} from "framer-motion";
+import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 export default function Portfolio({ portfolios, categories }) {
   const [category, setCategory] = useState(false);
   return (
@@ -68,10 +64,14 @@ export default function Portfolio({ portfolios, categories }) {
                   >
                     <Link href={"/portfolio/" + item.slug}>
                       <a>
-                        <img
-                          class="h-32 w-full object-contain p-4"
-                          src={item.coverImage.url}
-                        />
+                        <div className="relative h-32 object-contain m-2">
+                          <Image
+                            src={item.coverImage.url}
+                            layout="fill"
+                            objectFit="contain"
+                            alt={item.title}
+                          />
+                        </div>
                         <hr class="my-4" />
                         <div class="px-4">
                           <h2 class="font-semibold h-16">{item.title}</h2>

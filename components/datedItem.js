@@ -11,18 +11,12 @@ export default function DatedItem({
     <div class="grid grid-cols-12">
       <div class="col-span-3">
         <div
-          class="rounded-full border h-16 w-16 sm:h-24 sm:w-24 flex justify-center border-none "
+          class="rounded-full border h-16 w-16 sm:h-24 sm:w-24 flex justify-center border-none items-center"
           style={{ backgroundColor: colour }}
         >
-          {image.width !== 0 && image.height !== 0 ? (
-            <div className="h-20 w-20 self-end">
-              <GraphImg image={image} maxWidth={800} />
-            </div>
-          ) : (
-            <div className="relative p-5 sm:p-8">
-              <Image className="object-contain" src={image.url} layout="fill" />
-            </div>
-          )}
+          <div className="relative h-10 w-10 sm:h-20 sm:w-20">
+            <Image src={image.url} layout="fill" objectFit="contain" />
+          </div>
         </div>
       </div>
       <div class="col-span-5 sm:col-span-6 flex items-center pr-2">

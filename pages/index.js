@@ -3,6 +3,7 @@ import Head from "next/head";
 import FilledNav from "@/components/fillednav";
 import Link from "next/link";
 import DatedItem from "@/components/datedItem";
+import Image from "next/image";
 export default function Home({ homepage }) {
   const data = homepage[0];
   return (
@@ -18,12 +19,8 @@ export default function Home({ homepage }) {
         </h2>
         <div className="flex justify-center gap-x-4 pt-4">
           {data.socialLinks.map((entry) => (
-            <a href={entry.link}>
-              <img
-                className="h-12 w-20"
-                src={entry.image.url}
-                alt={entry.name}
-              />
+            <a className="h-12 w-20 relative" href={entry.link}>
+              <Image src={entry.image.url} alt={entry.name} layout="fill" />
             </a>
           ))}
         </div>
@@ -33,10 +30,9 @@ export default function Home({ homepage }) {
             {data.portfolios.map((item) => (
               <Link href={"/portfolio/" + item.slug}>
                 <a class="w-full sm:w-2/3 lg:w-1/3 border border-gray-300 rounded hover:shadow-lg">
-                  <img
-                    class="h-32 w-full object-contain p-4"
-                    src={item.coverImage.url}
-                  />
+                  <div class="h-32 w-full object-contain p-4 relative">
+                    <Image src={item.coverImage.url} layout="fill" />
+                  </div>
                   <hr class="my-4" />
                   <div class="px-4">
                     <h2 class="font-semibold h-16">{item.title}</h2>

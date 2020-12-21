@@ -1,13 +1,12 @@
 import { getPortfolio, getAllPortfoliosWithSlug } from "@/lib/graphcms";
 import remark from "remark";
-import NavBar from "@/components/nav";
+import Image from "next/image";
 import Head from "next/head";
 import FilledNav from "@/components/fillednav";
 var remark2rehype = require("remark-rehype");
 var html = require("rehype-stringify");
 const rehypePrism = require("@mapbox/rehype-prism");
 import useSWR from "swr";
-import GraphImg from "graphcms-image";
 const fetcher = (...args) => fetch(...args).then((res) => res.json());
 function Name({ username }) {
   const { data, error } = useSWR(
@@ -83,11 +82,12 @@ export default function Portfolio({ data, contentHtml }) {
           </h2>
           <div className="flex justify-center gap-x-8 flex-wrap gap-y-4 py-4">
             {data.technologies.map((item) => (
-              <a className="relative" href={item.link}>
-                <img
-                  className="h-20 w-40 object-contain"
+              <a className="relative h-20 w-40" href={item.link}>
+                <Image
                   src={item.image.url}
                   alt={item.name}
+                  layout="fill"
+                  objectFit="contain"
                 />
               </a>
             ))}
