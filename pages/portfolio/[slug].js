@@ -6,29 +6,8 @@ import FilledNav from "@/components/fillednav";
 var remark2rehype = require("remark-rehype");
 var html = require("rehype-stringify");
 const rehypePrism = require("@mapbox/rehype-prism");
-import useSWR from "swr";
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
-function Name({ username }) {
-  const { data, error } = useSWR(
-    "https://api.github.com/users/" + username,
-    fetcher
-  );
-  if (error) return <div>failed to load</div>;
-  if (!data) return <div></div>;
-  return (
-    <div className="flex flex-col">
-      <p>{data.name}</p>
-      <a
-        className="text-blue-700 hover:underline"
-        href={`https://github.com/${username}`}
-      >
-        <p>{username}</p>
-      </a>
-    </div>
-  );
-}
 
-export default function Portfolio({ data, contentHtml }) {
+export default function Portfolio({ data, contentHtml, names }) {
   return (
     <>
       <Head>
@@ -62,14 +41,22 @@ export default function Portfolio({ data, contentHtml }) {
             </h2>
             <div className="flex justify-center py-4">
               <div class="flex space-x-2 overflow-hidden gap-x-4">
-                {data.coders.map((coder) => (
+                {data.coders.map((coder, index) => (
                   <div className="flex items-center gap-x-2">
                     <img
                       class="inline-block h-10 w-10 rounded-full"
                       src={"https://github.com/" + coder + ".png"}
                       alt={coder}
                     />
-                    <Name username={coder} />
+                    <div className="flex flex-col">
+                      <p>{names[index]}</p>
+                      <a
+                        className="text-blue-700 hover:underline"
+                        href={`https://github.com/${coder}`}
+                      >
+                        <p>{coder}</p>
+                      </a>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -111,10 +98,23 @@ export async function getStaticProps({ params }) {
     .use(html)
     .process(data.markdown);
   const contentHtml = output.toString();
+  var names = [];
+  if (data.coders.length !== 0) {
+    for (var i = 0; i < data.coders.length; i++) {
+      var name = await fetch("https://api.github.com/users/" + data.coders[i], {
+        headers: {
+          Authorization: "token" + process.env.GITHUB_TOKEN,
+        },
+      });
+      var out = await name.json();
+      names.push(out.name);
+    }
+  }
   return {
     props: {
       data,
       contentHtml,
+      names,
     },
     revalidate: 60,
   };
