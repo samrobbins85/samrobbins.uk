@@ -43,11 +43,15 @@ export default function Portfolio({ data, contentHtml, names }) {
               <div class="flex space-x-2 overflow-hidden gap-x-4">
                 {data.coders.map((coder, index) => (
                   <div className="flex items-center gap-x-2">
-                    <img
-                      class="inline-block h-10 w-10 rounded-full"
-                      src={"https://github.com/" + coder + ".png"}
-                      alt={coder}
-                    />
+                    <div className="inline-block h-10 w-10 relative">
+                      <Image
+                        className="rounded-full"
+                        src={"https://github.com/" + coder + ".png"}
+                        alt={coder}
+                        layout="fill"
+                        objectFit="contain"
+                      />
+                    </div>
                     <div className="flex flex-col">
                       <p>{names[index]}</p>
                       <a
