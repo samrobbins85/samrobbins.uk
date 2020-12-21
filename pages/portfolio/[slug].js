@@ -50,6 +50,7 @@ export default function Portfolio({ data, contentHtml, names }) {
                         alt={coder}
                         layout="fill"
                         objectFit="contain"
+                        priority={true}
                       />
                     </div>
                     <div className="flex flex-col">
@@ -79,6 +80,7 @@ export default function Portfolio({ data, contentHtml, names }) {
                   alt={item.name}
                   layout="fill"
                   objectFit="contain"
+                  priority={true}
                 />
               </a>
             ))}
