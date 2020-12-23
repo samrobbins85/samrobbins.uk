@@ -11,10 +11,10 @@ export default function Portfolio({ portfolios, categories }) {
       <FilledNav />
       <div className="pt-6 px-2">
         <h1 className="text-4xl font-semibold text-center">Portfolio</h1>
-        <div className="flex justify-center gap-x-4 text-lg py-2 flex-wrap gap-y-2">
+        <div className="flex justify-center gap-x-4 text-lg py-6 flex-wrap gap-y-8 ">
           <AnimateSharedLayout>
             <motion.div
-              className="cursor-pointer"
+              className="cursor-pointer flex-col flex h-2"
               animate
               key={false}
               onClick={() => setCategory(false)}
@@ -29,7 +29,7 @@ export default function Portfolio({ portfolios, categories }) {
             </motion.div>
             {categories.map((item) => (
               <motion.div
-                className="cursor-pointer"
+                className="cursor-pointer flex-col flex h-2"
                 animate
                 key={item.name}
                 onClick={() => setCategory(item.name)}
