@@ -18,15 +18,15 @@ export default function Portfolio({ writings }) {
           <div class="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
             <AnimatePresence exitBeforeEnter>
               {writings.map((item) => (
-                <motion.div
-                  animate={{ opacity: 1 }}
-                  initial={{ opacity: 0 }}
-                  exit={{ opacity: 0 }}
-                  className="border border-gray-300 hover:shadow-lg w-56 h-72"
-                  key={item.title}
-                >
-                  <Link href={"/writing/" + item.slug}>
-                    <a>
+                <Link href={"/writing/" + item.slug} key={item.title}>
+                  <a>
+                    <motion.div
+                      animate={{ opacity: 1 }}
+                      initial={{ opacity: 0 }}
+                      exit={{ opacity: 0 }}
+                      className="border border-gray-300 hover:shadow-lg w-56 h-72"
+                      key={item.title}
+                    >
                       <div class="px-4 py-4 font-latex text-center flex flex-col gap-y-2">
                         <h2 className="text-xl font-semibold">{item.title}</h2>
                         <h3>Sam Robbins</h3>
@@ -37,9 +37,9 @@ export default function Portfolio({ writings }) {
                           })}
                         </h3>
                       </div>
-                    </a>
-                  </Link>
-                </motion.div>
+                    </motion.div>
+                  </a>
+                </Link>
               ))}
             </AnimatePresence>
           </div>
