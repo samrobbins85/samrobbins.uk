@@ -1,8 +1,8 @@
 const colors = require("tailwindcss/colors");
-
+const plugin = require("tailwindcss/plugin");
 module.exports = {
-  purge: ["./components/**/*.js", "./pages/**/*.js"],
   presets: [require("@samrobbins/typography")],
+  purge: ["./components/**/*.js", "./pages/**/*.js"],
   theme: {
     extend: {
       colors: {
@@ -19,7 +19,10 @@ module.exports = {
       maxWidth: {
         "85ch": "85ch",
       },
+      fontFamily: {
+        latex: ["Latin Modern"],
+      },
     },
   },
-  plugins: [require("@tailwindcss/typography")],
+  plugins: [require("latex-tailwind"), require("@tailwindcss/aspect-ratio")],
 };

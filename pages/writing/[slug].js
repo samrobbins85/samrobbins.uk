@@ -27,7 +27,7 @@ export default function Portfolio({ data, contentHtml }) {
         </p>
 
         <div
-          className=" mx-auto"
+          className="mx-auto"
           dangerouslySetInnerHTML={{ __html: contentHtml }}
         />
       </div>

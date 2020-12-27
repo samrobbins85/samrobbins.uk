@@ -1,16 +1,19 @@
 import { getWritings } from "@/lib/graphcms";
 import FilledNav from "@/components/fillednav";
 import Link from "next/link";
-import { useState } from "react";
-import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion";
-import Image from "next/image";
+import { motion, AnimatePresence } from "framer-motion";
+import Head from "next/head";
 export default function Portfolio({ writings }) {
-  const [category, setCategory] = useState(false);
   return (
     <>
+      <Head>
+        <title>Writing | Sam Robbins</title>
+      </Head>
       <FilledNav />
       <div className="pt-6 px-2">
-        <h1 className="text-4xl font-semibold text-center">Portfolio</h1>
+        <h1 className="text-4xl font-semibold text-center font-latex">
+          Writing
+        </h1>
         <div>
           <div class="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
             <AnimatePresence exitBeforeEnter>
@@ -19,13 +22,20 @@ export default function Portfolio({ writings }) {
                   animate={{ opacity: 1 }}
                   initial={{ opacity: 0 }}
                   exit={{ opacity: 0 }}
-                  className="w-full sm:w-2/5 lg:w-1/5 border border-gray-300 rounded hover:shadow-lg"
+                  className="border border-gray-300 hover:shadow-lg w-56 h-72"
                   key={item.title}
                 >
                   <Link href={"/writing/" + item.slug}>
                     <a>
-                      <div class="px-4">
-                        <h2 class="font-semibold h-16">{item.title}</h2>
+                      <div class="px-4 py-4 font-latex text-center flex flex-col gap-y-2">
+                        <h2 className="text-xl font-semibold">{item.title}</h2>
+                        <h3>Sam Robbins</h3>
+                        <h3 className="italic">
+                          {new Date(item.date).toLocaleString("en-gb", {
+                            month: "long",
+                            year: "numeric",
+                          })}
+                        </h3>
                       </div>
                     </a>
                   </Link>
