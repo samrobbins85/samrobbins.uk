@@ -5,6 +5,7 @@ export default function FilledNav() {
       title="Sam Robbins"
       text={[
         { title: "About", path: "about" },
+        { title: "Blog", path: "blog" },
         { title: "Portfolio", path: "portfolio" },
         { title: "Writing", path: "writing" },
       ]}

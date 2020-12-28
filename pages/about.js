@@ -12,7 +12,7 @@ export default function About({ about }) {
         <title>About | Sam Robbins</title>
       </Head>
       <FilledNav />
-      <div className="max-w-85ch mx-auto pt-8">
+      <div className="max-w-85ch mx-auto pt-8 px-2">
         <h1 className="text-5xl font-semibold">About</h1>
         <div className="py-6 border border-gray-300 rounded max-w-sm mx-auto px-2 my-4">
           <h3

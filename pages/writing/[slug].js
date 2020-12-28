@@ -52,7 +52,6 @@ export async function getStaticProps({ params }) {
       data,
       contentHtml,
     },
-    revalidate: 60,
   };
 }
 
