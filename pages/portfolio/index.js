@@ -4,10 +4,14 @@ import Link from "next/link";
 import { useState } from "react";
 import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Head from "next/head";
 export default function Portfolio({ portfolios, categories }) {
   const [category, setCategory] = useState(false);
   return (
     <>
+      <Head>
+        <title>Portfolio | Sam Robbins</title>
+      </Head>
       <FilledNav />
       <div className="pt-6 px-2">
         <h1 className="text-4xl font-semibold text-center">Portfolio</h1>

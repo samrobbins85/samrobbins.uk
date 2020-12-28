@@ -3,10 +3,14 @@ import DatedItem from "@/components/datedItem";
 import Link from "next/link";
 import { getAbout } from "@/lib/graphcms";
 import Image from "next/image";
+import Head from "next/head";
 export default function About({ about }) {
   const data = about[0];
   return (
     <>
+      <Head>
+        <title>About | Sam Robbins</title>
+      </Head>
       <FilledNav />
       <div className="max-w-85ch mx-auto pt-8">
         <h1 className="text-5xl font-semibold">About</h1>
