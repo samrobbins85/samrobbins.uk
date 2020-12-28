@@ -52,8 +52,8 @@ export default function Home({ homepage }) {
                 image={item.image}
                 description={item.description}
                 achievement={item.achievement}
-                description={item.description}
                 date={item.date}
+                formatdate={true}
               />
             ))}
           </div>

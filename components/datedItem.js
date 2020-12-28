@@ -6,6 +6,7 @@ export default function DatedItem({
   achievement,
   description,
   date,
+  formatdate,
 }) {
   return (
     <div class="grid grid-cols-12">
@@ -26,10 +27,12 @@ export default function DatedItem({
         </div>
       </div>
       <div class="col-span-4 sm:col-span-3 border-l border-gray-400 pl-4 flex items-center my-4">
-        {new Date(date).toLocaleString("en-gb", {
-          month: "short",
-          year: "numeric",
-        })}
+        {formatdate
+          ? new Date(date).toLocaleString("en-gb", {
+              month: "short",
+              year: "numeric",
+            })
+          : date}
       </div>
     </div>
   );
