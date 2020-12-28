@@ -4,6 +4,7 @@ import FilledNav from "@/components/fillednav";
 import Link from "next/link";
 import DatedItem from "@/components/datedItem";
 import Image from "next/image";
+import TimeLineItem from "@/components/timelineItem";
 export default function Home({ homepage }) {
   const data = homepage[0];
   return (
@@ -45,7 +46,7 @@ export default function Home({ homepage }) {
         </div>
         <div>
           <h2 class=" text-4xl font-black pb-4">Achievements</h2>
-          <div class="flex justify-center flex-col gap-y-8">
+          {/* <div class="flex justify-center flex-col gap-y-8">
             {data.achievements.map((item) => (
               <DatedItem
                 colour={item.backgroundColour.hex}
@@ -56,6 +57,32 @@ export default function Home({ homepage }) {
                 formatdate={true}
               />
             ))}
+          </div> */}
+        </div>
+        <div class="max-w-xl p-8">
+          <div class="flow-root">
+            <ul class="-mb-8">
+              {data.achievements.map((item, i) =>
+                i === data.achievements.length - 1 ? (
+                  <TimeLineItem
+                    image={item.image.url}
+                    title={item.achievement}
+                    date={item.date}
+                    description={item.description}
+                    icon={item.icon}
+                    end={true}
+                  />
+                ) : (
+                  <TimeLineItem
+                    image={item.image.url}
+                    title={item.achievement}
+                    date={item.date}
+                    description={item.description}
+                    icon={item.icon}
+                  />
+                )
+              )}
+            </ul>
           </div>
         </div>
       </div>
