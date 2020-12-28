@@ -7,6 +7,10 @@
   @apply text-blue-600 hover:underline;
 }
 
+img:-moz-loading {
+  visibility: hidden;
+}
+
 .hexGrid {
   @apply flex flex-wrap mx-0 my-auto overflow-hidden;
 }
