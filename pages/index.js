@@ -27,12 +27,16 @@ export default function Home({ homepage }) {
         </div>
         <div className="pt-4">
           <h2 className="text-4xl font-black">Projects</h2>
-          <div class="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-x-4">
+          <div class="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
             {data.portfolios.map((item) => (
               <Link href={"/portfolio/" + item.slug}>
-                <a class="w-full sm:w-2/3 lg:w-1/3 border border-gray-300 rounded hover:shadow-lg">
+                <a class="border border-gray-300 rounded hover:shadow-lg w-52">
                   <div class="h-32 w-full object-contain p-4 relative">
-                    <Image src={item.coverImage.url} layout="fill" />
+                    <Image
+                      src={item.coverImage.url}
+                      layout="fill"
+                      objectFit="contain"
+                    />
                   </div>
                   <hr class="my-4" />
                   <div class="px-4">
@@ -42,6 +46,29 @@ export default function Home({ homepage }) {
                 </a>
               </Link>
             ))}
+            <Link href="/portfolio/">
+              <a class="border border-gray-300 rounded hover:shadow-lg w-52">
+                <div class="px-4 h-52">
+                  <h2 class="text-2xl pt-4 h-16">
+                    View all my projects on my portfolio page
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      className="text-gray-600 h-20 w-20 mx-auto mt-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </h2>
+                </div>
+              </a>
+            </Link>
           </div>
         </div>
         <div>

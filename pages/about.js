@@ -5,7 +5,6 @@ import { getAbout } from "@/lib/graphcms";
 import Image from "next/image";
 export default function About({ about }) {
   const data = about[0];
-  console.log(data.technologies);
   return (
     <>
       <FilledNav />
