@@ -5,6 +5,7 @@ import { getAbout } from "@/lib/graphcms";
 import Image from "next/image";
 export default function About({ about }) {
   const data = about[0];
+  console.log(data.technologies);
   return (
     <>
       <FilledNav />
@@ -53,6 +54,22 @@ export default function About({ about }) {
               </li>
             ))}
           </ul>
+        </div>
+        <div>
+          <h2 className="text-3xl font-semibold">Skills</h2>
+          <div className="flex justify-center gap-x-8 flex-wrap gap-y-4 py-4">
+            {data.technologies.map((item) => (
+              <a className="relative h-20 w-40" href={item.link}>
+                <Image
+                  src={item.image.url}
+                  alt={item.name}
+                  layout="fill"
+                  objectFit="contain"
+                  priority={true}
+                />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </>
