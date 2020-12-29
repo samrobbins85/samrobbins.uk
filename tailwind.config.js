@@ -28,6 +28,7 @@ module.exports = {
   variants: {
     extend: {
       display: ["hover"],
+      backgroundColor: ["active"],
     },
   },
   plugins: [require("latex-tailwind"), require("@tailwindcss/aspect-ratio")],
