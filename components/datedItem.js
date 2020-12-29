@@ -9,7 +9,7 @@ export default function DatedItem({
   formatdate,
 }) {
   return (
-    <div class="grid grid-cols-12">
+    <div class="grid grid-cols-12 items-center">
       <div class="col-span-3">
         <div
           class="rounded-full border h-16 w-16 sm:h-24 sm:w-24 flex justify-center border-none items-center"
