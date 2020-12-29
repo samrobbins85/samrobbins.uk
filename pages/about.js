@@ -39,20 +39,39 @@ export default function About({ about }) {
             {data.hackathons.map((item) => (
               <li class="hex">
                 <div class="hexIn">
-                  {item.slug ? (
-                    <Link className="group" href={"/portfolio/" + item.slug}>
-                      <a>
-                        <Image
-                          src={item.image.url}
-                          alt={item.name}
-                          layout="fill"
-                          className="z-10"
-                        />
-                      </a>
-                    </Link>
-                  ) : (
+                  <div class="hexLink">
                     <Image src={item.image.url} alt={item.name} layout="fill" />
-                  )}
+                    {item.slug ? (
+                      <a href={item.slug}>
+                        <h1 className="text-cyan-600 hover:underline">
+                          {item.name}
+                        </h1>
+                        <p>{item.project}</p>
+                      </a>
+                    ) : (
+                      <>
+                        <h1>{item.name}</h1>
+                        <p>{item.project}</p>
+                      </>
+                    )}
+                    {/* {item.slug ? (
+                      <Link className="group" href={"/portfolio/" + item.slug}>
+                        <a>
+                          <Image
+                            src={item.image.url}
+                            alt={item.name}
+                            layout="fill"
+                          />
+                        </a>
+                      </Link>
+                    ) : (
+                      <Image
+                        src={item.image.url}
+                        alt={item.name}
+                        layout="fill"
+                      />
+                    )} */}
+                  </div>
                 </div>
               </li>
             ))}

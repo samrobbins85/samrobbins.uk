@@ -1,5 +1,5 @@
 const colors = require("tailwindcss/colors");
-const plugin = require("tailwindcss/plugin");
+const defaultTheme = require("tailwindcss/defaultTheme");
 module.exports = {
   presets: [require("@samrobbins/typography")],
   purge: ["./components/**/*.js", "./pages/**/*.js"],
@@ -21,6 +21,7 @@ module.exports = {
       },
       fontFamily: {
         latex: ["Latin Modern"],
+        sans: ["Inter var", ...defaultTheme.fontFamily.sans],
       },
     },
   },
