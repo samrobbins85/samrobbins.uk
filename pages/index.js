@@ -2,7 +2,6 @@ import { getHomepage } from "../lib/graphcms";
 import Head from "next/head";
 import FilledNav from "@/components/fillednav";
 import Link from "next/link";
-import DatedItem from "@/components/datedItem";
 import Image from "next/image";
 import TimeLineItem from "@/components/timelineItem";
 export default function Home({ homepage }) {
@@ -14,7 +13,13 @@ export default function Home({ homepage }) {
       </Head>
       <FilledNav />
       <div className="py-6 px-2 max-w-85ch mx-auto">
-        <h1 className="text-center text-4xl font-semibold">{data.name}</h1>
+        <h1 className="text-6xl font-bold w-3/4 py-4 pb-8">
+          Hi, I'm <span className="text-cyan-500">Sam</span> <br /> I study
+          Computer Science at{" "}
+          <span className="text-purple-800 inline-block">
+            Durham University
+          </span>
+        </h1>
         <h2 className="text-lg text-gray-800 text-center">
           {data.description}
         </h2>
