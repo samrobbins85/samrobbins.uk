@@ -9,6 +9,8 @@ const rehypePrism = require("@mapbox/rehype-prism");
 import GitHub from "@/components/svg/github";
 import NPM from "@/components/svg/npm";
 import Globe from "@/components/svg/globe";
+import { Menu, Transition } from "@headlessui/react";
+import { RepoIcon } from "@primer/octicons-react";
 export default function Portfolio({ data, contentHtml, names }) {
   return (
     <>
@@ -25,13 +27,6 @@ export default function Portfolio({ data, contentHtml, names }) {
           {data.description}
         </h2>
         <div className="flex justify-center pt-10 gap-x-12 flex-wrap gap-y-4">
-          <a href={data.github[0]}>
-            <div className="h-12 w-44 px-8 py-2 rounded bg-black text-white text-lg tracking-wide flex items-center">
-              <GitHub className="text-white mr-3 inline-block" />
-
-              <span className="font-semibold">GitHub</span>
-            </div>
-          </a>
           {data.npm ? (
             <a href={data.npm}>
               <div className="h-12 w-44 px-8 py-2 rounded bg-red-700 text-white text-lg  hover:shadow flex items-center justify-center">
@@ -46,6 +41,81 @@ export default function Portfolio({ data, contentHtml, names }) {
                 <span>Website</span>
               </div>
             </a>
+          ) : undefined}
+          {data.github ? (
+            data.github.length > 1 ? (
+              <div className="relative inline-block text-left">
+                <Menu>
+                  {({ open }) => (
+                    <>
+                      <span className="rounded-md shadow-sm">
+                        <Menu.Button className="inline-flex h-12 w-44 justify-center px-4 py-2 text-sm font-medium text-gray-200 transition duration-150 ease-in-out bg-black border border-gray-300 rounded-md hover:text-white focus:outline-none items-center focus:ring-2 focus:ring-cyan -500 focus:ring-opacity-50">
+                          <GitHub className="mr-2" />
+                          <span>GitHub</span>
+                          <svg
+                            className="w-5 h-5 ml-2 -mr-1"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                        </Menu.Button>
+                      </span>
+
+                      <Transition
+                        show={open}
+                        enter="transition ease-out duration-100"
+                        enterFrom="transform opacity-0 scale-95"
+                        enterTo="transform opacity-100 scale-100"
+                        leave="transition ease-in duration-75"
+                        leaveFrom="transform opacity-100 scale-100"
+                        leaveTo="transform opacity-0 scale-95"
+                      >
+                        <Menu.Items
+                          static
+                          className="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none z-20"
+                        >
+                          <div className="py-1">
+                            {data.github.map((item) => (
+                              <Menu.Item>
+                                {({ active }) => (
+                                  <a
+                                    href={item}
+                                    className={`${
+                                      active
+                                        ? "bg-gray-100 text-gray-900"
+                                        : "text-gray-700"
+                                    } flex justify-start w-full px-4 py-2 text-sm leading-5 text-left text-blue-700 font-bold`}
+                                  >
+                                    <RepoIcon
+                                      size={24}
+                                      className="mr-1 text-black"
+                                    />
+                                    {item.split("/").slice(-1)[0]}
+                                  </a>
+                                )}
+                              </Menu.Item>
+                            ))}
+                          </div>
+                        </Menu.Items>
+                      </Transition>
+                    </>
+                  )}
+                </Menu>
+              </div>
+            ) : (
+              <a href={data.github[0]}>
+                <div className="h-12 w-44 px-8 py-2 rounded bg-black text-white text-lg tracking-wide flex items-center">
+                  <GitHub className="text-white mr-3 inline-block" />
+
+                  <span className="font-semibold">GitHub</span>
+                </div>
+              </a>
+            )
           ) : undefined}
         </div>
         {data.coders.length !== 0 && (
