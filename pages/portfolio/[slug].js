@@ -6,7 +6,9 @@ import FilledNav from "@/components/fillednav";
 var remark2rehype = require("remark-rehype");
 var html = require("rehype-stringify");
 const rehypePrism = require("@mapbox/rehype-prism");
-
+import GitHub from "@/components/svg/github";
+import NPM from "@/components/svg/npm";
+import Globe from "@/components/svg/globe";
 export default function Portfolio({ data, contentHtml, names }) {
   return (
     <>
@@ -16,20 +18,32 @@ export default function Portfolio({ data, contentHtml, names }) {
       <FilledNav />
 
       <div className="p-4 max-w-85ch mx-auto">
-        <h1 className="text-7xl text-center font-bold pt-10">{data.title}</h1>
+        <h1 className="text-5xl sm:text-6xl text-center font-bold pt-10">
+          {data.title}
+        </h1>
         <h2 className="text-center text-gray-600 text-lg pt-6">
           {data.description}
         </h2>
-        <div className="flex justify-center pt-10 gap-12">
+        <div className="flex justify-center pt-10 gap-x-12 flex-wrap gap-y-4">
           <a href={data.github[0]}>
-            <div className=" px-8 py-2 rounded bg-black text-white text-lg tracking-wide">
-              GitHub
+            <div className="h-12 w-44 px-8 py-2 rounded bg-black text-white text-lg tracking-wide flex items-center">
+              <GitHub className="text-white mr-3 inline-block" />
+
+              <span className="font-semibold">GitHub</span>
             </div>
           </a>
+          {data.npm ? (
+            <a href={data.npm}>
+              <div className="h-12 w-44 px-8 py-2 rounded bg-red-700 text-white text-lg  hover:shadow flex items-center justify-center">
+                <NPM className="text-white fill-current inline-block h-12" />
+              </div>
+            </a>
+          ) : undefined}
           {data.website ? (
             <a href={data.website}>
-              <div className=" px-8 py-2 rounded bg-cyan-700 text-white text-lg tracking-wide hover:shadow hover:bg-cyan-800">
-                Website
+              <div className="h-12 w-44 px-8 py-2 rounded text-gray-700 border border-gray-400 text-lg tracking-wide hover:shadow flex items-center justify-center">
+                <Globe className="h-8 w-8 text-black mr-2" />
+                <span>Website</span>
               </div>
             </a>
           ) : undefined}
@@ -40,7 +54,7 @@ export default function Portfolio({ data, contentHtml, names }) {
               Made by
             </h2>
             <div className="flex justify-center py-4">
-              <div class="flex space-x-2 overflow-hidden gap-x-4">
+              <div class="flex space-x-2 overflow-hidden gap-x-4 flex-wrap gap-y-2 justify-center">
                 {data.coders.map((coder, index) => (
                   <div className="flex items-center gap-x-2">
                     <div className="inline-block h-10 w-10 relative">
