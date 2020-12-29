@@ -42,12 +42,14 @@ export default function About({ about }) {
                   <div class="hexLink">
                     <Image src={item.image.url} alt={item.name} layout="fill" />
                     {item.slug ? (
-                      <a href={item.slug}>
-                        <h1 className="text-cyan-600 hover:underline">
-                          {item.name}
-                        </h1>
-                        <p>{item.project}</p>
-                      </a>
+                      <Link href={"/portfolio/" + item.slug}>
+                        <a>
+                          <h1 className="text-cyan-600 hover:underline">
+                            {item.name}
+                          </h1>
+                          <p>{item.project}</p>
+                        </a>
+                      </Link>
                     ) : (
                       <>
                         <h1>{item.name}</h1>
