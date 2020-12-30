@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20mm" height="20mm" viewBox="0 0 20 20">
+   <path fill="#FFF" d="M.045-.427h20.103v20.433H.045z" />
+   <text style="line-height:1.25" x="-.316" y="15.385" font-size="15.253" font-family="sans-serif" stroke-width=".357" class="dark">
+      <tspan x="-.316" y="15.385">SR</tspan>
+   </text>
+</svg>
