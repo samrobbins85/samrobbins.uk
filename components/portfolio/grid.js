@@ -1,7 +1,8 @@
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 export default function Grid({ portfolios, category }) {
+  const shouldReduceMotion = useReducedMotion();
   return (
     <AnimatePresence>
       {portfolios
@@ -10,7 +11,7 @@ export default function Grid({ portfolios, category }) {
         )
         .map((item) => (
           <motion.div
-            layout
+            layout={!shouldReduceMotion}
             transition={{ duration: 0.3 }}
             className="w-full sm:w-2/5 lg:w-1/5 border border-gray-300 rounded hover:shadow-lg"
             key={item.title}
