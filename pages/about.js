@@ -3,6 +3,7 @@ import DatedItem from "@/components/datedItem";
 import { getAbout } from "@/lib/graphcms";
 import Image from "next/image";
 import Head from "next/head";
+import Link from "next/link";
 import Hexagon from "@/components/about/hexagon";
 export default function About({ about }) {
   const data = about[0];
@@ -12,7 +13,7 @@ export default function About({ about }) {
         <title>About | Sam Robbins</title>
       </Head>
       <FilledNav />
-      <div className="max-w-85ch mx-auto pt-8 px-2">
+      <div className="max-w-85ch mx-auto py-8 px-2">
         <h1 className="text-5xl font-semibold">About</h1>
         <div className="py-6 border border-gray-300 rounded max-w-sm mx-auto px-2 my-4">
           <h3
@@ -48,6 +49,9 @@ export default function About({ about }) {
         </div>
         <div>
           <h2 className="text-3xl font-semibold">Skills</h2>
+          <h3 className="text-xl text-gray-600">
+            These are the tools I love to use
+          </h3>
           <div className="flex justify-center gap-x-8 flex-wrap gap-y-4 py-4">
             {data.technologies.map((item) => (
               <a className="relative h-20 w-40" href={item.link}>
@@ -61,6 +65,12 @@ export default function About({ about }) {
               </a>
             ))}
           </div>
+          <p className="text-center text-lg text-gray-600">
+            To see the full range of technologies I've used, go to my{" "}
+            <Link href="./portfolio">
+              <a className="text-blue-700 hover:underline">portfolio page</a>
+            </Link>
+          </p>
         </div>
       </div>
     </>
