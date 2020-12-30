@@ -10,9 +10,8 @@ export default function Grid({ portfolios, category }) {
         )
         .map((item) => (
           <motion.div
-            animate={{ opacity: 1 }}
-            initial={{ opacity: 0 }}
-            exit={{ opacity: 0 }}
+            layout
+            transition={{ duration: 0.3 }}
             className="w-full sm:w-2/5 lg:w-1/5 border border-gray-300 rounded hover:shadow-lg"
             key={item.title}
           >
