@@ -1,9 +1,9 @@
 import FilledNav from "@/components/fillednav";
 import DatedItem from "@/components/datedItem";
-import Link from "next/link";
 import { getAbout } from "@/lib/graphcms";
 import Image from "next/image";
 import Head from "next/head";
+import Hexagon from "@/components/about/hexagon";
 export default function About({ about }) {
   const data = about[0];
   return (
@@ -37,45 +37,12 @@ export default function About({ about }) {
           <h2 className="text-3xl font-semibold py-2">Hackathons</h2>
           <ul class="hexGrid">
             {data.hackathons.map((item) => (
-              <li class="hex">
-                <div class="hexIn">
-                  <div class="hexLink">
-                    <Image src={item.image.url} alt={item.name} layout="fill" />
-                    {item.slug ? (
-                      <Link href={"/portfolio/" + item.slug}>
-                        <a>
-                          <h1 className="text-cyan-600 hover:underline">
-                            {item.name}
-                          </h1>
-                          <p>{item.project}</p>
-                        </a>
-                      </Link>
-                    ) : (
-                      <>
-                        <h1>{item.name}</h1>
-                        <p>{item.project}</p>
-                      </>
-                    )}
-                    {/* {item.slug ? (
-                      <Link className="group" href={"/portfolio/" + item.slug}>
-                        <a>
-                          <Image
-                            src={item.image.url}
-                            alt={item.name}
-                            layout="fill"
-                          />
-                        </a>
-                      </Link>
-                    ) : (
-                      <Image
-                        src={item.image.url}
-                        alt={item.name}
-                        layout="fill"
-                      />
-                    )} */}
-                  </div>
-                </div>
-              </li>
+              <Hexagon
+                image={item.image.url}
+                name={item.name}
+                slug={item.slug}
+                project={item.project}
+              />
             ))}
           </ul>
         </div>
