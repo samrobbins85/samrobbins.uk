@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 export default function Grid({ portfolios, category }) {
   return (
-    <AnimatePresence exitBeforeEnter>
+    <AnimatePresence>
       {portfolios
         .filter((item) =>
           category ? item.categories.includes(category) : item
