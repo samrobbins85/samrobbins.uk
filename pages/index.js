@@ -45,11 +45,11 @@ export default function Home({ homepage }) {
               />
             ))}
             <Link href="/portfolio/">
-              <a class="border border-gray-300 sm:border-none rounded hover:shadow-lg sm:hover:shadow-none w-52">
-                <div class="px-4 h-52">
-                  <h2 class="text-2xl pt-4 h-16">
+              <a className="border border-gray-300 sm:border-none rounded hover:shadow-lg sm:hover:shadow-none w-52 group">
+                <div className="px-4 h-52">
+                  <h2 className="text-2xl pt-4 h-16">
                     View all my projects on my portfolio page
-                    <RightArrow className="text-gray-600 h-20 w-20 mx-auto mt-6" />
+                    <RightArrow className="text-gray-600 h-20 w-20 mx-auto mt-6 group-hover:text-blue-700" />
                   </h2>
                 </div>
               </a>

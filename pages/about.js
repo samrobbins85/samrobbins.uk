@@ -36,7 +36,10 @@ export default function About({ about }) {
         </div>
         <div className="px-2 py-4">
           <h2 className="text-3xl font-semibold py-2">Hackathons</h2>
-          <ul class="hexGrid">
+          <h3 className="text-xl text-gray-600">
+            Hover over the stickers to find out more
+          </h3>
+          <ul class="hexGrid py-4">
             {data.hackathons.map((item) => (
               <Hexagon
                 image={item.image.url}
