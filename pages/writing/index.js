@@ -1,8 +1,7 @@
 import { getWritings } from "@/lib/graphcms";
 import FilledNav from "@/components/fillednav";
-import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
 import Head from "next/head";
+import Paper from "@/components/writing/paper";
 export default function Portfolio({ writings }) {
   return (
     <>
@@ -16,32 +15,9 @@ export default function Portfolio({ writings }) {
         </h1>
         <div>
           <div class="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
-            <AnimatePresence exitBeforeEnter>
-              {writings.map((item) => (
-                <Link href={"/writing/" + item.slug} key={item.title}>
-                  <a>
-                    <motion.div
-                      animate={{ opacity: 1 }}
-                      initial={{ opacity: 0 }}
-                      exit={{ opacity: 0 }}
-                      className="border border-gray-300 hover:shadow-lg w-56 h-72"
-                      key={item.title}
-                    >
-                      <div class="px-4 py-4 font-latex text-center flex flex-col gap-y-2">
-                        <h2 className="text-xl font-semibold">{item.title}</h2>
-                        <h3>Sam Robbins</h3>
-                        <h3 className="italic">
-                          {new Date(item.date).toLocaleString("en-gb", {
-                            month: "long",
-                            year: "numeric",
-                          })}
-                        </h3>
-                      </div>
-                    </motion.div>
-                  </a>
-                </Link>
-              ))}
-            </AnimatePresence>
+            {writings.map((item) => (
+              <Paper slug={item.slug} title={item.title} date={item.date} />
+            ))}
           </div>
         </div>
       </div>

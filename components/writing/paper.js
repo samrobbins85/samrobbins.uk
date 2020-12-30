@@ -1,0 +1,21 @@
+import Link from "next/link";
+export default function Paper({ slug, title, date }) {
+  return (
+    <Link href={"/writing/" + slug} key={title}>
+      <a>
+        <div className="border border-gray-300 hover:shadow-lg w-56 h-72">
+          <div class="px-4 py-4 font-latex text-center flex flex-col gap-y-2">
+            <h2 className="text-xl font-semibold">{title}</h2>
+            <h3>Sam Robbins</h3>
+            <h3 className="italic">
+              {new Date(date).toLocaleString("en-gb", {
+                month: "long",
+                year: "numeric",
+              })}
+            </h3>
+          </div>
+        </div>
+      </a>
+    </Link>
+  );
+}

@@ -1,6 +1,5 @@
 import { getWriting, getAllWritingsWithSlug } from "@/lib/graphcms";
 import remark from "remark";
-import Image from "next/image";
 import Head from "next/head";
 const math = require("remark-math");
 const katex = require("rehype-katex");
