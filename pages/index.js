@@ -6,13 +6,14 @@ import Image from "next/image";
 import TimeLineItem from "@/components/timelineItem";
 import PortfolioItem from "@/components/home/portfolioitem";
 import RightArrow from "@/components/svg/rightarrow";
+
 export default function Home({ homepage }) {
   const data = homepage[0];
   return (
     <>
-      {/* <Head>
+      <Head>
         <title>Sam Robbins</title>
-      </Head> */}
+      </Head>
       <FilledNav />
       <div className="py-6 px-2 max-w-85ch mx-auto">
         <h1 className="text-6xl font-bold w-3/4 py-4 pb-8">
