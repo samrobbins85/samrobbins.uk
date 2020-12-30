@@ -16,7 +16,7 @@ export default function Home({ homepage }) {
       <FilledNav />
       <div className="py-6 px-2 max-w-85ch mx-auto">
         <h1 className="text-6xl font-bold w-3/4 py-4 pb-8">
-          Hi, I'm <span className="text-cyan-500">Sam</span> <br /> I study
+          Hi, I'm <span className="text-cyan-600">Sam</span> <br /> I study
           Computer Science at{" "}
           <span className="text-purple-800 inline-block">
             Durham University

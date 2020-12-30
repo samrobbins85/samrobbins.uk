@@ -6,6 +6,10 @@ function MyApp({ Component, pageProps }) {
     <>
       <Head>
         <title>Sam Robbins</title>
+        <meta
+          name="Description"
+          content="The personal website of Sam Robbins, Computer Science student from Durham University"
+        />
       </Head>
       <Component {...pageProps} />
     </>
