@@ -8,6 +8,7 @@ var remark2rehype = require("remark-rehype");
 var html = require("rehype-stringify");
 const rehypePrism = require("@mapbox/rehype-prism");
 var footnotes = require("remark-footnotes");
+var gfm = require("remark-gfm");
 export default function Portfolio({ data, contentHtml }) {
   return (
     <>
@@ -39,6 +40,7 @@ export async function getStaticProps({ params }) {
   const output = await remark()
     .use(footnotes)
     .use(math)
+    .use(gfm)
     .use(remark2rehype)
     .use(katex)
     .use(rehypePrism)
