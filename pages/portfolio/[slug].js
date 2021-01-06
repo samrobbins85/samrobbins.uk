@@ -6,6 +6,7 @@ import FilledNav from "@/components/fillednav";
 import remark2rehype from "remark-rehype";
 import html from "rehype-stringify";
 import rehypePrism from "@mapbox/rehype-prism";
+import gfm from "remark-gfm";
 import WebsiteButton from "@/components/portfolio/websiteButton";
 import NpmButton from "@/components/portfolio/npmButton";
 import GitHubButton from "@/components/portfolio/githubButton";
@@ -98,6 +99,7 @@ export default function Portfolio({ data, contentHtml, names }) {
 export async function getStaticProps({ params }) {
   const data = await getPortfolio(params.slug);
   const output = await remark()
+    .use(gfm)
     .use(remark2rehype)
     .use(rehypePrism)
     .use(html)
