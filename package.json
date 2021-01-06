@@ -19,7 +19,7 @@
     "date-fns": "2.10.0",
     "framer-motion": "^3.1.1",
     "graphcms-image": "^1.1.0-beta4",
-    "latex-tailwind": "^1.2.0",
+    "latex-tailwind": "^2.1.0",
     "next": "latest",
     "postcss": "^8.2.1",
     "react": "^16.13.0",
