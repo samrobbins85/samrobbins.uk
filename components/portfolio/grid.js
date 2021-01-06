@@ -26,10 +26,10 @@ export default function Grid({ portfolios, category }) {
                     alt={item.title}
                   />
                 </div>
-                <hr class="my-4" />
-                <div class="px-4">
-                  <h2 class="font-semibold h-16">{item.title}</h2>
-                  <p class="text-gray-600 pb-4">{item.description}</p>
+                <hr className="my-4" />
+                <div className="px-4">
+                  <h2 className="font-semibold h-16">{item.title}</h2>
+                  <p className="text-gray-600 pb-4">{item.description}</p>
                 </div>
               </a>
             </Link>

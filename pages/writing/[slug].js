@@ -1,14 +1,14 @@
 import { getWriting, getAllWritingsWithSlug } from "@/lib/graphcms";
 import remark from "remark";
 import Head from "next/head";
-const math = require("remark-math");
-const katex = require("rehype-katex");
+import math from "remark-math";
+import katex from "rehype-katex";
 import FilledNav from "@/components/fillednav";
-var remark2rehype = require("remark-rehype");
-var html = require("rehype-stringify");
-const rehypePrism = require("@mapbox/rehype-prism");
-var footnotes = require("remark-footnotes");
-var gfm = require("remark-gfm");
+import remark2rehype from "remark-rehype";
+import html from "rehype-stringify";
+import rehypePrism from "@mapbox/rehype-prism";
+import footnotes from "remark-footnotes";
+import gfm from "remark-gfm";
 export default function Portfolio({ data, contentHtml }) {
   return (
     <>

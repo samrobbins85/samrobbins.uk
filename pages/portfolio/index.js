@@ -22,7 +22,7 @@ export default function Portfolio({ portfolios, categories }) {
           />
         </div>
         <div>
-          <div class="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
+          <div className="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
             <Grid category={category} portfolios={portfolios} />
           </div>
         </div>

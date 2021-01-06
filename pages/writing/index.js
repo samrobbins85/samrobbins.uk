@@ -14,9 +14,14 @@ export default function Portfolio({ writings }) {
           Writing
         </h1>
         <div>
-          <div class="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
+          <div className="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
             {writings.map((item) => (
-              <Paper slug={item.slug} title={item.title} date={item.date} />
+              <Paper
+                slug={item.slug}
+                title={item.title}
+                date={item.date}
+                key={item.title}
+              />
             ))}
           </div>
         </div>

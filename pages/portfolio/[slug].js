@@ -3,13 +3,9 @@ import remark from "remark";
 import Image from "next/image";
 import Head from "next/head";
 import FilledNav from "@/components/fillednav";
-var remark2rehype = require("remark-rehype");
-var html = require("rehype-stringify");
-const rehypePrism = require("@mapbox/rehype-prism");
-import GitHub from "@/components/svg/github";
-import NPM from "@/components/svg/npm";
-import { Menu, Transition } from "@headlessui/react";
-import { RepoIcon } from "@primer/octicons-react";
+import remark2rehype from "remark-rehype";
+import html from "rehype-stringify";
+import rehypePrism from "@mapbox/rehype-prism";
 import WebsiteButton from "@/components/portfolio/websiteButton";
 import NpmButton from "@/components/portfolio/npmButton";
 import GitHubButton from "@/components/portfolio/githubButton";
@@ -39,9 +35,9 @@ export default function Portfolio({ data, contentHtml, names }) {
               Made by
             </h2>
             <div className="flex justify-center py-4">
-              <div class="flex space-x-2 overflow-hidden gap-x-4 flex-wrap gap-y-2 justify-center">
+              <div className="flex space-x-2 overflow-hidden gap-x-4 flex-wrap gap-y-2 justify-center">
                 {data.coders.map((coder, index) => (
-                  <div className="flex items-center gap-x-2">
+                  <div className="flex items-center gap-x-2" key={coder}>
                     <div className="inline-block h-10 w-10 relative">
                       <Image
                         className="rounded-full"
@@ -73,7 +69,11 @@ export default function Portfolio({ data, contentHtml, names }) {
           </h2>
           <div className="flex justify-center gap-x-8 flex-wrap gap-y-4 py-4">
             {data.technologies.map((item) => (
-              <a className="relative h-20 w-40" href={item.link}>
+              <a
+                className="relative h-20 w-40"
+                href={item.link}
+                key={item.name}
+              >
                 <Image
                   src={item.image.url}
                   alt={item.name}
@@ -108,6 +108,7 @@ export async function getStaticProps({ params }) {
     for (var i = 0; i < data.coders.length; i++) {
       var name = await fetch("https://api.github.com/users/" + data.coders[i], {
         headers: {
+          // eslint-disable-next-line no-undef
           Authorization: "token" + process.env.GITHUB_TOKEN,
         },
       });

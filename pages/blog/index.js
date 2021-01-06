@@ -11,21 +11,21 @@ export default function Blog({ blogs }) {
       <FilledNav />
       <div className="max-w-85ch mx-auto px-2 py-4">
         <h1 className="text-5xl font-semibold">Blog</h1>
-        <div class="grid pt-4">
+        <div className="grid pt-4">
           {blogs.map((item) => (
-            <div class="py-4">
+            <div className="py-4" key={item.title}>
               <div>
                 <Link href={"/blog/" + item.slug}>
                   <a>
-                    <h2 class="font-semibold text-xl sm:text-2xl text-blue-700">
+                    <h2 className="font-semibold text-xl sm:text-2xl text-blue-700">
                       {item.title}
                     </h2>
                   </a>
                 </Link>
-                <div class="py-1">
+                <div className="py-1">
                   <time
-                    class="text-gray-600 text-sm uppercase"
-                    datetime={item.date}
+                    className="text-gray-600 text-sm uppercase"
+                    dateTime={item.date}
                   >
                     {new Date(item.date).toLocaleString("en-gb", {
                       day: "numeric",
@@ -34,7 +34,7 @@ export default function Blog({ blogs }) {
                     })}
                   </time>
                 </div>
-                <p class="sm:text-lg">{item.description}</p>
+                <p className="sm:text-lg">{item.description}</p>
               </div>
             </div>
           ))}

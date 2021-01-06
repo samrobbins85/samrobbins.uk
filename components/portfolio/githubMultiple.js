@@ -47,7 +47,7 @@ export default function GitHubMultiple({ repos }) {
               >
                 <div className="py-1">
                   {repos.map((item) => (
-                    <Menu.Item>
+                    <Menu.Item key={item}>
                       {({ active }) => (
                         <a
                           href={item}

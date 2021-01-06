@@ -1,11 +1,11 @@
 import { getBlog, getAllBlogsWithSlug } from "@/lib/graphcms";
 import remark from "remark";
 import Head from "next/head";
-const readingTime = require("reading-time");
+import readingTime from "reading-time";
 import FilledNav from "@/components/fillednav";
-var remark2rehype = require("remark-rehype");
-var html = require("rehype-stringify");
-const rehypePrism = require("@mapbox/rehype-prism");
+import remark2rehype from "remark-rehype";
+import html from "rehype-stringify";
+import rehypePrism from "@mapbox/rehype-prism";
 export default function Blog({ data, contentHtml, time }) {
   return (
     <>

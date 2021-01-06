@@ -1,4 +1,3 @@
-import Link from "next/link";
 import ActiveLink from "@/components/ActiveLink";
 export default function NavBar({ text, title }) {
   return (
@@ -9,7 +8,11 @@ export default function NavBar({ text, title }) {
         </a>
       </ActiveLink>
       {text.map((item) => (
-        <ActiveLink href={"/" + item.path} activeClassName="font-semibold">
+        <ActiveLink
+          href={"/" + item.path}
+          activeClassName="font-semibold"
+          key={item.title}
+        >
           <a>
             <span>{item.title}</span>
           </a>

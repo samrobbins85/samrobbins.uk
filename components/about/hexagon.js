@@ -2,9 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 export default function Hexagon({ image, name, slug, project }) {
   return (
-    <li class="hex">
-      <div class="hexIn">
-        <div class="hexLink">
+    <li className="hex">
+      <div className="hexIn">
+        <div className="hexLink">
           <Image src={image} alt={name} layout="fill" />
           {slug ? (
             <Link href={"/portfolio/" + slug}>

@@ -17,7 +17,7 @@ export default function Home({ homepage }) {
       <FilledNav />
       <div className="py-6 px-2 max-w-85ch mx-auto">
         <h1 className="text-6xl font-bold w-3/4 py-4 pb-8">
-          Hi, I'm <span className="text-cyan-600">Sam</span> <br /> I study
+          {"Hi, I'm "} <span className="text-cyan-600">Sam</span> <br /> I study
           Computer Science at{" "}
           <span className="text-purple-800 inline-block">
             Durham University
@@ -28,20 +28,25 @@ export default function Home({ homepage }) {
         </h2>
         <div className="flex justify-center gap-x-4 py-8">
           {data.socialLinks.map((entry) => (
-            <a className="h-12 w-20 relative" href={entry.link}>
+            <a
+              className="h-12 w-20 relative"
+              href={entry.link}
+              key={entry.name}
+            >
               <Image src={entry.image.url} alt={entry.name} layout="fill" />
             </a>
           ))}
         </div>
         <div className="pt-12">
           <h2 className="text-4xl font-black">Projects</h2>
-          <div class="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
+          <div className="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
             {data.portfolios.map((item) => (
               <PortfolioItem
                 slug={item.slug}
                 image={item.coverImage.url}
                 title={item.title}
                 description={item.description}
+                key={item.title}
               />
             ))}
             <Link href="/portfolio/">
@@ -57,11 +62,11 @@ export default function Home({ homepage }) {
           </div>
         </div>
         <div>
-          <h2 class=" text-4xl font-black pb-4">Achievements</h2>
+          <h2 className=" text-4xl font-black pb-4">Achievements</h2>
         </div>
-        <div class="max-w-xl p-8">
-          <div class="flow-root">
-            <ul class="-mb-8">
+        <div className="max-w-xl p-8">
+          <div className="flow-root">
+            <ul className="-mb-8">
               {data.achievements.map((item, i) =>
                 i === data.achievements.length - 1 ? (
                   <TimeLineItem
@@ -71,6 +76,7 @@ export default function Home({ homepage }) {
                     description={item.description}
                     icon={item.icon}
                     end={true}
+                    key={item.achievement}
                   />
                 ) : (
                   <TimeLineItem
@@ -79,6 +85,7 @@ export default function Home({ homepage }) {
                     date={item.date}
                     description={item.description}
                     icon={item.icon}
+                    key={item.achievement}
                   />
                 )
               )}
