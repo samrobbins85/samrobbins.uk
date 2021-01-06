@@ -2,5 +2,31 @@
   "version": 2,
   "github": {
     "silent": true
-  }
+  },
+  "redirects": [
+    {
+      "source": "/shdh",
+      "destination": "https://samrobbins.uk/portfolio/same-home-different-hacks/"
+    },
+    {
+      "source": "/digithon",
+      "destination": "https://samrobbins.uk/portfolio/oxford-digithon/"
+    },
+    {
+      "source": "/gh-portfolio",
+      "destination": "https://samrobbins.uk/portfolio/hugo-portfolio-website/"
+    },
+    {
+      "source": "/dh19",
+      "destination": "https://samrobbins.uk/portfolio/durhack-2019/"
+    },
+    {
+      "source": "/auth0",
+      "destination": "https://samrobbins.uk/portfolio/easy-dmarc/"
+    },
+    {
+      "source": "/csnotes",
+      "destination": "https://samrobbins.uk/portfolio/notes-website/"
+    }
+  ],
 }
