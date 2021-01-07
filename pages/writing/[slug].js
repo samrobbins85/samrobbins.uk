@@ -1,16 +1,21 @@
 import { getWriting, getAllWritingsWithSlug } from "@/lib/graphcms";
 import Head from "next/head";
-import math from "remark-math";
-import katex from "rehype-katex";
+import math from "@/lib/remark-math";
 import FilledNav from "@/components/fillednav";
 import rehypePrism from "@mapbox/rehype-prism";
 import footnotes from "remark-footnotes";
 import renderToString from "next-mdx-remote/render-to-string";
 import MyTable from "@/components/mdx/table";
+import { useEffect } from "react";
 const components = {
   table: MyTable,
 };
 export default function Portfolio({ data, contentHtml }) {
+  useEffect(() => {
+    import("@/lib/rendermath").then((renderMath) => {
+      renderMath.default();
+    });
+  }, []);
   const content = contentHtml.renderedOutput;
   return (
     <>
@@ -43,7 +48,7 @@ export async function getStaticProps({ params }) {
     components: components,
     mdxOptions: {
       remarkPlugins: [footnotes, math],
-      rehypePlugins: [katex, rehypePrism],
+      rehypePlugins: [rehypePrism],
     },
   });
 
