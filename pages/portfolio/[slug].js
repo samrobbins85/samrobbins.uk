@@ -10,6 +10,7 @@ import gfm from "remark-gfm";
 import WebsiteButton from "@/components/portfolio/websiteButton";
 import NpmButton from "@/components/portfolio/npmButton";
 import GitHubButton from "@/components/portfolio/githubButton";
+import Coder from "@/components/portfolio/coder";
 export default function Portfolio({ data, contentHtml, names }) {
   return (
     <>
@@ -38,27 +39,7 @@ export default function Portfolio({ data, contentHtml, names }) {
             <div className="flex justify-center py-4">
               <div className="flex space-x-2 overflow-hidden gap-x-4 flex-wrap gap-y-2 justify-center">
                 {data.coders.map((coder, index) => (
-                  <div className="flex items-center gap-x-2" key={coder}>
-                    <div className="inline-block h-10 w-10 relative">
-                      <Image
-                        className="rounded-full"
-                        src={"https://github.com/" + coder + ".png"}
-                        alt={coder}
-                        layout="fill"
-                        objectFit="contain"
-                        priority={true}
-                      />
-                    </div>
-                    <div className="flex flex-col">
-                      <p>{names[index]}</p>
-                      <a
-                        className="text-blue-700 hover:underline"
-                        href={`https://github.com/${coder}`}
-                      >
-                        <p>{coder}</p>
-                      </a>
-                    </div>
-                  </div>
+                  <Coder coder={coder} name={names[index]} key={coder} />
                 ))}
               </div>
             </div>
