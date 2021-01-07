@@ -14,7 +14,7 @@
     "@samrobbins/typography": "^1.1.0",
     "@tailwindcss/aspect-ratio": "^0.2.0",
     "@tailwindcss/typography": "^0.3.1",
-    "autoprefixer": "^10.1.0",
+    "autoprefixer": "^10.2.0",
     "framer-motion": "^3.1.1",
     "latex-tailwind": "^2.1.0",
     "next": "latest",
