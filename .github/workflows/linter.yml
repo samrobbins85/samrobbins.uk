@@ -43,6 +43,10 @@ jobs:
         with:
           # Full git history is needed to get a proper list of changed files within `super-linter`
           fetch-depth: 0
+      - uses: actions/setup-node@v2
+        with:
+          node-version: "12"
+      - run: npm install
 
       ################################
       # Run Linter against code base #
