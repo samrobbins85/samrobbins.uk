@@ -1,12 +1,12 @@
 import Image from "next/image";
-export default function Coder({ coder, name }) {
+export default function Coder({ username, name }) {
   return (
-    <div className="flex items-center gap-x-2" key={coder}>
+    <div className="flex items-center gap-x-2" key={username}>
       <div className="inline-block h-10 w-10 relative">
         <Image
           className="rounded-full"
-          src={"https://github.com/" + coder + ".png"}
-          alt={coder}
+          src={"https://github.com/" + username + ".png"}
+          alt={username}
           layout="fill"
           objectFit="contain"
           priority={true}
@@ -16,9 +16,9 @@ export default function Coder({ coder, name }) {
         <p>{name}</p>
         <a
           className="text-blue-700 hover:underline"
-          href={`https://github.com/${coder}`}
+          href={`https://github.com/${username}`}
         >
-          <p>{coder}</p>
+          <p>{username}</p>
         </a>
       </div>
     </div>

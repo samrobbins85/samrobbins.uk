@@ -38,8 +38,12 @@ export default function Portfolio({ data, contentHtml, names }) {
             </h2>
             <div className="flex justify-center py-4">
               <div className="flex space-x-2 overflow-hidden gap-x-4 flex-wrap gap-y-2 justify-center">
-                {data.coders.map((coder, index) => (
-                  <Coder coder={coder} name={names[index]} key={coder} />
+                {data.coders.map((username, index) => (
+                  <Coder
+                    username={username}
+                    name={names[index]}
+                    key={username}
+                  />
                 ))}
               </div>
             </div>
