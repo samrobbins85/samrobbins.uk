@@ -8,13 +8,12 @@ import NpmButton from "@/components/portfolio/npmButton";
 import GitHubButton from "@/components/portfolio/githubButton";
 import Coder from "@/components/portfolio/coder";
 import renderToString from "next-mdx-remote/render-to-string";
-import hydrate from "next-mdx-remote/hydrate";
 import MyTable from "@/components/mdx/table";
 const components = {
   table: MyTable,
 };
 export default function Portfolio({ data, contentHtml, names }) {
-  const content = hydrate(contentHtml, { components });
+  const content = contentHtml.renderedOutput;
   return (
     <>
       <Head>
@@ -75,7 +74,10 @@ export default function Portfolio({ data, contentHtml, names }) {
           </div>
         </div>
         <hr className="py-2" />
-        <div className="prose mx-auto">{content}</div>
+        <div
+          className="prose mx-auto"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
       </div>
     </>
   );

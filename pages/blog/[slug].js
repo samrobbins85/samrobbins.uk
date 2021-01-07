@@ -4,13 +4,12 @@ import readingTime from "reading-time";
 import FilledNav from "@/components/fillednav";
 import rehypePrism from "@mapbox/rehype-prism";
 import renderToString from "next-mdx-remote/render-to-string";
-import hydrate from "next-mdx-remote/hydrate";
 import MyTable from "@/components/mdx/table";
 const components = {
   table: MyTable,
 };
 export default function Blog({ data, contentHtml, time }) {
-  const content = hydrate(contentHtml, { components });
+  const content = contentHtml.renderedOutput;
   return (
     <>
       <Head>
@@ -47,7 +46,10 @@ export default function Blog({ data, contentHtml, time }) {
           {Math.ceil(time.minutes) + " Minutes reading time"}
         </p>
         <hr className="py-4" />
-        <div className="prose mx-auto">{content}</div>
+        <div
+          className="prose mx-auto"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
       </div>
     </>
   );

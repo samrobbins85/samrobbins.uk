@@ -6,13 +6,12 @@ import FilledNav from "@/components/fillednav";
 import rehypePrism from "@mapbox/rehype-prism";
 import footnotes from "remark-footnotes";
 import renderToString from "next-mdx-remote/render-to-string";
-import hydrate from "next-mdx-remote/hydrate";
 import MyTable from "@/components/mdx/table";
 const components = {
   table: MyTable,
 };
 export default function Portfolio({ data, contentHtml }) {
-  const content = hydrate(contentHtml, { components });
+  const content = contentHtml.renderedOutput;
   return (
     <>
       <Head>
@@ -29,7 +28,10 @@ export default function Portfolio({ data, contentHtml }) {
           })}
         </p>
 
-        <div className="mx-auto">{content}</div>
+        <div
+          className="mx-auto"
+          dangerouslySetInnerHTML={{ __html: content }}
+        />
       </div>
     </>
   );
