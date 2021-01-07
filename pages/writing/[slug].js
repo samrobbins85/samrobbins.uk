@@ -1,15 +1,18 @@
 import { getWriting, getAllWritingsWithSlug } from "@/lib/graphcms";
-import remark from "remark";
 import Head from "next/head";
 import math from "remark-math";
 import katex from "rehype-katex";
 import FilledNav from "@/components/fillednav";
-import remark2rehype from "remark-rehype";
-import html from "rehype-stringify";
 import rehypePrism from "@mapbox/rehype-prism";
 import footnotes from "remark-footnotes";
-import gfm from "remark-gfm";
+import renderToString from "next-mdx-remote/render-to-string";
+import hydrate from "next-mdx-remote/hydrate";
+import MyTable from "@/components/mdx/table";
+const components = {
+  table: MyTable,
+};
 export default function Portfolio({ data, contentHtml }) {
+  const content = hydrate(contentHtml, { components });
   return (
     <>
       <Head>
@@ -26,10 +29,7 @@ export default function Portfolio({ data, contentHtml }) {
           })}
         </p>
 
-        <div
-          className="mx-auto"
-          dangerouslySetInnerHTML={{ __html: contentHtml }}
-        />
+        <div className="mx-auto">{content}</div>
       </div>
     </>
   );
@@ -37,16 +37,13 @@ export default function Portfolio({ data, contentHtml }) {
 
 export async function getStaticProps({ params }) {
   const data = await getWriting(params.slug);
-  const output = await remark()
-    .use(footnotes)
-    .use(math)
-    .use(gfm)
-    .use(remark2rehype)
-    .use(katex)
-    .use(rehypePrism)
-    .use(html)
-    .process(data.markdown);
-  const contentHtml = output.toString();
+  const contentHtml = await renderToString(data.markdown, {
+    components: components,
+    mdxOptions: {
+      remarkPlugins: [footnotes, math],
+      rehypePlugins: [katex, rehypePrism],
+    },
+  });
 
   return {
     props: {

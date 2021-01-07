@@ -1,13 +1,16 @@
 import { getBlog, getAllBlogsWithSlug } from "@/lib/graphcms";
-import remark from "remark";
 import Head from "next/head";
 import readingTime from "reading-time";
 import FilledNav from "@/components/fillednav";
-import remark2rehype from "remark-rehype";
-import html from "rehype-stringify";
 import rehypePrism from "@mapbox/rehype-prism";
-import gfm from "remark-gfm";
+import renderToString from "next-mdx-remote/render-to-string";
+import hydrate from "next-mdx-remote/hydrate";
+import MyTable from "@/components/mdx/table";
+const components = {
+  table: MyTable,
+};
 export default function Blog({ data, contentHtml, time }) {
+  const content = hydrate(contentHtml, { components });
   return (
     <>
       <Head>
@@ -44,10 +47,7 @@ export default function Blog({ data, contentHtml, time }) {
           {Math.ceil(time.minutes) + " Minutes reading time"}
         </p>
         <hr className="py-4" />
-        <div
-          className="prose mx-auto"
-          dangerouslySetInnerHTML={{ __html: contentHtml }}
-        />
+        <div className="prose mx-auto">{content}</div>
       </div>
     </>
   );
@@ -55,13 +55,12 @@ export default function Blog({ data, contentHtml, time }) {
 
 export async function getStaticProps({ params }) {
   const data = await getBlog(params.slug);
-  const output = await remark()
-    .use(gfm)
-    .use(remark2rehype)
-    .use(rehypePrism)
-    .use(html)
-    .process(data.markdown);
-  const contentHtml = output.toString();
+  const contentHtml = await renderToString(data.markdown, {
+    components: components,
+    mdxOptions: {
+      rehypePlugins: [rehypePrism],
+    },
+  });
   const time = readingTime(data.markdown);
 
   return {

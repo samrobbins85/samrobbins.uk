@@ -1,17 +1,20 @@
 import { getPortfolio, getAllPortfoliosWithSlug } from "@/lib/graphcms";
-import remark from "remark";
 import Image from "next/image";
 import Head from "next/head";
 import FilledNav from "@/components/fillednav";
-import remark2rehype from "remark-rehype";
-import html from "rehype-stringify";
 import rehypePrism from "@mapbox/rehype-prism";
-import gfm from "remark-gfm";
 import WebsiteButton from "@/components/portfolio/websiteButton";
 import NpmButton from "@/components/portfolio/npmButton";
 import GitHubButton from "@/components/portfolio/githubButton";
 import Coder from "@/components/portfolio/coder";
+import renderToString from "next-mdx-remote/render-to-string";
+import hydrate from "next-mdx-remote/hydrate";
+import MyTable from "@/components/mdx/table";
+const components = {
+  table: MyTable,
+};
 export default function Portfolio({ data, contentHtml, names }) {
+  const content = hydrate(contentHtml, { components });
   return (
     <>
       <Head>
@@ -72,10 +75,7 @@ export default function Portfolio({ data, contentHtml, names }) {
           </div>
         </div>
         <hr className="py-2" />
-        <div
-          className="prose mx-auto"
-          dangerouslySetInnerHTML={{ __html: contentHtml }}
-        />
+        <div className="prose mx-auto">{content}</div>
       </div>
     </>
   );
@@ -83,13 +83,12 @@ export default function Portfolio({ data, contentHtml, names }) {
 
 export async function getStaticProps({ params }) {
   const data = await getPortfolio(params.slug);
-  const output = await remark()
-    .use(gfm)
-    .use(remark2rehype)
-    .use(rehypePrism)
-    .use(html)
-    .process(data.markdown);
-  const contentHtml = output.toString();
+  const contentHtml = await renderToString(data.markdown, {
+    components: components,
+    mdxOptions: {
+      rehypePlugins: [rehypePrism],
+    },
+  });
   var names = [];
   if (data.coders.length !== 0) {
     for (var i = 0; i < data.coders.length; i++) {
