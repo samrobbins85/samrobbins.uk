@@ -7,7 +7,7 @@ export default function Grid({ portfolios, category }) {
     <AnimatePresence>
       {portfolios
         .filter((item) =>
-          category ? item.categories.includes(category) : item
+          category !== "All" ? item.categories.includes(category) : item
         )
         .map((item) => (
           <motion.div

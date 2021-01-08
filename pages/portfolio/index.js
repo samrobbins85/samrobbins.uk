@@ -1,11 +1,28 @@
 import { getPortfolios, getPortfolioCategories } from "@/lib/graphcms";
 import FilledNav from "@/components/fillednav";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import Categories from "@/components/portfolio/categories";
 import Grid from "@/components/portfolio/grid";
+import { useRouter } from "next/router";
 export default function Portfolio({ portfolios, categories }) {
+  const router = useRouter();
   const [category, setCategory] = useState(false);
+
+  useEffect(() => {
+    if (category !== "All" && category !== router.asPath.split("#")[1]) {
+      router.push("#" + category);
+    } else if (category === "All") {
+      router.push("");
+    }
+  }, [category]);
+  useEffect(() => {
+    if (categories.includes(router.asPath.split("#")[1])) {
+      setCategory(router.asPath.split("#")[1]);
+    } else {
+      setCategory("All");
+    }
+  }, []);
   return (
     <>
       <Head>
@@ -33,7 +50,8 @@ export default function Portfolio({ portfolios, categories }) {
 
 export async function getStaticProps() {
   const portfolios = (await getPortfolios()) || [];
-  const categories = await getPortfolioCategories();
+  var categories = await getPortfolioCategories();
+  categories = categories.map((x) => x.name);
   return {
     props: { portfolios, categories },
   };

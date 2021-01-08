@@ -5,11 +5,11 @@ export default function Categories({ setCategory, category, categories }) {
       <motion.div
         className="cursor-pointer flex-col flex h-2"
         animate
-        key={false}
-        onClick={() => setCategory(false)}
+        key={"All"}
+        onClick={() => setCategory("All")}
       >
         All
-        {false === category && (
+        {"All" === category && (
           <motion.div
             layoutId="underline"
             className="border-b-4 border-red-600"
@@ -20,11 +20,11 @@ export default function Categories({ setCategory, category, categories }) {
         <motion.div
           className="cursor-pointer flex-col flex h-2"
           animate
-          key={item.name}
-          onClick={() => setCategory(item.name)}
+          key={item}
+          onClick={() => setCategory(item)}
         >
-          <span className="capitalize">{item.name.replace(/_/g, " ")}</span>
-          {item.name === category && (
+          <span className="capitalize">{item.replace(/_/g, " ")}</span>
+          {item === category && (
             <motion.div
               layoutId="underline"
               className="border-b-4 border-red-600"
