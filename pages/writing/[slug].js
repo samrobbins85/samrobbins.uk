@@ -3,7 +3,7 @@ import Head from "next/head";
 import math from "@/lib/remark-math";
 import FilledNav from "@/components/fillednav";
 import rehypePrism from "@mapbox/rehype-prism";
-import footnotes from "remark-footnotes";
+import footnotes from "remark-numbered-footnotes";
 import renderToString from "next-mdx-remote/render-to-string";
 import MyTable from "@/components/mdx/table";
 import { useEffect } from "react";
