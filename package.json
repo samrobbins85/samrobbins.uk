@@ -20,7 +20,7 @@
     "latex-tailwind": "^2.1.0",
     "next": "latest",
     "next-mdx-remote": "^2.1.0",
-    "postcss": "^8.2.2",
+    "postcss": "^8.2.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "reading-time": "^1.2.1",
