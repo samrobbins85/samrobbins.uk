@@ -11,9 +11,9 @@ export default function Portfolio({ portfolios, categories }) {
 
   useEffect(() => {
     if (category !== "All" && category !== router.asPath.split("#")[1]) {
-      router.push("#" + category);
+      router.replace("#" + category, undefined, { shallow: true });
     } else if (category === "All") {
-      router.push("");
+      router.replace("", undefined, { shallow: true });
     }
   }, [category]);
   useEffect(() => {
