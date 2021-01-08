@@ -10,10 +10,12 @@ export default function Portfolio({ portfolios, categories }) {
   const [category, setCategory] = useState(false);
 
   useEffect(() => {
-    if (category !== "All" && category !== router.asPath.split("#")[1]) {
-      router.replace("#" + category, undefined, { shallow: true });
-    } else if (category === "All") {
-      router.replace("", undefined, { shallow: true });
+    if (category){
+      if (category !== "All" && category !== router.asPath.split("#")[1]) {
+        router.replace("#" + category, undefined, { shallow: true });
+      } else if (category === "All") {
+        router.replace("", undefined, { shallow: true });
+      }
     }
   }, [category]);
   useEffect(() => {
