@@ -15,7 +15,7 @@
     "@tailwindcss/aspect-ratio": "^0.2.0",
     "@tailwindcss/typography": "^0.3.1",
     "autoprefixer": "^10.2.0",
-    "framer-motion": "^3.1.4",
+    "framer-motion": "^3.2.0",
     "katex": "^0.12.0",
     "latex-tailwind": "^2.2.0",
     "next": "latest",
