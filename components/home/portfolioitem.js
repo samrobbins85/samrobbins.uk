@@ -5,7 +5,7 @@ export default function PortfolioItem({ slug, image, title, description }) {
     <Link href={"/portfolio/" + slug}>
       <a className="border border-gray-300 rounded hover:shadow-lg w-52">
         <div className="h-32 w-full object-contain p-4 relative">
-          <Image src={image} layout="fill" objectFit="contain" />
+          <Image src={image} layout="fill" objectFit="contain" alt={title} />
         </div>
         <hr className="my-4" />
         <div className="px-4">

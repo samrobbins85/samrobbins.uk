@@ -22,14 +22,14 @@
     "next-mdx-remote": "^2.1.0",
     "postcss": "^8.2.2",
     "preact": "^10.5.9",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
     "reading-time": "^1.2.1",
     "rehype-katex": "^4.0.0",
     "remark-math": "3.0.1",
     "remark-numbered-footnotes": "^2.0.0"
   },
   "devDependencies": {
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "eslint": "^7.17.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.22.0",
