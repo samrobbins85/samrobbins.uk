@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.prose img{
+  @apply shadow-xl
+}
+
 .about a {
   @apply text-blue-600 hover:underline;
 }
