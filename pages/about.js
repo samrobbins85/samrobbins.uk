@@ -70,6 +70,7 @@ export default function About({ about }) {
                   layout="fill"
                   objectFit="contain"
                   priority={true}
+                  sizes="50vw"
                 />
               </a>
             ))}

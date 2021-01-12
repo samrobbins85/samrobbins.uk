@@ -17,6 +17,7 @@ export default function TimeLineItem(props) {
                 layout="fill"
                 objectFit="contain"
                 alt={props.title}
+                sizes="10vw"
               />
             </div>
             <span className="absolute -bottom-0.5 -right-1 bg-white rounded-full px-0.5 py-px">
