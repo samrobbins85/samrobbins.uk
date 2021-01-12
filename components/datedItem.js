@@ -15,7 +15,7 @@ export default function DatedItem({
           style={{ backgroundColor: colour }}
         >
           <div className="relative h-10 w-10 sm:h-20 sm:w-20">
-            <Image src={image.url} layout="fill" objectFit="contain" />
+            <Image src={image.url} layout="fill" objectFit="contain" alt={achievement} sizes="10vw" />
           </div>
         </div>
       </div>

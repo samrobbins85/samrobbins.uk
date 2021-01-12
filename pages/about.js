@@ -16,7 +16,7 @@ export default function About({ about }) {
       <div className="max-w-85ch mx-auto py-8 px-2">
         <h1 className="text-5xl font-semibold">About</h1>
         <div className="py-6 border border-gray-300 rounded max-w-sm mx-auto px-2 my-4">
-          <h3
+          <h2
             className="text-center text-xl italic about"
             dangerouslySetInnerHTML={{ __html: data.cv.html }}
           />
