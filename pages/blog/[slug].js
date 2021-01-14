@@ -49,7 +49,7 @@ export default function Blog({ data, contentHtml, time }) {
         </p>
         <hr className="py-4" />
         <div
-          className="prose prose-sm sm:prose mx-auto"
+          className="prose mx-auto"
           dangerouslySetInnerHTML={{ __html: content }}
         />
       </div>
