@@ -11,13 +11,13 @@ function MyApp({ Component, pageProps }) {
           name="Description"
           content="The personal website of Sam Robbins, Computer Science student from Durham University"
         />
-        {/* <link
+        <link
           rel="preload"
           href="/fonts/Inter.var.woff2"
           as="font"
           type="font/woff2"
           crossOrigin="anonymous"
-        /> */}
+        />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </Head>
       <Component {...pageProps} />
