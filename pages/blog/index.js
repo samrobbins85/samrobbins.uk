@@ -9,7 +9,7 @@ export default function Blog({ blogs }) {
         <title>Blog | Sam Robbins</title>
       </Head>
       <FilledNav />
-      <div className="max-w-85ch mx-auto px-2 py-4">
+      <div className="max-w-85ch mx-auto px-2 py-8">
         <h1 className="text-5xl font-semibold">Blog</h1>
         <div className="grid pt-4">
           {blogs.map((item) => (
