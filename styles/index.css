@@ -1,11 +1,18 @@
 @import url("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css");
-@import url("https://rsms.me/inter/inter.css");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.prose img{
-  @apply shadow-xl
+@font-face {
+  font-family: "Inter var";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: optional;
+  src: url(/fonts/Inter.var.woff2) format("woff2");
+}
+
+.prose img {
+  @apply shadow-xl;
 }
 
 .about a {
