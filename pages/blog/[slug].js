@@ -18,8 +18,10 @@ export default function Blog({ data, contentHtml, time }) {
       <FilledNav />
 
       <div className="max-w-85ch p-4 mx-auto">
-        <h1 className="text-5xl font-semibold text-center">{data.title}</h1>
-        <p className="text-center text-lg text-gray-600 py-2">
+        <h1 className="text-4xl sm:text-5xl font-semibold text-center">
+          {data.title}
+        </h1>
+        <p className="text-center sm:text-lg text-gray-600 py-2">
           {data.description}
         </p>
         <p className="text-center py-1 text-gray-600">
@@ -28,13 +30,13 @@ export default function Blog({ data, contentHtml, time }) {
             year: "numeric",
           })}
         </p>
-        <p className="flex justify-center items-center text-gray-600 py-1">
+        <p className="flex justify-center items-center text-gray-600 py-1 pb-6">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            className="h-6 w-6 mr-1"
+            className="h-4 w-4 sm:h-6 sm:w-6 mr-1"
           >
             <path
               strokeLinecap="round"
@@ -47,7 +49,7 @@ export default function Blog({ data, contentHtml, time }) {
         </p>
         <hr className="py-4" />
         <div
-          className="prose mx-auto"
+          className="prose prose-sm sm:prose mx-auto"
           dangerouslySetInnerHTML={{ __html: content }}
         />
       </div>
