@@ -21,7 +21,7 @@
     "next": "latest",
     "next-mdx-remote": "^2.1.0",
     "postcss": "^8.2.2",
-    "preact": "^10.5.9",
+    "preact": "^10.5.10",
     "reading-time": "^1.2.1",
     "rehype-katex": "^4.0.0",
     "remark-math": "3.0.1",
