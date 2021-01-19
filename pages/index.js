@@ -49,16 +49,24 @@ export default function Home({ homepage }) {
                 key={item.title}
               />
             ))}
-            <Link href="/portfolio/">
-              <a className="border border-gray-300 sm:border-none rounded hover:shadow-lg sm:hover:shadow-none w-52 group">
-                <div className="px-4 h-52">
-                  <h2 className="text-2xl pt-4 h-16">
-                    View all my projects on my portfolio page
-                    <RightArrow className="text-gray-600 h-20 w-20 mx-auto mt-6 group-hover:text-blue-700" />
-                  </h2>
-                </div>
-              </a>
-            </Link>
+            <div className="hidden sm:flex">
+              <Link href="/portfolio/">
+                <a className="w-52 group">
+                  <div className="px-4 h-52">
+                    <h2 className="text-2xl pt-4 h-16">
+                      View all my projects on my portfolio page
+                      <RightArrow className="text-gray-600 h-20 w-20 mx-auto mt-6 group-hover:text-blue-700" />
+                    </h2>
+                  </div>
+                </a>
+              </Link>
+            </div>
+            <div className="block sm:hidden text-lg text-gray-700 text-center">
+              View all my projects on my{" "}
+              <Link href="/portfolio">
+                <a className="text-blue-700 hover:underline">porfolio page</a>
+              </Link>
+            </div>
           </div>
         </div>
         <div>
@@ -67,28 +75,17 @@ export default function Home({ homepage }) {
         <div className="max-w-xl p-8">
           <div className="flow-root">
             <ul className="-mb-8">
-              {data.achievements.map((item, i) =>
-                i === data.achievements.length - 1 ? (
-                  <TimeLineItem
-                    image={item.image.url}
-                    title={item.achievement}
-                    date={item.date}
-                    description={item.description}
-                    icon={item.icon}
-                    end={true}
-                    key={item.achievement}
-                  />
-                ) : (
-                  <TimeLineItem
-                    image={item.image.url}
-                    title={item.achievement}
-                    date={item.date}
-                    description={item.description}
-                    icon={item.icon}
-                    key={item.achievement}
-                  />
-                )
-              )}
+              {data.achievements.map((item, i) => (
+                <TimeLineItem
+                  image={item.image.url}
+                  title={item.achievement}
+                  date={item.date}
+                  description={item.description}
+                  icon={item.icon}
+                  end={i === data.achievements.length - 1}
+                  key={item.achievement}
+                />
+              ))}
             </ul>
           </div>
         </div>
