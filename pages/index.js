@@ -64,7 +64,7 @@ export default function Home({ homepage }) {
             <div className="block sm:hidden text-lg text-gray-700 text-center">
               View all my projects on my{" "}
               <Link href="/portfolio">
-                <a className="text-blue-700 hover:underline">porfolio page</a>
+                <a className="text-blue-700 hover:underline">portfolio page</a>
               </Link>
             </div>
           </div>

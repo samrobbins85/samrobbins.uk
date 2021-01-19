@@ -14,8 +14,14 @@ export default function DatedItem({
           className="rounded-full border h-16 w-16 sm:h-24 sm:w-24 flex justify-center border-none items-center"
           style={{ backgroundColor: colour }}
         >
-          <div className="relative h-10 w-10 sm:h-20 sm:w-20">
-            <Image src={image.url} layout="fill" objectFit="contain" alt={achievement} sizes="10vw" />
+          <div className="relative h-10 w-10 sm:h-20 sm:w-20 m-4">
+            <Image
+              src={image.url}
+              layout="fill"
+              objectFit="contain"
+              alt={achievement}
+              sizes="10vw"
+            />
           </div>
         </div>
       </div>
