@@ -17,7 +17,9 @@ export default function GitHubMultiple({ repos }) {
                 }`}
               >
                 <GitHub className="mr-2" />
-                <span>GitHub</span>
+                <span className="font-semibold tracking-wide text-lg">
+                  GitHub
+                </span>
                 <svg
                   className="w-5 h-5 ml-2 -mr-1"
                   viewBox="0 0 20 20"
