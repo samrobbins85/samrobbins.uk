@@ -2,8 +2,8 @@ import { motion, AnimateSharedLayout } from "framer-motion";
 export default function Categories({ setCategory, category, categories }) {
   return (
     <AnimateSharedLayout>
-      <motion.div
-        className="cursor-pointer flex-col flex h-2"
+      <motion.button
+        className="h-2 focus:outline-none"
         animate
         key={"All"}
         onClick={() => setCategory("All")}
@@ -12,13 +12,13 @@ export default function Categories({ setCategory, category, categories }) {
         {"All" === category && (
           <motion.div
             layoutId="underline"
-            className="border-b-4 border-red-600"
+            className="border-b-4 border-cyan-600"
           />
         )}
-      </motion.div>
+      </motion.button>
       {categories.map((item) => (
-        <motion.div
-          className="cursor-pointer flex-col flex h-2"
+        <motion.button
+          className="h-2 focus:outline-none"
           animate
           key={item}
           onClick={() => setCategory(item)}
@@ -27,10 +27,10 @@ export default function Categories({ setCategory, category, categories }) {
           {item === category && (
             <motion.div
               layoutId="underline"
-              className="border-b-4 border-red-600"
+              className="border-b-4 border-cyan-600"
             />
           )}
-        </motion.div>
+        </motion.button>
       ))}
     </AnimateSharedLayout>
   );
