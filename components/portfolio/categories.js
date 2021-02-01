@@ -3,7 +3,7 @@ export default function Categories({ setCategory, category, categories }) {
   return (
     <AnimateSharedLayout>
       <motion.button
-        className="h-2 focus:outline-none"
+        className="h-2 text-gray-600 focus:text-black focus:font-semibold focus:outline-none"
         animate
         key={"All"}
         onClick={() => setCategory("All")}
@@ -18,7 +18,7 @@ export default function Categories({ setCategory, category, categories }) {
       </motion.button>
       {categories.map((item) => (
         <motion.button
-          className="h-2 focus:outline-none"
+          className="h-2 text-gray-600 focus:text-black focus:font-semibold focus:outline-none"
           animate
           key={item}
           onClick={() => setCategory(item)}
