@@ -21,6 +21,20 @@ export default function About({ about }) {
             dangerouslySetInnerHTML={{ __html: data.cv.html }}
           />
         </div>
+        <h2 className="text-3xl font-semibold">Jobs</h2>
+        <div className="grid sm:grid-cols-2 gap-4">
+          {data.jobs.map((item) => (
+            <div className="flex gap-x-4 px-6 py-4 items-center" key={item.company}>
+              <img src={item.logo.url} className="h-16 w-16" alt={item.title} />
+              <div className="grid text-lg">
+                <span className="font-semibold">{item.title}</span>
+                <span className="text-gray-700">{item.company}</span>
+                <span className="text-gray-700">{item.duration}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+
         <h2 className="text-3xl font-semibold">Experience</h2>
         <div className="flex justify-center flex-col gap-y-8 py-2">
           {data.experiences.map((item) => (
