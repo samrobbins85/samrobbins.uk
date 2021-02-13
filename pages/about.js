@@ -5,7 +5,22 @@ import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
 import Hexagon from "@/components/about/hexagon";
+import TimeLineItem from "@/components/about/timeline"
 export default function About({ about }) {
+  const testData = [
+    {
+      __typename: "Technology",
+      name: "Tailwind CSS",
+    },
+    {
+      __typename: "Achievement",
+      name: "Winner",
+    },
+    {
+      __typename: "Hackathon",
+      name: "Magic Hackathon",
+    },
+  ];
   const data = about[0];
   return (
     <>
@@ -24,7 +39,10 @@ export default function About({ about }) {
         <h2 className="text-3xl font-semibold">Jobs</h2>
         <div className="grid sm:grid-cols-2 gap-4">
           {data.jobs.map((item) => (
-            <div className="flex gap-x-4 px-6 py-4 items-center" key={item.company}>
+            <div
+              className="flex gap-x-4 px-6 py-4 items-center"
+              key={item.company}
+            >
               <img src={item.logo.url} className="h-16 w-16" alt={item.title} />
               <div className="grid text-lg">
                 <span className="font-semibold">{item.title}</span>
@@ -34,7 +52,20 @@ export default function About({ about }) {
             </div>
           ))}
         </div>
-
+        <h2 className="text-3xl font-semibold">Timeline</h2>
+        <div className="max-w-xl p-8">
+          <div className="flow-root">
+            <ul className="-mb-8">
+              {testData.map((item, i) => (
+                <TimeLineItem
+                  title={item.name}
+                  end={i === testData.length - 1}
+                  key={item.name}
+                />
+              ))}
+            </ul>
+          </div>
+        </div>
         <h2 className="text-3xl font-semibold">Experience</h2>
         <div className="flex justify-center flex-col gap-y-8 py-2">
           {data.experiences.map((item) => (
