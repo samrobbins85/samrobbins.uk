@@ -1,7 +1,5 @@
-import Code from "./code"
-import Award from "./award"
-import Education from "./education"
-import Event from "./event"
+import TimelineIcon from "./timelineicon";
+import DescriptionSwitcher from "./descriptionSwitcher";
 export default function TimeLineItem(props) {
   return (
     <li>
@@ -13,22 +11,9 @@ export default function TimeLineItem(props) {
           ></span>
         )}
         <div className="relative flex items-start space-x-3">
-            <Event />
+          <TimelineIcon type={props.data.__typename} />
           <div className="min-w-0 flex-1">
-            <div>
-              <div className="text-sm">
-                <h3 className="font-medium text-gray-900">{props.title}</h3>
-              </div>
-              <p className="mt-0.5 text-sm text-gray-500">
-                {new Date(props.date).toLocaleString("en-gb", {
-                  month: "short",
-                  year: "numeric",
-                })}
-              </p>
-            </div>
-            <div className="mt-2 text-gray-700">
-              <p>{props.description}</p>
-            </div>
+            <DescriptionSwitcher data={props.data} />
           </div>
         </div>
       </div>

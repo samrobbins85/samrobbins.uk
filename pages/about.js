@@ -56,11 +56,11 @@ export default function About({ about }) {
         <div className="max-w-xl p-8">
           <div className="flow-root">
             <ul className="-mb-8">
-              {testData.map((item, i) => (
+              {data.timeline.map((item, i) => (
                 <TimeLineItem
-                  title={item.name}
-                  end={i === testData.length - 1}
-                  key={item.name}
+                  data={item}
+                  end={i === data.timeline.length - 1}
+                  key={item.date}
                 />
               ))}
             </ul>
