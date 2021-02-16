@@ -18,7 +18,7 @@
     "framer-motion": "^3.2.0",
     "katex": "^0.12.0",
     "latex-tailwind": "^2.2.0",
-    "next": "^10.0.6",
+    "next": "^10.0.7",
     "next-mdx-remote": "^2.1.3",
     "postcss": "^8.2.4",
     "preact": "^10.5.11",
@@ -28,12 +28,12 @@
     "remark-numbered-footnotes": "^2.0.0"
   },
   "devDependencies": {
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
     "eslint": "^7.18.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.22.0",
     "postcss-preset-env": "^6.7.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "tailwindcss": "^2.0.2"
   },
   "license": "MIT"
