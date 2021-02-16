@@ -5,22 +5,8 @@ import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
 import Hexagon from "@/components/about/hexagon";
-import TimeLineItem from "@/components/about/timeline"
+import TimeLineItem from "@/components/about/timeline";
 export default function About({ about }) {
-  const testData = [
-    {
-      __typename: "Technology",
-      name: "Tailwind CSS",
-    },
-    {
-      __typename: "Achievement",
-      name: "Winner",
-    },
-    {
-      __typename: "Hackathon",
-      name: "Magic Hackathon",
-    },
-  ];
   const data = about[0];
   return (
     <>
@@ -134,6 +120,9 @@ export default function About({ about }) {
 
 export async function getStaticProps() {
   const about = (await getAbout()) || [];
+  about[0]["timeline"] = about[0]["timeline"]
+    .sort((a, b) => (a.date > b.date ? 1 : b.date > a.date ? -1 : 0))
+    .reverse();
   return {
     props: { about },
   };
