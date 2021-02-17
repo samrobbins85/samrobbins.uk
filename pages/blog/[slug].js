@@ -5,6 +5,7 @@ import FilledNav from "@/components/fillednav";
 import rehypePrism from "@mapbox/rehype-prism";
 import renderToString from "next-mdx-remote/render-to-string";
 import MyTable from "@/components/mdx/table";
+import Ad from "@/components/ad";
 const components = {
   table: MyTable,
 };
@@ -47,6 +48,7 @@ export default function Blog({ data, contentHtml, time }) {
           </svg>{" "}
           {Math.ceil(time.minutes) + " Minutes reading time"}
         </p>
+        <Ad />
         <hr className="py-4" />
         <div
           className="prose mx-auto"
