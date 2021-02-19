@@ -11,6 +11,11 @@ function MyApp({ Component, pageProps }) {
           name="Description"
           content="The personal website of Sam Robbins, Computer Science student from Durham University"
         />
+        <meta
+          property="og:image"
+          content="https://res.cloudinary.com/samrobbins/image/upload/v1613766650/ogimage_a0pgbe.png"
+          key="ogimage"
+        />
         <link
           rel="preload"
           href="/fonts/Inter.var.woff2"

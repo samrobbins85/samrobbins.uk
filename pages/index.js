@@ -13,6 +13,11 @@ export default function Home({ homepage }) {
     <>
       <Head>
         <title>Sam Robbins</title>
+        <meta property="og:title" content="Sam Robbins" />
+        <meta
+          property="og:description"
+          content="The personal website of Sam Robbins"
+        />
       </Head>
       <FilledNav />
       <div className="py-6 px-2 max-w-85ch mx-auto">
