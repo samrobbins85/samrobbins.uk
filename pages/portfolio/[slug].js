@@ -18,6 +18,14 @@ export default function Portfolio({ data, contentHtml, names }) {
     <>
       <Head>
         <title>{data.title} | Sam Robbins</title>
+        <meta
+          property="og:image"
+          content={`https://og.csnotes.me/**${escape(data.title)}**/${escape(
+            data.description
+          )}.png?theme=dark&md=1&fontSize=100px`}
+        />
+        <meta property="og:title" content={data.title} />
+        <meta property="og:description" content={data.description} />
       </Head>
       <FilledNav />
 

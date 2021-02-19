@@ -11,6 +11,13 @@ export default function About({ about }) {
     <>
       <Head>
         <title>About | Sam Robbins</title>
+        <meta
+          property="og:image"
+          content={`https://og.csnotes.me/**${escape("About")}**/${escape(
+            "Sam Robbins"
+          )}.png?theme=dark&md=1&fontSize=100px`}
+        />
+        <meta property="og:title" content="About" />
       </Head>
       <FilledNav />
       <div className="max-w-85ch mx-auto py-8 px-2">
@@ -24,7 +31,10 @@ export default function About({ about }) {
         <h2 className="text-3xl font-semibold">Jobs</h2>
         <div className="grid sm:grid-cols-2 gap-4">
           {data.jobs.map((item) => (
-            <div className="flex gap-x-4 px-6 py-4 items-center" key={item.company}>
+            <div
+              className="flex gap-x-4 px-6 py-4 items-center"
+              key={item.company}
+            >
               <img src={item.logo.url} className="h-16 w-16" alt={item.title} />
               <div className="grid text-lg">
                 <span className="font-semibold">{item.title}</span>

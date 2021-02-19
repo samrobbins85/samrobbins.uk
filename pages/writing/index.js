@@ -7,6 +7,13 @@ export default function Portfolio({ writings }) {
     <>
       <Head>
         <title>Writing | Sam Robbins</title>
+        <meta
+          property="og:image"
+          content={`https://og.csnotes.me/**${escape("Writing")}**/${escape(
+            "Sam Robbins"
+          )}.png?theme=dark&md=1&fontSize=100px`}
+        />
+        <meta property="og:title" content="Writing" />
       </Head>
       <FilledNav />
       <div className="pt-6 px-2">

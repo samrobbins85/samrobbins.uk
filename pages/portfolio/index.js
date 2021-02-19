@@ -10,7 +10,7 @@ export default function Portfolio({ portfolios, categories }) {
   const [category, setCategory] = useState(false);
 
   useEffect(() => {
-    if (category){
+    if (category) {
       if (category !== "All" && category !== router.asPath.split("#")[1]) {
         router.replace("#" + category, undefined, { shallow: true });
       } else if (category === "All") {
@@ -29,6 +29,13 @@ export default function Portfolio({ portfolios, categories }) {
     <>
       <Head>
         <title>Portfolio | Sam Robbins</title>
+        <meta
+          property="og:image"
+          content={`https://og.csnotes.me/**${escape("Portfolio")}**/${escape(
+            "Sam Robbins"
+          )}.png?theme=dark&md=1&fontSize=100px`}
+        />
+        <meta property="og:title" content="Portfolio" />
       </Head>
       <FilledNav />
       <div className="pt-6 px-2">

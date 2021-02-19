@@ -7,6 +7,13 @@ export default function Blog({ blogs }) {
     <>
       <Head>
         <title>Blog | Sam Robbins</title>
+        <meta
+          property="og:image"
+          content={`https://og.csnotes.me/**${escape("Blog")}**/${escape(
+            "Sam Robbins"
+          )}.png?theme=dark&md=1&fontSize=100px`}
+        />
+        <meta property="og:title" content="Blog" />
       </Head>
       <FilledNav />
       <div className="max-w-85ch mx-auto px-2 py-8">
