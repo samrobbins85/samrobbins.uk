@@ -12,7 +12,7 @@ export default function TimeLineItem(props) {
         )}
         <div className="relative flex items-start space-x-3">
           <TimelineIcon type={props.data.__typename} />
-          <div className="min-w-0 flex-1">
+          <div className="min-w-0 flex-1 z-10">
             <DescriptionSwitcher data={props.data} />
           </div>
         </div>
