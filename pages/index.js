@@ -2,7 +2,6 @@ import { getHomepage } from "../lib/graphcms";
 import Head from "next/head";
 import FilledNav from "@/components/fillednav";
 import Link from "next/link";
-import TimeLineItem from "@/components/timelineItem";
 import PortfolioItem from "@/components/home/portfolioitem";
 import RightArrow from "@/components/svg/rightarrow";
 import SocialSwitch from "@/components/home/socialswitch";
@@ -58,26 +57,6 @@ export default function Home({ homepage }) {
                 <a className="text-blue-700 hover:underline">portfolio page</a>
               </Link>
             </div>
-          </div>
-        </div>
-        <div>
-          <h2 className=" text-4xl font-black pb-4">Achievements</h2>
-        </div>
-        <div className="max-w-xl p-8">
-          <div className="flow-root">
-            <ul className="-mb-8">
-              {data.achievements.map((item, i) => (
-                <TimeLineItem
-                  image={item.image.url}
-                  title={item.achievement}
-                  date={item.date}
-                  description={item.description}
-                  icon={item.icon}
-                  end={i === data.achievements.length - 1}
-                  key={item.achievement}
-                />
-              ))}
-            </ul>
           </div>
         </div>
       </div>
