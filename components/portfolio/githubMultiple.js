@@ -1,6 +1,5 @@
 import { Menu, Transition } from "@headlessui/react";
-import { RepoIcon } from "@primer/octicons-react";
-import GitHub from "@/components/svg/github";
+import { RepoIcon, MarkGithubIcon } from "@primer/octicons-react";
 
 export default function GitHubMultiple({ repos }) {
   return (
@@ -16,7 +15,7 @@ export default function GitHubMultiple({ repos }) {
                     : undefined
                 }`}
               >
-                <GitHub className="mr-2" />
+                <MarkGithubIcon size={16} className="mr-2 h-6 w-6" />
                 <span className="font-semibold tracking-wide text-lg">
                   GitHub
                 </span>
