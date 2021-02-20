@@ -1,6 +1,6 @@
 export default function GitHub({ className }) {
   return (
-    <svg width="24" height="24" fill="currentColor" className={className}>
+    <svg fill="currentColor" className={className}>
       <path
         fillRule="evenodd"
         clipRule="evenodd"

@@ -15,6 +15,10 @@ module.exports = {
         "light-blue": colors.lightBlue,
         rose: colors.rose,
         emerald: colors.emerald,
+        npm: "#CB3837",
+        gmail: "#EA4335",
+        twitter: "#1DA1F2",
+        linkedin: "#0A66C2",
       },
       maxWidth: {
         "85ch": "85ch",
