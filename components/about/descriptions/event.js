@@ -1,4 +1,6 @@
-export default function Event({ data }) {
+import Location from "@/components/svg/location";
+
+export default function Hackathon({ data }) {
   return (
     <>
       <div>
@@ -12,8 +14,26 @@ export default function Event({ data }) {
           })}
         </p>
       </div>
-      <div className="mt-2 text-gray-700">
-        <p>{data.location}</p>
+      <div className="mt-4 border rounded -ml-16 sm:ml-auto z-10 bg-white">
+        <div className="grid grid-cols-4">
+          <div className="px-4 py-2 hidden sm:flex justify-center items-center col-span-1">
+            <img
+              className="w-20 h-20 object-contain"
+              src={data.logo.url}
+              alt={data.evenName}
+            />
+          </div>
+          <div className="grid items-center justify-items-start py-2 px-4 gap-y-2 col-span-3 auto-rows-min">
+            <p className="text-center text-xl font-semibold">
+              {data.eventName}
+            </p>
+            <p className="italic">
+              <Location className="text-gray-600 h-4 w-4 inline-block mr-2" />
+              {data.location}
+            </p>
+            <p>{data.description}</p>
+          </div>
+        </div>
       </div>
     </>
   );

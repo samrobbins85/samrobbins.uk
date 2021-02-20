@@ -1,6 +1,5 @@
 import Education from "./education";
 import Event from "./event";
-import Award from "./award";
 import Code from "./code";
 export default function TimelineIcon({ type }) {
   switch (type) {
