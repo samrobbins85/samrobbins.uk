@@ -2,11 +2,9 @@ import { getHomepage } from "../lib/graphcms";
 import Head from "next/head";
 import FilledNav from "@/components/fillednav";
 import Link from "next/link";
-import Image from "next/image";
-import TimeLineItem from "@/components/timelineItem";
 import PortfolioItem from "@/components/home/portfolioitem";
 import RightArrow from "@/components/svg/rightarrow";
-
+import SocialSwitch from "@/components/home/socialswitch";
 export default function Home({ homepage }) {
   const data = homepage[0];
   return (
@@ -26,28 +24,20 @@ export default function Home({ homepage }) {
       </Head>
       <FilledNav />
       <div className="py-6 px-2 max-w-85ch mx-auto">
-        <h1 className="text-5xl sm:text-6xl font-bold w-3/4 py-4 pb-8">
-          {"Hi, I'm "} <span className="text-cyan-600">Sam</span> <br /> I study
-          Computer Science at{" "}
-          <span className="text-purple-800 inline-block">
-            Durham University
-          </span>
+        <h1 className="text-5xl sm:text-5xl font-bold w-3/4 py-4 pb-8">
+          {"Hi, I'm Sam Robbins"}
         </h1>
-        <h2 className="text-lg text-gray-800 text-center">
-          {data.description}
-        </h2>
-        <div className="flex justify-center gap-x-4 py-8">
+        <h2 className="text-lg text-gray-800">{data.description}</h2>
+        <div className="flex gap-x-4 py-8">
           {data.socialLinks.map((entry) => (
-            <a
-              className="h-12 w-20 relative"
-              href={entry.link}
-              key={entry.name}
-            >
-              <Image src={entry.image.url} alt={entry.name} layout="fill" />
-            </a>
+            <SocialSwitch
+              linkType={entry.linkType}
+              link={entry.link}
+              key={entry.linkType}
+            />
           ))}
         </div>
-        <div className="pt-12">
+        <div className="pt-2">
           <h2 className="text-4xl font-black">Projects</h2>
           <div className="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
             {data.portfolios.map((item) => (
@@ -77,26 +67,6 @@ export default function Home({ homepage }) {
                 <a className="text-blue-700 hover:underline">portfolio page</a>
               </Link>
             </div>
-          </div>
-        </div>
-        <div>
-          <h2 className=" text-4xl font-black pb-4">Achievements</h2>
-        </div>
-        <div className="max-w-xl p-8">
-          <div className="flow-root">
-            <ul className="-mb-8">
-              {data.achievements.map((item, i) => (
-                <TimeLineItem
-                  image={item.image.url}
-                  title={item.achievement}
-                  date={item.date}
-                  description={item.description}
-                  icon={item.icon}
-                  end={i === data.achievements.length - 1}
-                  key={item.achievement}
-                />
-              ))}
-            </ul>
           </div>
         </div>
       </div>
