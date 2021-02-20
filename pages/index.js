@@ -13,8 +13,9 @@ export default function Home({ homepage }) {
         <title>Sam Robbins</title>
         <meta
           property="og:image"
-          content={`https://og.csnotes.me/**${escape("Sam Robbins")}**
-          .png?theme=dark&md=1&fontSize=100px`}
+          content={`https://og.csnotes.me/**${escape(
+            "Sam Robbins"
+          )}**.png?theme=dark&md=1&fontSize=100px`}
         />
         <meta property="og:title" content="Sam Robbins" />
         <meta
