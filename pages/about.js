@@ -1,10 +1,8 @@
 import FilledNav from "@/components/fillednav";
-import DatedItem from "@/components/datedItem";
 import { getAbout } from "@/lib/graphcms";
 import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
-import Hexagon from "@/components/about/hexagon";
 import TimeLineItem from "@/components/about/timeline";
 export default function About({ about }) {
   const data = about[0];
