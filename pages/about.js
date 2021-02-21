@@ -49,7 +49,7 @@ export default function About({ about }) {
             ))}
           </div>
           <h2 className="text-3xl font-semibold">Timeline</h2>
-          <div className="p-8">
+          <div className="py-8 px-1">
             <div className="flow-root">
               <ul className="-mb-8">
                 {data.timeline.map((item, i) => (

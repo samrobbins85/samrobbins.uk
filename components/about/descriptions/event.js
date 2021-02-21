@@ -14,7 +14,7 @@ export default function Hackathon({ data }) {
           })}
         </p>
       </div>
-      <div className="mt-4 border rounded -ml-16 sm:ml-auto z-10 bg-white">
+      <div className="mt-4 border rounded -ml-4 sm:ml-auto z-10 bg-white">
         <div className="grid sm:grid-cols-4">
           <div className="px-4 py-2 hidden sm:flex justify-center items-center col-span-1">
             <img
