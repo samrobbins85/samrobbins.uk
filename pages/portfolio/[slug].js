@@ -105,7 +105,7 @@ export async function getStaticProps({ params }) {
       var name = await fetch("https://api.github.com/users/" + data.coders[i], {
         headers: {
           // eslint-disable-next-line no-undef
-          Authorization: "token" + process.env.GITHUB_TOKEN,
+          Authorization: "token " + process.env.GITHUB_TOKEN,
         },
       });
       var out = await name.json();
