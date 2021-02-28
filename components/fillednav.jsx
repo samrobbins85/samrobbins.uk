@@ -1,4 +1,5 @@
 import NavBar from "@/components/nav";
+
 export default function FilledNav() {
   return (
     <NavBar

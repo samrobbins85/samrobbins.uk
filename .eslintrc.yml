@@ -2,21 +2,30 @@ env:
   browser: true
   es2021: true
 extends:
-  - "eslint:recommended"
-  - "plugin:react/recommended"
-  - "plugin:jsx-a11y/recommended"
+  - "airbnb"
+  - "airbnb/hooks"
+  - "prettier"
 parserOptions:
   ecmaFeatures:
     jsx: true
   ecmaVersion: 12
   sourceType: module
-plugins:
-  - react
-  - jsx-a11y
 rules:
   {
     "jsx-a11y/anchor-is-valid": 0,
     "react/react-in-jsx-scope": 0,
     "react/prop-types": 0,
     "no-undef": 0,
+    "no-underscore-dangle": 0,
+    "react/jsx-props-no-spreading": 0,
+    "import/no-unresolved": 0,
+    "no-plusplus": 0,
+    "no-await-in-loop": 0,
+    "react-hooks/exhaustive-deps": 0,
   }
+settings:
+  linkComponents:
+    - name: Link
+      linkAttribute: href
+  react:
+    version: detect

@@ -1,6 +1,7 @@
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+
 export default function Grid({ portfolios, category }) {
   const shouldReduceMotion = useReducedMotion();
   return (
@@ -16,7 +17,7 @@ export default function Grid({ portfolios, category }) {
             className="w-full sm:w-2/5 lg:w-1/5"
             key={item.title}
           >
-            <Link href={"/portfolio/" + item.slug}>
+            <Link href={`/portfolio/${item.slug}`}>
               <a className="group focus:outline-none">
                 <div className="border border-gray-300 rounded hover:shadow-lg group-focus:shadow-xl h-full">
                   <div className="relative h-32 object-contain m-2">

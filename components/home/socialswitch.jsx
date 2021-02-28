@@ -1,8 +1,9 @@
-import { MarkGithubIcon } from "@primer/octicons-react";
+import { MarkGithubIcon, LinkIcon } from "@primer/octicons-react";
 import Gmail from "./SocialIcons/gmail";
 import Linkedin from "./SocialIcons/linkedin";
 import Npm from "./SocialIcons/npm";
 import Twitter from "./SocialIcons/twitter";
+
 export default function SocialSwitch({ linkType, link }) {
   switch (linkType) {
     case "github":
@@ -45,6 +46,15 @@ export default function SocialSwitch({ linkType, link }) {
           className="text-gray-600 hover:text-twitter focus:text-twitter"
         >
           <Twitter className="h-6" />
+        </a>
+      );
+    default:
+      return (
+        <a
+          href={link}
+          className="text-gray-600 hover:text-black focus:text-black"
+        >
+          <LinkIcon size={16} className="h-6 w-6 " />
         </a>
       );
   }

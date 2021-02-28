@@ -9,6 +9,7 @@ import GitHubButton from "@/components/portfolio/githubButton";
 import Coder from "@/components/portfolio/coder";
 import renderToString from "next-mdx-remote/render-to-string";
 import MyTable from "@/components/mdx/table";
+
 const components = {
   table: MyTable,
 };
@@ -75,7 +76,7 @@ export default function Portfolio({ data, contentHtml, names }) {
                   alt={item.name}
                   layout="fill"
                   objectFit="contain"
-                  priority={true}
+                  priority
                 />
               </a>
             ))}
@@ -94,21 +95,24 @@ export default function Portfolio({ data, contentHtml, names }) {
 export async function getStaticProps({ params }) {
   const data = await getPortfolio(params.slug);
   const contentHtml = await renderToString(data.markdown, {
-    components: components,
+    components,
     mdxOptions: {
       rehypePlugins: [rehypePrism],
     },
   });
-  var names = [];
+  const names = [];
   if (data.coders.length !== 0) {
-    for (var i = 0; i < data.coders.length; i++) {
-      var name = await fetch("https://api.github.com/users/" + data.coders[i], {
-        headers: {
-          // eslint-disable-next-line no-undef
-          Authorization: "token " + process.env.GITHUB_TOKEN,
-        },
-      });
-      var out = await name.json();
+    for (let i = 0; i < data.coders.length; i++) {
+      const name = await fetch(
+        `https://api.github.com/users/${data.coders[i]}`,
+        {
+          headers: {
+            // eslint-disable-next-line no-undef
+            Authorization: `token ${process.env.GITHUB_TOKEN}`,
+          },
+        }
+      );
+      const out = await name.json();
       names.push(out.name);
     }
   }

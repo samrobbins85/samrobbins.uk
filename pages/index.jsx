@@ -1,10 +1,11 @@
-import { getHomepage } from "../lib/graphcms";
 import Head from "next/head";
 import FilledNav from "@/components/fillednav";
 import Link from "next/link";
 import PortfolioItem from "@/components/home/portfolioitem";
 import RightArrow from "@/components/svg/rightarrow";
 import SocialSwitch from "@/components/home/socialswitch";
+import { getHomepage } from "../lib/graphcms";
+
 export default function Home({ homepage }) {
   const data = homepage[0];
   return (
@@ -26,7 +27,7 @@ export default function Home({ homepage }) {
       <FilledNav />
       <div className="py-6 px-2 max-w-85ch mx-auto">
         <h1 className="text-3xl sm:text-5xl font-bold py-4 pb-8">
-          {"Hi, I'm Sam Robbins"}
+          Hi, I‘m Sam Robbins
         </h1>
         <h2 className="text-lg text-gray-800">{data.description}</h2>
         <div className="flex gap-x-4 py-8">

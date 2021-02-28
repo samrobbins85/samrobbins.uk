@@ -7,6 +7,7 @@ import footnotes from "remark-numbered-footnotes";
 import renderToString from "next-mdx-remote/render-to-string";
 import MyTable from "@/components/mdx/table";
 import { useEffect } from "react";
+
 const components = {
   table: MyTable,
 };
@@ -52,7 +53,7 @@ export default function Portfolio({ data, contentHtml }) {
 export async function getStaticProps({ params }) {
   const data = await getWriting(params.slug);
   const contentHtml = await renderToString(data.markdown, {
-    components: components,
+    components,
     mdxOptions: {
       remarkPlugins: [footnotes, math],
       rehypePlugins: [rehypePrism],

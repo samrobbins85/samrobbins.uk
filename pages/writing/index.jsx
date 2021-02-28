@@ -2,6 +2,7 @@ import { getWritings } from "@/lib/graphcms";
 import FilledNav from "@/components/fillednav";
 import Head from "next/head";
 import Paper from "@/components/writing/paper";
+
 export default function Portfolio({ writings }) {
   return (
     <>

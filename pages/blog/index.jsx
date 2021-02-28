@@ -2,6 +2,7 @@ import FilledNav from "@/components/fillednav";
 import { getBlogs } from "@/lib/graphcms";
 import Link from "next/link";
 import Head from "next/head";
+
 export default function Blog({ blogs }) {
   return (
     <>
@@ -22,7 +23,7 @@ export default function Blog({ blogs }) {
           {blogs.map((item) => (
             <div className="py-4" key={item.title}>
               <div>
-                <Link href={"/blog/" + item.slug}>
+                <Link href={`/blog/${item.slug}`}>
                   <a>
                     <h2 className="font-semibold text-xl sm:text-2xl text-blue-700">
                       {item.title}

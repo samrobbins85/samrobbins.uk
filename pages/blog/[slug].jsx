@@ -6,6 +6,7 @@ import rehypePrism from "@mapbox/rehype-prism";
 import renderToString from "next-mdx-remote/render-to-string";
 import MyTable from "@/components/mdx/table";
 import Ad from "@/components/ad";
+
 const components = {
   table: MyTable,
 };
@@ -54,7 +55,7 @@ export default function Blog({ data, contentHtml, time }) {
               d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>{" "}
-          {Math.ceil(time.minutes) + " Minutes reading time"}
+          {`${Math.ceil(time.minutes)} Minutes reading time`}
         </p>
         <Ad />
         <hr className="py-4" />
@@ -70,7 +71,7 @@ export default function Blog({ data, contentHtml, time }) {
 export async function getStaticProps({ params }) {
   const data = await getBlog(params.slug);
   const contentHtml = await renderToString(data.markdown, {
-    components: components,
+    components,
     mdxOptions: {
       rehypePlugins: [rehypePrism],
     },

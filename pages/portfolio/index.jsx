@@ -5,6 +5,7 @@ import Head from "next/head";
 import Categories from "@/components/portfolio/categories";
 import Grid from "@/components/portfolio/grid";
 import { useRouter } from "next/router";
+
 export default function Portfolio({ portfolios, categories }) {
   const router = useRouter();
   const [category, setCategory] = useState(false);
@@ -12,7 +13,7 @@ export default function Portfolio({ portfolios, categories }) {
   useEffect(() => {
     if (category) {
       if (category !== "All" && category !== router.asPath.split("#")[1]) {
-        router.replace("#" + category, undefined, { shallow: true });
+        router.replace(`#${category}`, undefined, { shallow: true });
       } else if (category === "All") {
         router.replace("", undefined, { shallow: true });
       }
@@ -59,7 +60,7 @@ export default function Portfolio({ portfolios, categories }) {
 
 export async function getStaticProps() {
   const portfolios = (await getPortfolios()) || [];
-  var categories = await getPortfolioCategories();
+  let categories = await getPortfolioCategories();
   categories = categories.map((x) => x.name);
   return {
     props: { portfolios, categories },
