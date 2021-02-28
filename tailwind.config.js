@@ -1,8 +1,9 @@
 const colors = require("tailwindcss/colors");
 const defaultTheme = require("tailwindcss/defaultTheme");
+
 module.exports = {
   presets: [require("@samrobbins/typography")],
-  purge: ["./components/**/*.js", "./pages/**/*.js"],
+  purge: ["./components/**/*.jsx", "./pages/**/*.jsx"],
   theme: {
     extend: {
       colors: {
