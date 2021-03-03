@@ -1,20 +1,21 @@
-import Highlight, { defaultProps } from "prism-react-renderer";
+import Highlight, { defaultProps } from "custom-prism-react-renderer";
 
 const Prism = ({ code, language = [] }) => (
   <Highlight
     {...defaultProps}
+    theme={undefined}
     code={code}
     language={language}
-    theme={undefined}
   >
     {({ className, style, tokens, getTokenProps }) => (
       <pre className={className} style={style}>
-        {tokens.map((line) =>
-          line.map((token, key) => (
-            // eslint-disable-next-line
-            <span {...getTokenProps({ token, key })} />
-          ))
-        )}
+        {tokens.map((line) => (
+          <div>
+            {line.map((token, key) => (
+              <span {...getTokenProps({ token, key })} />
+            ))}
+          </div>
+        ))}
       </pre>
     )}
   </Highlight>
