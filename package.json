@@ -15,7 +15,6 @@
     "@tailwindcss/aspect-ratio": "^0.2.0",
     "@tailwindcss/typography": "^0.4.0",
     "autoprefixer": "^10.2.4",
-    "custom-prism-react-renderer": "^1.0.6",
     "datocms-structured-text-utils": "^1.0.13",
     "framer-motion": "^3.2.0",
     "katex": "^0.12.0",

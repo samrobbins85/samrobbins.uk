@@ -1,4 +1,4 @@
-import Highlight, { defaultProps } from "custom-prism-react-renderer";
+import Highlight, { defaultProps } from "prism-react-renderer";
 
 const Prism = ({ code, language = [] }) => (
   <Highlight
