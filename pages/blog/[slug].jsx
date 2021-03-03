@@ -5,6 +5,7 @@ import Prism from "@/components/prism";
 import Ad from "@/components/ad";
 import { StructuredText, renderRule } from "react-datocms";
 import { isCode } from "datocms-structured-text-utils";
+
 export default function Blog({ dato }) {
   return (
     <>
@@ -40,17 +41,15 @@ export default function Blog({ dato }) {
           <StructuredText
             data={dato.structuredtext}
             customRules={[
-              renderRule(isCode, ({ node, key }) => {
-                return (
-                  <Prism
-                    key={key}
-                    code={node.code}
-                    language={node.language || "unknown"}
-                    highlightLines={node.highlight}
-                    showLineNumbers={node.code.split(/\n/).length > 10}
-                  />
-                );
-              }),
+              renderRule(isCode, ({ node, key }) => (
+                <Prism
+                  key={key}
+                  code={node.code}
+                  language={node.language || "unknown"}
+                  highlightLines={node.highlight}
+                  showLineNumbers={node.code.split(/\n/).length > 10}
+                />
+              )),
             ]}
           />
         </div>
