@@ -1,5 +1,5 @@
 import FilledNav from "@/components/fillednav";
-import { getBlogs } from "@/lib/graphcms";
+import { getAllBlogs } from "@/lib/datocms";
 import Link from "next/link";
 import Head from "next/head";
 export default function Blog({ blogs }) {
@@ -52,7 +52,7 @@ export default function Blog({ blogs }) {
 }
 
 export async function getStaticProps() {
-  const blogs = (await getBlogs()) || [];
+  const blogs = (await getAllBlogs()) || [];
   return {
     props: { blogs },
   };

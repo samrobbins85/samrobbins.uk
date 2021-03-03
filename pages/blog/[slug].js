@@ -1,11 +1,10 @@
-import { getAllBlogsWithSlug } from "@/lib/graphcms";
-import { getAllBlogs } from "@/lib/datocms";
+import { getBlog, getAllBlogsWithSlug } from "@/lib/datocms";
 import Head from "next/head";
 import FilledNav from "@/components/fillednav";
-
+import Prism from "@/components/prism";
 import Ad from "@/components/ad";
-import { StructuredText } from "react-datocms";
-
+import { StructuredText, renderRule } from "react-datocms";
+import { isCode } from "datocms-structured-text-utils";
 export default function Blog({ dato }) {
   return (
     <>
@@ -38,7 +37,22 @@ export default function Blog({ dato }) {
         <Ad />
         <hr className="py-4" />
         <div className="prose mx-auto">
-          <StructuredText data={dato.structuredtext} />
+          <StructuredText
+            data={dato.structuredtext}
+            customRules={[
+              renderRule(isCode, ({ node, key }) => {
+                return (
+                  <Prism
+                    key={key}
+                    code={node.code}
+                    language={node.language || "unknown"}
+                    highlightLines={node.highlight}
+                    showLineNumbers={node.code.split(/\n/).length > 10}
+                  />
+                );
+              }),
+            ]}
+          />
         </div>
       </div>
     </>
@@ -46,19 +60,10 @@ export default function Blog({ dato }) {
 }
 
 export async function getStaticProps({ params }) {
-  const dato = await getAllBlogs(params.slug);
-  // const data = await getBlog(params.slug);
-  // const contentHtml = await renderToString(data.markdown, {
-  //   components: components,
-  //   mdxOptions: {
-  //     rehypePlugins: [rehypePrism],
-  //   },
-  // });
-
+  const dato = await getBlog(params.slug);
   return {
     props: {
       dato,
-      // data,
     },
   };
 }
