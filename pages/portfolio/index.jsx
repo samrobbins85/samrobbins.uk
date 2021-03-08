@@ -1,15 +1,15 @@
 import { getPortfolios, getPortfolioCategories } from "@/lib/graphcms";
 import FilledNav from "@/components/fillednav";
-import { useEffect, useState } from "react";
 import Head from "next/head";
-import Categories from "@/components/portfolio/categories";
 import Grid from "@/components/portfolio/grid";
+import Categories from "@/components/portfolio/categories";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import OtherGrid from "@/components/portfolio/otherGrid";
 
 export default function Portfolio({ portfolios, categories }) {
   const router = useRouter();
   const [category, setCategory] = useState(false);
-
   useEffect(() => {
     if (category) {
       if (category !== "All" && category !== router.asPath.split("#")[1]) {
@@ -20,7 +20,7 @@ export default function Portfolio({ portfolios, categories }) {
     }
   }, [category]);
   useEffect(() => {
-    if (categories.includes(router.asPath.split("#")[1])) {
+    if (Object.keys(categories).includes(router.asPath.split("#")[1])) {
       setCategory(router.asPath.split("#")[1]);
     } else {
       setCategory("All");
@@ -41,16 +41,21 @@ export default function Portfolio({ portfolios, categories }) {
       <FilledNav />
       <div className="pt-6 px-2">
         <h1 className="text-4xl font-semibold text-center">Portfolio</h1>
-        <div className="flex justify-center gap-x-4 text-lg py-6 flex-wrap gap-y-8 ">
-          <Categories
-            setCategory={setCategory}
-            categories={categories}
-            category={category}
-          />
-        </div>
+
         <div>
           <div className="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
-            <Grid category={category} portfolios={portfolios} />
+            <Grid portfolios={portfolios} />
+          </div>
+          <div className="mx-auto container py-4">
+            <h2 className="text-2xl py-4 font-semibold">All Projects</h2>
+            <div className="flex justify-center gap-x-4 text-lg py-6 mb-6 flex-wrap gap-y-8 ">
+              <Categories
+                setCategory={setCategory}
+                category={category}
+                categories={categories}
+              />
+            </div>
+            <OtherGrid portfolios={portfolios} category={category} />
           </div>
         </div>
       </div>
@@ -60,8 +65,14 @@ export default function Portfolio({ portfolios, categories }) {
 
 export async function getStaticProps() {
   const portfolios = (await getPortfolios()) || [];
-  let categories = await getPortfolioCategories();
-  categories = categories.map((x) => x.name);
+  let temp = await getPortfolioCategories();
+  const categories = {};
+  temp = temp.map((x) => x.name);
+  temp.forEach((element) => {
+    categories[element] = portfolios.filter((x) =>
+      x.categories.includes(element)
+    ).length;
+  });
   return {
     props: { portfolios, categories },
   };

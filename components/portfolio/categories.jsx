@@ -1,43 +1,30 @@
-import { motion, AnimateSharedLayout } from "framer-motion";
-
 export default function Categories({ setCategory, category, categories }) {
   return (
-    <AnimateSharedLayout>
-      <motion.button
-        className={`h-2 text-gray-600 focus:text-black focus:font-semibold focus:outline-none ${
-          category === "All" && "font-semibold"
+    <>
+      <button
+        className={`ring-1 ring-gray-300 focus:ring-cyan-400 px-2 py-1 rounded focus:outline-none ${
+          category === "All" && "ring-2 ring-cyan-400"
         }`}
-        animate
+        type="button"
         key="All"
         onClick={() => setCategory("All")}
       >
         All
-        {category === "All" && (
-          <motion.div
-            layoutId="underline"
-            className="border-b-4 border-cyan-600"
-          />
-        )}
-      </motion.button>
-      {categories.map((item) => (
-        <motion.button
-          className={`h-2 text-gray-600 focus:text-black focus:font-semibold focus:outline-none ${
-            item === category && "font-semibold"
+      </button>
+      {Object.keys(categories).map((item) => (
+        <button
+          className={`ring-1 flex items-center ring-gray-300 px-2 py-1 rounded focus:outline-none focus:ring-cyan-400 ${
+            item === category && "ring-2 ring-cyan-400"
           }
           }`}
-          animate
+          type="button"
           key={item}
           onClick={() => setCategory(item)}
         >
-          <span className="capitalize">{item.replace(/_/g, " ")}</span>
-          {item === category && (
-            <motion.div
-              layoutId="underline"
-              className="border-b-4 border-cyan-600"
-            />
-          )}
-        </motion.button>
+          <span className="capitalize pr-2">{item.replace(/_/g, " ")}</span>{" "}
+          <span className="text-sm text-gray-600">{categories[item]}</span>
+        </button>
       ))}
-    </AnimateSharedLayout>
+    </>
   );
 }
