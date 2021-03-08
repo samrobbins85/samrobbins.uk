@@ -13,7 +13,7 @@ export default function TimeLineItem({ end, data }) {
         )}
         <div className="relative flex items-start space-x-3">
           <TimelineIcon type={data.__typename} />
-          <div className="min-w-0 flex-1 z-10">
+          <div className="min-w-0 flex-1 z-10 w-64">
             <DescriptionSwitcher data={data} />
           </div>
         </div>

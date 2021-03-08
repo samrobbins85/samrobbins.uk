@@ -1,13 +1,16 @@
 import Head from "next/head";
 import FilledNav from "@/components/fillednav";
 import Link from "next/link";
-import PortfolioItem from "@/components/home/portfolioitem";
-import RightArrow from "@/components/svg/rightarrow";
 import SocialSwitch from "@/components/home/socialswitch";
-import { getHomepage } from "../lib/graphcms";
+import TimeLineItem from "@/components/about/timeline";
+import { useState } from "react";
+import { ChevronDownIcon } from "@primer/octicons-react";
+import { getHomepage, getAbout } from "../lib/graphcms";
 
-export default function Home({ homepage }) {
+export default function Home({ homepage, about }) {
   const data = homepage[0];
+  const aboutData = about[0];
+  const [expand, setExpand] = useState(false);
   return (
     <>
       <Head>
@@ -44,38 +47,50 @@ export default function Home({ homepage }) {
             />
           ))}
         </div>
-        <div className="pt-2">
-          <h2 className="text-4xl font-black">Projects</h2>
-          <div className="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
-            {data.portfolios.map((item) => (
-              <PortfolioItem
-                slug={item.slug}
-                image={item.coverImage.url}
-                title={item.title}
-                description={item.description}
-                key={item.title}
-              />
-            ))}
-            <div className="hidden sm:flex">
-              <Link href="/portfolio/">
-                <a className="w-52 group">
-                  <div className="px-4 h-52">
-                    <h2 className="text-2xl pt-4 h-16">
-                      View all my projects on my portfolio page
-                      <RightArrow className="text-gray-600 h-20 w-20 mx-auto mt-6 group-hover:text-blue-700" />
-                    </h2>
-                  </div>
-                </a>
-              </Link>
+        <h2 className="text-3xl font-semibold">Jobs</h2>
+        <div className="grid sm:grid-cols-2 gap-4">
+          {aboutData.jobs.map((item) => (
+            <div
+              className="flex gap-x-4 px-6 py-4 items-center"
+              key={item.company}
+            >
+              <img src={item.logo.url} className="h-16 w-16" alt={item.title} />
+              <div className="grid">
+                <span className="font-semibold">{item.title}</span>
+                <span className="text-gray-700">{item.company}</span>
+                <span className="text-gray-700">{item.duration}</span>
+              </div>
             </div>
-            <div className="block sm:hidden text-lg text-gray-700 text-center">
-              View all my projects on my{" "}
-              <Link href="/portfolio">
-                <a className="text-blue-700 hover:underline">portfolio page</a>
-              </Link>
-            </div>
+          ))}
+        </div>
+        <h2 className="text-3xl font-semibold">Timeline</h2>
+        <div className="py-8 px-1">
+          <div className="flow-root">
+            <ul className="-mb-8">
+              {aboutData.timeline
+                .slice(0, expand ? aboutData.timeline.length : 5)
+                .map((item, i) => (
+                  <TimeLineItem
+                    data={item}
+                    end={expand ? i === aboutData.timeline.length - 1 : i === 4}
+                    key={item.date}
+                  />
+                ))}
+            </ul>
           </div>
         </div>
+        {!expand && (
+          <div className="flex justify-center">
+            <button
+              className="flex items-center"
+              type="button"
+              onClick={() => setExpand(true)}
+            >
+              <ChevronDownIcon className="mr-2" size={16} />
+              <span>Show more</span>
+            </button>
+          </div>
+        )}
       </div>
     </>
   );
@@ -83,7 +98,19 @@ export default function Home({ homepage }) {
 
 export async function getStaticProps() {
   const homepage = (await getHomepage()) || [];
+  const about = (await getAbout()) || [];
+  about[0].timeline = about[0].timeline
+    .sort((a, b) => {
+      if (a.date > b.date) {
+        return 1;
+      }
+      if (b.date > a.date) {
+        return -1;
+      }
+      return 0;
+    })
+    .reverse();
   return {
-    props: { homepage },
+    props: { homepage, about },
   };
 }
