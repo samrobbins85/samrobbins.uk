@@ -30,7 +30,12 @@ export default function Home({ homepage }) {
           Hi, I‘m Sam Robbins
         </h1>
         <h2 className="text-lg text-gray-800">{data.description}</h2>
-        <div className="flex gap-x-4 py-8">
+        <div className="flex gap-x-4 py-8 items-center">
+          <Link href={`mailto:${data.email}`}>
+            <a className="border px-4 py-2 rounded hover:bg-gray-50 focus:bg-gray-50 font-medium">
+              Contact Me
+            </a>
+          </Link>
           {data.socialLinks.map((entry) => (
             <SocialSwitch
               linkType={entry.linkType}
