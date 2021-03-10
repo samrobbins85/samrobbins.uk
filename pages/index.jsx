@@ -5,11 +5,10 @@ import SocialSwitch from "@/components/home/socialswitch";
 import TimeLineItem from "@/components/about/timeline";
 import { useState } from "react";
 import { ChevronDownIcon } from "@primer/octicons-react";
-import { getHomepage, getAbout } from "../lib/graphcms";
+import { getHomepage } from "../lib/graphcms";
 
-export default function Home({ homepage, about }) {
-  const data = homepage[0];
-  const aboutData = about[0];
+export default function Home({ homepage }) {
+  const data = homepage.homepages[0];
   const [expand, setExpand] = useState(false);
   return (
     <>
@@ -49,7 +48,7 @@ export default function Home({ homepage, about }) {
         </div>
         <h2 className="text-3xl font-semibold">Jobs</h2>
         <div className="grid sm:grid-cols-2 gap-4">
-          {aboutData.jobs.map((item) => (
+          {homepage.jobs.map((item) => (
             <div
               className="flex gap-x-4 px-6 py-4 items-center"
               key={item.company}
@@ -63,22 +62,22 @@ export default function Home({ homepage, about }) {
             </div>
           ))}
         </div>
-        <h2 className="text-3xl font-semibold">Timeline</h2>
-        <div className="py-8 px-1">
-          <div className="flow-root">
-            <ul className="-mb-8">
-              {aboutData.timeline
-                .slice(0, expand ? aboutData.timeline.length : 5)
-                .map((item, i) => (
-                  <TimeLineItem
-                    data={item}
-                    end={expand ? i === aboutData.timeline.length - 1 : i === 4}
-                    key={item.date}
-                  />
-                ))}
-            </ul>
-          </div>
-        </div>
+        <h2 className="text-3xl font-semibold py-6">Timeline</h2>
+        <ul className="px-1">
+          {homepage.timelineItems
+            .slice(0, expand ? homepage.timelineItems.length : 5)
+            .map((item, i) => (
+              <>
+                <TimeLineItem
+                  data={item}
+                  end={
+                    expand ? i === homepage.timelineItems.length - 1 : i === 4
+                  }
+                  key={item.date}
+                />
+              </>
+            ))}
+        </ul>
         {!expand && (
           <div className="flex justify-center">
             <button
@@ -98,8 +97,7 @@ export default function Home({ homepage, about }) {
 
 export async function getStaticProps() {
   const homepage = (await getHomepage()) || [];
-  const about = (await getAbout()) || [];
-  about[0].timeline = about[0].timeline
+  homepage.timelineItems = homepage.timelineItems
     .sort((a, b) => {
       if (a.date > b.date) {
         return 1;
@@ -111,6 +109,6 @@ export async function getStaticProps() {
     })
     .reverse();
   return {
-    props: { homepage, about },
+    props: { homepage },
   };
 }

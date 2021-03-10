@@ -4,6 +4,7 @@ import Code from "./code";
 import Award from "./award";
 
 export default function TimelineIcon({ type }) {
+  console.log(type);
   switch (type) {
     case "Event":
       return <Event />;

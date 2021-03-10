@@ -1,19 +1,21 @@
-import Event from "./descriptions/event";
-import Hackathon from "./descriptions/hackathon";
-import Education from "./descriptions/education";
-import Award from "./descriptions/award";
-
-export default function DescriptionSwitcher({ data }) {
-  // Default case is disabled here because an error should be thrown if it isn't one of these 4
-  // eslint-disable-next-line default-case
-  switch (data.__typename) {
-    case "Event":
-      return <Event data={data} />;
-    case "Education":
-      return <Education data={data} />;
-    case "Hackathon":
-      return <Hackathon data={data} />;
-    case "Award":
-      return <Award data={data} />;
-  }
+export default function DescriptionSwitcher({ title, date, description }) {
+  return (
+    <>
+      <div>
+        <div className="flex justify-between">
+          <h3
+            className="font-medium "
+            dangerouslySetInnerHTML={{ __html: title.html }}
+          />
+          <p className="text-sm tracking-wide text-gray-500 text-right">
+            {new Date(date).toLocaleString("en-gb", {
+              month: "long",
+              year: "numeric",
+            })}
+          </p>
+        </div>
+      </div>
+      <div className="text-gray-700">{description}</div>
+    </>
+  );
 }
