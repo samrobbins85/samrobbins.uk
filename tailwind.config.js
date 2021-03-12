@@ -37,6 +37,7 @@ module.exports = {
       fontWeight: ["active", "focus"],
       boxShadow: ["group-focus"],
       outline: ["group-focus"],
+      ringColor: ["hover", "active"],
     },
   },
   plugins: [require("latex-tailwind"), require("@tailwindcss/aspect-ratio")],

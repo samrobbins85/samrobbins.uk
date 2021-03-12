@@ -1,8 +1,8 @@
 import { MarkGithubIcon, LinkIcon } from "@primer/octicons-react";
-import Gmail from "./SocialIcons/gmail";
-import Linkedin from "./SocialIcons/linkedin";
-import Npm from "./SocialIcons/npm";
-import Twitter from "./SocialIcons/twitter";
+import Linkedin from "@/svg/linkedin";
+import Npm from "@/svg/npm";
+import Twitter from "@/svg/twitter";
+import Unsplash from "@/svg/unsplash";
 
 export default function SocialSwitch({ linkType, link }) {
   switch (linkType) {
@@ -12,22 +12,22 @@ export default function SocialSwitch({ linkType, link }) {
           href={link}
           className="text-gray-600 hover:text-black focus:text-black"
         >
-          <MarkGithubIcon size={16} className="h-6 w-6 " />
+          <MarkGithubIcon size={16} className="h-6 w-6" />
+        </a>
+      );
+    case "unsplash":
+      return (
+        <a
+          href={link}
+          className="text-gray-600 hover:text-black focus:text-black"
+        >
+          <Unsplash className="h-6 w-6" />
         </a>
       );
     case "npm":
       return (
         <a href={link} className="text-gray-600 hover:text-npm focus:text-npm">
           <Npm className="h-6" />
-        </a>
-      );
-    case "email":
-      return (
-        <a
-          href={link}
-          className="text-gray-600 hover:text-gmail focus:text-gmail"
-        >
-          <Gmail className="h-6" />
         </a>
       );
     case "linkedin":
