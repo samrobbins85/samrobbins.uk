@@ -7,7 +7,7 @@ export default function DescriptionSwitcher({ title, date, description }) {
             className="font-medium "
             dangerouslySetInnerHTML={{ __html: title.html }}
           />
-          <p className="text-sm tracking-wide text-gray-500 text-right">
+          <p className="pl-4 text-sm tracking-wide text-gray-500 text-right">
             {new Date(date).toLocaleString("en-gb", {
               month: "long",
               year: "numeric",

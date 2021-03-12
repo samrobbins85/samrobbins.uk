@@ -27,8 +27,8 @@ export default function Home({ homepage }) {
         />
       </Head>
       <FilledNav />
-      <div className="py-6 px-2 max-w-85ch mx-auto">
-        <h1 className="text-3xl sm:text-5xl font-bold py-4 pb-8">
+      <div className="py-6 px-4 max-w-85ch mx-auto">
+        <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8">
           Hi, I‘m Sam Robbins
         </h1>
         <h2 className="text-lg text-gray-800">
@@ -41,19 +41,21 @@ export default function Home({ homepage }) {
           </a>
           .
         </h2>
-        <div className="flex gap-x-4 py-8 items-center">
+        <div className="flex gap-x-4 py-8 items-start gap-y-4">
           <Link href={`mailto:${data.email}`}>
-            <a className="border px-4 py-2 rounded hover:bg-gray-50 focus:bg-gray-50 font-medium">
+            <a className="border px-4 py-2 rounded hover:bg-gray-50 focus:bg-gray-50 font-medium whitespace-nowrap">
               Contact Me
             </a>
           </Link>
-          {data.socialLinks.map((entry) => (
-            <SocialSwitch
-              linkType={entry.linkType}
-              link={entry.link}
-              key={entry.linkType}
-            />
-          ))}
+          <div className="flex flex-wrap gap-x-4 gap-y-2 py-2 justify-center">
+            {data.socialLinks.map((entry) => (
+              <SocialSwitch
+                linkType={entry.linkType}
+                link={entry.link}
+                key={entry.linkType}
+              />
+            ))}
+          </div>
         </div>
         <h2 className="text-3xl font-semibold">Jobs</h2>
         <div className="grid sm:grid-cols-2 gap-4">

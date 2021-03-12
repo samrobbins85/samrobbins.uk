@@ -1,8 +1,8 @@
-export default function Code() {
+export default function Code({ className }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className="text-blue-700 h-6 w-6"
+      className={className}
       viewBox="0 0 512 512"
     >
       <title>Code Slash</title>

@@ -1,22 +1,22 @@
-import Education from "./education";
-import Event from "./event";
-import Code from "./code";
-import Award from "./award";
-import Podium from "./podium";
+import Trophy from "@/svg/trophy";
+import Code from "@/svg/code";
+import { MortarBoardIcon } from "@primer/octicons-react";
+import Pass from "@/svg/pass";
+import Podium from "@/svg/podium";
 
 export default function TimelineIcon({ type }) {
   switch (type) {
     case "Event":
-      return <Event />;
+      return <Pass className="text-gray-700 h-6 w-6" />;
     case "Education":
-      return <Education />;
+      return <MortarBoardIcon size={16} className="text-purple-700 h-6 w-6" />;
     case "Hackathon":
-      return <Code />;
+      return <Code className="text-blue-700 h-6 w-6" />;
     case "Award":
-      return <Award />;
+      return <Trophy className="text-yellow-600 h-6 w-6" />;
     case "Speaking":
-      return <Podium />;
+      return <Podium className="text-red-500 h-6 w-6" />;
     default:
-      return <Code />;
+      return <Code className="text-blue-700 h-6 w-6" />;
   }
 }
