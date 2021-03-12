@@ -5,7 +5,7 @@ import SocialSwitch from "@/components/home/socialswitch";
 import TimeLineItem from "@/components/about/timeline";
 import { useState } from "react";
 import { ChevronDownIcon } from "@primer/octicons-react";
-import { getHomepage } from "../lib/graphcms";
+import { getHomepage, getAbout } from "../lib/graphcms";
 
 export default function Home({ homepage }) {
   const data = homepage.homepages[0];
@@ -31,7 +31,16 @@ export default function Home({ homepage }) {
         <h1 className="text-3xl sm:text-5xl font-bold py-4 pb-8">
           Hi, I‘m Sam Robbins
         </h1>
-        <h2 className="text-lg text-gray-800">{data.description}</h2>
+        <h2 className="text-lg text-gray-800">
+          {data.description}. You can find my CV/Resume{" "}
+          <a
+            className="text-cyan-700 hover:underline focus:underline"
+            href="https://cv.samrobbins.uk"
+          >
+            here
+          </a>
+          .
+        </h2>
         <div className="flex gap-x-4 py-8 items-center">
           <Link href={`mailto:${data.email}`}>
             <a className="border px-4 py-2 rounded hover:bg-gray-50 focus:bg-gray-50 font-medium">
@@ -97,6 +106,7 @@ export default function Home({ homepage }) {
 
 export async function getStaticProps() {
   const homepage = (await getHomepage()) || [];
+  const about = await getAbout();
   homepage.timelineItems = homepage.timelineItems
     .sort((a, b) => {
       if (a.date > b.date) {
@@ -109,6 +119,6 @@ export async function getStaticProps() {
     })
     .reverse();
   return {
-    props: { homepage },
+    props: { homepage, about },
   };
 }

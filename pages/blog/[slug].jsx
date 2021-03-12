@@ -2,7 +2,6 @@ import { getBlog, getAllBlogsWithSlug } from "@/lib/datocms";
 import Head from "next/head";
 import FilledNav from "@/components/fillednav";
 import Prism from "@/components/prism";
-import Ad from "@/components/ad";
 import { StructuredText, renderRule } from "react-datocms";
 import { isCode } from "datocms-structured-text-utils";
 
@@ -35,7 +34,6 @@ export default function Blog({ dato }) {
             year: "numeric",
           })}
         </p>
-        <Ad />
         <hr className="py-4" />
         <div className="prose mx-auto">
           <StructuredText

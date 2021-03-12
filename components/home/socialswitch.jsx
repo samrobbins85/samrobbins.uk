@@ -3,6 +3,7 @@ import Gmail from "./SocialIcons/gmail";
 import Linkedin from "./SocialIcons/linkedin";
 import Npm from "./SocialIcons/npm";
 import Twitter from "./SocialIcons/twitter";
+import Unsplash from "./SocialIcons/unsplash";
 
 export default function SocialSwitch({ linkType, link }) {
   switch (linkType) {
@@ -12,7 +13,16 @@ export default function SocialSwitch({ linkType, link }) {
           href={link}
           className="text-gray-600 hover:text-black focus:text-black"
         >
-          <MarkGithubIcon size={16} className="h-6 w-6 " />
+          <MarkGithubIcon size={16} className="h-6 w-6" />
+        </a>
+      );
+    case "unsplash":
+      return (
+        <a
+          href={link}
+          className="text-gray-600 hover:text-black focus:text-black"
+        >
+          <Unsplash className="h-6 w-6" />
         </a>
       );
     case "npm":
