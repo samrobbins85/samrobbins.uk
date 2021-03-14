@@ -78,15 +78,11 @@ export default function Home({ homepage }) {
           {homepage.timelineItems
             .slice(0, expand ? homepage.timelineItems.length : 5)
             .map((item, i) => (
-              <>
-                <TimeLineItem
-                  data={item}
-                  end={
-                    expand ? i === homepage.timelineItems.length - 1 : i === 4
-                  }
-                  key={item.date}
-                />
-              </>
+              <TimeLineItem
+                data={item}
+                end={expand ? i === homepage.timelineItems.length - 1 : i === 4}
+                key={item.description}
+              />
             ))}
         </ul>
         {!expand && (
