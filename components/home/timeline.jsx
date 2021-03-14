@@ -1,5 +1,5 @@
 import TimelineIcon from "./timelineicon";
-import DescriptionSwitcher from "./descriptionSwitcher";
+import Description from "./description";
 
 export default function TimeLineItem({ data }) {
   return (
@@ -8,7 +8,7 @@ export default function TimeLineItem({ data }) {
         <div className="relative flex items-start space-x-3">
           <TimelineIcon type={data.category} />
           <div className="min-w-0 flex-1 z-10 w-64">
-            <DescriptionSwitcher
+            <Description
               title={data.title}
               date={data.date}
               description={data.description}

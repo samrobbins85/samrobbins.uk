@@ -2,7 +2,7 @@ import Head from "next/head";
 import FilledNav from "@/components/fillednav";
 import Link from "next/link";
 import SocialSwitch from "@/components/home/socialswitch";
-import TimeLineItem from "@/components/about/timeline";
+import TimeLineItem from "@/components/home/timeline";
 import { useState } from "react";
 import { ChevronDownIcon } from "@primer/octicons-react";
 import { getHomepage, getAbout } from "../lib/graphcms";
