@@ -2,6 +2,7 @@ import FilledNav from "@/components/fillednav";
 import { getAllBlogs } from "@/lib/datocms";
 import Link from "next/link";
 import Head from "next/head";
+import Signup from "@/components/blog/signup";
 
 export default function Blog({ blogs }) {
   return (
@@ -19,7 +20,10 @@ export default function Blog({ blogs }) {
       <FilledNav />
       <div className="max-w-85ch mx-auto px-2 py-8">
         <h1 className="text-5xl font-semibold">Blog</h1>
-        <div className="grid pt-4">
+        <div className="py-4 px-2">
+          <Signup />
+        </div>
+        <div className="grid">
           {blogs.map((item) => (
             <div className="py-4" key={item.title}>
               <div>

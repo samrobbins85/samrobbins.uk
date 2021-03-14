@@ -40,5 +40,9 @@ module.exports = {
       ringColor: ["hover", "active"],
     },
   },
-  plugins: [require("latex-tailwind"), require("@tailwindcss/aspect-ratio")],
+  plugins: [
+    require("latex-tailwind"),
+    require("@tailwindcss/aspect-ratio"),
+    require("@tailwindcss/forms"),
+  ],
 };
