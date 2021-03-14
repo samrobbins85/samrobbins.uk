@@ -22,19 +22,17 @@ export default function Blog({ dato }) {
       <FilledNav />
 
       <div className="max-w-85ch p-4 mx-auto">
-        <h1 className="text-4xl sm:text-5xl font-semibold text-center">
-          {dato.title}
-        </h1>
-        <p className="text-center sm:text-lg text-gray-600 py-2">
-          {dato.description}
-        </p>
-        <p className="text-center py-1 text-gray-600">
-          {new Date(Date.parse(dato.date)).toLocaleString("en-gb", {
-            month: "short",
-            year: "numeric",
-          })}
-        </p>
-        <hr className="py-4" />
+        <div className="py-2">
+          <h1 className="text-4xl sm:text-5xl font-semibold text-center">
+            {dato.title}
+          </h1>
+          <p className="text-center py-1 text-gray-600">
+            {new Date(Date.parse(dato.date)).toLocaleString("en-gb", {
+              month: "short",
+              year: "numeric",
+            })}
+          </p>
+        </div>
         <div className="prose mx-auto">
           <StructuredText
             data={dato.structuredtext}
