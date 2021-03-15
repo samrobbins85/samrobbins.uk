@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function OtherGrid({ portfolios, category }) {
   return (
-    <div className="flex flex-wrap container justify-center mx-auto gap-x-4 gap-y-4 grid-cols-4">
+    <div className="flex flex-wrap  justify-center mx-auto gap-x-4 gap-y-4">
       {portfolios
         .filter((item) =>
           category !== "All" ? item.categories.includes(category) : item
