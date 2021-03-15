@@ -1,4 +1,4 @@
-import NPM from "@/components/svg/npm";
+import NPM from "@/components/svg/npm_alt";
 
 export default function NpmButton({ url }) {
   return (
