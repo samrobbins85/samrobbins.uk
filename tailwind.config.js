@@ -25,6 +25,7 @@ module.exports = {
       },
       maxWidth: {
         "85ch": "85ch",
+        "65ch": "65ch",
       },
       fontFamily: {
         latex: ["Latin Modern"],

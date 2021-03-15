@@ -31,9 +31,15 @@ export default function Snippets({ categories, snippets }) {
               <div className="w-full sm:w-1/2 lg:w-1/4" key={x.title}>
                 <Link href={`/snippets/${x.slug}`}>
                   <a>
-                    <div className="border p-2">
-                      <h3 className="text-xl font-semibold">{x.title}</h3>
-                      <p className="text-gray-600">{x.description}</p>
+                    <div className="bg-gray-900 h-full py-2 rounded">
+                      {category === "All" && (
+                        <div className="bg-cyan-200 w-min px-2 rounded-r mb-2 mt-1">
+                          {x.language}
+                        </div>
+                      )}
+                      <h3 className="text-xl text-white font-mono px-2">
+                        {x.title}
+                      </h3>
                     </div>
                   </a>
                 </Link>

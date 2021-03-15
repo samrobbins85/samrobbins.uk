@@ -11,7 +11,7 @@ export default function Snippet({ data, contentHtml }) {
   return (
     <>
       <FilledNav />
-      <div className="max-w-85ch mx-auto p-4">
+      <div className="max-w-65ch mx-auto p-4">
         <h1 className="text-4xl font-semibold">{data.title}</h1>
         <h2 className="text-xl text-gray-600">{data.description}</h2>
         <p
