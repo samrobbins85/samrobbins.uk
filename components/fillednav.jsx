@@ -8,6 +8,7 @@ export default function FilledNav() {
         { title: "Blog", path: "blog" },
         { title: "Portfolio", path: "portfolio" },
         { title: "Writing", path: "writing" },
+        { title: "Snippets", path: "snippets" },
       ]}
     />
   );

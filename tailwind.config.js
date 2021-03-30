@@ -5,7 +5,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   presets: [require("@samrobbins/typography")],
-  purge: ["./components/**/*.jsx", "./pages/**/*.jsx"],
+  purge: ["./components/**/*.jsx", "./pages/**/*.jsx", "./lib/snippet.js"],
   theme: {
     extend: {
       colors: {
@@ -25,6 +25,7 @@ module.exports = {
       },
       maxWidth: {
         "85ch": "85ch",
+        "65ch": "65ch",
       },
       fontFamily: {
         latex: ["Latin Modern"],
