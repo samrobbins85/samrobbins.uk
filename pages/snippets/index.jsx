@@ -3,6 +3,7 @@ import Categories from "@/components/snippets/categories";
 import { useState } from "react";
 import { getSnippetLanguages, getSnippets } from "@/lib/graphcms";
 import Link from "next/link";
+import background from "@/lib/snippet";
 
 export default function Snippets({ categories, snippets }) {
   const [category, setCategory] = useState("All");
@@ -33,7 +34,11 @@ export default function Snippets({ categories, snippets }) {
                   <a>
                     <div className="bg-gray-900 h-full py-2 rounded">
                       {category === "All" && (
-                        <div className="bg-cyan-200 w-min px-2 rounded-r mb-2 mt-1">
+                        <div
+                          className={`${background(
+                            x.language
+                          )} w-min px-2 rounded-r mb-2 mt-1 font-semibold`}
+                        >
                           {x.language}
                         </div>
                       )}
