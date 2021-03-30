@@ -4,58 +4,63 @@ import Npm from "@/svg/npm";
 import Twitter from "@/svg/twitter";
 import Unsplash from "@/svg/unsplash";
 
+function SocialLink({ link, icon, className }) {
+  return (
+    <a href={link} className={`text-gray-600 ${className}`}>
+      {icon}
+    </a>
+  );
+}
+
 export default function SocialSwitch({ linkType, link }) {
   switch (linkType) {
     case "github":
       return (
-        <a
-          href={link}
-          className="text-gray-600 hover:text-black focus:text-black"
-        >
-          <MarkGithubIcon size={16} className="h-6 w-6" />
-        </a>
+        <SocialLink
+          link={link}
+          icon={<MarkGithubIcon size={16} className="h-6 w-6" />}
+          className="hover:text-black focus:text-black"
+        />
       );
     case "unsplash":
       return (
-        <a
-          href={link}
-          className="text-gray-600 hover:text-black focus:text-black"
-        >
-          <Unsplash className="h-6 w-6" />
-        </a>
+        <SocialLink
+          link={link}
+          icon={<Unsplash className="h-6 w-6" />}
+          className="hover:text-black focus:text-black"
+        />
       );
     case "npm":
       return (
-        <a href={link} className="text-gray-600 hover:text-npm focus:text-npm">
-          <Npm className="h-6" />
-        </a>
+        <SocialLink
+          link={link}
+          icon={<Npm className="h-6" />}
+          className="hover:text-npm focus:text-npm"
+        />
       );
     case "linkedin":
       return (
-        <a
-          href={link}
-          className="text-gray-600 hover:text-linkedin focus:text-linkedin"
-        >
-          <Linkedin className="h-6 " />
-        </a>
+        <SocialLink
+          link={link}
+          icon={<Linkedin className="h-6 " />}
+          className="hover:text-linkedin focus:text-linkedin"
+        />
       );
     case "twitter":
       return (
-        <a
-          href={link}
-          className="text-gray-600 hover:text-twitter focus:text-twitter"
-        >
-          <Twitter className="h-6" />
-        </a>
+        <SocialLink
+          link={link}
+          icon={<Twitter className="h-6" />}
+          className="hover:text-twitter focus:text-twitter"
+        />
       );
     default:
       return (
-        <a
-          href={link}
-          className="text-gray-600 hover:text-black focus:text-black"
-        >
-          <LinkIcon size={16} className="h-6 w-6 " />
-        </a>
+        <SocialLink
+          link={link}
+          icon={<LinkIcon size={16} className="h-6 w-6 " />}
+          className="hover:text-black focus:text-black"
+        />
       );
   }
 }
