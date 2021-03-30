@@ -1,3 +1,4 @@
+// Used for events in the timeline
 export default function Pass({ className }) {
   return (
     <svg

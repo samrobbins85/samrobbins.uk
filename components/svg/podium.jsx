@@ -1,3 +1,4 @@
+// Used for talks in the timeline
 export default function Podium({ className }) {
   return (
     <svg

@@ -1,5 +1,9 @@
 import { Menu, Transition } from "@headlessui/react";
-import { RepoIcon, MarkGithubIcon } from "@primer/octicons-react";
+import {
+  RepoIcon,
+  MarkGithubIcon,
+  ChevronDownIcon,
+} from "@primer/octicons-react";
 
 export default function GitHubMultiple({ repos }) {
   return (
@@ -19,17 +23,7 @@ export default function GitHubMultiple({ repos }) {
                 <span className="font-semibold tracking-wide text-lg">
                   GitHub
                 </span>
-                <svg
-                  className="w-5 h-5 ml-2 -mr-1"
-                  viewBox="0 0 20 20"
-                  fill="currentColor"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                    clipRule="evenodd"
-                  />
-                </svg>
+                <ChevronDownIcon className="ml-2" size={16} />
               </Menu.Button>
             </span>
 
