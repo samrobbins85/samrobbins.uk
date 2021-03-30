@@ -29,26 +29,24 @@ export default function Snippets({ categories, snippets }) {
               category !== "All" ? item.language.includes(category) : item
             )
             .map((x) => (
-              <div className="w-full sm:w-1/2 lg:w-1/4" key={x.title}>
-                <Link href={`/snippets/${x.slug}`}>
-                  <a>
-                    <div className="bg-gray-900 h-full py-2 rounded">
-                      {category === "All" && (
-                        <div
-                          className={`${background(
-                            x.language
-                          )} w-min px-2 rounded-r mb-2 mt-1 font-semibold`}
-                        >
-                          {x.language}
-                        </div>
-                      )}
-                      <h3 className="text-xl text-white font-mono px-2">
-                        {x.title}
-                      </h3>
-                    </div>
-                  </a>
-                </Link>
-              </div>
+              <Link href={`/snippets/${x.slug}`}>
+                <a className="w-full sm:w-1/2 lg:w-1/4 focus:ring-gray-800 focus:ring-2 focus:ring-offset-2 focus:outline-none rounded bg-gray-900">
+                  <div className="h-full py-2 ">
+                    {category === "All" && (
+                      <div
+                        className={`${background(
+                          x.language
+                        )} w-min px-2 rounded-r mb-2 mt-1 font-semibold`}
+                      >
+                        {x.language}
+                      </div>
+                    )}
+                    <h3 className="text-xl text-white font-mono px-2">
+                      {x.title}
+                    </h3>
+                  </div>
+                </a>
+              </Link>
             ))}
         </div>
       </div>
