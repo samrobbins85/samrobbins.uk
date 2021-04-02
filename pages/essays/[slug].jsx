@@ -43,10 +43,12 @@ export default function Portfolio({ data, contentHtml }) {
           </p>
         </header>
 
-        <main
-          className="mx-auto prose font-serif"
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
+        <main>
+          <article
+            className="mx-auto prose font-serif"
+            dangerouslySetInnerHTML={{ __html: content }}
+          />
+        </main>
       </div>
     </>
   );

@@ -22,7 +22,7 @@ export default function Blog({ dato }) {
       <FilledNav />
 
       <div className="max-w-85ch p-4 mx-auto">
-        <div className="py-2">
+        <header className="py-2">
           <h1 className="text-4xl sm:text-5xl font-semibold text-center">
             {dato.title}
           </h1>
@@ -32,23 +32,25 @@ export default function Blog({ dato }) {
               year: "numeric",
             })}
           </p>
-        </div>
-        <div className="prose mx-auto">
-          <StructuredText
-            data={dato.structuredtext}
-            customRules={[
-              renderRule(isCode, ({ node, key }) => (
-                <Prism
-                  key={key}
-                  code={node.code}
-                  language={node.language || "unknown"}
-                  highlightLines={node.highlight}
-                  showLineNumbers={node.code.split(/\n/).length > 10}
-                />
-              )),
-            ]}
-          />
-        </div>
+        </header>
+        <main>
+          <article className="prose mx-auto">
+            <StructuredText
+              data={dato.structuredtext}
+              customRules={[
+                renderRule(isCode, ({ node, key }) => (
+                  <Prism
+                    key={key}
+                    code={node.code}
+                    language={node.language || "unknown"}
+                    highlightLines={node.highlight}
+                    showLineNumbers={node.code.split(/\n/).length > 10}
+                  />
+                )),
+              ]}
+            />
+          </article>
+        </main>
       </div>
     </>
   );

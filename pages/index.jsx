@@ -5,6 +5,7 @@ import SocialSwitch from "@/components/home/socialswitch";
 import TimeLineItem from "@/components/home/timeline";
 import { useState } from "react";
 import { ChevronDownIcon } from "@primer/octicons-react";
+import Job from "@/components/home/job";
 import { getHomepage, getAbout } from "../lib/graphcms";
 
 export default function Home({ homepage }) {
@@ -60,17 +61,13 @@ export default function Home({ homepage }) {
         <h2 className="text-3xl font-semibold">Jobs</h2>
         <div className="grid sm:grid-cols-2 gap-4">
           {homepage.jobs.map((item) => (
-            <div
-              className="flex gap-x-4 px-6 py-4 items-center"
+            <Job
               key={item.company}
-            >
-              <img src={item.logo.url} className="h-16 w-16" alt={item.title} />
-              <div className="grid">
-                <span className="font-semibold">{item.title}</span>
-                <span className="text-gray-700">{item.company}</span>
-                <span className="text-gray-700">{item.duration}</span>
-              </div>
-            </div>
+              logo={item.logo.url}
+              title={item.title}
+              duration={item.duration}
+              company={item.company}
+            />
           ))}
         </div>
         <h2 className="text-3xl font-semibold py-6">Timeline</h2>
@@ -92,7 +89,7 @@ export default function Home({ homepage }) {
               type="button"
               onClick={() => setExpand(true)}
             >
-              <ChevronDownIcon className="mr-2" size={16} />
+              <ChevronDownIcon aria-hidden="true" className="mr-2" size={16} />
               <span>Show more</span>
             </button>
           </div>
