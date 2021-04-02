@@ -1,6 +1,8 @@
 import "../styles/index.css";
 import "../styles/prism-atom-dark.css";
 import Head from "next/head";
+import "@fontsource/newsreader/variable.css"; // Contains ONLY variable weights and no other axes.
+import "@fontsource/newsreader/variable-italic.css"; // Italic variant.
 
 function MyApp({ Component, pageProps }) {
   return (
