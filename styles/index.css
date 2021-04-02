@@ -1,7 +1,6 @@
 @import url("https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css");
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
 
 .prose img {
   @apply shadow-xl;
@@ -38,4 +37,8 @@
 
 .about a {
   @apply text-blue-600 hover:underline;
+}
+
+.prose.font-serif code {
+  @apply bg-transparent font-normal tracking-wide text-black !important;
 }
