@@ -7,6 +7,14 @@
   @apply shadow-xl;
 }
 
+@font-face {
+  font-family: "Inter var";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: optional;
+  src: url(/fonts/Inter.var.woff2) format("woff2");
+}
+
 .prose.font-serif img {
   @apply shadow-none;
   border: 1px solid;
@@ -20,8 +28,7 @@
 .prose.font-serif h4,
 .prose.font-serif h5,
 .prose.font-serif h1 {
-  font-family: Inter Var !important;
-  @apply font-normal;
+  @apply font-normal font-sans;
 }
 
 .footnotes > ol::before {
