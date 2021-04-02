@@ -18,19 +18,21 @@ export default function Portfolio({ writings }) {
       </Head>
       <FilledNav />
       <div className="pt-6 px-2">
-        <h1 className="text-4xl font-medium text-center font-serif">Essays</h1>
-        <div>
-          <div className="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
-            {writings.map((item) => (
-              <Paper
-                slug={item.slug}
-                title={item.title}
-                date={item.date}
-                key={item.title}
-              />
-            ))}
-          </div>
-        </div>
+        <header>
+          <h1 className="text-4xl font-medium text-center font-serif">
+            Essays
+          </h1>
+        </header>
+        <main className="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
+          {writings.map((item) => (
+            <Paper
+              slug={item.slug}
+              title={item.title}
+              date={item.date}
+              key={item.title}
+            />
+          ))}
+        </main>
       </div>
     </>
   );

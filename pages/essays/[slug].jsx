@@ -33,7 +33,7 @@ export default function Portfolio({ data, contentHtml }) {
       <FilledNav />
 
       <div className="p-4 mx-auto max-w-85ch">
-        <div className="font-serif py-2">
+        <header className="font-serif py-2">
           <h1 className="text-center text-4xl font-semibold">{data.title}</h1>
           <p className="text-center text-xl">
             {new Date(data.date).toLocaleString("en-gb", {
@@ -41,9 +41,9 @@ export default function Portfolio({ data, contentHtml }) {
               year: "numeric",
             })}
           </p>
-        </div>
+        </header>
 
-        <div
+        <main
           className="mx-auto prose font-serif"
           dangerouslySetInnerHTML={{ __html: content }}
         />
