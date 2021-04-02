@@ -32,17 +32,19 @@ export default function Portfolio({ data, contentHtml }) {
       </Head>
       <FilledNav />
 
-      <div className="p-4 latex-style mx-auto">
-        <h1>{data.title}</h1>
-        <p className="author">
-          {new Date(data.date).toLocaleString("en-gb", {
-            month: "short",
-            year: "numeric",
-          })}
-        </p>
+      <div className="p-4 mx-auto max-w-85ch">
+        <div className="font-serif py-2">
+          <h1 className="text-center text-4xl font-semibold">{data.title}</h1>
+          <p className="text-center text-xl">
+            {new Date(data.date).toLocaleString("en-gb", {
+              month: "short",
+              year: "numeric",
+            })}
+          </p>
+        </div>
 
         <div
-          className="mx-auto"
+          className="mx-auto prose font-serif"
           dangerouslySetInnerHTML={{ __html: content }}
         />
       </div>

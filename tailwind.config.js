@@ -30,6 +30,7 @@ module.exports = {
       fontFamily: {
         latex: ["Latin Modern"],
         sans: ["Inter var", ...defaultTheme.fontFamily.sans],
+        serif: ["Newsreader", ...defaultTheme.fontFamily.serif],
       },
     },
   },

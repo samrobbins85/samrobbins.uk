@@ -18,9 +18,7 @@ export default function Portfolio({ writings }) {
       </Head>
       <FilledNav />
       <div className="pt-6 px-2">
-        <h1 className="text-4xl font-semibold text-center font-latex">
-          Essays
-        </h1>
+        <h1 className="text-4xl font-medium text-center font-serif">Essays</h1>
         <div>
           <div className="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
             {writings.map((item) => (
