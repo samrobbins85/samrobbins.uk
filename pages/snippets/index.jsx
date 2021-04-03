@@ -5,6 +5,27 @@ import { getSnippetLanguages, getSnippets } from "@/lib/graphcms";
 import Link from "next/link";
 import background from "@/lib/snippet";
 
+function Card({ title, slug, language, category }) {
+  return (
+    <Link href={`/snippets/${slug}`}>
+      <a className="w-full sm:w-1/2 lg:w-1/4 focus:ring-gray-800 focus:ring-2 focus:ring-offset-2 focus:outline-none rounded bg-gray-900">
+        <div className="h-full py-2 ">
+          {category === "All" && (
+            <div
+              className={`${background(
+                language
+              )} w-min px-2 rounded-r mb-2 mt-1 font-semibold`}
+            >
+              {language}
+            </div>
+          )}
+          <h3 className="text-xl text-white font-mono px-2">{title}</h3>
+        </div>
+      </a>
+    </Link>
+  );
+}
+
 export default function Snippets({ categories, snippets }) {
   const [category, setCategory] = useState("All");
   return (
@@ -29,24 +50,13 @@ export default function Snippets({ categories, snippets }) {
               category !== "All" ? item.language.includes(category) : item
             )
             .map((x) => (
-              <Link key={x.title} href={`/snippets/${x.slug}`}>
-                <a className="w-full sm:w-1/2 lg:w-1/4 focus:ring-gray-800 focus:ring-2 focus:ring-offset-2 focus:outline-none rounded bg-gray-900">
-                  <div className="h-full py-2 ">
-                    {category === "All" && (
-                      <div
-                        className={`${background(
-                          x.language
-                        )} w-min px-2 rounded-r mb-2 mt-1 font-semibold`}
-                      >
-                        {x.language}
-                      </div>
-                    )}
-                    <h3 className="text-xl text-white font-mono px-2">
-                      {x.title}
-                    </h3>
-                  </div>
-                </a>
-              </Link>
+              <Card
+                key={x.title}
+                category={category}
+                title={x.title}
+                slug={x.slug}
+                language={x.language}
+              />
             ))}
         </div>
       </div>

@@ -6,10 +6,12 @@ import rehypePrism from "@mapbox/rehype-prism";
 import footnotes from "remark-numbered-footnotes";
 import renderToString from "next-mdx-remote/render-to-string";
 import MyTable from "@/components/mdx/table";
+import MyImg from "@/components/mdx/image";
 import { useEffect } from "react";
 
 const components = {
   table: MyTable,
+  img: MyImg,
 };
 export default function Portfolio({ data, contentHtml }) {
   useEffect(() => {
