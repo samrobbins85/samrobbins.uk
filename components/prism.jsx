@@ -10,7 +10,7 @@ const Prism = ({ code, language = [] }) => (
     {({ className, style, tokens, getTokenProps }) => (
       <pre className={className} style={style}>
         {tokens.map((line) => (
-          <div>
+          <div key={line}>
             {line.map((token, key) => (
               <span {...getTokenProps({ token, key })} />
             ))}
