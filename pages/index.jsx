@@ -2,15 +2,11 @@ import Head from "next/head";
 import FilledNav from "@/components/fillednav";
 import Link from "next/link";
 import SocialSwitch from "@/components/home/socialswitch";
-import TimeLineItem from "@/components/home/timeline";
-import { useState } from "react";
-import { ChevronDownIcon } from "@primer/octicons-react";
 import Job from "@/components/home/job";
 import { getHomepage, getAbout } from "../lib/graphcms";
 
 export default function Home({ homepage }) {
   const data = homepage.homepages[0];
-  const [expand, setExpand] = useState(false);
   return (
     <>
       <Head>
@@ -70,30 +66,6 @@ export default function Home({ homepage }) {
             />
           ))}
         </div>
-        <h2 className="text-3xl font-semibold py-6">Timeline</h2>
-        <ul className="px-1">
-          {homepage.timelineItems
-            .slice(0, expand ? homepage.timelineItems.length : 5)
-            .map((item, i) => (
-              <TimeLineItem
-                data={item}
-                end={expand ? i === homepage.timelineItems.length - 1 : i === 4}
-                key={item.description}
-              />
-            ))}
-        </ul>
-        {!expand && (
-          <div className="flex justify-center">
-            <button
-              className="flex items-center"
-              type="button"
-              onClick={() => setExpand(true)}
-            >
-              <ChevronDownIcon aria-hidden="true" className="mr-2" size={16} />
-              <span>Show more</span>
-            </button>
-          </div>
-        )}
       </div>
     </>
   );
