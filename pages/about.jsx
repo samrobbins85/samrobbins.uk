@@ -8,7 +8,6 @@ import { getHomepage } from "../lib/graphcms";
 import { getAbout } from "../lib/datocms";
 
 export default function Home({ homepage, about }) {
-  console.log(about);
   const [expand, setExpand] = useState(false);
   return (
     <>
