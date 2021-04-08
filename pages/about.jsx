@@ -4,6 +4,7 @@ import FilledNav from "@/components/fillednav";
 import TimeLineItem from "@/components/home/timeline";
 import { useState } from "react";
 import { ChevronDownIcon } from "@primer/octicons-react";
+import { ExternalLinkIcon } from "@heroicons/react/outline";
 import { getHomepage } from "../lib/graphcms";
 import { getAbout } from "../lib/datocms";
 
@@ -40,9 +41,10 @@ export default function Home({ homepage, about }) {
               <div className="grid">
                 <a
                   href={x.link}
-                  className="text-xl font-semibold text-cyan-700 hover:underline"
+                  className="text-xl font-semibold text-cyan-700 hover:underline flex items-baseline gap-x-1"
                 >
                   {x.title}
+                  <ExternalLinkIcon className="h-4 w-4" />
                 </a>
                 <span className="text-gray-600">{x.description}</span>
               </div>
