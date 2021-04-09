@@ -4,6 +4,7 @@ import { useState } from "react";
 import { getSnippetLanguages, getSnippets } from "@/lib/graphcms";
 import Link from "next/link";
 import background from "@/lib/snippet";
+import Head from "next/head";
 
 function Card({ title, slug, language, category }) {
   return (
@@ -30,6 +31,16 @@ export default function Snippets({ categories, snippets }) {
   const [category, setCategory] = useState("All");
   return (
     <>
+      <Head>
+        <title>Snippets | Sam Robbins</title>
+        <meta
+          property="og:image"
+          content={`https://og.csnotes.me/**${escape("Snippets")}**/${escape(
+            "Sam Robbins"
+          )}.png?theme=dark&md=1&fontSize=100px`}
+        />
+        <meta property="og:title" content="Snippets" />
+      </Head>
       <FilledNav />
       <div className="max-w-85ch mx-auto p-4">
         <h1 className="text-5xl font-medium font-mono">Snippets</h1>
