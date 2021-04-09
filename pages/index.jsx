@@ -2,10 +2,10 @@ import Head from "next/head";
 import FilledNav from "@/components/fillednav";
 import Link from "next/link";
 import SocialSwitch from "@/components/home/socialswitch";
-import Job from "@/components/home/job";
-import { getHomepage, getAbout } from "../lib/graphcms";
+import Grid from "@/components/home/grid";
+import { getHomepage, getAbout, getPortfolios } from "../lib/graphcms";
 
-export default function Home({ homepage }) {
+export default function Home({ homepage, portfolios }) {
   const data = homepage.homepages[0];
   return (
     <>
@@ -54,17 +54,17 @@ export default function Home({ homepage }) {
             ))}
           </div>
         </div>
-        <h2 className="text-3xl font-semibold">Jobs</h2>
-        <div className="grid sm:grid-cols-2 gap-4">
-          {homepage.jobs.map((item) => (
-            <Job
-              key={item.company}
-              logo={item.logo.url}
-              title={item.title}
-              duration={item.duration}
-              company={item.company}
-            />
-          ))}
+        <h2 className="text-3xl font-semibold">Projects</h2>
+        <div className="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
+          <Grid portfolios={portfolios} />
+        </div>
+        <div>
+          <p className="text-center">
+            To see all my projects, check out my{" "}
+            <Link href="/portfolio">
+              <a className="text-cyan-700 hover:underline">porfolio</a>
+            </Link>
+          </p>
         </div>
       </div>
     </>
@@ -72,6 +72,8 @@ export default function Home({ homepage }) {
 }
 
 export async function getStaticProps() {
+  const portfolios = (await getPortfolios()) || [];
+
   const homepage = (await getHomepage()) || [];
   const about = await getAbout();
   homepage.timelineItems = homepage.timelineItems
@@ -86,6 +88,6 @@ export async function getStaticProps() {
     })
     .reverse();
   return {
-    props: { homepage, about },
+    props: { homepage, about, portfolios },
   };
 }
