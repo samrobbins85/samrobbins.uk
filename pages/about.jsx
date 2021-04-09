@@ -1,6 +1,6 @@
 import Head from "next/head";
 import FilledNav from "@/components/fillednav";
-
+import DatoImage from "@/components/datoimage";
 import TimeLineItem from "@/components/home/timeline";
 import { useState } from "react";
 import { ChevronDownIcon } from "@primer/octicons-react";
@@ -11,7 +11,14 @@ import { getAbout } from "../lib/datocms";
 function Article({ image, publisher, link, title, description }) {
   return (
     <div className="flex">
-      <img className="h-12 w-12 mr-2" src={image} alt={publisher} />
+      <div className="h-12 w-12 mr-2">
+        <DatoImage
+          height={image.height}
+          width={image.width}
+          src={image.url}
+          alt={publisher}
+        />
+      </div>
       <div className="grid">
         <a
           href={link}
@@ -52,7 +59,7 @@ export default function Home({ about }) {
           {about.jobs.map((item) => (
             <Job
               key={item.company}
-              logo={item.logo.url}
+              logo={item.logo}
               title={item.role}
               duration={item.duration}
               company={item.company}
@@ -63,7 +70,7 @@ export default function Home({ about }) {
         <div className="grid">
           {about.articles.map((x) => (
             <Article
-              image={x.logo.url}
+              image={x.logo}
               publisher={x.publisher}
               link={x.link}
               title={x.title}
