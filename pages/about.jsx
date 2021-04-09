@@ -6,10 +6,27 @@ import { useState } from "react";
 import { ChevronDownIcon } from "@primer/octicons-react";
 import { ExternalLinkIcon } from "@heroicons/react/outline";
 import Job from "@/components/home/job";
-import { getHomepage } from "../lib/graphcms";
 import { getAbout } from "../lib/datocms";
 
-export default function Home({ homepage, about }) {
+function Article({ image, publisher, link, title, description }) {
+  return (
+    <div className="flex">
+      <img className="h-12 w-12 mr-2" src={image} alt={publisher} />
+      <div className="grid">
+        <a
+          href={link}
+          className="text-xl font-semibold text-cyan-700 hover:underline flex items-baseline gap-x-1"
+        >
+          {title}
+          <ExternalLinkIcon className="h-4 w-4" />
+        </a>
+        <span className="text-gray-600">{description}</span>
+      </div>
+    </div>
+  );
+}
+
+export default function Home({ about }) {
   const [expand, setExpand] = useState(false);
   return (
     <>
@@ -32,11 +49,11 @@ export default function Home({ homepage, about }) {
         <h1 className="text-5xl font-semibold pb-4">About</h1>
         <h2 className="text-3xl font-semibold">Jobs</h2>
         <div className="grid sm:grid-cols-2 gap-4">
-          {homepage.jobs.map((item) => (
+          {about.jobs.map((item) => (
             <Job
               key={item.company}
               logo={item.logo.url}
-              title={item.title}
+              title={item.role}
               duration={item.duration}
               company={item.company}
             />
@@ -45,35 +62,21 @@ export default function Home({ homepage, about }) {
         <h2 className="text-3xl font-semibold py-6">Published Articles</h2>
         <div className="grid">
           {about.articles.map((x) => (
-            <div className="flex">
-              <img
-                className="h-12 w-12 mr-2"
-                src={x.logo.url}
-                alt={x.publisher}
-              />
-              <div className="grid">
-                <a
-                  href={x.link}
-                  className="text-xl font-semibold text-cyan-700 hover:underline flex items-baseline gap-x-1"
-                >
-                  {x.title}
-                  <ExternalLinkIcon className="h-4 w-4" />
-                </a>
-                <span className="text-gray-600">{x.description}</span>
-              </div>
-            </div>
+            <Article
+              image={x.logo.url}
+              publisher={x.publisher}
+              link={x.link}
+              title={x.title}
+              description={x.description}
+            />
           ))}
         </div>
         <h2 className="text-3xl font-semibold py-6">Timeline</h2>
         <ul className="px-1">
-          {homepage.timelineItems
-            .slice(0, expand ? homepage.timelineItems.length : 5)
-            .map((item, i) => (
-              <TimeLineItem
-                data={item}
-                end={expand ? i === homepage.timelineItems.length - 1 : i === 4}
-                key={item.description}
-              />
+          {about.timeline
+            .slice(0, expand ? about.timeline.length : 5)
+            .map((item) => (
+              <TimeLineItem data={item} key={item.description} />
             ))}
         </ul>
         {!expand && (
@@ -94,9 +97,9 @@ export default function Home({ homepage, about }) {
 }
 
 export async function getStaticProps() {
-  const homepage = (await getHomepage()) || [];
   const about = await getAbout();
-  homepage.timelineItems = homepage.timelineItems
+  // I think this is no longer necessary, but better safe than sorry
+  about.timeline = about.timeline
     .sort((a, b) => {
       if (a.date > b.date) {
         return 1;
@@ -108,6 +111,6 @@ export async function getStaticProps() {
     })
     .reverse();
   return {
-    props: { homepage, about },
+    props: { about },
   };
 }

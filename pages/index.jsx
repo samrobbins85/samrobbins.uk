@@ -1,12 +1,14 @@
 import Head from "next/head";
 import FilledNav from "@/components/fillednav";
 import Link from "next/link";
-import SocialSwitch from "@/components/home/socialswitch";
 import Grid from "@/components/home/grid";
-import { getHomepage, getAbout, getPortfolios } from "../lib/graphcms";
+import { StructuredText, renderRule } from "react-datocms";
+import { isLink } from "datocms-structured-text-utils";
+import SocialLinks from "@/components/home/sociallinks";
+import { getPortfolios } from "../lib/graphcms";
+import { getHome } from "../lib/datocms";
 
-export default function Home({ homepage, portfolios }) {
-  const data = homepage.homepages[0];
+export default function Home({ portfolios, home }) {
   return (
     <>
       <Head>
@@ -26,32 +28,38 @@ export default function Home({ homepage, portfolios }) {
       <FilledNav />
       <div className="py-6 px-4 max-w-85ch mx-auto">
         <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8">
-          Hi, I‘m Sam Robbins
+          {home.title}
         </h1>
         <h2 className="text-lg text-gray-800">
-          {data.description}. You can find my CV/Resume{" "}
-          <a
-            className="text-cyan-700 hover:underline focus:underline"
-            href="https://cv.samrobbins.uk"
-          >
-            here
-          </a>
-          .
+          <StructuredText
+            customRules={[
+              renderRule(isLink, ({ node, children, key }) => (
+                <a
+                  className="text-cyan-700 hover:underline focus:underline"
+                  key={key}
+                  href={node.url}
+                >
+                  {children}
+                </a>
+              )),
+            ]}
+            data={home.description}
+          />
         </h2>
         <div className="flex gap-x-4 py-8 items-start gap-y-4">
-          <Link href={`mailto:${data.email}`}>
+          <Link href={`mailto:${home.email}`}>
             <a className="border px-4 py-2 rounded hover:bg-gray-50 focus:bg-gray-50 font-medium whitespace-nowrap">
               Contact Me
             </a>
           </Link>
           <div className="flex flex-wrap gap-x-4 gap-y-2 py-2 justify-center">
-            {data.socialLinks.map((entry) => (
-              <SocialSwitch
-                linkType={entry.linkType}
-                link={entry.link}
-                key={entry.linkType}
-              />
-            ))}
+            <SocialLinks
+              github={home.github}
+              unsplash={home.unsplash}
+              npm={home.npm}
+              linkedin={home.linkedin}
+              twitter={home.twitter}
+            />
           </div>
         </div>
         <h2 className="text-3xl font-semibold">Projects</h2>
@@ -73,21 +81,9 @@ export default function Home({ homepage, portfolios }) {
 
 export async function getStaticProps() {
   const portfolios = (await getPortfolios()) || [];
+  const home = (await getHome()) || {};
 
-  const homepage = (await getHomepage()) || [];
-  const about = await getAbout();
-  homepage.timelineItems = homepage.timelineItems
-    .sort((a, b) => {
-      if (a.date > b.date) {
-        return 1;
-      }
-      if (b.date > a.date) {
-        return -1;
-      }
-      return 0;
-    })
-    .reverse();
   return {
-    props: { homepage, about, portfolios },
+    props: { portfolios, home },
   };
 }

@@ -1,3 +1,4 @@
+import { StructuredText } from "react-datocms";
 import TimelineIcon from "./timelineicon";
 
 function Description({ title, date, description }) {
@@ -5,10 +6,9 @@ function Description({ title, date, description }) {
     <>
       <div>
         <div className="flex justify-between">
-          <h3
-            className="font-medium "
-            dangerouslySetInnerHTML={{ __html: title.html }}
-          />
+          <h3 className="font-medium ">
+            <StructuredText data={title} />
+          </h3>
           <p className="pl-4 text-sm tracking-wide text-gray-500 text-right">
             {new Date(date).toLocaleString("en-gb", {
               month: "long",
