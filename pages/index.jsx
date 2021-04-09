@@ -70,7 +70,7 @@ export default function Home({ portfolios, home }) {
           <p className="text-center">
             To see all my projects, check out my{" "}
             <Link href="/portfolio">
-              <a className="text-cyan-700 hover:underline">porfolio</a>
+              <a className="text-cyan-700 hover:underline">portfolio</a>
             </Link>
           </p>
         </div>
