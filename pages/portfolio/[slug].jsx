@@ -13,8 +13,7 @@ import MyTable from "@/components/mdx/table";
 const components = {
   table: MyTable,
 };
-export default function Portfolio({ data, contentHtml, names }) {
-  const content = contentHtml.renderedOutput;
+export default function Portfolio({ data, renderedOutput, names }) {
   return (
     <>
       <Head>
@@ -85,7 +84,7 @@ export default function Portfolio({ data, contentHtml, names }) {
         <hr className="py-2" />
         <div
           className="prose mx-auto"
-          dangerouslySetInnerHTML={{ __html: content }}
+          dangerouslySetInnerHTML={{ __html: renderedOutput }}
         />
       </div>
     </>
@@ -94,7 +93,7 @@ export default function Portfolio({ data, contentHtml, names }) {
 
 export async function getStaticProps({ params }) {
   const data = await getPortfolio(params.slug);
-  const contentHtml = await renderToString(data.markdown, {
+  const { renderedOutput } = await renderToString(data.markdown, {
     components,
     mdxOptions: {
       rehypePlugins: [rehypePrism],
@@ -119,7 +118,7 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       data,
-      contentHtml,
+      renderedOutput,
       names,
     },
   };

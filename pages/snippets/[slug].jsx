@@ -8,7 +8,7 @@ import Head from "next/head";
 const components = {
   table: MyTable,
 };
-export default function Snippet({ data, contentHtml }) {
+export default function Snippet({ data, renderedOutput }) {
   return (
     <>
       <Head>
@@ -28,7 +28,7 @@ export default function Snippet({ data, contentHtml }) {
         <h2 className="text-xl text-gray-600">{data.description}</h2>
         <p
           className="prose py-6"
-          dangerouslySetInnerHTML={{ __html: contentHtml.renderedOutput }}
+          dangerouslySetInnerHTML={{ __html: renderedOutput }}
         />
       </div>
     </>
@@ -37,7 +37,7 @@ export default function Snippet({ data, contentHtml }) {
 
 export async function getStaticProps({ params }) {
   const data = await getSnippet(params.slug);
-  const contentHtml = await renderToString(data.content, {
+  const { renderedOutput } = await renderToString(data.content, {
     components,
     mdxOptions: {
       rehypePlugins: [rehypePrism],
@@ -47,7 +47,7 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       data,
-      contentHtml,
+      renderedOutput,
     },
   };
 }

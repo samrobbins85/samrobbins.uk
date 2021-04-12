@@ -13,13 +13,12 @@ const components = {
   table: MyTable,
   img: MyImg,
 };
-export default function Portfolio({ data, contentHtml }) {
+export default function Portfolio({ data, renderedOutput }) {
   useEffect(() => {
     import("@/lib/rendermath").then((renderMath) => {
       renderMath.default();
     });
   }, []);
-  const content = contentHtml.renderedOutput;
   return (
     <>
       <Head>
@@ -48,7 +47,7 @@ export default function Portfolio({ data, contentHtml }) {
         <main>
           <article
             className="mx-auto prose font-serif"
-            dangerouslySetInnerHTML={{ __html: content }}
+            dangerouslySetInnerHTML={{ __html: renderedOutput }}
           />
         </main>
       </div>
@@ -58,7 +57,7 @@ export default function Portfolio({ data, contentHtml }) {
 
 export async function getStaticProps({ params }) {
   const data = await getWriting(params.slug);
-  const contentHtml = await renderToString(data.markdown, {
+  const { renderedOutput } = await renderToString(data.markdown, {
     components,
     mdxOptions: {
       remarkPlugins: [footnotes, math],
@@ -69,7 +68,7 @@ export async function getStaticProps({ params }) {
   return {
     props: {
       data,
-      contentHtml,
+      renderedOutput,
     },
   };
 }
