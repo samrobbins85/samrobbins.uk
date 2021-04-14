@@ -46,7 +46,7 @@ export default function Home({ portfolios, home }) {
             data={home.description}
           />
         </h2>
-        <div className="flex gap-x-4 py-8 items-start gap-y-4">
+        <div className="flex gap-x-4 py-8 items-start gap-y-4 flex-wrap">
           <Link href={`mailto:${home.email}`}>
             <a className="border px-4 py-2 rounded hover:bg-gray-50 focus:bg-gray-50 font-medium whitespace-nowrap">
               Contact Me
