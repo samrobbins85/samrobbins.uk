@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@fontsource/newsreader": "^4.2.4",
-    "@headlessui/react": "^0.3.1",
+    "@headlessui/react": "^1.0.0",
     "@heroicons/react": "^1.0.0",
     "@mapbox/rehype-prism": "^0.6.0",
     "@primer/octicons-react": "^12.1.0",
