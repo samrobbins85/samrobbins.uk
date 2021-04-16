@@ -112,7 +112,7 @@ function DesktopDropdown({ data }) {
 function DesktopSingle({ data }) {
   return (
     <ActiveLink href={data.href} activeClassName="!text-black font-semibold">
-      <a className="text-base font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-4 focus:ring-cyan-500 rounded-md">
+      <a className="text-base font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-4 focus-visible:ring-cyan-500 focus:ring-transparent rounded-md">
         {data.name}
       </a>
     </ActiveLink>
