@@ -13,9 +13,9 @@ import {
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import ActiveLink from "@/components/ActiveLink";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const items = [
-  { name: "Home", href: "/", icon: HomeIcon },
   { name: "About", href: "/about", icon: UserIcon },
   {
     name: "Writing",
@@ -140,6 +140,14 @@ export default function Nav() {
         <>
           <div className="mx-auto">
             <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-center md:space-x-10">
+              <div className="flex justify-start pl-4 md:hidden -my-2">
+                <Link href="/">
+                  <a>
+                    <span className="sr-only">Workflow</span>
+                    <HomeIcon className="h-8 w-8 text-gray-500" />
+                  </a>
+                </Link>
+              </div>
               <div className="-mr-2 -my-2 md:hidden px-4">
                 <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500">
                   <span className="sr-only">Open menu</span>
@@ -147,6 +155,14 @@ export default function Nav() {
                 </Popover.Button>
               </div>
               <Popover.Group as="nav" className="hidden md:flex space-x-10">
+                <ActiveLink
+                  href="/"
+                  activeClassName="!text-black font-semibold"
+                >
+                  <a className="text-base font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-4 focus:ring-cyan-500 rounded-md">
+                    Home
+                  </a>
+                </ActiveLink>
                 {items.map((x) => {
                   if ("items" in x) {
                     return <DesktopDropdown data={x} />;
@@ -170,11 +186,11 @@ export default function Nav() {
             <Popover.Panel
               focus
               static
-              className="absolute top-0 inset-x-0 p-2 transition transform origin-top-left md:hidden"
+              className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
             >
               <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
                 <div className="pt-5 pb-6 px-5">
-                  <div className="flex items-center justify-between">
+                  <div className="flex justify-end">
                     <div className="-mr-2">
                       <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500">
                         <span className="sr-only">Close menu</span>
