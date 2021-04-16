@@ -18,7 +18,7 @@ export default function Blog({ blogs }) {
       </Head>
       <Nav />
       <div className="max-w-85ch mx-auto px-2 py-8">
-        <h1 className="text-5xl font-semibold">Blog</h1>
+        <h1 className="text-5xl font-semibold text-center">Blog</h1>
 
         <div className="grid">
           {blogs.map((item) => (
