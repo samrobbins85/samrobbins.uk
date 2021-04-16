@@ -3,7 +3,7 @@ import { Popover, Transition } from "@headlessui/react";
 import {
   MenuIcon,
   XIcon,
-  NewspaperIcon,
+  DocumentTextIcon,
   AcademicCapIcon,
   UserIcon,
   CollectionIcon,
@@ -20,7 +20,7 @@ const items = [
   {
     name: "Writing",
     items: [
-      { name: "Blog", href: "/blog", icon: NewspaperIcon },
+      { name: "Blog", href: "/blog", icon: DocumentTextIcon },
       { name: "Essays", href: "/essays", icon: AcademicCapIcon },
     ],
   },
