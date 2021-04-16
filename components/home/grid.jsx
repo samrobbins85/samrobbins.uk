@@ -12,11 +12,14 @@ export default function Grid({ portfolios }) {
             <Link href={`/portfolio/${item.slug}`}>
               <a className="group focus:outline-none">
                 <div className="border border-gray-300 rounded hover:shadow-lg group-focus:shadow-xl h-full grid grid-cols-4 sm:grid-cols-1 auto-rows-min sm:divide-x-0 divide-x divide-gray-200 sm:divide-y">
-                  <img
-                    src={item.coverImage.url}
-                    className="h-32 object-contain self-center mx-auto py-2"
-                    alt={item.title}
-                  />
+                  <div className="relative h-32 object-contain m-2 self-center">
+                    <Image
+                      src={item.coverImage.url}
+                      layout="fill"
+                      objectFit="contain"
+                      alt={item.title}
+                    />
+                  </div>
                   <div className="px-4 col-span-3 py-4">
                     <h2 className="font-semibold h-16">{item.title}</h2>
                     <p className="text-gray-600 pb-4">{item.description}</p>

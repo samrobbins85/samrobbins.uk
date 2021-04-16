@@ -1,13 +1,13 @@
 import { getWriting, getAllWritingsWithSlug } from "@/lib/graphcms";
 import Head from "next/head";
 import math from "@/lib/remark-math";
-import FilledNav from "@/components/fillednav";
 import rehypePrism from "@mapbox/rehype-prism";
 import footnotes from "remark-numbered-footnotes";
 import renderToString from "next-mdx-remote/render-to-string";
 import MyTable from "@/components/mdx/table";
 import MyImg from "@/components/mdx/image";
 import { useEffect } from "react";
+import Nav from "@/components/newnav";
 
 const components = {
   table: MyTable,
@@ -31,7 +31,7 @@ export default function Portfolio({ data, renderedOutput }) {
         />
         <meta property="og:title" content={data.title} />
       </Head>
-      <FilledNav />
+      <Nav />
 
       <div className="p-4 mx-auto max-w-85ch">
         <header className="font-serif py-2">

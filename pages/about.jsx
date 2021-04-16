@@ -1,11 +1,11 @@
 import Head from "next/head";
-import FilledNav from "@/components/fillednav";
 import DatoImage from "@/components/datoimage";
 import TimeLineItem from "@/components/home/timeline";
 import { useState } from "react";
 import { ChevronDownIcon } from "@primer/octicons-react";
 import { ExternalLinkIcon } from "@heroicons/react/outline";
 import Job from "@/components/home/job";
+import Nav from "@/components/newnav";
 import { getAbout } from "../lib/datocms";
 
 function Article({ image, publisher, link, title, description }) {
@@ -51,7 +51,7 @@ export default function Home({ about }) {
           content="The personal website of Sam Robbins"
         />
       </Head>
-      <FilledNav />
+      <Nav />
       <div className="py-6 px-4 max-w-85ch mx-auto">
         <h1 className="text-5xl font-semibold pb-4">About</h1>
         <h2 className="text-3xl font-semibold">Jobs</h2>

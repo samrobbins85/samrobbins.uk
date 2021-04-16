@@ -1,7 +1,7 @@
-import FilledNav from "@/components/fillednav";
 import { getAllBlogs } from "@/lib/datocms";
 import Link from "next/link";
 import Head from "next/head";
+import Nav from "@/components/newnav";
 
 export default function Blog({ blogs }) {
   return (
@@ -16,7 +16,7 @@ export default function Blog({ blogs }) {
         />
         <meta property="og:title" content="Blog" />
       </Head>
-      <FilledNav />
+      <Nav />
       <div className="max-w-85ch mx-auto px-2 py-8">
         <h1 className="text-5xl font-semibold">Blog</h1>
 

@@ -1,9 +1,9 @@
 import { getBlog, getAllBlogsWithSlug } from "@/lib/datocms";
 import Head from "next/head";
-import FilledNav from "@/components/fillednav";
 import Prism from "@/components/prism";
 import { StructuredText, renderRule } from "react-datocms";
 import { isCode } from "datocms-structured-text-utils";
+import Nav from "@/components/newnav";
 
 export default function Blog({ dato }) {
   return (
@@ -19,7 +19,7 @@ export default function Blog({ dato }) {
         <meta property="og:title" content={dato.title} />
         <meta property="og:description" content={dato.description} />
       </Head>
-      <FilledNav />
+      <Nav />
 
       <div className="max-w-85ch p-4 mx-auto">
         <header className="py-2">

@@ -1,7 +1,7 @@
 import { getWritings } from "@/lib/graphcms";
-import FilledNav from "@/components/fillednav";
 import Head from "next/head";
 import Paper from "@/components/writing/paper";
+import Nav from "@/components/newnav";
 
 export default function Portfolio({ writings }) {
   return (
@@ -16,7 +16,7 @@ export default function Portfolio({ writings }) {
         />
         <meta property="og:title" content="Essays" />
       </Head>
-      <FilledNav />
+      <Nav />
       <div className="pt-6 px-2">
         <header>
           <h1 className="text-4xl font-medium text-center font-serif">
