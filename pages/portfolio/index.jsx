@@ -1,11 +1,11 @@
 import { getPortfolios, getPortfolioCategories } from "@/lib/graphcms";
-import FilledNav from "@/components/fillednav";
 import Head from "next/head";
 import Grid from "@/components/portfolio/grid";
 import Categories from "@/components/portfolio/categories";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import OtherGrid from "@/components/portfolio/otherGrid";
+import Nav from "@/components/newnav";
 
 export default function Portfolio({ portfolios, categories }) {
   const router = useRouter();
@@ -38,7 +38,7 @@ export default function Portfolio({ portfolios, categories }) {
         />
         <meta property="og:title" content="Portfolio" />
       </Head>
-      <FilledNav />
+      <Nav />
       <div className="pt-6 px-2">
         <h1 className="text-4xl font-semibold text-center">Portfolio</h1>
 

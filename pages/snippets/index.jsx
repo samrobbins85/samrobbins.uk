@@ -1,10 +1,10 @@
-import FilledNav from "@/components/fillednav";
 import Categories from "@/components/snippets/categories";
 import { useState } from "react";
 import { getSnippetLanguages, getSnippets } from "@/lib/graphcms";
 import Link from "next/link";
 import background from "@/lib/snippet";
 import Head from "next/head";
+import Nav from "@/components/newnav";
 
 function Card({ title, slug, language, category }) {
   return (
@@ -41,10 +41,10 @@ export default function Snippets({ categories, snippets }) {
         />
         <meta property="og:title" content="Snippets" />
       </Head>
-      <FilledNav />
+      <Nav />
       <div className="max-w-85ch mx-auto p-4">
-        <h1 className="text-5xl font-medium font-mono">Snippets</h1>
-        <h2 className="text-xl text-gray-600 py-2">
+        <h1 className="text-5xl font-medium font-mono text-center">Snippets</h1>
+        <h2 className="text-xl text-gray-600 py-2 text-center">
           Little bits of code I use that don't deserve a blog, but are still
           useful
         </h2>

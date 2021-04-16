@@ -8,7 +8,7 @@ const ActiveLink = ({ children, activeClassName, exact, ...props }) => {
   const child = Children.only(children);
   const childClassName = child.props.className || "";
   let className;
-  if (exact) {
+  if (props.href === "/") {
     className =
       asPath === props.href || asPath === props.as
         ? `${childClassName} ${activeClassName}`.trim()

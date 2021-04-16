@@ -2,8 +2,8 @@ import { getAllSnippetsWithSlug, getSnippet } from "@/lib/graphcms";
 import rehypePrism from "@mapbox/rehype-prism";
 import renderToString from "next-mdx-remote/render-to-string";
 import MyTable from "@/components/mdx/table";
-import FilledNav from "@/components/fillednav";
 import Head from "next/head";
+import Nav from "@/components/newnav";
 
 const components = {
   table: MyTable,
@@ -22,7 +22,7 @@ export default function Snippet({ data, renderedOutput }) {
         <meta property="og:title" content={data.title} />
         <meta property="og:description" content={data.description} />
       </Head>
-      <FilledNav />
+      <Nav />
       <div className="max-w-65ch mx-auto p-4">
         <h1 className="text-4xl font-semibold">{data.title}</h1>
         <h2 className="text-xl text-gray-600">{data.description}</h2>

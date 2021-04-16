@@ -1,10 +1,10 @@
 import Head from "next/head";
-import FilledNav from "@/components/fillednav";
 import Link from "next/link";
 import Grid from "@/components/home/grid";
 import { StructuredText, renderRule } from "react-datocms";
 import { isLink } from "datocms-structured-text-utils";
 import SocialLinks from "@/components/home/sociallinks";
+import Nav from "@/components/newnav";
 import { getPortfolios } from "../lib/graphcms";
 import { getHome } from "../lib/datocms";
 
@@ -25,7 +25,7 @@ export default function Home({ portfolios, home }) {
           content="The personal website of Sam Robbins"
         />
       </Head>
-      <FilledNav />
+      <Nav />
       <div className="py-6 px-4 max-w-85ch mx-auto">
         <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8">
           {home.title}

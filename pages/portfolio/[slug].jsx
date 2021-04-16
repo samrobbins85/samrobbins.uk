@@ -1,7 +1,6 @@
 import { getPortfolio, getAllPortfoliosWithSlug } from "@/lib/graphcms";
 import Image from "next/image";
 import Head from "next/head";
-import FilledNav from "@/components/fillednav";
 import rehypePrism from "@mapbox/rehype-prism";
 import WebsiteButton from "@/components/portfolio/websiteButton";
 import NpmButton from "@/components/portfolio/npmButton";
@@ -9,6 +8,7 @@ import GitHubButton from "@/components/portfolio/githubButton";
 import Coder from "@/components/portfolio/coder";
 import renderToString from "next-mdx-remote/render-to-string";
 import MyTable from "@/components/mdx/table";
+import Nav from "@/components/newnav";
 
 const components = {
   table: MyTable,
@@ -27,7 +27,7 @@ export default function Portfolio({ data, renderedOutput, names }) {
         <meta property="og:title" content={data.title} />
         <meta property="og:description" content={data.description} />
       </Head>
-      <FilledNav />
+      <Nav />
 
       <div className="p-4 max-w-85ch mx-auto">
         <h1 className="text-5xl sm:text-6xl text-center font-bold pt-10">
