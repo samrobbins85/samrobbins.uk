@@ -198,7 +198,7 @@ export default function Nav() {
                       </Popover.Button>
                     </div>
                   </div>
-                  <div className="mt-6 flex-grow pr-8">
+                  <div className="mt-2 flex-grow pr-8">
                     <nav className="grid gap-y-8">
                       {items.map((item) => {
                         if ("items" in item) {
