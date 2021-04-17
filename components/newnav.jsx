@@ -165,9 +165,9 @@ export default function Nav() {
                 </ActiveLink>
                 {items.map((x) => {
                   if ("items" in x) {
-                    return <DesktopDropdown data={x} />;
+                    return <DesktopDropdown key={x.name} data={x} />;
                   }
-                  return <DesktopSingle data={x} />;
+                  return <DesktopSingle key={x.name} data={x} />;
                 })}
               </Popover.Group>
             </div>
@@ -202,9 +202,11 @@ export default function Nav() {
                     <nav className="grid gap-y-8">
                       {items.map((item) => {
                         if ("items" in item) {
-                          return item.items.map((x) => <MobileItem data={x} />);
+                          return item.items.map((x) => (
+                            <MobileItem key={x.name} data={x} />
+                          ));
                         }
-                        return <MobileItem data={item} />;
+                        return <MobileItem key={item.name} data={item} />;
                       })}
                     </nav>
                   </div>
