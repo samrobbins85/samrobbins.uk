@@ -143,7 +143,7 @@ export default function Nav() {
               <div className="flex justify-start pl-4 md:hidden -my-2">
                 <Link href="/">
                   <a>
-                    <span className="sr-only">Workflow</span>
+                    <span className="sr-only">Home</span>
                     <HomeIcon className="h-8 w-8 text-gray-500" />
                   </a>
                 </Link>
@@ -155,14 +155,7 @@ export default function Nav() {
                 </Popover.Button>
               </div>
               <Popover.Group as="nav" className="hidden md:flex space-x-10">
-                <ActiveLink
-                  href="/"
-                  activeClassName="!text-black font-semibold"
-                >
-                  <a className="text-base font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-4 focus:ring-cyan-500 rounded-md">
-                    Home
-                  </a>
-                </ActiveLink>
+                <DesktopSingle data={{ name: "Home", href: "/" }} />
                 {items.map((x) => {
                   if ("items" in x) {
                     return <DesktopDropdown key={x.name} data={x} />;
