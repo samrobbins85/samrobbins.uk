@@ -54,6 +54,7 @@ export default function Home({ about }) {
       <Nav />
       <div className="py-6 px-4 max-w-85ch mx-auto">
         <h1 className="text-5xl font-semibold pb-4 text-center">About</h1>
+
         <h2 className="text-3xl font-semibold">Jobs</h2>
         <div className="grid sm:grid-cols-2 gap-4">
           {about.jobs.map((item) => (
