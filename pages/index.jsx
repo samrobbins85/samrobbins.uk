@@ -41,7 +41,7 @@ export default function Home({ portfolios, home }) {
             className="flex justify-center py-2"
           >
             <div className="border-b-2 border-transparent hover:border-cyan-400 text-lg">
-              Download CV
+              View CV
             </div>
           </a>
         </div>
