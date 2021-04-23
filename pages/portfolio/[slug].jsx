@@ -30,7 +30,7 @@ export default function Portfolio({ data, renderedOutput, names }) {
       <Nav />
 
       <div className="p-4 max-w-85ch mx-auto">
-        <h1 className="text-5xl sm:text-6xl text-center font-bold pt-10">
+        <h1 className="text-5xl sm:text-6xl text-center font-bold pt-2">
           {data.title}
         </h1>
         <h2 className="text-center text-gray-600 text-lg pt-6">

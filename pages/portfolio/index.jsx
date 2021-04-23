@@ -40,7 +40,7 @@ export default function Portfolio({ portfolios, categories }) {
       </Head>
       <Nav />
       <div className="pt-6 px-2">
-        <h1 className="text-4xl font-semibold text-center">Portfolio</h1>
+        <h1 className="text-5xl font-semibold text-center">Portfolio</h1>
 
         <div>
           <div className="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">

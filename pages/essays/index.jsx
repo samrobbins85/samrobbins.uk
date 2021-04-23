@@ -19,7 +19,7 @@ export default function Portfolio({ writings }) {
       <Nav />
       <div className="pt-6 px-2">
         <header>
-          <h1 className="text-4xl font-medium text-center font-serif">
+          <h1 className="text-5xl font-medium text-center font-serif">
             Essays
           </h1>
         </header>

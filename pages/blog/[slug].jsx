@@ -22,7 +22,7 @@ export default function Blog({ dato }) {
       <Nav />
 
       <div className="max-w-85ch p-4 mx-auto">
-        <header className="py-2">
+        <header className="py-2 pb-4">
           <h1 className="text-4xl sm:text-5xl font-semibold text-center">
             {dato.title}
           </h1>
