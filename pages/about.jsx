@@ -4,7 +4,6 @@ import TimeLineItem from "@/components/home/timeline";
 import { useState } from "react";
 import { ChevronDownIcon } from "@primer/octicons-react";
 import { ExternalLinkIcon } from "@heroicons/react/outline";
-import Job from "@/components/home/job";
 import Nav from "@/components/newnav";
 import { getAbout } from "../lib/datocms";
 
@@ -54,8 +53,19 @@ export default function Home({ about }) {
       <Nav />
       <div className="py-6 px-4 max-w-85ch mx-auto">
         <h1 className="text-5xl font-semibold pb-4 text-center">About</h1>
+        <div className="flex justify-center">
+          <div className="border px-6 py-4 rounded text-lg">
+            For more details,{" "}
+            <a
+              className="border-b-2 border-cyan-400"
+              href="https://cv.samrobbins.uk"
+            >
+              check out my CV
+            </a>
+          </div>
+        </div>
 
-        <h2 className="text-3xl font-semibold">Jobs</h2>
+        {/* <h2 className="text-3xl font-semibold">Jobs</h2>
         <div className="grid sm:grid-cols-2 gap-4">
           {about.jobs.map((item) => (
             <Job
@@ -66,7 +76,7 @@ export default function Home({ about }) {
               company={item.company}
             />
           ))}
-        </div>
+        </div> */}
         <h2 className="text-3xl font-semibold py-6">Published Articles</h2>
         <div className="grid">
           {about.articles.map((x) => (

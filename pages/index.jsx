@@ -36,23 +36,16 @@ export default function Home({ portfolios, home }) {
           >
             Contact Me
           </a>
-          <a
-            href="https://cv.samrobbins.uk"
-            className="flex justify-center py-2"
-          >
-            <div className="border-b-2 border-transparent hover:border-cyan-400 text-lg">
-              View CV
-            </div>
-          </a>
-        </div>
-        <div className="flex flex-wrap gap-x-4 gap-y-2 py-2 justify-center">
-          <SocialLinks
-            github={home.github}
-            unsplash={home.unsplash}
-            npm={home.npm}
-            linkedin={home.linkedin}
-            twitter={home.twitter}
-          />
+
+          <div className="flex flex-wrap gap-x-4 gap-y-2 py-2 justify-center">
+            <SocialLinks
+              github={home.github}
+              unsplash={home.unsplash}
+              npm={home.npm}
+              linkedin={home.linkedin}
+              twitter={home.twitter}
+            />
+          </div>
         </div>
         <h2 className="text-3xl font-semibold">Projects</h2>
         <div className="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
