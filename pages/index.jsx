@@ -30,11 +30,12 @@ export default function Home({ portfolios, home }) {
         </h1>
         <h2 className="text-lg text-gray-800">{home.description}</h2>
         <div className="flex gap-x-4 pt-8 pb-4 items-start gap-y-4 flex-wrap">
-          <Link href={`mailto:${home.email}`}>
-            <a className="border px-4 py-2 rounded hover:bg-gray-50 focus:bg-gray-50 font-medium whitespace-nowrap">
-              Contact Me
-            </a>
-          </Link>
+          <a
+            href={`mailto:${home.email}`}
+            className="border px-4 py-2 rounded hover:bg-gray-50 focus:bg-gray-50 font-medium whitespace-nowrap"
+          >
+            Contact Me
+          </a>
           <a
             href="https://cv.samrobbins.uk"
             className="flex justify-center py-2"

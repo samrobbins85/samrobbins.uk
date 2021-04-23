@@ -76,6 +76,7 @@ export default function Home({ about }) {
               link={x.link}
               title={x.title}
               description={x.description}
+              key={x.title}
             />
           ))}
         </div>
