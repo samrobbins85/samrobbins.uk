@@ -9,11 +9,14 @@ import {
   CollectionIcon,
   CodeIcon,
   HomeIcon,
+  SunIcon,
+  MoonIcon,
 } from "@heroicons/react/outline";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import ActiveLink from "@/components/ActiveLink";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import { useTheme } from "next-themes";
 
 const items = [
   { name: "About", href: "/about", icon: UserIcon },
@@ -45,9 +48,9 @@ function DesktopDropdown({ data }) {
                   .find((x) => x.name === data.name)
                   .items.map((x) => x.href)
                   .find((x) => asPath.startsWith(x))
-                ? "text-gray-900 font-semibold"
-                : "text-gray-500",
-              "group bg-white rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-4 focus:ring-cyan-500"
+                ? "text-gray-900 font-semibold dark:text-white"
+                : "text-gray-500 dark:text-gray-300",
+              "group bg-white dark:bg-gray-700 rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-4 focus:ring-cyan-500 ring-offset-white dark:ring-offset-gray-700"
             )}
           >
             <span>{data.name}</span>
@@ -58,9 +61,9 @@ function DesktopDropdown({ data }) {
                     .find((x) => x.name === data.name)
                     .items.map((x) => x.href)
                     .find((x) => asPath.startsWith(x))
-                  ? "text-gray-600"
+                  ? "text-gray-600 dark:text-white"
                   : "text-gray-400",
-                "ml-2 h-5 w-5 group-hover:text-gray-500"
+                "ml-2 h-5 w-5 group-hover:text-gray-500 dark:group-hover:text-white"
               )}
               aria-hidden="true"
             />
@@ -111,8 +114,11 @@ function DesktopDropdown({ data }) {
 
 function DesktopSingle({ data }) {
   return (
-    <ActiveLink href={data.href} activeClassName="!text-black font-semibold">
-      <a className="text-base font-medium text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-4 focus-visible:ring-cyan-500 focus:ring-transparent rounded-md">
+    <ActiveLink
+      href={data.href}
+      activeClassName="!text-black dark:!text-white font-semibold"
+    >
+      <a className="text-base font-medium text-gray-500 dark:text-gray-300 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-4 focus-visible:ring-cyan-500 focus:ring-transparent rounded-md">
         {data.name}
       </a>
     </ActiveLink>
@@ -133,13 +139,22 @@ function MobileItem({ data }) {
   );
 }
 
+function switchTheme(theme, setTheme) {
+  if (theme === "light") {
+    setTheme("dark");
+  } else {
+    setTheme("light");
+  }
+}
+
 export default function Nav() {
+  const { theme, setTheme } = useTheme();
   return (
-    <Popover className="relative bg-white z-10">
+    <Popover className="relative bg-white dark:bg-gray-700 z-10">
       {({ open }) => (
         <>
-          <div className="mx-auto">
-            <div className="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-center md:space-x-10">
+          <div className="border-b-2 border-gray-100 dark:border-gray-900 py-6 md:grid md:grid-cols-12">
+            <div className="flex justify-between items-center md:justify-center md:space-x-10  md:col-start-2 md:col-end-12 ">
               <div className="flex justify-start pl-4 md:hidden -my-2">
                 <Link href="/">
                   <a>
@@ -163,6 +178,18 @@ export default function Nav() {
                   return <DesktopSingle key={x.name} data={x} />;
                 })}
               </Popover.Group>
+            </div>
+            <div className="col-start-12 hidden md:flex justify-center">
+              <button
+                type="button"
+                onClick={() => switchTheme(theme, setTheme)}
+              >
+                {theme === "light" ? (
+                  <MoonIcon className="h-6 w-6" />
+                ) : (
+                  <SunIcon className="h-6 w-6 text-yellow-300" />
+                )}
+              </button>
             </div>
           </div>
 

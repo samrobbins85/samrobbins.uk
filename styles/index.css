@@ -43,3 +43,9 @@
 .prose.font-serif code {
   @apply bg-transparent font-normal tracking-wide text-black !important;
 }
+
+html,
+body,
+#__next {
+  height: 100%;
+}

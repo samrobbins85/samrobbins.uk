@@ -5,6 +5,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   presets: [require("@samrobbins/typography")],
+  darkMode: "class",
   purge: ["./components/**/*.jsx", "./pages/**/*.jsx", "./lib/snippet.js"],
   theme: {
     extend: {
