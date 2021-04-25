@@ -83,7 +83,7 @@ export default function Portfolio({ data, renderedOutput, names }) {
         </div>
         <hr className="py-2" />
         <div
-          className="prose mx-auto"
+          className="prose dark:prose-light mx-auto"
           dangerouslySetInnerHTML={{ __html: renderedOutput }}
         />
       </div>
