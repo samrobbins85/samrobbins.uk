@@ -26,14 +26,14 @@ export default function Blog({ blogs }) {
               <div>
                 <Link href={`/blog/${item.slug}`}>
                   <a>
-                    <h2 className="font-semibold text-xl sm:text-2xl text-cyan-600">
+                    <h2 className="font-semibold text-xl sm:text-2xl text-cyan-600 dark:text-cyan-300">
                       {item.title}
                     </h2>
                   </a>
                 </Link>
                 <div className="py-1">
                   <time
-                    className="text-gray-600 text-sm uppercase"
+                    className="text-gray-600 dark:text-gray-300 text-sm uppercase"
                     dateTime={item.date}
                   >
                     {new Date(item.date).toLocaleString("en-gb", {

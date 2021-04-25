@@ -84,14 +84,14 @@ function DesktopDropdown({ data }) {
               className="absolute z-50  mt-3 transform px-2 w-screen max-w-xs sm:px-0 ml-0 left-1/2 -translate-x-1/2"
             >
               <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
-                <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+                <div className="relative grid gap-6 bg-white dark:bg-gray-800 px-5 py-6 sm:gap-8 sm:p-8">
                   {data.items.map((item) => (
                     <ActiveLink
                       key={item.name}
                       href={item.href}
-                      activeClassName="!text-black"
+                      activeClassName="!text-black dark:!text-white"
                     >
-                      <a className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50 text-gray-500">
+                      <a className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50 text-gray-500 dark:hover:bg-gray-600 dark:text-gray-200">
                         <item.icon
                           className="flex-shrink-0 h-6 w-6 text-cyan-500"
                           aria-hidden="true"
@@ -118,7 +118,7 @@ function DesktopSingle({ data }) {
       href={data.href}
       activeClassName="!text-black dark:!text-white font-semibold"
     >
-      <a className="text-base font-medium text-gray-500 dark:text-gray-300 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-4 focus-visible:ring-cyan-500 focus:ring-transparent rounded-md">
+      <a className="text-base font-medium text-gray-500 dark:text-gray-300 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-4 focus-visible:ring-cyan-500 focus:ring-transparent focus:ring-offset-transparent rounded-md">
         {data.name}
       </a>
     </ActiveLink>
