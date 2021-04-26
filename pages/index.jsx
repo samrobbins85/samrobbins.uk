@@ -24,7 +24,7 @@ export default function Home({ portfolios, home }) {
         />
       </Head>
       <Nav />
-      <div className="py-6 px-4 max-w-85ch mx-auto">
+      <main className="py-6 px-4 max-w-85ch mx-auto">
         <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8">
           {home.title}
         </h1>
@@ -59,7 +59,7 @@ export default function Home({ portfolios, home }) {
             </Link>
           </p>
         </div>
-      </div>
+      </main>
     </>
   );
 }

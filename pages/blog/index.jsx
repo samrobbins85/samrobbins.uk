@@ -17,7 +17,7 @@ export default function Blog({ blogs }) {
         <meta property="og:title" content="Blog" />
       </Head>
       <Nav />
-      <div className="max-w-85ch mx-auto px-4 py-8">
+      <main className="max-w-85ch mx-auto px-4 py-8">
         <h1 className="text-5xl font-semibold text-center">Blog</h1>
 
         <div className="grid">
@@ -48,7 +48,7 @@ export default function Blog({ blogs }) {
             </div>
           ))}
         </div>
-      </div>
+      </main>
     </>
   );
 }

@@ -39,7 +39,7 @@ export default function Portfolio({ portfolios, categories }) {
         <meta property="og:title" content="Portfolio" />
       </Head>
       <Nav />
-      <div className="pt-6 px-2">
+      <main className="pt-6 px-2">
         <h1 className="text-5xl font-semibold text-center">Portfolio</h1>
 
         <div>
@@ -58,7 +58,7 @@ export default function Portfolio({ portfolios, categories }) {
             <OtherGrid portfolios={portfolios} category={category} />
           </div>
         </div>
-      </div>
+      </main>
     </>
   );
 }

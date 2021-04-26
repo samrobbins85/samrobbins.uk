@@ -51,7 +51,7 @@ export default function Home({ about }) {
         />
       </Head>
       <Nav />
-      <div className="py-6 px-4 max-w-85ch mx-auto">
+      <main className="py-6 px-4 max-w-85ch mx-auto">
         <h1 className="text-5xl font-semibold pb-4 text-center">About</h1>
         <div className="flex justify-center">
           <div className="border px-6 py-4 rounded text-lg">
@@ -65,18 +65,6 @@ export default function Home({ about }) {
           </div>
         </div>
 
-        {/* <h2 className="text-3xl font-semibold">Jobs</h2>
-        <div className="grid sm:grid-cols-2 gap-4">
-          {about.jobs.map((item) => (
-            <Job
-              key={item.company}
-              logo={item.logo}
-              title={item.role}
-              duration={item.duration}
-              company={item.company}
-            />
-          ))}
-        </div> */}
         <h2 className="text-3xl font-semibold py-6">Published Articles</h2>
         <div className="grid">
           {about.articles.map((x) => (
@@ -110,7 +98,7 @@ export default function Home({ about }) {
             </button>
           </div>
         )}
-      </div>
+      </main>
     </>
   );
 }
