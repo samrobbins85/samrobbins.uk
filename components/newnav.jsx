@@ -147,14 +147,27 @@ function switchTheme(theme, setTheme) {
   }
 }
 
+function ThemeComponent({ theme, onClick }) {
+  return (
+    <button
+      type="button"
+      className="p-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg focus:ring dark:focus:ring-cyan-200 focus:ring-cyan-500 focus:outline-none"
+      onClick={onClick}
+    >
+      {theme === "light" && <MoonIcon className="h-6 w-6" />}
+      {theme === "dark" && <SunIcon className="h-6 w-6 text-yellow-300" />}
+    </button>
+  );
+}
+
 export default function Nav() {
   const { theme, setTheme } = useTheme();
   return (
     <Popover className="relative bg-white dark:bg-gray-700 z-10">
       {({ open }) => (
         <>
-          <div className="border-b-2 border-gray-100 dark:border-gray-900 py-6 md:grid md:grid-cols-12">
-            <div className="flex justify-between items-center md:justify-center md:space-x-10  md:col-start-2 md:col-end-12 ">
+          <div className="border-b-2 border-gray-100 dark:border-gray-900 h-16 md:grid md:grid-cols-12">
+            <div className="flex justify-between items-center md:justify-center md:space-x-10  md:col-start-2 md:col-end-12 h-full">
               <div className="flex justify-start pl-4 md:hidden -my-2">
                 <Link href="/">
                   <a>
@@ -182,17 +195,11 @@ export default function Nav() {
                 })}
               </Popover.Group>
             </div>
-            <div className="col-start-12 hidden md:flex justify-center">
-              <button
-                type="button"
+            <div className="col-start-12 hidden md:grid justify-center content-center auto-rows-min ">
+              <ThemeComponent
+                theme={theme}
                 onClick={() => switchTheme(theme, setTheme)}
-              >
-                {theme === "light" ? (
-                  <MoonIcon className="h-6 w-6" />
-                ) : (
-                  <SunIcon className="h-6 w-6 text-yellow-300" />
-                )}
-              </button>
+              />
             </div>
           </div>
 
@@ -213,17 +220,10 @@ export default function Nav() {
               <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50 dark:bg-gray-800">
                 <div className="pt-5 pb-6 px-5">
                   <div className="flex items-center justify-between">
-                    <button
-                      type="button"
-                      className="p-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg focus:ring dark:focus:ring-cyan-200 focus:ring-cyan-500 focus:outline-none"
+                    <ThemeComponent
+                      theme={theme}
                       onClick={() => switchTheme(theme, setTheme)}
-                    >
-                      {theme === "light" ? (
-                        <MoonIcon className="h-6 w-6" />
-                      ) : (
-                        <SunIcon className="h-6 w-6 text-yellow-300" />
-                      )}
-                    </button>
+                    />
                     <div className="-mr-2">
                       <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center  hover:bg-gray-100 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500">
                         <span className="sr-only">Close menu</span>
