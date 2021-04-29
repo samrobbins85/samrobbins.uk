@@ -166,7 +166,7 @@ export default function Nav() {
     <Popover className="relative bg-white dark:bg-gray-700 z-10">
       {({ open }) => (
         <>
-          <div className="border-b-2 border-gray-100 dark:border-gray-900 h-16 md:grid md:grid-cols-12">
+          <div className="border-b-2 border-gray-100 dark:border-gray-900 h-18 md:grid md:grid-cols-12">
             <div className="flex justify-between items-center md:justify-center md:space-x-10  md:col-start-2 md:col-end-12 h-full">
               <div className="flex justify-start pl-4 md:hidden -my-2">
                 <Link href="/">

@@ -33,6 +33,9 @@ module.exports = {
         sans: ["Inter var", ...defaultTheme.fontFamily.sans],
         serif: ["NewsreaderVariable", ...defaultTheme.fontFamily.serif],
       },
+      height: {
+        18: "4.5rem",
+      },
       typography: (theme) => ({
         light: {
           css: [
