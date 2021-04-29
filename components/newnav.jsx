@@ -163,7 +163,7 @@ export default function Nav() {
                   </a>
                 </Link>
               </div>
-              <div className="-mr-2 -my-2 md:hidden px-4">
+              <div className="-my-2 md:hidden px-4">
                 <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center  hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500 dark:hover:bg-gray-600">
                   <span className="sr-only">Open menu</span>
                   <MenuIcon
@@ -207,7 +207,6 @@ export default function Nav() {
             leaveTo="opacity-0 scale-95"
           >
             <Popover.Panel
-              focus
               static
               className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
             >
