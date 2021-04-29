@@ -25,7 +25,9 @@ export default function Snippet({ data, renderedOutput }) {
       <Nav />
       <div className="max-w-65ch mx-auto p-4">
         <h1 className="text-4xl font-semibold">{data.title}</h1>
-        <h2 className="text-xl text-gray-600">{data.description}</h2>
+        <h2 className="text-xl text-gray-600 dark:text-gray-300">
+          {data.description}
+        </h2>
         <p
           className="prose py-6"
           dangerouslySetInnerHTML={{ __html: renderedOutput }}

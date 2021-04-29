@@ -33,7 +33,7 @@ export default function Portfolio({ data, renderedOutput, names }) {
         <h1 className="text-5xl sm:text-6xl text-center font-bold pt-2">
           {data.title}
         </h1>
-        <h2 className="text-center text-gray-600 text-lg pt-6">
+        <h2 className="text-center text-gray-600 text-lg pt-6 dark:text-gray-300">
           {data.description}
         </h2>
         <div className="flex justify-center pt-10 gap-x-12 flex-wrap gap-y-4">

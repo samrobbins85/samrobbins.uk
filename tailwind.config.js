@@ -73,7 +73,7 @@ module.exports = {
                 color: theme("colors.white"),
               },
               "figure figcaption": {
-                color: theme("colors.gray.400"),
+                color: theme("colors.gray.200"),
               },
               code: {
                 color: theme("colors.white"),
@@ -81,6 +81,9 @@ module.exports = {
               },
               "a code": {
                 color: theme("colors.white"),
+              },
+              "pre code": {
+                backgroundColor: "transparent !important",
               },
               pre: {
                 color: theme("colors.gray.200"),

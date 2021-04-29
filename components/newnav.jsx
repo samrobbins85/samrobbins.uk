@@ -128,7 +128,7 @@ function DesktopSingle({ data }) {
 function MobileItem({ data }) {
   return (
     <ActiveLink key={data.name} href={data.href} activeClassName="!text-black">
-      <a className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50 text-gray-500">
+      <a className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50 text-gray-500 dark:text-gray-200 dark:hover:bg-gray-600">
         <data.icon
           className="flex-shrink-0 h-6 w-6 text-cyan-500"
           aria-hidden="true"
@@ -159,14 +159,17 @@ export default function Nav() {
                 <Link href="/">
                   <a>
                     <span className="sr-only">Home</span>
-                    <HomeIcon className="h-8 w-8 text-gray-500" />
+                    <HomeIcon className="h-8 w-8 text-gray-500 dark:text-gray-300" />
                   </a>
                 </Link>
               </div>
               <div className="-mr-2 -my-2 md:hidden px-4">
-                <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500">
+                <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center  hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500 dark:hover:bg-gray-600">
                   <span className="sr-only">Open menu</span>
-                  <MenuIcon className="h-6 w-6" aria-hidden="true" />
+                  <MenuIcon
+                    className="h-6 w-6 text-gray-400 hover:text-gray-500 dark:text-gray-300"
+                    aria-hidden="true"
+                  />
                 </Popover.Button>
               </div>
               <Popover.Group as="nav" className="hidden md:flex space-x-10">
@@ -208,17 +211,31 @@ export default function Nav() {
               static
               className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
             >
-              <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
-                <div className="pt-5 pb-6 px-5 flex justify-between flex-row-reverse">
-                  <div className="flex justify-end">
+              <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50 dark:bg-gray-800">
+                <div className="pt-5 pb-6 px-5">
+                  <div className="flex items-center justify-between">
+                    <button
+                      type="button"
+                      className="p-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg focus:ring dark:focus:ring-cyan-200 focus:ring-cyan-500 focus:outline-none"
+                      onClick={() => switchTheme(theme, setTheme)}
+                    >
+                      {theme === "light" ? (
+                        <MoonIcon className="h-6 w-6" />
+                      ) : (
+                        <SunIcon className="h-6 w-6 text-yellow-300" />
+                      )}
+                    </button>
                     <div className="-mr-2">
-                      <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500">
+                      <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center  hover:bg-gray-100 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500">
                         <span className="sr-only">Close menu</span>
-                        <XIcon className="h-6 w-6" aria-hidden="true" />
+                        <XIcon
+                          className="h-6 w-6 text-gray-400 hover:text-gray-500 dark:text-gray-300"
+                          aria-hidden="true"
+                        />
                       </Popover.Button>
                     </div>
                   </div>
-                  <div className="mt-2 flex-grow pr-8">
+                  <div className="mt-4 flex-grow pr-8">
                     <nav className="grid gap-y-8">
                       {items.map((item) => {
                         if ("items" in item) {
