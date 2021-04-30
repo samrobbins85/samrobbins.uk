@@ -23,6 +23,9 @@ module.exports = {
         gmail: "#EA4335",
         twitter: "#1DA1F2",
         linkedin: "#0A66C2",
+        dark: {
+          contrast: colors.coolGray[700],
+        },
       },
       maxWidth: {
         "85ch": "85ch",

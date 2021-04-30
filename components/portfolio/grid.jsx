@@ -10,7 +10,7 @@ export default function Grid({ portfolios }) {
           <div className="w-full sm:w-2/5 lg:w-1/5" key={item.title}>
             <Link href={`/portfolio/${item.slug}`}>
               <a className="group focus:outline-none">
-                <div className="border border-gray-300 rounded hover:shadow-lg group-focus:shadow-xl h-full grid grid-cols-4 sm:grid-cols-1 auto-rows-min sm:divide-x-0 divide-x divide-gray-200 sm:divide-y dark:bg-gray-700 dark:border-gray-800 dark:divide-gray-800">
+                <div className="border border-gray-300 rounded hover:shadow-lg group-focus:shadow-xl h-full grid grid-cols-4 sm:grid-cols-1 auto-rows-min sm:divide-x-0 divide-x divide-gray-200 sm:divide-y dark:bg-dark-contrast dark:border-gray-800 dark:divide-gray-800">
                   <div className="relative h-32 object-contain m-2 self-center">
                     <Image
                       src={item.coverImage.url}

@@ -54,7 +54,7 @@ export default function Home({ about }) {
       <div className="py-6 px-4 max-w-85ch mx-auto">
         <h1 className="text-5xl font-semibold pb-4 text-center">About</h1>
         <div className="flex justify-center">
-          <div className="border px-6 py-4 rounded text-lg dark:bg-gray-700 dark:border-gray-800">
+          <div className="border px-6 py-4 rounded text-lg dark:bg-dark-contrast dark:border-gray-800">
             For more details,{" "}
             <a
               className="border-b-2 border-cyan-400"
