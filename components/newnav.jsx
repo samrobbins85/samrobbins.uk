@@ -161,7 +161,7 @@ function ThemeComponent({ theme, onClick }) {
 }
 
 export default function Nav() {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   return (
     <Popover className="relative bg-white dark:bg-gray-700 z-10">
       {({ open }) => (
@@ -197,8 +197,8 @@ export default function Nav() {
             </div>
             <div className="col-start-12 hidden md:grid justify-center content-center auto-rows-min ">
               <ThemeComponent
-                theme={theme}
-                onClick={() => switchTheme(theme, setTheme)}
+                theme={resolvedTheme}
+                onClick={() => switchTheme(resolvedTheme, setTheme)}
               />
             </div>
           </div>
@@ -221,8 +221,8 @@ export default function Nav() {
                 <div className="pt-5 pb-6 px-5">
                   <div className="flex items-center justify-between">
                     <ThemeComponent
-                      theme={theme}
-                      onClick={() => switchTheme(theme, setTheme)}
+                      theme={resolvedTheme}
+                      onClick={() => switchTheme(resolvedTheme, setTheme)}
                     />
                     <div className="-mr-2">
                       <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center  hover:bg-gray-100 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500">
