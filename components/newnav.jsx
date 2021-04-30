@@ -153,6 +153,7 @@ function ThemeComponent({ theme, onClick }) {
       type="button"
       className="p-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg focus:ring dark:focus:ring-cyan-200 focus:ring-cyan-500 focus:outline-none"
       onClick={onClick}
+      aria-label="Toggle Dark Mode"
     >
       {theme === "light" && <MoonIcon className="h-6 w-6" />}
       {theme === "dark" && <SunIcon className="h-6 w-6 text-yellow-300" />}

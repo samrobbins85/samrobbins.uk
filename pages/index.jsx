@@ -29,13 +29,13 @@ export default function Home({ portfolios, home }) {
           <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8 ">
             {home.title}
           </h1>
-          <h2 className="text-lg text-gray-800 dark:text-gray-300">
+          <h2 className="text-lg text-gray-800 dark:text-gray-200">
             {home.description}
           </h2>
           <div className="flex gap-x-4 pt-8 pb-4 items-start gap-y-4 flex-wrap">
             <a
               href={`mailto:${home.email}`}
-              className="border dark:border-gray-700 px-4 py-2 rounded hover:bg-gray-50 focus:bg-gray-50 dark:hover:bg-gray-700 dark:focus:bg-gray-700 font-medium whitespace-nowrap dark:bg-gray-600"
+              className="border dark:border-gray-700 px-4 py-2 rounded hover:bg-gray-50 focus:bg-gray-50 dark:hover:bg-gray-500 dark:focus:bg-gray-500 font-medium whitespace-nowrap dark:bg-gray-700"
             >
               Contact Me
             </a>
