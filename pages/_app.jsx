@@ -3,6 +3,7 @@ import "../styles/prism-atom-dark.css";
 import Head from "next/head";
 import "@fontsource/newsreader/variable.css"; // Contains ONLY variable weights and no other axes.
 import "@fontsource/newsreader/variable-italic.css"; // Italic variant.
+import { ThemeProvider } from "next-themes";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -22,7 +23,12 @@ function MyApp({ Component, pageProps }) {
         />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       </Head>
-      <Component {...pageProps} />
+      <ThemeProvider
+        forcedTheme={Component.theme || undefined}
+        attribute="class"
+      >
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   );
 }

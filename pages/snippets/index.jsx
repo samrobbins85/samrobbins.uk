@@ -1,4 +1,4 @@
-import Categories from "@/components/snippets/categories";
+import Categories from "@/components/categories";
 import { useState } from "react";
 import { getSnippetLanguages, getSnippets } from "@/lib/graphcms";
 import Link from "next/link";
@@ -44,7 +44,7 @@ export default function Snippets({ categories, snippets }) {
       <Nav />
       <main className="max-w-85ch mx-auto p-4">
         <h1 className="text-5xl font-medium font-mono text-center">Snippets</h1>
-        <h2 className="text-xl text-gray-600 py-2 text-center">
+        <h2 className="text-xl text-gray-600 dark:text-gray-300 py-2 text-center">
           Little bits of code I use that don't deserve a blog, but are still
           useful
         </h2>
@@ -55,7 +55,7 @@ export default function Snippets({ categories, snippets }) {
             categories={categories}
           />
         </div>
-        <div className="flex flex-wrap justify-center gap-x-4 gap-y-4">
+        <div className="flex flex-wrap justify-center gap-x-4 gap-y-4 text-black">
           {snippets
             .filter((item) =>
               category !== "All" ? item.language.includes(category) : item

@@ -1,7 +1,7 @@
 import { getPortfolios, getPortfolioCategories } from "@/lib/graphcms";
 import Head from "next/head";
 import Grid from "@/components/portfolio/grid";
-import Categories from "@/components/portfolio/categories";
+import Categories from "@/components/categories";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import OtherGrid from "@/components/portfolio/otherGrid";
@@ -46,7 +46,7 @@ export default function Portfolio({ portfolios, categories }) {
           <div className="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
             <Grid portfolios={portfolios} />
           </div>
-          <div className="mx-auto container py-4">
+          <div className="mx-auto max-w-6xl py-4">
             <h2 className="text-2xl py-4 font-semibold">All Projects</h2>
             <div className="flex justify-center gap-x-4 text-lg py-6 mb-6 flex-wrap gap-y-8 ">
               <Categories

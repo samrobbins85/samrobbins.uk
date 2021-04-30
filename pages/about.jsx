@@ -21,12 +21,12 @@ function Article({ image, publisher, link, title, description }) {
       <div className="grid">
         <a
           href={link}
-          className="text-xl font-semibold text-cyan-700 hover:underline flex items-baseline gap-x-1"
+          className="text-xl font-semibold text-cyan-700 dark:text-cyan-300 hover:underline flex items-baseline gap-x-1"
         >
           {title}
           <ExternalLinkIcon className="h-4 w-4" />
         </a>
-        <span className="text-gray-600">{description}</span>
+        <span className="text-gray-600 dark:text-gray-300">{description}</span>
       </div>
     </div>
   );
@@ -54,7 +54,7 @@ export default function Home({ about }) {
       <main className="py-6 px-4 max-w-85ch mx-auto">
         <h1 className="text-5xl font-semibold pb-4 text-center">About</h1>
         <div className="flex justify-center">
-          <div className="border px-6 py-4 rounded text-lg">
+          <div className="border px-6 py-4 rounded text-lg dark:bg-dark-contrast dark:border-gray-800">
             For more details,{" "}
             <a
               className="border-b-2 border-cyan-400"
@@ -64,7 +64,6 @@ export default function Home({ about }) {
             </a>
           </div>
         </div>
-
         <h2 className="text-3xl font-semibold py-6">Published Articles</h2>
         <div className="grid">
           {about.articles.map((x) => (

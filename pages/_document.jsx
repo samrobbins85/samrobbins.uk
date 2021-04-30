@@ -11,7 +11,7 @@ export default class MyDocument extends Document {
             data-cf-beacon='{"token": "8348650db5154c01999667d263b7e6e1", "spa": true}'
           />
         </Head>
-        <body>
+        <body className="dark:bg-gray-600 dark:text-white">
           <Main />
           <NextScript />
         </body>

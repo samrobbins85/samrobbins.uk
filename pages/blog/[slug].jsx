@@ -26,7 +26,7 @@ export default function Blog({ dato }) {
           <h1 className="text-4xl sm:text-5xl font-semibold text-center">
             {dato.title}
           </h1>
-          <p className="text-center py-1 text-gray-600">
+          <p className="text-center py-1 text-gray-600 dark:text-gray-200">
             {new Date(Date.parse(dato.date)).toLocaleString("en-gb", {
               month: "short",
               year: "numeric",
@@ -34,7 +34,7 @@ export default function Blog({ dato }) {
           </p>
         </header>
         <main>
-          <article className="prose mx-auto">
+          <article className="prose dark:prose-light mx-auto">
             <StructuredText
               data={dato.structuredtext}
               customRules={[

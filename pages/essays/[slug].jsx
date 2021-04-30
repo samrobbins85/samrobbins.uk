@@ -46,7 +46,7 @@ export default function Portfolio({ data, renderedOutput }) {
 
         <main>
           <article
-            className="mx-auto prose font-serif"
+            className="mx-auto prose font-serif dark:prose-light"
             dangerouslySetInnerHTML={{ __html: renderedOutput }}
           />
         </main>

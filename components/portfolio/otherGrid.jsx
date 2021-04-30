@@ -11,11 +11,13 @@ export default function OtherGrid({ portfolios, category }) {
           <div className="w-full sm:w-2/5 lg:w-1/5" key={x.title}>
             <Link href={`/portfolio/${x.slug}`}>
               <a className="group focus:outline-none">
-                <div className="px-2 py-2 border shadow-sm h-full rounded group-focus:shadow-xl hover:shadow-xl">
+                <div className="px-2 py-2 border shadow-sm h-full rounded group-focus:shadow-xl hover:shadow-xl dark:bg-gray-700 dark:border-gray-800">
                   <div className="flex">
                     <span className="font-medium w-min-sm">{x.title}</span>
                   </div>
-                  <span className="text-gray-700">{x.description}</span>
+                  <span className="text-gray-700 dark:text-gray-300">
+                    {x.description}
+                  </span>
                 </div>
               </a>
             </Link>

@@ -6,7 +6,11 @@ import Unsplash from "@/svg/unsplash";
 
 function SocialLink({ link, icon, className, name }) {
   return (
-    <a href={link} className={`text-gray-600 ${className}`} aria-label={name}>
+    <a
+      href={link}
+      className={`text-gray-600 dark:text-gray-300 ${className}`}
+      aria-label={name}
+    >
       {icon}
     </a>
   );
@@ -28,7 +32,7 @@ export default function SocialLinks({
           icon={
             <MarkGithubIcon aria-hidden="true" size={16} className="h-6 w-6" />
           }
-          className="hover:text-black focus:text-black"
+          className="hover:!text-black focus:!text-black"
         />
       )}
 
@@ -37,7 +41,7 @@ export default function SocialLinks({
           name="npm"
           link={npm}
           icon={<Npm aria-hidden="true" className="h-6" />}
-          className="hover:text-npm focus:text-npm"
+          className="hover:!text-npm focus:!text-npm"
         />
       )}
       {linkedin && (
@@ -45,7 +49,7 @@ export default function SocialLinks({
           name="LinkedIn"
           link={linkedin}
           icon={<Linkedin aria-hidden="true" className="h-6" />}
-          className="hover:text-linkedin focus:text-linkedin"
+          className="hover:!text-linkedin focus:!text-linkedin"
         />
       )}
       {twitter && (
@@ -53,7 +57,7 @@ export default function SocialLinks({
           name="Twitter"
           link={twitter}
           icon={<Twitter aria-hidden="true" className="h-6" />}
-          className="hover:text-twitter focus:text-twitter"
+          className="hover:!text-twitter focus:!text-twitter"
         />
       )}
       {unsplash && (
@@ -61,7 +65,7 @@ export default function SocialLinks({
           name="Unsplash"
           link={unsplash}
           icon={<Unsplash aria-hidden="true" className="h-6 w-6" />}
-          className="hover:text-black focus:text-black"
+          className="hover:!text-black focus:!text-black"
         />
       )}
     </>
