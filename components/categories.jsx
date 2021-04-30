@@ -35,6 +35,7 @@ export default function Categories({ setCategory, category, categories }) {
           item={item}
           count={categories[item]}
           category={category}
+          key={item}
         />
       ))}
     </>

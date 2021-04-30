@@ -89,7 +89,7 @@ function DesktopDropdown({ data }) {
                     <ActiveLink
                       key={item.name}
                       href={item.href}
-                      activeClassName="!text-black dark:!text-white"
+                      activeClassName="!text-black dark:!text-white font-semibold"
                     >
                       <a className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50 text-gray-500 dark:hover:bg-gray-600 dark:text-gray-200">
                         <item.icon
@@ -97,7 +97,7 @@ function DesktopDropdown({ data }) {
                           aria-hidden="true"
                         />
                         <div className="ml-4">
-                          <p className="text-base font-medium">{item.name}</p>
+                          <p className="text-base">{item.name}</p>
                         </div>
                       </a>
                     </ActiveLink>
