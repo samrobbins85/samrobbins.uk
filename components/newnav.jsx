@@ -50,7 +50,7 @@ function DesktopDropdown({ data }) {
                   .find((x) => asPath.startsWith(x))
                 ? "text-gray-900 font-semibold dark:text-white"
                 : "text-gray-500 dark:text-gray-300",
-              "group bg-white dark:bg-gray-700 rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-4 focus:ring-cyan-500 ring-offset-white dark:ring-offset-gray-700"
+              "group bg-white dark:bg-nord-1 rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-4 focus:ring-cyan-500 ring-offset-white dark:ring-offset-gray-700"
             )}
           >
             <span>{data.name}</span>
@@ -84,14 +84,14 @@ function DesktopDropdown({ data }) {
               className="absolute z-50  mt-3 transform px-2 w-screen max-w-xs sm:px-0 ml-0 left-1/2 -translate-x-1/2"
             >
               <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
-                <div className="relative grid gap-6 bg-white dark:bg-gray-800 px-5 py-6 sm:gap-8 sm:p-8">
+                <div className="relative grid gap-6 bg-white dark:bg-nord-0 px-5 py-6 sm:gap-8 sm:p-8">
                   {data.items.map((item) => (
                     <ActiveLink
                       key={item.name}
                       href={item.href}
                       activeClassName="!text-black dark:!text-white font-semibold"
                     >
-                      <a className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50 text-gray-500 dark:hover:bg-gray-600 dark:text-gray-200">
+                      <a className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50 text-gray-500 dark:hover:bg-nord-2 dark:text-gray-200">
                         <item.icon
                           className="flex-shrink-0 h-6 w-6 text-cyan-500"
                           aria-hidden="true"
@@ -132,7 +132,7 @@ function MobileItem({ data }) {
       href={data.href}
       activeClassName="text-black dark:text-white"
     >
-      <a className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50 text-gray-500 dark:text-gray-200 dark:hover:bg-gray-600">
+      <a className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50 text-gray-500 dark:text-gray-200 dark:hover:bg-nord-2">
         <data.icon
           className="flex-shrink-0 h-6 w-6 text-cyan-500"
           aria-hidden="true"
@@ -155,7 +155,7 @@ function ThemeComponent({ theme, onClick }) {
   return (
     <button
       type="button"
-      className="p-2 hover:bg-gray-100 dark:hover:bg-gray-600 rounded-lg focus:ring dark:focus:ring-cyan-200 focus:ring-cyan-500 focus:outline-none"
+      className="p-2 hover:bg-gray-100 dark:hover:bg-nord-2 rounded-lg focus:ring dark:focus:ring-cyan-200 focus:ring-cyan-500 focus:outline-none"
       onClick={onClick}
       aria-label="Toggle Dark Mode"
     >
@@ -168,10 +168,10 @@ function ThemeComponent({ theme, onClick }) {
 export default function Nav() {
   const { resolvedTheme, setTheme } = useTheme();
   return (
-    <Popover className="relative bg-white dark:bg-gray-700 z-10">
+    <Popover className="relative bg-white dark:bg-nord-1 z-10">
       {({ open }) => (
         <>
-          <div className="border-b-2 border-gray-100 dark:border-gray-900 h-18 md:grid md:grid-cols-12">
+          <div className="border-b-2 border-gray-100 dark:border-nord-0 h-18 md:grid md:grid-cols-12">
             <div className="flex justify-between items-center md:justify-center md:space-x-10  md:col-start-2 md:col-end-12 h-full">
               <div className="flex justify-start pl-4 md:hidden -my-2">
                 <Link href="/">
@@ -222,7 +222,7 @@ export default function Nav() {
               static
               className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
             >
-              <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50 dark:bg-gray-800">
+              <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50 dark:bg-nord-0">
                 <div className="pt-5 pb-6 px-5">
                   <div className="flex items-center justify-between">
                     <ThemeComponent
@@ -230,7 +230,7 @@ export default function Nav() {
                       onClick={() => switchTheme(resolvedTheme, setTheme)}
                     />
                     <div className="-mr-2">
-                      <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center  hover:bg-gray-100 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500">
+                      <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center  hover:bg-gray-100 dark:hover:bg-nord-2 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500">
                         <span className="sr-only">Close menu</span>
                         <XIcon
                           className="h-6 w-6 text-gray-400 hover:text-gray-500 dark:text-gray-300"

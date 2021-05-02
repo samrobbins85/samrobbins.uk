@@ -8,7 +8,7 @@ function SocialLink({ link, icon, className, name }) {
   return (
     <a
       href={link}
-      className={`text-gray-600 dark:text-gray-300 ${className}`}
+      className={`text-gray-600 dark:text-nord-4 ${className}`}
       aria-label={name}
     >
       {icon}

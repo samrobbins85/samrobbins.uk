@@ -24,7 +24,16 @@ module.exports = {
         twitter: "#1DA1F2",
         linkedin: "#0A66C2",
         dark: {
-          contrast: colors.coolGray[700],
+          contrast: "#2e3440",
+        },
+        nord: {
+          0: "#2e3440",
+          1: "#3b4252",
+          2: "#434c5e",
+          3: "#4c566a",
+          4: "#d8dee9",
+          5: "#e5e9f0",
+          6: "#eceff4",
         },
       },
       maxWidth: {
