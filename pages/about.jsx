@@ -55,19 +55,19 @@ export default function Home({ about }) {
         <h1 className="text-5xl font-semibold pb-4 text-center">About</h1>
         <div className="flex justify-center">
           <div className="border px-6 py-4 rounded text-lg bg-light-contrast dark:bg-dark-contrast dark:border-gray-800 text-center">
-            For more details, check out{" "}
+            For more details, check out my{" "}
             <a
               className="border-b-2 border-cyan-400"
               href="https://cv.samrobbins.uk"
             >
-              my CV
+              CV
             </a>{" "}
-            or my{" "}
+            or{" "}
             <a
               className="border-b-2 border-cyan-400"
               href="https://www.polywork.com/samrobbins"
             >
-              polywork
+              Polywork
             </a>
           </div>
         </div>
