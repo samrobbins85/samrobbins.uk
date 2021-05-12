@@ -9,7 +9,7 @@ function Description({ title, date, description }) {
           <h3 className="font-medium ">
             <StructuredText data={title} />
           </h3>
-          <p className="pl-4 text-sm tracking-wide text-gray-500 dark:text-white text-right">
+          <p className="pl-4 text-sm tracking-wide text-nord-2 dark:text-white text-right">
             {new Date(date).toLocaleString("en-gb", {
               month: "long",
               year: "numeric",
