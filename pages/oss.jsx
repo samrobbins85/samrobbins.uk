@@ -1,15 +1,9 @@
 import Head from "next/head";
-import DatoImage from "@/components/datoimage";
-import TimeLineItem from "@/components/home/timeline";
-import { useState } from "react";
-import { ChevronDownIcon } from "@primer/octicons-react";
-import { ExternalLinkIcon } from "@heroicons/react/outline";
 import Nav from "@/components/newnav";
-import { getAbout } from "../lib/datocms";
+import getSearch from "@/lib/githubapi";
 
 export default function Home({ prs }) {
   console.log(prs);
-  const [expand, setExpand] = useState(false);
   return (
     <>
       <Head>
@@ -29,25 +23,44 @@ export default function Home({ prs }) {
       <Nav />
       <main className="py-6 px-4 max-w-85ch mx-auto">
         <h1 className="text-5xl font-semibold pb-4 text-center">Open Source</h1>
-        {prs.items.map((x) => (
-          <p>{x.title}</p>
-        ))}
+        <div className="grid gap-y-2">
+          {prs.map((x) => (
+            <div className="grid bg-gray-100 py-2 px-2">
+              <h2 className="font-semibold">{x.title}</h2>
+            </div>
+          ))}
+        </div>
       </main>
     </>
   );
 }
 
 export async function getStaticProps() {
-  const req = await fetch(
-    "https://api.github.com/search/issues?q=is:pr author:samrobbins85 archived:false is:merged -org:samrobbins85 ",
-    {
-      headers: {
-        // eslint-disable-next-line no-undef
-        Authorization: `token ${process.env.GITHUB_TOKEN}`,
-      },
-    }
-  );
-  const prs = await req.json();
+  // const req = await fetch(
+  //   "https://api.github.com/search/issues?q=is:pr author:samrobbins85 archived:false is:merged -org:samrobbins85&per_page=100",
+  //   {
+  //     headers: {
+  //       // eslint-disable-next-line no-undef
+  //       Authorization: `token ${process.env.GITHUB_TOKEN}`,
+  //     },
+  //   }
+  // );
+
+  // const prs = await req.json();
+
+  // for (let i = 0; i < prs.items.length; i++) {
+  //   const name = await fetch(prs.items[i].repository_url, {
+  //     headers: {
+  //       // eslint-disable-next-line no-undef
+  //       Authorization: `token ${process.env.GITHUB_TOKEN}`,
+  //     },
+  //   });
+  //   const out = await name.json();
+  //   console.log(out);
+  // }
+
+  let prs = await getSearch();
+  prs = prs.map((x) => x.node);
   return {
     props: { prs },
   };
