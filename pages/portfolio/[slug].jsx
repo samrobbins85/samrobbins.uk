@@ -6,9 +6,10 @@ import WebsiteButton from "@/components/portfolio/websiteButton";
 import NpmButton from "@/components/portfolio/npmButton";
 import GitHubButton from "@/components/portfolio/githubButton";
 import Coder from "@/components/portfolio/coder";
-import renderToString from "next-mdx-remote/render-to-string";
 import MyTable from "@/components/mdx/table";
 import Nav from "@/components/newnav";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote";
 
 const components = {
   table: MyTable,
@@ -82,10 +83,9 @@ export default function Portfolio({ data, renderedOutput, names }) {
           </div>
         </div>
         <hr className="py-2" />
-        <div
-          className="prose dark:prose-light mx-auto"
-          dangerouslySetInnerHTML={{ __html: renderedOutput }}
-        />
+        <div className="prose dark:prose-light mx-auto">
+          <MDXRemote {...renderedOutput} components={components} />
+        </div>
       </div>
     </>
   );
@@ -93,7 +93,7 @@ export default function Portfolio({ data, renderedOutput, names }) {
 
 export async function getStaticProps({ params }) {
   const data = await getPortfolio(params.slug);
-  const { renderedOutput } = await renderToString(data.markdown, {
+  const renderedOutput = await serialize(data.markdown, {
     components,
     mdxOptions: {
       rehypePlugins: [rehypePrism],

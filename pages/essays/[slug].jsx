@@ -3,11 +3,12 @@ import Head from "next/head";
 import math from "@/lib/remark-math";
 import rehypePrism from "@mapbox/rehype-prism";
 import footnotes from "remark-numbered-footnotes";
-import renderToString from "next-mdx-remote/render-to-string";
 import MyTable from "@/components/mdx/table";
 import MyImg from "@/components/mdx/image";
 import { useEffect } from "react";
 import Nav from "@/components/newnav";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote";
 
 const components = {
   table: MyTable,
@@ -45,10 +46,9 @@ export default function Portfolio({ data, renderedOutput }) {
         </header>
 
         <main>
-          <article
-            className="mx-auto prose font-serif dark:prose-light"
-            dangerouslySetInnerHTML={{ __html: renderedOutput }}
-          />
+          <article className="mx-auto prose font-serif dark:prose-light">
+            <MDXRemote {...renderedOutput} components={components} />
+          </article>
         </main>
       </div>
     </>
@@ -57,7 +57,7 @@ export default function Portfolio({ data, renderedOutput }) {
 
 export async function getStaticProps({ params }) {
   const data = await getWriting(params.slug);
-  const { renderedOutput } = await renderToString(data.markdown, {
+  const renderedOutput = await serialize(data.markdown, {
     components,
     mdxOptions: {
       remarkPlugins: [footnotes, math],
