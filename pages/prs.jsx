@@ -47,7 +47,7 @@ export default function Home({ prs }) {
                     {pr.repository.owner.login}/{pr.repository.name}
                   </a>
                 </div>
-                <p className="text-nord-3">
+                <p className="text-nord-3 dark:text-nord-4">
                   {new Date(pr.mergedAt).toLocaleString("en-gb", {
                     day: "numeric",
                     month: "long",
@@ -64,29 +64,6 @@ export default function Home({ prs }) {
 }
 
 export async function getStaticProps() {
-  // const req = await fetch(
-  //   "https://api.github.com/search/issues?q=is:pr author:samrobbins85 archived:false is:merged -org:samrobbins85&per_page=100",
-  //   {
-  //     headers: {
-  //       // eslint-disable-next-line no-undef
-  //       Authorization: `token ${process.env.GITHUB_TOKEN}`,
-  //     },
-  //   }
-  // );
-
-  // const prs = await req.json();
-
-  // for (let i = 0; i < prs.items.length; i++) {
-  //   const name = await fetch(prs.items[i].repository_url, {
-  //     headers: {
-  //       // eslint-disable-next-line no-undef
-  //       Authorization: `token ${process.env.GITHUB_TOKEN}`,
-  //     },
-  //   });
-  //   const out = await name.json();
-  //   console.log(out);
-  // }
-
   let prs = await getSearch();
   prs = prs.map((x) => x.node);
   return {
