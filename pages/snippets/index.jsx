@@ -9,7 +9,7 @@ import Nav from "@/components/newnav";
 function Card({ title, slug, language, category }) {
   return (
     <Link href={`/snippets/${slug}`}>
-      <a className="w-full sm:w-1/2 lg:w-1/4 focus:ring-gray-800 focus:ring-2 focus:ring-offset-2 focus:outline-none rounded bg-gray-900">
+      <a className="w-full sm:w-1/2 lg:w-1/4 focus:ring-gray-800 focus:ring-2 focus:ring-offset-2 focus:outline-none rounded bg-nord-0">
         <div className="h-full py-2 ">
           {category === "All" && (
             <div

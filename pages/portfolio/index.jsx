@@ -40,7 +40,7 @@ export default function Portfolio({ portfolios, categories }) {
       </Head>
       <Nav />
       <main className="pt-6 px-2">
-        <h1 className="text-5xl font-semibold text-center text-nord-10">
+        <h1 className="text-5xl font-semibold text-center text-nord-10 dark:text-nord-8">
           Portfolio
         </h1>
 
@@ -49,7 +49,7 @@ export default function Portfolio({ portfolios, categories }) {
             <Grid portfolios={portfolios} />
           </div>
           <div className="mx-auto max-w-6xl py-4">
-            <h2 className="text-2xl py-4 font-semibold text-nord-10">
+            <h2 className="text-2xl py-4 font-semibold text-nord-10 dark:text-nord-8">
               All Projects
             </h2>
             <div className="flex justify-center gap-x-4 text-lg py-6 mb-6 flex-wrap gap-y-8 ">

@@ -26,7 +26,7 @@ export default function Home({ portfolios, home }) {
       <Nav />
       <div>
         <div className="py-6 px-4 max-w-85ch mx-auto ">
-          <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8 text-nord-10">
+          <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8 text-nord-10 dark:text-nord-8">
             {home.title}
           </h1>
           <h2 className="text-lg text-gray-800 dark:text-gray-200">
@@ -49,7 +49,9 @@ export default function Home({ portfolios, home }) {
               />
             </div>
           </div>
-          <h2 className="text-3xl font-semibold text-nord-10">Projects</h2>
+          <h2 className="text-3xl font-semibold text-nord-10 dark:text-nord-8">
+            Projects
+          </h2>
           <div className="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
             <Grid portfolios={portfolios} />
           </div>
