@@ -7,11 +7,12 @@ import {
   AcademicCapIcon,
   UserIcon,
   CollectionIcon,
-  CodeIcon,
   HomeIcon,
   SunIcon,
   MoonIcon,
+  ScissorsIcon,
 } from "@heroicons/react/outline";
+import { GitPullRequestIcon } from "@primer/octicons-react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import ActiveLink from "@/components/ActiveLink";
 import { useRouter } from "next/router";
@@ -27,8 +28,14 @@ const items = [
       { name: "Essays", href: "/essays", icon: AcademicCapIcon },
     ],
   },
-  { name: "Portfolio", href: "/portfolio", icon: CollectionIcon },
-  { name: "Snippets", href: "/snippets", icon: CodeIcon },
+  {
+    name: "Code",
+    items: [
+      { name: "Portfolio", href: "/portfolio", icon: CollectionIcon },
+      { name: "Snippets", href: "/snippets", icon: ScissorsIcon },
+      { name: "Pull Requests", href: "/prs", icon: GitPullRequestIcon },
+    ],
+  },
 ];
 
 function classNames(...classes) {
