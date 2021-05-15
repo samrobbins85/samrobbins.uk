@@ -137,7 +137,7 @@ function MobileItem({ data }) {
     <ActiveLink
       key={data.name}
       href={data.href}
-      activeClassName="text-black dark:text-white"
+      activeClassName="!text-black dark:!text-white"
     >
       <a className="-m-3 p-3 flex items-center rounded-md hover:bg-nord-4 text-gray-500 dark:text-gray-200 dark:hover:bg-nord-2">
         <data.icon
