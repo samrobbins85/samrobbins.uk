@@ -26,12 +26,15 @@ export default function Home({ prs }) {
         </h1>
         <div className="grid gap-y-4">
           {prs.map((pr) => (
-            <div className="flex gap-4 bg-nord-5 border border-nord-4 dark:bg-nord-0 dark:border-nord-2  py-4 px-4">
-              <img
-                src={pr.repository.owner.avatarUrl}
-                alt={pr.repository.owner.name}
-                className="h-12 w-12"
-              />
+            <div className="flex gap-4 bg-nord-5 border border-nord-4 dark:bg-nord-0 dark:border-nord-2 p-4">
+              <div className="h-12 w-12">
+                <img
+                  src={pr.repository.owner.avatarUrl}
+                  alt={pr.repository.owner.name}
+                  className="object-contain"
+                  loading="lazy"
+                />
+              </div>
               <div className="flex justify-between flex-grow flex-wrap gap-x-2">
                 <div>
                   <a
