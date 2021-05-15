@@ -35,7 +35,7 @@ export default function Home({ prs }) {
                   loading="lazy"
                 />
               </div>
-              <div className="flex justify-between flex-grow flex-wrap gap-x-2">
+              <div className="grid sm:flex justify-between flex-grow flex-wrap gap-x-2">
                 <div>
                   <a
                     href={pr.permalink}
@@ -50,7 +50,9 @@ export default function Home({ prs }) {
                     {pr.repository.owner.login}/{pr.repository.name}
                   </a>
                 </div>
-                <p className="text-nord-3 dark:text-nord-4">{pr.mergedAt}</p>
+                <p className="text-nord-3 dark:text-nord-4 italic">
+                  {pr.mergedAt}
+                </p>
               </div>
             </div>
           ))}
