@@ -50,13 +50,7 @@ export default function Home({ prs }) {
                     {pr.repository.owner.login}/{pr.repository.name}
                   </a>
                 </div>
-                <p className="text-nord-3 dark:text-nord-4">
-                  {new Date(pr.mergedAt).toLocaleString("en-gb", {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
-                  })}
-                </p>
+                <p className="text-nord-3 dark:text-nord-4">{pr.mergedAt}</p>
               </div>
             </div>
           ))}
@@ -69,6 +63,14 @@ export default function Home({ prs }) {
 export async function getStaticProps() {
   let prs = await getSearch();
   prs = prs.map((x) => x.node);
+  prs.forEach((_, index) => {
+    const date = new Date(prs[index].mergedAt).toLocaleString("en-gb", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+    prs[index].mergedAt = date;
+  });
   return {
     props: { prs },
   };
