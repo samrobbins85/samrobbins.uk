@@ -35,7 +35,7 @@ export default function Home({ portfolios, home }) {
           <div className="flex gap-x-4 pt-8 pb-4 items-start gap-y-4 flex-wrap">
             <a
               href={`mailto:${home.email}`}
-              className="border bg-nord-4 dark:border-gray-700 px-4 py-2 rounded hover:bg-nord-5 focus:bg-gray-50 dark:hover:bg-nord-2 dark:focus:bg-nord-2 font-medium whitespace-nowrap dark:bg-dark-contrast"
+              className="border border-nord-4 bg-nord-4 dark:border-gray-700 px-4 py-2 rounded hover:bg-nord-5 focus:bg-gray-50 dark:hover:bg-nord-2 dark:focus:bg-nord-2 font-medium whitespace-nowrap dark:bg-dark-contrast"
             >
               Contact Me
             </a>
