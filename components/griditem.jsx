@@ -5,9 +5,9 @@ export default function GridItem({ item }) {
   return (
     <Link href={`/portfolio/${item.slug}`}>
       <a className="group focus:outline-none">
-        <div className="border border-gray-300 rounded hover:shadow-lg group-focus:shadow-xl h-full grid grid-cols-4 sm:grid-cols-1 auto-rows-max sm:divide-x-0 divide-x divide-gray-300 sm:divide-y bg-nord-4 dark:bg-dark-contrast dark:border-gray-800 dark:divide-gray-800">
-          <div className="p-2 bg-nord-5 dark:bg-nord-2">
-            <div className="relative h-32 object-contain self-center">
+        <div className="border border-gray-300 rounded hover:shadow-lg group-focus:shadow-xl h-full grid grid-cols-5 sm:grid-cols-1 auto-rows-max sm:divide-x-0 divide-x divide-gray-300 sm:divide-y bg-nord-4 dark:bg-dark-contrast dark:border-gray-800 dark:divide-gray-800">
+          <div className="p-2 bg-nord-5 dark:bg-nord-2 col-span-2 grid px-4 py-4">
+            <div className="relative sm:h-32 h-24 object-contain self-center">
               <Image
                 src={item.coverImage.url}
                 layout="fill"
