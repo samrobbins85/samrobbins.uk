@@ -41,7 +41,7 @@
 }
 
 .prose.font-serif code {
-  @apply bg-transparent font-normal tracking-wide text-black !important;
+  @apply bg-transparent font-normal tracking-wide text-black dark:text-white !important;
 }
 
 html,

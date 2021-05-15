@@ -26,7 +26,7 @@ export default function Home({ portfolios, home }) {
       <Nav />
       <div>
         <div className="py-6 px-4 max-w-85ch mx-auto ">
-          <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8 ">
+          <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8 text-nord-10 dark:text-nord-8">
             {home.title}
           </h1>
           <h2 className="text-lg text-gray-800 dark:text-gray-200">
@@ -35,7 +35,7 @@ export default function Home({ portfolios, home }) {
           <div className="flex gap-x-4 pt-8 pb-4 items-start gap-y-4 flex-wrap">
             <a
               href={`mailto:${home.email}`}
-              className="border dark:border-gray-700 px-4 py-2 rounded hover:bg-gray-50 focus:bg-gray-50 dark:hover:bg-nord-2 dark:focus:bg-nord-2 font-medium whitespace-nowrap dark:bg-dark-contrast"
+              className="border border-nord-4 bg-nord-4 dark:border-gray-700 px-4 py-2 rounded hover:bg-nord-5 focus:bg-gray-50 dark:hover:bg-nord-2 dark:focus:bg-nord-2 font-medium whitespace-nowrap dark:bg-dark-contrast"
             >
               Contact Me
             </a>
@@ -49,7 +49,9 @@ export default function Home({ portfolios, home }) {
               />
             </div>
           </div>
-          <h2 className="text-3xl font-semibold">Projects</h2>
+          <h2 className="text-3xl font-semibold text-nord-10 dark:text-nord-8">
+            Projects
+          </h2>
           <div className="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
             <Grid portfolios={portfolios} />
           </div>

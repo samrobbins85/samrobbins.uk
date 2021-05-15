@@ -85,10 +85,10 @@ module.exports = {
                 color: theme("colors.white"),
               },
               "ol > li::before": {
-                color: theme("colors.gray.400"),
+                color: "#d8dee9",
               },
               "ul > li::before": {
-                backgroundColor: theme("colors.gray.600"),
+                backgroundColor: "#d8dee9",
               },
               hr: {
                 borderColor: theme("colors.gray.200"),
@@ -114,7 +114,7 @@ module.exports = {
               },
               code: {
                 color: theme("colors.white"),
-                backgroundColor: theme("colors.gray.700"),
+                backgroundColor: "#2e3440",
               },
               "a code": {
                 color: theme("colors.white"),

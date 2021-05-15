@@ -10,7 +10,7 @@ export default function TimelineIcon({ type }) {
       return (
         <Pass
           aria-hidden="true"
-          className="text-gray-700 dark:text-gray-200 h-6 w-6"
+          className="text-nord-2 dark:text-nord-4 h-6 w-6"
         />
       );
     case "Education":
@@ -18,30 +18,15 @@ export default function TimelineIcon({ type }) {
         <MortarBoardIcon
           aria-hidden="true"
           size={16}
-          className="text-purple-700 dark:text-purple-300 h-6 w-6"
+          className="text-nord-15 h-6 w-6"
         />
       );
     case "Hackathon":
-      return (
-        <CodeIcon
-          aria-hidden="true"
-          className="text-blue-700 dark:text-blue-200 h-6 w-6"
-        />
-      );
+      return <CodeIcon aria-hidden="true" className="text-nord-10 h-6 w-6" />;
     case "Award":
-      return (
-        <Trophy
-          aria-hidden="true"
-          className="text-yellow-600 dark:text-yellow-300 h-6 w-6"
-        />
-      );
+      return <Trophy aria-hidden="true" className="text-nord-13 h-6 w-6" />;
     case "Speaking":
-      return (
-        <Podium
-          aria-hidden="true"
-          className="text-red-500 dark:text-red-400 h-6 w-6"
-        />
-      );
+      return <Podium aria-hidden="true" className="text-nord-11 h-6 w-6" />;
     default:
       return (
         <CodeIcon
