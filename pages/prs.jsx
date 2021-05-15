@@ -27,11 +27,11 @@ export default function Home({ prs }) {
         <div className="grid gap-y-4">
           {prs.map((pr) => (
             <div className="flex gap-4 bg-nord-5 border border-nord-4 dark:bg-nord-0 dark:border-nord-2 p-4">
-              <div className="h-12 w-12">
+              <div className="h-12 w-12 flex-shrink-0">
                 <img
                   src={pr.repository.owner.avatarUrl}
                   alt={pr.repository.owner.name}
-                  className="object-contain"
+                  className="h-12 w-12"
                   loading="lazy"
                 />
               </div>
@@ -41,10 +41,10 @@ export default function Home({ prs }) {
                     href={pr.permalink}
                     className="text-black hover:text-blue-600 dark:text-nord-6 dark:hover:text-blue-400"
                   >
-                    <h2 className="font-semibold">{pr.title}</h2>
+                    <h2 className="font-semibold break-words">{pr.title}</h2>
                   </a>
                   <a
-                    className="text-nord-3 hover:text-blue-600 dark:text-nord-4 dark:hover:text-blue-400"
+                    className="text-nord-3 hover:text-blue-600 dark:text-nord-4 dark:hover:text-blue-400 break-all"
                     href={pr.repository.url}
                   >
                     {pr.repository.owner.login}/{pr.repository.name}
