@@ -1,8 +1,6 @@
 import "../styles/index.css";
 import "../styles/prism-atom-dark.css";
 import Head from "next/head";
-import "@fontsource/newsreader/variable.css";
-import "@fontsource/newsreader/variable-italic.css";
 import { ThemeProvider } from "next-themes";
 
 function MyApp({ Component, pageProps }) {

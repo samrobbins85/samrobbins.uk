@@ -65,7 +65,7 @@ module.exports = {
       fontFamily: {
         latex: ["Latin Modern"],
         sans: ["Inter var", ...defaultTheme.fontFamily.sans],
-        serif: ["NewsreaderVariable", ...defaultTheme.fontFamily.serif],
+        serif: ["Newsreader", ...defaultTheme.fontFamily.serif],
       },
       height: {
         18: "4.5rem",
