@@ -32,11 +32,8 @@
 }
 
 .prose.font-serif img {
-  @apply shadow-none;
-  border: 1px solid;
-  box-shadow: 5px 5px;
+  @apply shadow-none bg-white;
   margin: 10px auto;
-  color: black;
 }
 
 .prose.font-serif h2,
