@@ -2,14 +2,16 @@ import { getPortfolio, getAllPortfoliosWithSlug } from "@/lib/graphcms";
 import Image from "next/image";
 import Head from "next/head";
 import rehypePrism from "@mapbox/rehype-prism";
-import WebsiteButton from "@/components/portfolio/websiteButton";
-import NpmButton from "@/components/portfolio/npmButton";
 import GitHubButton from "@/components/portfolio/githubButton";
 import Coder from "@/components/portfolio/coder";
 import MyTable from "@/components/mdx/table";
 import Nav from "@/components/newnav";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
+import {
+  NpmButton,
+  WebsiteButton,
+} from "@/components/portfolio/universal_button";
 
 const components = {
   table: MyTable,
@@ -67,7 +69,7 @@ export default function Portfolio({ data, renderedOutput, names }) {
           <div className="flex justify-center gap-x-8 flex-wrap gap-y-4 py-4">
             {data.technologies.map((item) => (
               <a
-                className="relative h-20 w-40"
+                className="relative h-18 w-24"
                 href={item.link}
                 key={item.name}
               >
