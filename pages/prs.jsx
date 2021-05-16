@@ -21,7 +21,7 @@ export default function Home({ prs }) {
       </Head>
       <Nav />
       <main className="py-6 px-4 max-w-85ch mx-auto">
-        <h1 className="text-5xl font-semibold pb-6 text-center">
+        <h1 className="text-5xl font-semibold pb-6 text-center text-nord-10 dark:text-nord-8">
           Pull Requests
         </h1>
         <div className="grid gap-y-4">
