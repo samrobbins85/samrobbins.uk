@@ -30,7 +30,7 @@ export default function Snippet({ data, serialized }) {
         <h2 className="text-xl text-gray-600 dark:text-gray-300">
           {data.description}
         </h2>
-        <p className="prose py-6">
+        <p className="prose py-6 dark:prose-light">
           <MDXRemote {...serialized} components={components} />
         </p>
       </div>
