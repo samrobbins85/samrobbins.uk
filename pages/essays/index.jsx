@@ -15,6 +15,13 @@ export default function Portfolio({ writings }) {
           )}.png?theme=dark&md=1&fontSize=100px`}
         />
         <meta property="og:title" content="Essays" />
+        <link
+          rel="preload"
+          href="/fonts/newsreader-normal.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
       </Head>
       <Nav />
       <div className="pt-6 px-2">
