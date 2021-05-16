@@ -77,6 +77,10 @@ module.exports = {
               pre: {
                 backgroundColor: "#2e3440",
               },
+              color: "#2e3440",
+              "figure figcaption": {
+                color: "#2e3440",
+              },
             },
           ],
         },
