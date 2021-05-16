@@ -71,6 +71,15 @@ module.exports = {
         18: "4.5rem",
       },
       typography: (theme) => ({
+        DEFAULT: {
+          css: [
+            {
+              pre: {
+                backgroundColor: "#2e3440",
+              },
+            },
+          ],
+        },
         light: {
           css: [
             {

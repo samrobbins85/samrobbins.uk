@@ -26,7 +26,10 @@ export default function Home({ prs }) {
         </h1>
         <div className="grid gap-y-4">
           {prs.map((pr) => (
-            <div className="flex gap-4 bg-nord-5 border border-nord-4 dark:bg-nord-0 dark:border-nord-2 p-4">
+            <div
+              className="flex gap-4 bg-nord-5 border border-nord-4 dark:bg-nord-0 dark:border-nord-2 p-4"
+              key={pr.title}
+            >
               <div className="h-12 w-12 flex-shrink-0">
                 <img
                   src={pr.repository.owner.avatarUrl}
