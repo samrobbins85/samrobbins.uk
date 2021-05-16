@@ -1,11 +1,14 @@
 import { getBlog, getAllBlogsWithSlug } from "@/lib/datocms";
 import Head from "next/head";
-import Prism from "@/components/prism";
-import { StructuredText, renderRule } from "react-datocms";
+import { renderRule } from "react-datocms";
 import { isCode } from "datocms-structured-text-utils";
 import Nav from "@/components/newnav";
+import { render } from "datocms-structured-text-to-html-string";
+import rehype from "rehype";
+import rehypePrism from "@mapbox/rehype-prism";
+import rehypeStringify from "rehype-stringify";
 
-export default function Blog({ dato }) {
+export default function Blog({ dato, stringContent }) {
   return (
     <>
       <Head>
@@ -34,22 +37,10 @@ export default function Blog({ dato }) {
           </p>
         </header>
         <main>
-          <article className="prose dark:prose-light mx-auto">
-            <StructuredText
-              data={dato.structuredtext}
-              customRules={[
-                renderRule(isCode, ({ node, key }) => (
-                  <Prism
-                    key={key}
-                    code={node.code}
-                    language={node.language || "unknown"}
-                    highlightLines={node.highlight}
-                    showLineNumbers={node.code.split(/\n/).length > 10}
-                  />
-                )),
-              ]}
-            />
-          </article>
+          <article
+            className="prose dark:prose-light mx-auto"
+            dangerouslySetInnerHTML={{ __html: stringContent }}
+          />
         </main>
       </div>
     </>
@@ -58,9 +49,30 @@ export default function Blog({ dato }) {
 
 export async function getStaticProps({ params }) {
   const dato = await getBlog(params.slug);
+  const content = render(dato.structuredtext, {
+    customRules: [
+      renderRule(isCode, ({ adapter: { renderNode, renderText }, key, node }) =>
+        renderNode(
+          "pre",
+          { key, class: `language-${node.language}` },
+          renderNode(
+            "code",
+            { key, class: `language-${node.language}` },
+            renderText(node.code)
+          )
+        )
+      ),
+    ],
+  });
+  const processedContent = await rehype()
+    .use(rehypePrism)
+    .use(rehypeStringify, { omitOptionalTags: true })
+    .process(content);
+  const stringContent = String(processedContent);
   return {
     props: {
       dato,
+      stringContent,
     },
   };
 }
