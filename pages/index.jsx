@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import Grid from "@/components/home/grid";
-import SocialLinks from "@/components/home/sociallinks";
+import SocialLinks from "@/components/home/social";
 import Nav from "@/components/newnav";
 import { getPortfolios } from "../lib/graphcms";
 import { getHome } from "../lib/datocms";
@@ -40,13 +40,7 @@ export default function Home({ portfolios, home }) {
               Contact Me
             </a>
             <div className="flex flex-wrap gap-x-4 gap-y-2 py-2 justify-center">
-              <SocialLinks
-                github={home.github}
-                unsplash={home.unsplash}
-                npm={home.npm}
-                linkedin={home.linkedin}
-                twitter={home.twitter}
-              />
+              <SocialLinks />
             </div>
           </div>
           <h2 className="text-3xl font-semibold text-nord-10 dark:text-nord-8">
