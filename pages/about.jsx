@@ -5,6 +5,7 @@ import { useState } from "react";
 import { ChevronDownIcon } from "@primer/octicons-react";
 import { ExternalLinkIcon } from "@heroicons/react/outline";
 import Nav from "@/components/newnav";
+import { render } from "datocms-structured-text-to-html-string";
 import { getAbout } from "../lib/datocms";
 
 function Article({ image, publisher, link, title, description }) {
@@ -33,6 +34,7 @@ function Article({ image, publisher, link, title, description }) {
 }
 
 export default function Home({ about }) {
+  console.log(about);
   const [expand, setExpand] = useState(false);
   return (
     <>
@@ -129,6 +131,10 @@ export async function getStaticProps() {
       return 0;
     })
     .reverse();
+
+  about.timeline.forEach((item, index) => {
+    about.timeline[index].title = render(item.title);
+  });
   return {
     props: { about },
   };
