@@ -34,7 +34,6 @@ function Article({ image, publisher, link, title, description }) {
 }
 
 export default function Home({ about }) {
-  console.log(about);
   const [expand, setExpand] = useState(false);
   return (
     <>
