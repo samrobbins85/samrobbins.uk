@@ -1,20 +1,12 @@
 import { getWritings } from "@/lib/graphcms";
 import Head from "next/head";
 import Paper from "@/components/writing/paper";
-import Nav from "@/components/newnav";
+import Layout from "@/components/layout";
 
 export default function Portfolio({ writings }) {
   return (
     <>
       <Head>
-        <title>Essays | Sam Robbins</title>
-        <meta
-          property="og:image"
-          content={`https://og.csnotes.me/**${escape("Writing")}**/${escape(
-            "Sam Robbins"
-          )}.png?theme=dark&md=1&fontSize=100px`}
-        />
-        <meta property="og:title" content="Essays" />
         <link
           rel="preload"
           href="/fonts/newsreader-normal.woff2"
@@ -23,8 +15,7 @@ export default function Portfolio({ writings }) {
           crossOrigin="anonymous"
         />
       </Head>
-      <Nav />
-      <div className="pt-6 px-2">
+      <Layout title="Essays">
         <header>
           <h1 className="text-5xl font-medium text-center font-serif text-nord-10 dark:text-nord-8">
             Essays
@@ -40,7 +31,7 @@ export default function Portfolio({ writings }) {
             />
           ))}
         </main>
-      </div>
+      </Layout>
     </>
   );
 }

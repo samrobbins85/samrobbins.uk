@@ -1,11 +1,10 @@
-import Head from "next/head";
 import DatoImage from "@/components/datoimage";
 import TimeLineItem from "@/components/about/timeline";
 import { useState } from "react";
 import { ChevronDownIcon } from "@primer/octicons-react";
 import { ExternalLinkIcon } from "@heroicons/react/outline";
-import Nav from "@/components/newnav";
 import { render } from "datocms-structured-text-to-html-string";
+import Layout from "@/components/layout";
 import { getAbout } from "../lib/datocms";
 
 function Article({ image, publisher, link, title, description }) {
@@ -36,83 +35,66 @@ function Article({ image, publisher, link, title, description }) {
 export default function Home({ about }) {
   const [expand, setExpand] = useState(false);
   return (
-    <>
-      <Head>
-        <title>About | Sam Robbins</title>
-        <meta
-          property="og:image"
-          content={`https://og.csnotes.me/**${escape(
-            "Sam Robbins"
-          )}**.png?theme=dark&md=1&fontSize=100px`}
-        />
-        <meta property="og:title" content="Sam Robbins" />
-        <meta
-          property="og:description"
-          content="The personal website of Sam Robbins"
-        />
-      </Head>
-      <Nav />
-      <main className="py-6 px-4 max-w-85ch mx-auto">
-        <h1 className="text-5xl font-semibold pb-4 text-center text-nord-10 dark:text-nord-8">
-          About
-        </h1>
-        <div className="flex justify-center">
-          <div className="border px-6 py-4 rounded text-lg bg-nord-5 dark:bg-dark-contrast dark:border-gray-800 text-center">
-            For more details, check out my{" "}
-            <a
-              className="border-b-2 border-cyan-400"
-              href="https://cv.samrobbins.uk"
-            >
-              CV
-            </a>{" "}
-            or{" "}
-            <a
-              className="border-b-2 border-cyan-400"
-              href="https://www.polywork.com/samrobbins"
-            >
-              Polywork
-            </a>
-          </div>
+    <Layout title="About">
+      <h1 className="text-5xl font-semibold pb-4 text-center text-nord-10 dark:text-nord-8">
+        About
+      </h1>
+      <div className="flex justify-center">
+        <div className="border px-6 py-4 rounded text-lg bg-nord-5 dark:bg-dark-contrast dark:border-gray-800 text-center">
+          For more details, check out my{" "}
+          <a
+            className="border-b-2 border-cyan-400"
+            href="https://cv.samrobbins.uk"
+          >
+            CV
+          </a>{" "}
+          or{" "}
+          <a
+            className="border-b-2 border-cyan-400"
+            href="https://www.polywork.com/samrobbins"
+          >
+            Polywork
+          </a>
         </div>
-        <h2 className="text-3xl font-semibold py-6 text-nord-10 dark:text-nord-8">
-          Published Articles
-        </h2>
-        <div className="grid">
-          {about.articles.map((x) => (
-            <Article
-              image={x.logo}
-              publisher={x.publisher}
-              link={x.link}
-              title={x.title}
-              description={x.description}
-              key={x.title}
-            />
+      </div>
+      <h2 className="text-3xl font-semibold py-6 text-nord-10 dark:text-nord-8">
+        Published Articles
+      </h2>
+      <div className="grid">
+        {about.articles.map((x) => (
+          <Article
+            image={x.logo}
+            publisher={x.publisher}
+            link={x.link}
+            title={x.title}
+            description={x.description}
+            key={x.title}
+          />
+        ))}
+      </div>
+      <h2 className="text-3xl font-semibold py-6 text-nord-10 dark:text-nord-8">
+        Timeline
+      </h2>
+      <ul className="px-1">
+        {about.timeline
+          .slice(0, expand ? about.timeline.length : 5)
+          .map((item) => (
+            <TimeLineItem data={item} key={item.description} />
           ))}
+      </ul>
+      {!expand && (
+        <div className="flex justify-center">
+          <button
+            className="flex items-center"
+            type="button"
+            onClick={() => setExpand(true)}
+          >
+            <ChevronDownIcon aria-hidden="true" className="mr-2" size={16} />
+            <span>Show more</span>
+          </button>
         </div>
-        <h2 className="text-3xl font-semibold py-6 text-nord-10 dark:text-nord-8">
-          Timeline
-        </h2>
-        <ul className="px-1">
-          {about.timeline
-            .slice(0, expand ? about.timeline.length : 5)
-            .map((item) => (
-              <TimeLineItem data={item} key={item.description} />
-            ))}
-        </ul>
-        {!expand && (
-          <div className="flex justify-center">
-            <button
-              className="flex items-center"
-              type="button"
-              onClick={() => setExpand(true)}
-            >
-              <ChevronDownIcon aria-hidden="true" className="mr-2" size={16} />
-              <span>Show more</span>
-            </button>
-          </div>
-        )}
-      </main>
-    </>
+      )}
+    </Layout>
   );
 }
 

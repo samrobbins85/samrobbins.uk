@@ -1,14 +1,13 @@
 import { getWriting, getAllWritingsWithSlug } from "@/lib/graphcms";
-import Head from "next/head";
 import math from "@/lib/remark-math";
 import rehypePrism from "@mapbox/rehype-prism";
 import footnotes from "remark-numbered-footnotes";
 import MyTable from "@/components/mdx/table";
 import MyImg from "@/components/mdx/image";
 import { useEffect } from "react";
-import Nav from "@/components/newnav";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
+import Layout from "@/components/layout";
 
 const components = {
   table: MyTable,
@@ -21,37 +20,23 @@ export default function Portfolio({ data, renderedOutput }) {
     });
   }, []);
   return (
-    <>
-      <Head>
-        <title>{data.title} | Sam Robbins</title>
-        <meta
-          property="og:image"
-          content={`https://og.csnotes.me/**${escape(data.title)}**/${escape(
-            "Sam Robbins"
-          )}.png?theme=dark&md=1&fontSize=100px`}
-        />
-        <meta property="og:title" content={data.title} />
-      </Head>
-      <Nav />
+    <Layout title={data.title}>
+      <header className="font-serif pb-2">
+        <h1 className="text-center text-4xl font-semibold">{data.title}</h1>
+        <p className="text-center text-xl">
+          {new Date(data.date).toLocaleString("en-gb", {
+            month: "short",
+            year: "numeric",
+          })}
+        </p>
+      </header>
 
-      <div className="p-4 mx-auto max-w-85ch">
-        <header className="font-serif py-2">
-          <h1 className="text-center text-4xl font-semibold">{data.title}</h1>
-          <p className="text-center text-xl">
-            {new Date(data.date).toLocaleString("en-gb", {
-              month: "short",
-              year: "numeric",
-            })}
-          </p>
-        </header>
-
-        <main>
-          <article className="mx-auto prose font-serif dark:prose-light">
-            <MDXRemote {...renderedOutput} components={components} />
-          </article>
-        </main>
-      </div>
-    </>
+      <main>
+        <article className="mx-auto prose font-serif dark:prose-light">
+          <MDXRemote {...renderedOutput} components={components} />
+        </article>
+      </main>
+    </Layout>
   );
 }
 

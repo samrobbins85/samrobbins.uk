@@ -17,7 +17,7 @@ export default function GridItem({ item }) {
             </div>
           </div>
           <div className="px-4 col-span-3 py-4 bg-nord-4 h-full dark:bg-nord-0">
-            <h2 className="font-semibold h-16">{item.title}</h2>
+            <h2 className="font-semibold h-16 mb-2">{item.title}</h2>
             <p className="text-gray-700 pb-4 dark:text-gray-300">
               {item.description}
             </p>

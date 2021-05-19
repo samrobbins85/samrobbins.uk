@@ -1,11 +1,10 @@
 import { getPortfolios, getPortfolioCategories } from "@/lib/graphcms";
-import Head from "next/head";
 import Grid from "@/components/portfolio/grid";
 import Categories from "@/components/categories";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import OtherGrid from "@/components/portfolio/otherGrid";
-import Nav from "@/components/newnav";
+import Layout from "@/components/layout";
 
 export default function Portfolio({ portfolios, categories }) {
   const router = useRouter();
@@ -27,43 +26,30 @@ export default function Portfolio({ portfolios, categories }) {
     }
   }, []);
   return (
-    <>
-      <Head>
-        <title>Portfolio | Sam Robbins</title>
-        <meta
-          property="og:image"
-          content={`https://og.csnotes.me/**${escape("Portfolio")}**/${escape(
-            "Sam Robbins"
-          )}.png?theme=dark&md=1&fontSize=100px`}
-        />
-        <meta property="og:title" content="Portfolio" />
-      </Head>
-      <Nav />
-      <main className="pt-6 px-2">
-        <h1 className="text-5xl font-semibold text-center text-nord-10 dark:text-nord-8">
-          Portfolio
-        </h1>
+    <Layout title="Portfolio" fullWidth>
+      <h1 className="text-5xl font-semibold text-center text-nord-10 dark:text-nord-8">
+        Portfolio
+      </h1>
 
-        <div>
-          <div className="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
-            <Grid portfolios={portfolios} />
-          </div>
-          <div className="mx-auto max-w-6xl py-4">
-            <h2 className="text-2xl py-4 font-semibold text-nord-10 dark:text-nord-8">
-              All Projects
-            </h2>
-            <div className="flex justify-center gap-x-4 text-lg py-6 mb-6 flex-wrap gap-y-8 ">
-              <Categories
-                setCategory={setCategory}
-                category={category}
-                categories={categories}
-              />
-            </div>
-            <OtherGrid portfolios={portfolios} category={category} />
-          </div>
+      <div>
+        <div className="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
+          <Grid portfolios={portfolios} />
         </div>
-      </main>
-    </>
+        <div className="mx-auto max-w-6xl py-4">
+          <h2 className="text-2xl py-4 font-semibold text-nord-10 dark:text-nord-8">
+            All Projects
+          </h2>
+          <div className="flex justify-center gap-x-4 text-lg py-6 mb-6 flex-wrap gap-y-8 ">
+            <Categories
+              setCategory={setCategory}
+              category={category}
+              categories={categories}
+            />
+          </div>
+          <OtherGrid portfolios={portfolios} category={category} />
+        </div>
+      </div>
+    </Layout>
   );
 }
 

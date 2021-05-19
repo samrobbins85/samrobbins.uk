@@ -3,8 +3,7 @@ import { useState } from "react";
 import { getSnippetLanguages, getSnippets } from "@/lib/graphcms";
 import Link from "next/link";
 import background from "@/lib/snippet";
-import Head from "next/head";
-import Nav from "@/components/newnav";
+import Layout from "@/components/layout";
 
 function Card({ title, slug, language, category }) {
   return (
@@ -30,48 +29,35 @@ function Card({ title, slug, language, category }) {
 export default function Snippets({ categories, snippets }) {
   const [category, setCategory] = useState("All");
   return (
-    <>
-      <Head>
-        <title>Snippets | Sam Robbins</title>
-        <meta
-          property="og:image"
-          content={`https://og.csnotes.me/**${escape("Snippets")}**/${escape(
-            "Sam Robbins"
-          )}.png?theme=dark&md=1&fontSize=100px`}
+    <Layout title="Snippets">
+      <h1 className="text-5xl font-medium font-mono text-center">Snippets</h1>
+      <h2 className="text-xl text-gray-600 dark:text-gray-300 py-2 text-center">
+        Little bits of code I use that don't deserve a blog, but are still
+        useful
+      </h2>
+      <div className="flex justify-center gap-x-4 text-lg py-6 mb-6 flex-wrap gap-y-8 ">
+        <Categories
+          setCategory={setCategory}
+          category={category}
+          categories={categories}
         />
-        <meta property="og:title" content="Snippets" />
-      </Head>
-      <Nav />
-      <main className="max-w-85ch mx-auto p-4">
-        <h1 className="text-5xl font-medium font-mono text-center">Snippets</h1>
-        <h2 className="text-xl text-gray-600 dark:text-gray-300 py-2 text-center">
-          Little bits of code I use that don't deserve a blog, but are still
-          useful
-        </h2>
-        <div className="flex justify-center gap-x-4 text-lg py-6 mb-6 flex-wrap gap-y-8 ">
-          <Categories
-            setCategory={setCategory}
-            category={category}
-            categories={categories}
-          />
-        </div>
-        <div className="flex flex-wrap justify-center gap-x-4 gap-y-4 text-black">
-          {snippets
-            .filter((item) =>
-              category !== "All" ? item.language.includes(category) : item
-            )
-            .map((x) => (
-              <Card
-                key={x.title}
-                category={category}
-                title={x.title}
-                slug={x.slug}
-                language={x.language}
-              />
-            ))}
-        </div>
-      </main>
-    </>
+      </div>
+      <div className="flex flex-wrap justify-center gap-x-4 gap-y-4 text-black">
+        {snippets
+          .filter((item) =>
+            category !== "All" ? item.language.includes(category) : item
+          )
+          .map((x) => (
+            <Card
+              key={x.title}
+              category={category}
+              title={x.title}
+              slug={x.slug}
+              language={x.language}
+            />
+          ))}
+      </div>
+    </Layout>
   );
 }
 
