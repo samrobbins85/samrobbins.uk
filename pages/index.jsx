@@ -45,9 +45,36 @@ export default function Home({ portfolios, home }) {
         <h2 className="text-3xl font-semibold text-nord-10 dark:text-nord-8">
           Projects
         </h2>
-        <div className="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
+        {/* <div className="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
           <Grid portfolios={portfolios} />
+        </div> */}
+
+        <div className="grid gap-x-8 gap-y-8 py-4">
+          {[
+            { bg: "bg-blue-100", text: "text-cyan-700" },
+            { bg: "bg-red-100", text: "text-red-700" },
+          ].map((colour) => (
+            <div className={`${colour.bg} p-2 grid grid-cols-2 rounded`}>
+              <div className="text-center">
+                <p
+                  className={`text-2xl font-semibold text-center pt-4 ${colour.text}`}
+                >
+                  Colour Accessibility for Tailwind CSS
+                </p>
+                <p className="py-4 text-center">
+                  Test contrasting colours against the WCAG standards
+                </p>
+                <p>Find out more</p>
+              </div>
+              <img
+                className="transform rotate-3 p-4"
+                src="/site.png"
+                alt="A11y"
+              />
+            </div>
+          ))}
         </div>
+
         <div>
           <p className="text-center">
             To see all my projects, check out my{" "}
