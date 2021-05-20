@@ -15,7 +15,7 @@ export default function Blog({ blogs }) {
             <div>
               <Link href={`/blog/${item.slug}`}>
                 <a>
-                  <h2 className="font-semibold text-xl sm:text-2xl text-cyan-600 dark:text-cyan-300">
+                  <h2 className="font-semibold text-xl sm:text-2xl text-cyan-700 dark:text-cyan-400">
                     {item.title}
                   </h2>
                 </a>
