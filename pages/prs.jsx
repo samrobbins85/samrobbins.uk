@@ -3,7 +3,7 @@ import Layout from "@/components/layout";
 
 export default function Home({ prs }) {
   return (
-    <Layout>
+    <Layout title="Pull Requests">
       <h1 className="text-5xl font-semibold pb-6 text-center text-nord-10 dark:text-nord-8">
         Pull Requests
       </h1>
