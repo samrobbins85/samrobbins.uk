@@ -6,10 +6,8 @@ import Coder from "@/components/portfolio/coder";
 import MyTable from "@/components/mdx/table";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
-import {
-  NpmButton,
-  WebsiteButton,
-} from "@/components/portfolio/universal_button";
+
+import { WebsiteButton, NPMButton } from "@/components/portfolio/smallbutton";
 import Layout from "@/components/layout";
 
 const components = {
@@ -25,9 +23,9 @@ export default function Portfolio({ data, renderedOutput, names }) {
         {data.description}
       </h2>
       <div className="flex justify-center pt-10 gap-x-12 flex-wrap gap-y-4">
-        {data.npm ? <NpmButton url={data.npm} /> : undefined}
         {data.website ? <WebsiteButton url={data.website} /> : undefined}
         {data.github ? <GitHubButton repos={data.github} /> : undefined}
+        {data.npm ? <NPMButton url={data.npm} /> : undefined}
       </div>
       {data.coders.length !== 0 && (
         <div className="pt-4">

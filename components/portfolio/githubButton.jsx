@@ -4,7 +4,7 @@ import {
   MarkGithubIcon,
   ChevronDownIcon,
 } from "@primer/octicons-react";
-import { GitHubSingle } from "./universal_button";
+import { GitHubSingle } from "./smallbutton";
 
 export default function GitHubButton({ repos }) {
   if (repos.length > 1) {
