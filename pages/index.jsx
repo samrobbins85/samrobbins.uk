@@ -7,6 +7,41 @@ import { getPortfolios } from "../lib/graphcms";
 import { getHome } from "../lib/datocms";
 
 export default function Home({ portfolios, home }) {
+  const colours = [
+    {
+      bg: "bg-blue-100 dark:bg-nord-8",
+      text: "text-cyan-700 dark:text-cyan-800",
+      description: "dark:text-nord-0",
+    },
+    {
+      bg: "bg-red-100 dark:bg-nord-11",
+      text: "text-red-700 dark:text-red-100",
+      description: "dark:text-black",
+      link: "dark:text-black",
+    },
+    {
+      bg: "bg-green-100 dark:bg-nord-14",
+      text: "text-green-700 dark:text-green-900",
+      description: "dark:text-black",
+    },
+    {
+      bg: "bg-purple-100 dark:bg-nord-15",
+      text: "text-purple-700 dark:text-purple-900",
+      description: "dark:text-black",
+      link: "dark:text-indigo-900",
+    },
+    {
+      bg: "bg-yellow-50 dark:bg-nord-13",
+      text: "text-yellow-700 dark:text-yellow-900",
+      description: "dark:text-black",
+    },
+    {
+      bg: "bg-orange-50 dark:bg-nord-12",
+      text: "text-orange-700 dark:text-orange-900",
+      description: "dark:text-black",
+      link: "dark:text-cyan-900",
+    },
+  ];
   return (
     <>
       <Head>
@@ -50,62 +85,44 @@ export default function Home({ portfolios, home }) {
         </div> */}
 
         <div className="grid gap-x-8 gap-y-8 py-4">
-          {[
-            {
-              bg: "bg-blue-100 dark:bg-nord-8",
-              text: "text-cyan-700 dark:text-cyan-800",
-              description: "dark:text-nord-0",
-            },
-            {
-              bg: "bg-red-100 dark:bg-nord-11",
-              text: "text-red-700 dark:text-red-100",
-              description: "dark:text-black",
-              link: "dark:text-black",
-            },
-            {
-              bg: "bg-green-100 dark:bg-nord-14",
-              text: "text-green-700 dark:text-green-900",
-              description: "dark:text-black",
-            },
-            {
-              bg: "bg-purple-100 dark:bg-nord-15",
-              text: "text-purple-700 dark:text-purple-900",
-              description: "dark:text-black",
-              link: "dark:text-indigo-900",
-            },
-            {
-              bg: "bg-yellow-50 dark:bg-nord-13",
-              text: "text-yellow-700 dark:text-yellow-900",
-              description: "dark:text-black",
-            },
-            {
-              bg: "bg-orange-50 dark:bg-nord-12",
-              text: "text-orange-700 dark:text-orange-900",
-              description: "dark:text-black",
-              link: "dark:text-cyan-900",
-            },
-          ].map((colour) => (
-            <div className={`${colour.bg} p-2 grid grid-cols-2 rounded`}>
-              <div className="text-center">
-                <p
-                  className={`text-2xl font-semibold text-center pt-4 ${colour.text}`}
-                >
-                  Colour Accessibility for Tailwind CSS
-                </p>
-                <p className={`py-4 text-center ${colour.description}`}>
-                  Test contrasting colours against the WCAG standards
-                </p>
-                <p className={`underline text-blue-900 ${colour.link}`}>
-                  Find out more
-                </p>
+          {portfolios
+            .filter((item) => item.featured)
+            .slice(0, 3)
+            .map((item, index) => (
+              <div
+                className={`${colours[index].bg} p-2 grid sm:grid-cols-2 rounded`}
+              >
+                <div className="text-center">
+                  <p
+                    className={`text-2xl font-semibold text-center pt-4 ${colours[index].text}`}
+                  >
+                    {item.title}
+                  </p>
+                  <p className={`py-4 text-center ${colours.description}`}>
+                    {item.description}
+                  </p>
+                  <Link href={`/portfolio/${item.slug}`}>
+                    <a
+                      className={`hidden sm:block underline text-blue-900 ${colours[index].link}`}
+                    >
+                      Find out more
+                    </a>
+                  </Link>
+                </div>
+                <img
+                  className="transform sm:rotate-3 p-4"
+                  src={item.screenshot.url}
+                  alt="A11y"
+                />
+                <Link href={`/portfolio/${item.slug}`}>
+                  <a
+                    className={`sm:hidden underline pb-2 text-center text-blue-900 ${colours[index].link}`}
+                  >
+                    Find out more
+                  </a>
+                </Link>
               </div>
-              <img
-                className="transform rotate-3 p-4"
-                src="/site.png"
-                alt="A11y"
-              />
-            </div>
-          ))}
+            ))}
         </div>
 
         <div>
