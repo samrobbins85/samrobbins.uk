@@ -22,7 +22,7 @@ export default function Portfolio({ data, renderedOutput, names }) {
       <h2 className="text-center text-gray-600 text-lg pt-6 dark:text-gray-300">
         {data.description}
       </h2>
-      <div className="flex justify-center pt-10 gap-x-12 flex-wrap gap-y-4 items-center">
+      <div className="flex justify-center pt-6 gap-x-12 flex-wrap gap-y-4 items-center">
         {data.website ? <WebsiteButton url={data.website} /> : undefined}
         {data.github ? <GitHubButton repos={data.github} /> : undefined}
         {data.npm ? <NPMButton url={data.npm} /> : undefined}
