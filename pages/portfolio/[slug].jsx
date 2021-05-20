@@ -63,6 +63,11 @@ export default function Portfolio({ data, renderedOutput, names }) {
       <div className="prose dark:prose-light mx-auto">
         <MDXRemote {...renderedOutput} components={components} />
       </div>
+      <div className="bg-nord-5 max-w-prose mx-auto mt-4">
+        <h2 className="text tracking-widest text-center uppercase py-2">
+          Made using
+        </h2>
+      </div>
     </Layout>
   );
 }

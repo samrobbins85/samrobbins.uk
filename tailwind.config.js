@@ -61,6 +61,7 @@ module.exports = {
       maxWidth: {
         "85ch": "85ch",
         "65ch": "65ch",
+        prose: "85ch",
       },
       fontFamily: {
         latex: ["Latin Modern"],
@@ -81,6 +82,7 @@ module.exports = {
               "figure figcaption": {
                 color: "#2e3440",
               },
+              maxWidth: "85ch",
             },
           ],
         },
