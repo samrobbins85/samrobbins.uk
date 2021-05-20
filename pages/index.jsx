@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Link from "next/link";
-import Grid from "@/components/home/grid";
 import SocialLinks from "@/components/home/social";
 import Nav from "@/components/newnav";
 import { getPortfolios } from "../lib/graphcms";
@@ -80,9 +79,6 @@ export default function Home({ portfolios, home }) {
         <h2 className="text-3xl font-semibold text-nord-10 dark:text-nord-8">
           Projects
         </h2>
-        {/* <div className="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
-          <Grid portfolios={portfolios} />
-        </div> */}
 
         <div className="grid gap-x-8 gap-y-8 py-4">
           {portfolios
