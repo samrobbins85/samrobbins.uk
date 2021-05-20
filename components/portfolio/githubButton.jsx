@@ -1,9 +1,5 @@
 import { Menu, Transition } from "@headlessui/react";
-import {
-  RepoIcon,
-  MarkGithubIcon,
-  ChevronDownIcon,
-} from "@primer/octicons-react";
+import { RepoIcon, MarkGithubIcon } from "@primer/octicons-react";
 import { GitHubSingle } from "./smallbutton";
 
 export default function GitHubButton({ repos }) {
@@ -19,21 +15,13 @@ function GitHubMultiple({ repos }) {
       <Menu>
         {({ open }) => (
           <>
-            <span className="rounded-md shadow-sm">
-              <Menu.Button
-                className={`inline-flex h-12 w-44 justify-center px-4 py-2 text-sm font-medium text-gray-200 transition duration-150 ease-in-out bg-black border border-gray-300 rounded-md hover:text-white focus:outline-none items-center focus:ring-2 focus:ring-black focus:ring-opacity-50 ${
-                  open
-                    ? "ring-2 ring-black ring-opacity-50 text-white"
-                    : undefined
-                }`}
-              >
-                <MarkGithubIcon size={16} className="mr-2 h-6 w-6" />
-                <span className="font-semibold tracking-wide text-lg">
-                  GitHub
-                </span>
-                <ChevronDownIcon className="ml-2" size={16} />
-              </Menu.Button>
-            </span>
+            <Menu.Button
+              className={`text-nord-3 dark:text-nord-4 dark:hover:text-white hover:text-black p-2 hover:bg-nord-4  dark:hover:bg-nord-0 rounded focus:ring focus:ring-nord-8 focus:outline-none ${
+                open ? " text-black" : undefined
+              }`}
+            >
+              <MarkGithubIcon size={16} className="h-6 w-6" />
+            </Menu.Button>
 
             <Transition
               show={open}
@@ -46,7 +34,7 @@ function GitHubMultiple({ repos }) {
             >
               <Menu.Items
                 static
-                className="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none z-20"
+                className="absolute -right-2 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none z-20"
               >
                 <div className="py-1">
                   {repos.map((item) => (
