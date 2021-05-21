@@ -2,7 +2,7 @@ import getSearch from "@/lib/githubapi";
 import Layout from "@/components/layout";
 import Image from "next/image";
 
-const githubLoader = ({ src, width }) => `${src}?s=${width}`;
+const githubLoader = ({ src, width }) => `${src}&s=${width}`;
 
 function GitHubImage(props) {
   return <Image {...props} loader={githubLoader} />;
