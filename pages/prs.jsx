@@ -1,5 +1,12 @@
 import getSearch from "@/lib/githubapi";
 import Layout from "@/components/layout";
+import Image from "next/image";
+
+const githubLoader = ({ src, width }) => `${src}?s=${width}`;
+
+function GitHubImage(props) {
+  return <Image {...props} loader={githubLoader} />;
+}
 
 export default function Home({ prs }) {
   return (
@@ -13,12 +20,13 @@ export default function Home({ prs }) {
             className="flex gap-4 bg-nord-5 border border-nord-4 dark:bg-nord-0 dark:border-nord-2 p-4"
             key={pr.title}
           >
-            <div className="h-12 w-12 flex-shrink-0">
-              <img
+            <div className="h-12 w-12 flex-shrink-0 relative">
+              <GitHubImage
                 src={pr.repository.owner.avatarUrl}
                 alt={pr.repository.owner.name}
+                layout="fill"
                 className="h-12 w-12"
-                loading="lazy"
+                sizes="10vw"
               />
             </div>
             <div className="grid sm:flex justify-between flex-grow flex-wrap gap-x-2">
