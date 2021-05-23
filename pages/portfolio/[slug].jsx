@@ -17,7 +17,7 @@ const components = {
 };
 export default function Portfolio({ data, renderedOutput, names }) {
   return (
-    <Layout title={data.title}>
+    <Layout title={data.title} description={data.description}>
       <h1 className="text-5xl sm:text-6xl text-center font-bold pt-2">
         {data.title}
       </h1>

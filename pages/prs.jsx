@@ -10,7 +10,10 @@ function GitHubImage(props) {
 
 export default function Home({ prs }) {
   return (
-    <Layout title="Pull Requests">
+    <Layout
+      title="Pull Requests"
+      description="Pull requests I've made on GitHub"
+    >
       <h1 className="text-5xl font-semibold pb-6 text-center text-nord-10 dark:text-nord-8">
         Pull Requests
       </h1>

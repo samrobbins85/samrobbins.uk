@@ -35,7 +35,7 @@ function Article({ image, publisher, link, title, description }) {
 export default function Home({ about }) {
   const [expand, setExpand] = useState(false);
   return (
-    <Layout title="About">
+    <Layout title="About" description="About me">
       <h1 className="text-5xl font-semibold pb-4 text-center text-nord-10 dark:text-nord-8">
         About
       </h1>

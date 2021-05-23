@@ -10,7 +10,7 @@ const components = {
 };
 export default function Snippet({ data, serialized }) {
   return (
-    <Layout title={data.title}>
+    <Layout title={data.title} description={data.description}>
       <h1 className="text-4xl font-semibold pb-2">{data.title}</h1>
       <h2 className="text-xl text-gray-600 dark:text-gray-300">
         {data.description}

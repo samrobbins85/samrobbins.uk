@@ -15,7 +15,10 @@ export default function Portfolio({ writings }) {
           crossOrigin="anonymous"
         />
       </Head>
-      <Layout title="Essays">
+      <Layout
+        title="Essays"
+        description="Essays I've written at university and for other purposes"
+      >
         <header>
           <h1 className="text-5xl font-medium text-center font-serif text-nord-10 dark:text-nord-8">
             Essays

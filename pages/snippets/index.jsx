@@ -29,7 +29,11 @@ function Card({ title, slug, language, category }) {
 export default function Snippets({ categories, snippets }) {
   const [category, setCategory] = useState("All");
   return (
-    <Layout title="Snippets">
+    <Layout
+      title="Snippets"
+      description="Little bits of code I use that don't deserve a blog, but are still
+    useful"
+    >
       <h1 className="text-5xl font-medium font-mono text-center">Snippets</h1>
       <h2 className="text-xl text-gray-600 dark:text-gray-300 py-2 text-center">
         Little bits of code I use that don't deserve a blog, but are still
