@@ -141,7 +141,7 @@ function MobileItem({ data }) {
     >
       <a className="-m-3 p-3 flex items-center rounded-md hover:bg-nord-4 text-gray-500 dark:text-gray-200 dark:hover:bg-nord-2">
         <data.icon
-          className="flex-shrink-0 h-6 w-6 text-cyan-500"
+          className="flex-shrink-0 h-6 w-6 text-nord-10 dark:text-nord-8"
           aria-hidden="true"
         />
         <span className="ml-3 text-base font-medium ">{data.name}</span>
