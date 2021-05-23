@@ -44,17 +44,17 @@ function classNames(...classes) {
 
 function DesktopDropdown({ data }) {
   const { asPath } = useRouter();
+  const onPage = items
+    .find((x) => x.name === data.name)
+    .items.map((x) => x.href)
+    .find((x) => asPath.startsWith(x));
   return (
     <Popover className="relative">
       {({ open }) => (
         <>
           <Popover.Button
             className={classNames(
-              open ||
-                items
-                  .find((x) => x.name === data.name)
-                  .items.map((x) => x.href)
-                  .find((x) => asPath.startsWith(x))
+              open || onPage
                 ? "text-gray-900 font-semibold dark:text-white"
                 : "text-nord-3 dark:text-gray-300",
               "group  dark:bg-nord-1 rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-4 focus:ring-nord-8 ring-offset-nord-6 dark:ring-offset-nord-1"
@@ -63,11 +63,7 @@ function DesktopDropdown({ data }) {
             <span>{data.name}</span>
             <ChevronDownIcon
               className={classNames(
-                open ||
-                  items
-                    .find((x) => x.name === data.name)
-                    .items.map((x) => x.href)
-                    .find((x) => asPath.startsWith(x))
+                open || onPage
                   ? "text-gray-600 dark:text-white"
                   : "text-gray-400",
                 "ml-2 h-5 w-5 group-hover:text-gray-500 dark:group-hover:text-white"
