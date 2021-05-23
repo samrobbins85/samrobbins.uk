@@ -12,28 +12,24 @@ export default function Blog({ blogs }) {
       <div className="grid">
         {blogs.map((item) => (
           <div className="py-4" key={item.title}>
-            <div>
-              <Link href={`/blog/${item.slug}`}>
-                <a>
-                  <h2 className="font-semibold text-xl sm:text-2xl text-cyan-600 dark:text-cyan-300">
-                    {item.title}
-                  </h2>
-                </a>
-              </Link>
-              <div className="py-1">
-                <time
-                  className="text-gray-600 dark:text-gray-300 text-sm uppercase"
-                  dateTime={item.date}
-                >
-                  {new Date(item.date).toLocaleString("en-gb", {
-                    day: "numeric",
-                    month: "short",
-                    year: "numeric",
-                  })}
-                </time>
-              </div>
-              <p className="sm:text-lg">{item.description}</p>
-            </div>
+            <Link href={`/blog/${item.slug}`}>
+              <a>
+                <h2 className="font-semibold text-xl sm:text-2xl text-cyan-600 dark:text-cyan-300">
+                  {item.title}
+                </h2>
+              </a>
+            </Link>
+            <time
+              className="text-gray-600 dark:text-gray-300 text-sm uppercase py-1"
+              dateTime={item.date}
+            >
+              {new Date(item.date).toLocaleString("en-gb", {
+                day: "numeric",
+                month: "short",
+                year: "numeric",
+              })}
+            </time>
+            <p className="sm:text-lg">{item.description}</p>
           </div>
         ))}
       </div>
