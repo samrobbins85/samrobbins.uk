@@ -158,22 +158,26 @@ function switchTheme(theme, setTheme) {
   }
 }
 
-function ThemeComponent({ theme, onClick }) {
-  return (
-    <button
-      type="button"
-      className="p-2 hover:bg-nord-4 dark:hover:bg-nord-2 rounded-lg focus:ring focus:ring-nord-8  focus:outline-none"
-      onClick={onClick}
-      aria-label="Toggle Dark Mode"
-    >
-      {theme === "light" && <MoonIcon className="h-6 w-6 text-nord-0" />}
-      {theme === "dark" && <SunIcon className="h-6 w-6 text-nord-13" />}
-    </button>
-  );
-}
-
 export default function Nav() {
   const { resolvedTheme, setTheme } = useTheme();
+
+  function ThemeComponent() {
+    return (
+      <button
+        type="button"
+        className="p-2 hover:bg-nord-4 dark:hover:bg-nord-2 rounded-lg focus:ring focus:ring-nord-8  focus:outline-none"
+        onClick={() => switchTheme(resolvedTheme, setTheme)}
+        aria-label="Toggle Dark Mode"
+      >
+        {resolvedTheme === "light" && (
+          <MoonIcon className="h-6 w-6 text-nord-0" />
+        )}
+        {resolvedTheme === "dark" && (
+          <SunIcon className="h-6 w-6 text-nord-13" />
+        )}
+      </button>
+    );
+  }
   return (
     <Popover className="relative bg-nord-6 dark:bg-nord-1 z-10">
       {({ open }) => (
@@ -208,10 +212,7 @@ export default function Nav() {
               </Popover.Group>
             </div>
             <div className="col-start-12 hidden md:grid justify-center content-center auto-rows-min ">
-              <ThemeComponent
-                theme={resolvedTheme}
-                onClick={() => switchTheme(resolvedTheme, setTheme)}
-              />
+              <ThemeComponent />
             </div>
           </div>
 
@@ -231,10 +232,7 @@ export default function Nav() {
             >
               <div className="rounded-lg shadow-lg bg-nord-5 dark:bg-nord-0 pt-5 pb-6 px-5">
                 <div className="flex items-center justify-between">
-                  <ThemeComponent
-                    theme={resolvedTheme}
-                    onClick={() => switchTheme(resolvedTheme, setTheme)}
-                  />
+                  <ThemeComponent />
                   <div className="-mr-2">
                     <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center  hover:bg-nord-4 dark:hover:bg-nord-2 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-nord-8">
                       <span className="sr-only">Close menu</span>
