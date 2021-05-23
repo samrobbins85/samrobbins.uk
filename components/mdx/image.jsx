@@ -1,11 +1,12 @@
+/* eslint-disable jsx-a11y/alt-text */
 export default function MyImg({ title, ...props }) {
   if (title !== undefined) {
     return (
       <figure>
-        <img alt="" {...props} />
+        <img {...props} />
         <figcaption className="text-center">{title}</figcaption>
       </figure>
     );
   }
-  return <img alt="" {...props} />;
+  return <img {...props} />;
 }
