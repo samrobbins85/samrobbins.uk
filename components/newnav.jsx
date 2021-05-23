@@ -86,26 +86,22 @@ function DesktopDropdown({ data }) {
               static
               className="absolute z-50  mt-3 transform px-2 w-screen max-w-xs sm:px-0 ml-0 left-1/2 -translate-x-1/2"
             >
-              <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
-                <div className="relative grid gap-6 bg-nord-4 dark:bg-nord-0 px-5 py-6 sm:gap-8 sm:p-8">
-                  {data.items.map((item) => (
-                    <ActiveLink
-                      key={item.name}
-                      href={item.href}
-                      activeClassName="!text-black dark:!text-white font-semibold"
-                    >
-                      <a className="-m-3 p-3 flex items-start rounded-lg hover:bg-nord-5 text-gray-600 dark:hover:bg-nord-2 dark:text-gray-200">
-                        <item.icon
-                          className="flex-shrink-0 h-6 w-6 text-nord-10 dark:text-nord-8"
-                          aria-hidden="true"
-                        />
-                        <div className="ml-4">
-                          <p className="text-base">{item.name}</p>
-                        </div>
-                      </a>
-                    </ActiveLink>
-                  ))}
-                </div>
+              <div className=" rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden relative grid gap-6 bg-nord-4 dark:bg-nord-0 px-5 py-6 sm:gap-8 sm:p-8">
+                {data.items.map((item) => (
+                  <ActiveLink
+                    key={item.name}
+                    href={item.href}
+                    activeClassName="!text-black dark:!text-white font-semibold"
+                  >
+                    <a className="-m-3 p-3 flex items-start rounded-lg hover:bg-nord-5 text-gray-600 dark:hover:bg-nord-2 dark:text-gray-200">
+                      <item.icon
+                        className="flex-shrink-0 h-6 w-6 text-nord-10 dark:text-nord-8"
+                        aria-hidden="true"
+                      />
+                      <p className="ml-4 text-base">{item.name}</p>
+                    </a>
+                  </ActiveLink>
+                ))}
               </div>
             </Popover.Panel>
           </Transition>
@@ -180,14 +176,12 @@ export default function Nav() {
         <>
           <div className="border-b-2 border-nord-5 dark:border-nord-0 h-18 md:grid md:grid-cols-12">
             <div className="flex justify-between items-center md:justify-center md:space-x-10  md:col-start-2 md:col-end-12 h-full">
-              <div className="flex justify-start pl-4 md:hidden -my-2">
-                <Link href="/">
-                  <a>
-                    <span className="sr-only">Home</span>
-                    <HomeIcon className="h-8 w-8 text-gray-500 dark:text-gray-300" />
-                  </a>
-                </Link>
-              </div>
+              <Link href="/">
+                <a className="pl-4 md:hidden -my-2">
+                  <span className="sr-only">Home</span>
+                  <HomeIcon className="h-8 w-8 text-gray-500 dark:text-gray-300" />
+                </a>
+              </Link>
               <div className="-my-2 md:hidden px-4">
                 <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center  hover:bg-nord-4 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-nord-8 dark:hover:bg-nord-2">
                   <span className="sr-only">Open menu</span>
@@ -229,15 +223,13 @@ export default function Nav() {
               <div className="rounded-lg shadow-lg bg-nord-5 dark:bg-nord-0 pt-5 pb-6 px-5">
                 <div className="flex items-center justify-between">
                   <ThemeComponent />
-                  <div className="-mr-2">
-                    <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center  hover:bg-nord-4 dark:hover:bg-nord-2 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-nord-8">
-                      <span className="sr-only">Close menu</span>
-                      <XIcon
-                        className="h-6 w-6 text-gray-400 hover:text-gray-500 dark:text-gray-300"
-                        aria-hidden="true"
-                      />
-                    </Popover.Button>
-                  </div>
+                  <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center  hover:bg-nord-4 dark:hover:bg-nord-2 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-nord-8">
+                    <span className="sr-only">Close menu</span>
+                    <XIcon
+                      className="h-6 w-6 text-gray-400 hover:text-gray-500 dark:text-gray-300"
+                      aria-hidden="true"
+                    />
+                  </Popover.Button>
                 </div>
                 <nav className="grid gap-y-8 mt-4">
                   {items.map((item) => {
