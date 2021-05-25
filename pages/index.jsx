@@ -2,16 +2,9 @@ import Head from "next/head";
 import Link from "next/link";
 import SocialLinks from "@/components/home/social";
 import Nav from "@/components/newnav";
-import Image from "next/image";
+import GridItem from "@/components/griditem";
 import { getPortfolios } from "../lib/graphcms";
 import { getHome } from "../lib/datocms";
-
-const graphcmsLoader = ({ src, width }) => {
-  let url = src.split("/");
-  url.splice(3, 0, `resize=width:${width}`);
-  url = url.join("/");
-  return url;
-};
 
 export default function Home({ portfolios, home }) {
   return (
@@ -56,35 +49,14 @@ export default function Home({ portfolios, home }) {
             .filter((item) => item.featured)
             .slice(0, 3)
             .map((item) => (
-              <div className="bg-nord-5 dark:bg-nord-0 p-2 grid sm:grid-cols-2 rounded">
-                <div className="text-center">
-                  <p className="text-2xl font-semibold text-center pt-4 text-nord-2 dark:text-nord-6">
-                    {item.title}
-                  </p>
-                  <p className="py-4 text-center dark:text-nord-5">
-                    {item.description}
-                  </p>
-                  <Link href={`/portfolio/${item.slug}`}>
-                    <a className="hidden sm:block underline text-blue-900 dark:text-cyan-300">
-                      Find out more
-                    </a>
-                  </Link>
-                </div>
-                <div className="p-4">
-                  <Image
-                    loader={graphcmsLoader}
-                    width={item.screenshot.width}
-                    height={item.screenshot.height}
-                    src={item.screenshot.url}
-                    alt={item.title}
-                  />
-                </div>
-                <Link href={`/portfolio/${item.slug}`}>
-                  <a className="sm:hidden underline pb-2 text-center text-blue-900 dark:text-cyan-300">
-                    Find out more
-                  </a>
-                </Link>
-              </div>
+              <GridItem
+                title={item.title}
+                description={item.description}
+                screenshot={item.screenshot}
+                slug={item.slug}
+                key={item.title}
+                wide
+              />
             ))}
         </div>
 

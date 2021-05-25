@@ -1,29 +1,58 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export default function GridItem({ item }) {
+const graphcmsLoader = ({ src, width }) => {
+  let url = src.split("/");
+  url.splice(3, 0, `resize=width:${width}`);
+  url = url.join("/");
+  return url;
+};
+
+export default function GridItem({
+  title,
+  description,
+  screenshot,
+  slug,
+  wide,
+}) {
   return (
-    <Link href={`/portfolio/${item.slug}`}>
-      <a className="group focus:outline-none">
-        <div className="border border-gray-300 rounded hover:shadow-lg group-focus:shadow-xl h-full grid grid-cols-5 sm:grid-cols-1 auto-rows-max sm:divide-x-0 divide-x divide-gray-300 sm:divide-y bg-nord-4 dark:bg-dark-contrast dark:border-gray-800 dark:divide-gray-800">
-          <div className="p-2 bg-nord-5 dark:bg-nord-2 col-span-2 grid px-4 py-4">
-            <div className="relative sm:h-32 h-24 object-contain self-center">
-              <Image
-                src={item.coverImage.url}
-                layout="fill"
-                objectFit="contain"
-                alt={item.title}
-              />
-            </div>
-          </div>
-          <div className="px-4 col-span-3 py-4 bg-nord-4 h-full dark:bg-nord-0">
-            <h2 className="font-semibold h-16 mb-2">{item.title}</h2>
-            <p className="text-gray-700 pb-4 dark:text-gray-300">
-              {item.description}
-            </p>
-          </div>
-        </div>
-      </a>
-    </Link>
+    <div
+      className={`bg-nord-5 dark:bg-nord-0 p-2 grid ${
+        wide ? "sm:grid-cols-2" : "max-w-sm"
+      } rounded `}
+      key={title}
+    >
+      <div className="text-center">
+        <p className="text-2xl font-semibold text-center pt-4 text-nord-2 dark:text-nord-6">
+          {title}
+        </p>
+        <p className="py-4 text-center dark:text-nord-5 h-16">{description}</p>
+        {wide && (
+          <Link href={`/portfolio/${slug}`}>
+            <a className="hidden sm:block underline text-blue-900 dark:text-cyan-300">
+              Find out more
+            </a>
+          </Link>
+        )}
+      </div>
+      <div className="p-4">
+        <Image
+          loader={graphcmsLoader}
+          width={screenshot.width}
+          height={screenshot.height}
+          src={screenshot.url}
+          alt={title}
+        />
+      </div>
+      <Link href={`/portfolio/${slug}`}>
+        <a
+          className={`${
+            wide && "sm:hidden"
+          } underline pb-2 text-center text-blue-900 dark:text-cyan-300`}
+        >
+          Find out more
+        </a>
+      </Link>
+    </div>
   );
 }
