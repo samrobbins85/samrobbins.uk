@@ -16,7 +16,7 @@ export default function Coder({ username, name }) {
       <div className="flex flex-col">
         <p>{name}</p>
         <a
-          className="text-blue-700 hover:underline"
+          className="text-nord-10 dark:text-nord-8 hover:underline"
           href={`https://github.com/${username}`}
         >
           <p>{username}</p>
