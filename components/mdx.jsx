@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-export default function MyImg({ title, ...props }) {
+export function MyImg({ title, ...props }) {
   if (title !== undefined) {
     return (
       <figure>
@@ -9,4 +9,12 @@ export default function MyImg({ title, ...props }) {
     );
   }
   return <img {...props} />;
+}
+
+export function MyTable(props) {
+  return (
+    <div className="overflow-x-auto">
+      <table {...props} />
+    </div>
+  );
 }

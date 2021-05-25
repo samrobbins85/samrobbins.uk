@@ -6,7 +6,7 @@ import {
 import rehypePrism from "@mapbox/rehype-prism";
 import GitHubButton from "@/components/portfolio/githubButton";
 import Coder from "@/components/portfolio/coder";
-import MyTable from "@/components/mdx/table";
+import { MyTable } from "@/components/mdx";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 

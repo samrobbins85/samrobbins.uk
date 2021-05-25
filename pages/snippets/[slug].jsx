@@ -1,6 +1,6 @@
 import { getAllSnippetsWithSlug, getSnippet } from "@/lib/graphcms";
 import rehypePrism from "@mapbox/rehype-prism";
-import MyTable from "@/components/mdx/table";
+import { MyTable } from "@/components/mdx";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 import Layout from "@/components/layout";
