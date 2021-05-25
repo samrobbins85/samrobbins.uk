@@ -1,5 +1,8 @@
-import { getPortfolio, getAllPortfoliosWithSlug } from "@/lib/graphcms";
-import Image from "next/image";
+import {
+  getPortfolio,
+  getAllPortfoliosWithSlug,
+  getTechnologyCategories,
+} from "@/lib/graphcms";
 import rehypePrism from "@mapbox/rehype-prism";
 import GitHubButton from "@/components/portfolio/githubButton";
 import Coder from "@/components/portfolio/coder";
@@ -13,7 +16,29 @@ import Layout from "@/components/layout";
 const components = {
   table: MyTable,
 };
-export default function Portfolio({ data, renderedOutput, names }) {
+
+function Category({ name, technologies }) {
+  const items = technologies
+    .filter((item) => name === item.category)
+    .map((y) => y.name);
+  if (items.length === 0) {
+    return null;
+  }
+  return (
+    <div>
+      <p className="font-semibold text-sm uppercase pb-1 tracking-wide">
+        {name}
+      </p>
+      <ul>
+        {items.map((y) => (
+          <li>{y}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default function Portfolio({ data, renderedOutput, names, categories }) {
   return (
     <Layout title={data.title}>
       <h1 className="text-5xl sm:text-6xl text-center font-bold pt-2">
@@ -41,21 +66,11 @@ export default function Portfolio({ data, renderedOutput, names }) {
           </div>
         </div>
       )}
-      <div className="py-2 pt-10">
-        <h2 className="text tracking-widest text-center uppercase ">
-          Made using
-        </h2>
-        <div className="flex justify-center gap-x-8 flex-wrap gap-y-4 py-4">
-          {data.technologies.map((item) => (
-            <a className="relative h-18 w-24" href={item.link} key={item.name}>
-              <Image
-                src={item.image.url}
-                alt={item.name}
-                layout="fill"
-                objectFit="contain"
-                priority
-              />
-            </a>
+
+      <div className="bg-nord-5 max-w-prose mx-auto mt-4 border border-nord-4">
+        <div className="grid sm:grid-cols-4 px-4 gap-y-6 py-6 justify-center text-center">
+          {categories.map((x) => (
+            <Category name={x.name} technologies={data.technologies} />
           ))}
         </div>
       </div>
@@ -63,17 +78,14 @@ export default function Portfolio({ data, renderedOutput, names }) {
       <div className="prose dark:prose-light mx-auto">
         <MDXRemote {...renderedOutput} components={components} />
       </div>
-      <div className="bg-nord-5 max-w-prose mx-auto mt-4">
-        <h2 className="text tracking-widest text-center uppercase py-2">
-          Made using
-        </h2>
-      </div>
     </Layout>
   );
 }
 
 export async function getStaticProps({ params }) {
   const data = await getPortfolio(params.slug);
+  const categories = await getTechnologyCategories();
+
   const renderedOutput = await serialize(data.markdown, {
     components,
     mdxOptions: {
@@ -101,6 +113,7 @@ export async function getStaticProps({ params }) {
       data,
       renderedOutput,
       names,
+      categories,
     },
   };
 }
