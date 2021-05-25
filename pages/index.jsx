@@ -1,10 +1,17 @@
 import Head from "next/head";
 import Link from "next/link";
-import Grid from "@/components/home/grid";
 import SocialLinks from "@/components/home/social";
 import Nav from "@/components/newnav";
+import Image from "next/image";
 import { getPortfolios } from "../lib/graphcms";
 import { getHome } from "../lib/datocms";
+
+const graphcmsLoader = ({ src, width }) => {
+  let url = src.split("/");
+  url.splice(3, 0, `resize=width:${width}`);
+  url = url.join("/");
+  return url;
+};
 
 export default function Home({ portfolios, home }) {
   return (
@@ -43,9 +50,44 @@ export default function Home({ portfolios, home }) {
         <h2 className="text-3xl font-semibold text-nord-10 dark:text-nord-8">
           Projects
         </h2>
-        <div className="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
-          <Grid portfolios={portfolios} />
+
+        <div className="grid gap-x-8 gap-y-8 py-4">
+          {portfolios
+            .filter((item) => item.featured)
+            .slice(0, 3)
+            .map((item) => (
+              <div className="bg-nord-5 dark:bg-nord-0 p-2 grid sm:grid-cols-2 rounded">
+                <div className="text-center">
+                  <p className="text-2xl font-semibold text-center pt-4 text-nord-2 dark:text-nord-6">
+                    {item.title}
+                  </p>
+                  <p className="py-4 text-center dark:text-nord-5">
+                    {item.description}
+                  </p>
+                  <Link href={`/portfolio/${item.slug}`}>
+                    <a className="hidden sm:block underline text-blue-900 dark:text-cyan-300">
+                      Find out more
+                    </a>
+                  </Link>
+                </div>
+                <div className="p-4">
+                  <Image
+                    loader={graphcmsLoader}
+                    width={item.screenshot.width}
+                    height={item.screenshot.height}
+                    src={item.screenshot.url}
+                    alt={item.title}
+                  />
+                </div>
+                <Link href={`/portfolio/${item.slug}`}>
+                  <a className="sm:hidden underline pb-2 text-center text-blue-900 dark:text-cyan-300">
+                    Find out more
+                  </a>
+                </Link>
+              </div>
+            ))}
         </div>
+
         <div>
           <p className="text-center">
             To see all my projects, check out my{" "}
