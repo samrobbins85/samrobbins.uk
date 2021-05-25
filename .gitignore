@@ -35,3 +35,7 @@ yarn-error.log*
 
 robots.txt
 sitemap.xml
+
+feed.json
+feed.xml
+atom.xml
