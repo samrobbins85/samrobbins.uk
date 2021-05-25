@@ -58,7 +58,7 @@ export default function Home({ portfolios, home }) {
             .filter((item) => item.featured)
             .slice(0, 3)
             .map((item) => (
-              <div className="bg-nord-5 dark:bg-nord-3 p-2 grid sm:grid-cols-2 rounded">
+              <div className="bg-nord-5 dark:bg-nord-0 p-2 grid sm:grid-cols-2 rounded">
                 <div className="text-center">
                   <p className="text-2xl font-semibold text-center pt-4 text-nord-2 dark:text-nord-6">
                     {item.title}

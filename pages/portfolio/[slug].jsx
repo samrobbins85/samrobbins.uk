@@ -19,7 +19,6 @@ const components = {
 
 function Category({ name, technologies }) {
   const items = technologies.filter((item) => name === item.category);
-  // .map((y) => y.name);
   if (items.length === 0) {
     return null;
   }
@@ -73,7 +72,7 @@ export default function Portfolio({ data, renderedOutput, names, categories }) {
         </div>
       )}
 
-      <div className="bg-nord-5 dark:bg-nord-0 dark:border-nord-1 max-w-prose mx-auto my-4 border border-nord-4">
+      <div className="bg-nord-5 dark:bg-nord-0 dark:border-gray-800 max-w-prose mx-auto my-4 border border-nord-4">
         <div className="grid sm:grid-cols-4 px-4 gap-y-6 py-6 justify-center text-center">
           {categories.map((x) => (
             <Category name={x.name} technologies={data.technologies} />
