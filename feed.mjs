@@ -72,8 +72,8 @@ const blogs = await getAllBlogs();
 blogs.forEach((post) => {
   feed.addItem({
     title: post.title,
-    id: siteUrl + "/" + post.slug,
-    link: siteUrl + "/" + post.slug,
+    id: siteUrl + "/blog/" + post.slug,
+    link: siteUrl + "/blog/" + post.slug,
     description: post.description,
     date: new Date(post.date),
   });
