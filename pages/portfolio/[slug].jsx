@@ -18,9 +18,8 @@ const components = {
 };
 
 function Category({ name, technologies }) {
-  const items = technologies
-    .filter((item) => name === item.category)
-    .map((y) => y.name);
+  const items = technologies.filter((item) => name === item.category);
+  // .map((y) => y.name);
   if (items.length === 0) {
     return null;
   }
@@ -31,7 +30,14 @@ function Category({ name, technologies }) {
       </p>
       <ul>
         {items.map((y) => (
-          <li>{y}</li>
+          <li>
+            <a
+              className="text-nord-10 dark:text-nord-8 hover:underline"
+              href={y.link}
+            >
+              {y.name}
+            </a>
+          </li>
         ))}
       </ul>
     </div>
@@ -67,14 +73,14 @@ export default function Portfolio({ data, renderedOutput, names, categories }) {
         </div>
       )}
 
-      <div className="bg-nord-5 max-w-prose mx-auto mt-4 border border-nord-4">
+      <div className="bg-nord-5 dark:bg-nord-0 dark:border-nord-1 max-w-prose mx-auto my-4 border border-nord-4">
         <div className="grid sm:grid-cols-4 px-4 gap-y-6 py-6 justify-center text-center">
           {categories.map((x) => (
             <Category name={x.name} technologies={data.technologies} />
           ))}
         </div>
       </div>
-      <hr className="py-2" />
+      {/* <hr className="py-2" /> */}
       <div className="prose dark:prose-light mx-auto">
         <MDXRemote {...renderedOutput} components={components} />
       </div>
