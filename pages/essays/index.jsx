@@ -1,4 +1,4 @@
-import { getWritings } from "@/lib/graphcms";
+import { getAllEssays } from "@/lib/datocms";
 import Head from "next/head";
 import Paper from "@/components/writing/paper";
 import Layout from "@/components/layout";
@@ -40,7 +40,7 @@ export default function Portfolio({ writings }) {
 }
 
 export async function getStaticProps() {
-  const writings = (await getWritings()) || [];
+  const writings = (await getAllEssays()) || [];
   return {
     props: { writings },
   };

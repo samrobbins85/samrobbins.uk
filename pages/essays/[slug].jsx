@@ -1,4 +1,3 @@
-import { getWriting, getAllWritingsWithSlug } from "@/lib/graphcms";
 import math from "@/lib/remark-math";
 import rehypePrism from "@mapbox/rehype-prism";
 import footnotes from "remark-numbered-footnotes";
@@ -7,6 +6,7 @@ import { useEffect } from "react";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 import Layout from "@/components/layout";
+import { essaySlugs, getEssay } from "@/lib/datocms";
 
 const components = {
   table: MyTable,
@@ -40,8 +40,8 @@ export default function Portfolio({ data, renderedOutput }) {
 }
 
 export async function getStaticProps({ params }) {
-  const data = await getWriting(params.slug);
-  const renderedOutput = await serialize(data.markdown, {
+  const data = await getEssay(params.slug);
+  const renderedOutput = await serialize(data.content, {
     components,
     mdxOptions: {
       remarkPlugins: [footnotes, math],
@@ -58,7 +58,7 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const posts = await getAllWritingsWithSlug();
+  const posts = await essaySlugs();
   return {
     paths: posts.map(({ slug }) => ({
       params: { slug },
