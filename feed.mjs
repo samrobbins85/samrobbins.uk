@@ -65,8 +65,6 @@ const feed = new Feed({
   },
 });
 
-// // await getAllBlogs().forEach((x) => console.log(x.title));
-// await console.log(getAllBlogs);
 const blogs = await getAllBlogs();
 
 blogs.forEach((post) => {
