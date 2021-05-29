@@ -40,7 +40,7 @@ export default function Home({ about }) {
         About
       </h1>
       <div className="flex justify-center">
-        <div className="border px-6 py-4 rounded text-lg bg-nord-5 dark:bg-dark-contrast dark:border-gray-800 text-center">
+        <div className="border px-6 py-4 rounded text-lg bg-nord-6 dark:bg-dark-contrast dark:border-gray-800 text-center">
           For more details, check out my{" "}
           <a
             className="border-b-2 border-cyan-400"

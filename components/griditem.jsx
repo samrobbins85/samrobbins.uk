@@ -17,7 +17,7 @@ export default function GridItem({
 }) {
   return (
     <div
-      className={`bg-nord-5 dark:bg-nord-0 p-2 grid ${
+      className={`bg-nord-6 dark:bg-nord-0 p-2 grid ${
         wide ? "sm:grid-cols-2" : "max-w-sm"
       } rounded `}
       key={title}

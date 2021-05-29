@@ -57,7 +57,7 @@ function DesktopDropdown({ data }) {
               open || onPage
                 ? "text-gray-900 font-semibold dark:text-white"
                 : "text-nord-3 dark:text-gray-300",
-              "group  dark:bg-nord-1 rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-4 focus:ring-nord-8 ring-offset-nord-6 dark:ring-offset-nord-1"
+              "group  dark:bg-nord-1 rounded-md inline-flex items-center text-base font-medium hover:text-gray-900 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-4 focus:ring-nord-8 ring-offset-nord-6.1 dark:ring-offset-nord-1"
             )}
           >
             <span>{data.name}</span>
@@ -86,7 +86,7 @@ function DesktopDropdown({ data }) {
               static
               className="absolute z-50  mt-3 transform px-2 w-screen max-w-xs sm:px-0 ml-0 left-1/2 -translate-x-1/2"
             >
-              <div className=" rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden relative grid gap-6 bg-nord-4 dark:bg-nord-0 px-5 py-6 sm:gap-8 sm:p-8">
+              <div className=" rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden relative grid gap-6 bg-nord-6 dark:bg-nord-0 px-5 py-6 sm:gap-8 sm:p-8">
                 {data.items.map((item) => (
                   <ActiveLink
                     key={item.name}
@@ -171,10 +171,10 @@ export default function Nav() {
     );
   }
   return (
-    <Popover className="relative bg-nord-6 dark:bg-nord-1 z-10">
+    <Popover className="relative bg-nord-6.1 dark:bg-nord-1 z-10">
       {({ open }) => (
         <>
-          <div className="border-b-2 border-nord-5 dark:border-nord-0 h-18 md:grid md:grid-cols-12">
+          <div className="border-b-2 border-nord-6 dark:border-nord-0 h-18 md:grid md:grid-cols-12">
             <div className="flex justify-between items-center md:justify-center md:space-x-10  md:col-start-2 md:col-end-12 h-full">
               <Link href="/">
                 <a className="pl-4 md:hidden -my-2">
@@ -220,15 +220,12 @@ export default function Nav() {
               static
               className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
             >
-              <div className="rounded-lg shadow-lg bg-nord-5 dark:bg-nord-0 pt-5 pb-6 px-5">
+              <div className="rounded-lg shadow-lg bg-nord-6 dark:bg-nord-0 pt-5 pb-6 px-5">
                 <div className="flex items-center justify-between">
                   <ThemeComponent />
-                  <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center  hover:bg-nord-4 dark:hover:bg-nord-2 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-nord-8">
+                  <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center  hover:bg-nord-4 dark:hover:bg-nord-2 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-nord-8 text-gray-400 hover:text-gray-500 dark:text-gray-300">
                     <span className="sr-only">Close menu</span>
-                    <XIcon
-                      className="h-6 w-6 text-gray-400 hover:text-gray-500 dark:text-gray-300"
-                      aria-hidden="true"
-                    />
+                    <XIcon className="h-6 w-6 " aria-hidden="true" />
                   </Popover.Button>
                 </div>
                 <nav className="grid gap-y-8 mt-4">
