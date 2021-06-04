@@ -13,7 +13,7 @@ async function fetchAPI(query, { variables } = {}) {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.DATOCMS_TOKEN}`,
+      Authorization: `Bearer ${process.env.DATO}`,
     },
     body: JSON.stringify({
       query,

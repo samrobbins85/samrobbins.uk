@@ -20,6 +20,24 @@ function MyApp({ Component, pageProps }) {
           crossOrigin="anonymous"
         />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          title="RSS 2.0"
+          href="/feed.xml"
+        />
+        <link
+          rel="alternate"
+          type="application/atom+xml"
+          title="Atom 1.0"
+          href="/atom.xml"
+        />
+        <link
+          rel="alternate"
+          type="application/json"
+          title="JSON Feed"
+          href="/feed.json"
+        />
       </Head>
       <ThemeProvider
         forcedTheme={Component.theme || undefined}

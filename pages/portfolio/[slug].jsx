@@ -72,14 +72,13 @@ export default function Portfolio({ data, renderedOutput, names, categories }) {
         </div>
       )}
 
-      <div className="bg-nord-5 dark:bg-nord-0 dark:border-gray-800 max-w-prose mx-auto my-4 border border-nord-4">
+      <div className="bg-nord-6 dark:bg-nord-0 dark:border-gray-800 max-w-prose mx-auto my-4 border border-nord-5">
         <div className="grid sm:grid-cols-4 px-4 gap-y-6 py-6 justify-center text-center">
           {categories.map((x) => (
             <Category name={x.name} technologies={data.technologies} />
           ))}
         </div>
       </div>
-      {/* <hr className="py-2" /> */}
       <div className="prose dark:prose-light mx-auto">
         <MDXRemote {...renderedOutput} components={components} />
       </div>
@@ -105,7 +104,7 @@ export async function getStaticProps({ params }) {
         {
           headers: {
             // eslint-disable-next-line no-undef
-            Authorization: `token ${process.env.GITHUB_TOKEN}`,
+            Authorization: `token ${process.env.GITHUB}`,
           },
         }
       );
