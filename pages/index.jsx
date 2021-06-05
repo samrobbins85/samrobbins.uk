@@ -29,14 +29,14 @@ export default function Home({ portfolios, home }) {
         <h2 className="text-lg text-gray-800 dark:text-gray-200">
           {home.description}
         </h2>
-        <div className="flex gap-x-4 pt-8 pb-4 items-start gap-y-4 flex-wrap">
+        <div className="grid sm:flex gap-x-4 pt-8 pb-4 items-start gap-y-4 flex-wrap justify-center sm:justify-start">
           <a
             href={`mailto:${home.email}`}
-            className="border border-nord-4 bg-nord-6 dark:border-gray-700 px-4 py-2 rounded hover:bg-nord-5 focus:bg-gray-50 dark:hover:bg-nord-2 dark:focus:bg-nord-2 font-medium whitespace-nowrap dark:bg-dark-contrast"
+            className="w-32 text-center border border-nord-4 bg-nord-6 dark:border-gray-700 px-4 py-2 rounded hover:bg-nord-5 focus:bg-gray-50 dark:hover:bg-nord-2 dark:focus:bg-nord-2 font-medium whitespace-nowrap dark:bg-dark-contrast justify-self-center"
           >
             Contact Me
           </a>
-          <div className="flex flex-wrap gap-x-4 gap-y-2 py-2 justify-center">
+          <div className="flex flex-wrap gap-x-4 gap-y-2 py-2 justify-center ">
             <SocialLinks />
           </div>
         </div>

@@ -29,7 +29,7 @@ export default function GridItem({
         <p className="py-4 text-center dark:text-nord-5 h-16">{description}</p>
         {wide && (
           <Link href={`/portfolio/${slug}`}>
-            <a className="hidden sm:block underline text-blue-900 dark:text-cyan-300">
+            <a className="hidden sm:block hover:underline text-cyan-700 dark:text-cyan-300">
               Find out more
             </a>
           </Link>
@@ -48,7 +48,7 @@ export default function GridItem({
         <a
           className={`${
             wide && "sm:hidden"
-          } underline pb-2 text-center text-blue-900 dark:text-cyan-300`}
+          } hover:underline pb-2 text-center text-cyan-700 dark:text-cyan-300`}
         >
           Find out more
         </a>
