@@ -55,6 +55,10 @@ module.exports = {
       flex: {
         "1/4": "1 0 25%",
       },
+      outline: {
+        "nord-8": ["max(1px, 0.2em) solid #88c0d0", "0.25em"],
+        "nord-8-sm": ["max(1px, 0.2em) solid #88c0d0", "0"],
+      },
       fontFamily: {
         latex: ["Latin Modern"],
         sans: ["Inter var", ...defaultTheme.fontFamily.sans],
