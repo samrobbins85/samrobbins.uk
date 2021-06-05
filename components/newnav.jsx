@@ -87,7 +87,7 @@ function DesktopDropdown({ data }) {
                     href={item.href}
                     activeClassName="!text-black dark:!text-white font-semibold"
                   >
-                    <a className="-m-3 p-3 flex items-start rounded-lg hover:bg-nord-5 text-gray-600 dark:hover:bg-nord-2 dark:text-gray-200">
+                    <a className="-m-3 p-3 flex items-start rounded-lg hover:bg-nord-5 text-gray-600 dark:hover:bg-nord-2 dark:text-gray-200 focus:outline-none focus:bg-nord-5 dark:focus:bg-nord-2">
                       <item.icon
                         className="flex-shrink-0 h-6 w-6 text-nord-10 dark:text-nord-8"
                         aria-hidden="true"
