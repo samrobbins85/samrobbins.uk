@@ -1,13 +1,22 @@
 import { getBlog, getAllBlogsWithSlug } from "@/lib/datocms";
-import { renderRule } from "react-datocms";
-import { isCode } from "datocms-structured-text-utils";
-import { render } from "datocms-structured-text-to-html-string";
-import rehype from "rehype";
 import rehypePrism from "@mapbox/rehype-prism";
-import rehypeStringify from "rehype-stringify";
 import Layout from "@/components/layout";
+import { serialize } from "next-mdx-remote/serialize";
+import { MDXRemote } from "next-mdx-remote";
+import { MyTable } from "@/components/mdx";
+import { useEffect } from "react";
+import math from "@/lib/remark-math";
 
-export default function Blog({ dato, stringContent }) {
+const components = {
+  table: MyTable,
+};
+
+export default function Blog({ dato, content }) {
+  useEffect(() => {
+    import("@/lib/rendermath").then((renderMath) => {
+      renderMath.default();
+    });
+  }, []);
   return (
     <Layout title={dato.title}>
       <header className="py-2 pb-4">
@@ -22,10 +31,9 @@ export default function Blog({ dato, stringContent }) {
         </p>
       </header>
       <main>
-        <article
-          className="prose dark:prose-light mx-auto"
-          dangerouslySetInnerHTML={{ __html: stringContent }}
-        />
+        <article className="prose dark:prose-light mx-auto">
+          <MDXRemote {...content} components={components} />
+        </article>
       </main>
     </Layout>
   );
@@ -33,30 +41,16 @@ export default function Blog({ dato, stringContent }) {
 
 export async function getStaticProps({ params }) {
   const dato = await getBlog(params.slug);
-  const content = render(dato.structuredtext, {
-    customRules: [
-      renderRule(isCode, ({ adapter: { renderNode, renderText }, key, node }) =>
-        renderNode(
-          "pre",
-          { key, class: `language-${node.language}` },
-          renderNode(
-            "code",
-            { key, class: `language-${node.language}` },
-            renderText(node.code)
-          )
-        )
-      ),
-    ],
+  const content = await serialize(dato.markdown, {
+    mdxOptions: {
+      remarkPlugins: [math],
+      rehypePlugins: [rehypePrism],
+    },
   });
-  const processedContent = await rehype()
-    .use(rehypePrism)
-    .use(rehypeStringify, { omitOptionalTags: true })
-    .process(content);
-  const stringContent = String(processedContent);
   return {
     props: {
       dato,
-      stringContent,
+      content,
     },
   };
 }
