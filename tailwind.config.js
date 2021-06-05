@@ -47,23 +47,13 @@ module.exports = {
           15: "#b48ead",
         },
       },
-      fill: {
-        current: "currentColor",
-        line: "#2F2F3A",
-        "polywork-1": "#88CFB0",
-        "polywork-2": "#F2C94C",
-        "polywork-3": "#BD83CE",
-        "polywork-4": "#40BE88",
-        "polywork-5": "#FF7474",
-        "polywork-6": "#6776F9",
-        "polywork-7": "#37C2E2",
-        "polywork-8": "#F2994A",
-        "nord-3": "#4c566a",
-      },
       maxWidth: {
         "85ch": "85ch",
         "65ch": "65ch",
         prose: "85ch",
+      },
+      flex: {
+        "1/4": "1 0 25%",
       },
       fontFamily: {
         latex: ["Latin Modern"],
