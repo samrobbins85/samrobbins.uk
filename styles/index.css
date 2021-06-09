@@ -62,3 +62,7 @@ body,
 #__next {
   height: 100%;
 }
+
+.highlight[aria-expanded="true"] {
+  @apply text-black dark:!text-white;
+}

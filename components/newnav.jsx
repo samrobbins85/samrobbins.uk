@@ -125,7 +125,7 @@ function MobileItem({ data }) {
       href={data.href}
       activeClassName="!text-black dark:!text-white"
     >
-      <a className="-m-3 p-3 flex items-center rounded-md hover:bg-nord-4 text-gray-500 dark:text-gray-200 dark:hover:bg-nord-2 focus:bg-nord-4 dark:focus:bg-nord-2">
+      <a className="-m-3 p-3 flex items-center rounded-md hover:bg-nord-4 text-gray-500 dark:text-gray-200 dark:hover:bg-nord-2 focus:bg-nord-4 dark:focus:bg-nord-2 focus:outline-none">
         <data.icon
           className="flex-shrink-0 h-6 w-6 text-nord-10 dark:text-nord-8"
           aria-hidden="true"
