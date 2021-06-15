@@ -6,7 +6,8 @@
     "build": "next build",
     "postbuild": "next-sitemap && node feed.mjs",
     "start": "next start",
-    "export": "next build && next export"
+    "export": "next build && next export",
+    "lint": "next lint"
   },
   "dependencies": {
     "@headlessui/react": "^1.2.0",
@@ -24,7 +25,7 @@
     "feed": "^4.2.2",
     "katex": "^0.13.11",
     "latex-tailwind": "^2.2.0",
-    "next": "^10.2.3",
+    "next": "^11.0.0",
     "next-mdx-remote": "^3.0.2",
     "next-themes": "^0.0.14",
     "node-fetch": "^2.6.1",
@@ -43,6 +44,7 @@
     "@tailwindcss/jit": "^0.1.18",
     "eslint": "^7.28.0",
     "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-next": "^11.0.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
