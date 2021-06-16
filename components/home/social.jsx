@@ -43,6 +43,7 @@ export default function SocialLinks() {
       href={link.link}
       className={`text-nord-3 dark:text-nord-4 ${link.className}`}
       aria-label={link.name}
+      key={link.name}
     >
       <link.icon
         aria-hidden="true"

@@ -18,5 +18,6 @@ function imgixLoader({ src, width, quality }) {
 }
 
 export default function DatoImage(props) {
+  // eslint-disable-next-line jsx-a11y/alt-text
   return <Image loader={imgixLoader} {...props} />;
 }

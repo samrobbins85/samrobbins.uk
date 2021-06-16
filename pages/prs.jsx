@@ -5,6 +5,7 @@ import Image from "next/image";
 const githubLoader = ({ src, width }) => `${src}&s=${width}`;
 
 function GitHubImage(props) {
+  // eslint-disable-next-line jsx-a11y/alt-text
   return <Image {...props} loader={githubLoader} />;
 }
 

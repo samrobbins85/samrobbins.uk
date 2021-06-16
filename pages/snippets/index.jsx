@@ -36,8 +36,9 @@ export default function Snippets({ categories, snippets }) {
     >
       <h1 className="text-5xl font-medium font-mono text-center">Snippets</h1>
       <h2 className="text-xl text-gray-600 dark:text-gray-300 py-2 text-center">
-        Little bits of code I use that don't deserve a blog, but are still
-        useful
+        {
+          "Little bits of code I use that don't deserve a blog, but are still  useful"
+        }
       </h2>
       <div className="flex justify-center gap-x-4 text-lg py-6 mb-6 flex-wrap gap-y-8 ">
         <Categories

@@ -9,6 +9,6 @@ module.exports = withBundleAnalyzer({
   },
   webpack5: true,
   eslint: {
-    ignoreDuringBuilds: true,
+    dirs: ["pages", "components"],
   },
 });

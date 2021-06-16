@@ -2,8 +2,13 @@ env:
   browser: true
   es2021: true
 extends:
-  - "airbnb"
-  - "airbnb/hooks"
+  - "eslint:recommended"
+  - "plugin:react/recommended"
+  - "plugin:jsx-a11y/recommended"
+  - "plugin:react-hooks/recommended"
+  - "plugin:import/recommended"
+  - "next"
+  - "next/core-web-vitals"
   - "prettier"
 parserOptions:
   ecmaFeatures:
@@ -12,17 +17,11 @@ parserOptions:
   sourceType: module
 rules:
   {
-    "jsx-a11y/anchor-is-valid": 0,
-    "react/react-in-jsx-scope": 0,
-    "react/prop-types": 0,
+    "@next/next/no-img-element": 0,
     "no-undef": 0,
-    "no-underscore-dangle": 0,
-    "react/jsx-props-no-spreading": 0,
-    "import/no-unresolved": 0,
-    "no-plusplus": 0,
-    "no-await-in-loop": 0,
     "react-hooks/exhaustive-deps": 0,
-    "react/no-unescaped-entities": 0
+    "jsx-a11y/anchor-is-valid": 0,
+    "import/no-unresolved": 0,
   }
 settings:
   linkComponents:

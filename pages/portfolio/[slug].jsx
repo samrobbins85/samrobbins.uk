@@ -29,7 +29,7 @@ function Category({ name, technologies }) {
       </p>
       <ul>
         {items.map((y) => (
-          <li>
+          <li key={y.name}>
             <a
               className="text-nord-10 dark:text-nord-8 hover:underline focus:underline"
               href={y.link}
@@ -78,7 +78,7 @@ export default function Portfolio({ data, renderedOutput, names, categories }) {
             <Category
               name={x.name}
               technologies={data.technologies}
-              key={x.name }
+              key={x.name}
             />
           ))}
         </div>
