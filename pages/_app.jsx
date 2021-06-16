@@ -2,6 +2,7 @@ import "../styles/index.css";
 import "../styles/prism-atom-dark.css";
 import Head from "next/head";
 import { ThemeProvider } from "next-themes";
+import Script from "next/script";
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -39,6 +40,10 @@ function MyApp({ Component, pageProps }) {
           href="/feed.json"
         />
       </Head>
+      <Script
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon='{"token": "8348650db5154c01999667d263b7e6e1", "spa": true}'
+      />
       <ThemeProvider
         forcedTheme={Component.theme || undefined}
         attribute="class"
