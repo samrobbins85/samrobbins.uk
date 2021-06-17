@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import SocialLinks from "@/components/home/social";
-import Nav from "@/components/newnav";
+import Nav from "@/components/nav";
 import GridItem from "@/components/griditem";
 import { getPortfolios } from "../lib/graphcms";
 import { getHome } from "../lib/datocms";
@@ -44,7 +44,7 @@ export default function Home({ portfolios, home }) {
           Projects
         </h2>
 
-        <div className="grid gap-x-8 gap-y-8 py-4">
+        <div className="grid gap-8 py-4">
           {portfolios
             .filter((item) => item.featured)
             .slice(0, 3)

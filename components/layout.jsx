@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Nav from "@/components/newnav";
+import Nav from "@/components/nav";
 
 export default function Layout({ title, children, fullWidth, description }) {
   return (
