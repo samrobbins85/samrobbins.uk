@@ -4762,6 +4762,13 @@ table@^6.0.9:
     string-width "^4.2.0"
     strip-ansi "^6.0.0"
 
+tailwind-outline-plugin@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/tailwind-outline-plugin/-/tailwind-outline-plugin-2.0.1.tgz#f5effc4c20fa19416be8563e12586f32d14b8e31"
+  integrity sha512-OvmrCJXfHMmWNnmC6LWqfvwTBWspr6ti8eSvJO7zRYJHclbOPF3Z8hKWBn77s9Ftlj+tAKhcmd7fk4jWWu0bdA==
+  dependencies:
+    tailwindcss "^2.1.4"
+
 tailwindcss@^2.0.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-2.1.2.tgz#29402bf73a445faedd03df6d3b177e7b52b7c4a1"

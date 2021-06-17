@@ -164,5 +164,6 @@ module.exports = {
     require("latex-tailwind"),
     require("@tailwindcss/aspect-ratio"),
     require("@tailwindcss/forms"),
+    require("tailwind-outline-plugin"),
   ],
 };
