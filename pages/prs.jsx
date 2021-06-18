@@ -9,6 +9,48 @@ function GitHubImage(props) {
   return <Image {...props} loader={githubLoader} />;
 }
 
+function PullRequest({
+  title,
+  image,
+  link,
+  repo_url,
+  owner_login,
+  owner_name,
+  repo_name,
+  date,
+}) {
+  return (
+    <div className="flex gap-4 bg-nord-5 border border-nord-4 dark:bg-nord-0 dark:border-nord-2 p-4">
+      <div className="h-12 w-12 flex-shrink-0 relative">
+        <GitHubImage
+          src={image}
+          alt={owner_name}
+          layout="fill"
+          className="h-12 w-12"
+          sizes="10vw"
+        />
+      </div>
+      <div className="grid sm:flex justify-between flex-grow flex-wrap gap-x-2">
+        <div>
+          <a
+            href={link}
+            className="text-black hover:text-blue-600 dark:text-nord-6 dark:hover:text-blue-400"
+          >
+            <h2 className="font-semibold break-words">{title}</h2>
+          </a>
+          <a
+            className="text-nord-3 hover:text-blue-600 dark:text-nord-4 dark:hover:text-blue-400 break-all"
+            href={repo_url}
+          >
+            {owner_login}/{repo_name}
+          </a>
+        </div>
+        <p className="text-nord-3 dark:text-nord-4 italic">{date}</p>
+      </div>
+    </div>
+  );
+}
+
 export default function Home({ prs }) {
   return (
     <Layout
@@ -20,39 +62,17 @@ export default function Home({ prs }) {
       </h1>
       <div className="grid gap-y-4">
         {prs.map((pr) => (
-          <div
-            className="flex gap-4 bg-nord-5 border border-nord-4 dark:bg-nord-0 dark:border-nord-2 p-4"
+          <PullRequest
             key={pr.title}
-          >
-            <div className="h-12 w-12 flex-shrink-0 relative">
-              <GitHubImage
-                src={pr.repository.owner.avatarUrl}
-                alt={pr.repository.owner.name}
-                layout="fill"
-                className="h-12 w-12"
-                sizes="10vw"
-              />
-            </div>
-            <div className="grid sm:flex justify-between flex-grow flex-wrap gap-x-2">
-              <div>
-                <a
-                  href={pr.permalink}
-                  className="text-black hover:text-blue-600 dark:text-nord-6 dark:hover:text-blue-400"
-                >
-                  <h2 className="font-semibold break-words">{pr.title}</h2>
-                </a>
-                <a
-                  className="text-nord-3 hover:text-blue-600 dark:text-nord-4 dark:hover:text-blue-400 break-all"
-                  href={pr.repository.url}
-                >
-                  {pr.repository.owner.login}/{pr.repository.name}
-                </a>
-              </div>
-              <p className="text-nord-3 dark:text-nord-4 italic">
-                {pr.mergedAt}
-              </p>
-            </div>
-          </div>
+            title={pr.title}
+            image={pr.repository.owner.avatarUrl}
+            link={pr.permalink}
+            repo_url={pr.repository.url}
+            owner_login={pr.repository.owner.login}
+            owner_name={pr.repository.owner.name}
+            repo_name={pr.repository.name}
+            date={pr.mergedAt}
+          />
         ))}
       </div>
     </Layout>
