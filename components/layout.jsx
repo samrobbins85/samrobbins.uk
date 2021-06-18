@@ -16,7 +16,7 @@ export default function Layout({ title, children, fullWidth, description }) {
         )}
       </Head>
       <Nav />
-      <div className={`${!fullWidth && "max-w-85ch"} mx-auto px-4 py-8`}>
+      <div className={`${!fullWidth && "max-w-85ch"} mx-auto p-4`}>
         {children}
       </div>
     </>
