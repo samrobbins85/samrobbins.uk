@@ -18,7 +18,7 @@ export default function GridItem({
   return (
     <div
       className={`bg-nord6 dark:bg-nord0 p-2 grid ${
-        wide ? "sm:grid-cols-2" : "max-w-sm"
+        wide ? "sm:grid-cols-2" : "w-[24rem]"
       } rounded `}
       key={title}
     >
@@ -41,7 +41,7 @@ export default function GridItem({
           width={screenshot.width}
           height={screenshot.height}
           src={screenshot.url}
-          // sizes="(min-width: 768px) 42ch, 80vw"
+          sizes="(min-width: 768px) 42ch, 80vw"
           alt={title}
         />
       </div>
