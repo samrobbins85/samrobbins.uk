@@ -17,7 +17,7 @@ module.exports = {
         fuchsia: colors.fuchsia,
         cyan: colors.cyan,
         lime: colors.lime,
-        "light-blue": colors.lightBlue,
+        "light-blue": colors.sky,
         rose: colors.rose,
         emerald: colors.emerald,
         npm: "#CB3837",
@@ -46,6 +46,10 @@ module.exports = {
           14: "#a3be8c",
           15: "#b48ead",
         },
+      },
+      zIndex: {
+        "-10": "-10",
+        "-20": "-20",
       },
       maxWidth: {
         "85ch": "85ch",
