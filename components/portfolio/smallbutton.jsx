@@ -6,7 +6,7 @@ function GenericButton({ url, label, icon }) {
   return (
     <a
       href={url}
-      className="text-nord-3 dark:text-nord-4 hover:text-black dark:hover:text-white hover:bg-nord-4 dark:hover:bg-nord-0 p-2 rounded focus:outline-nord-8-sm"
+      className="text-nord-3 dark:text-nord-4 hover:text-black dark:hover:text-white hover:bg-nord-4 dark:hover:bg-nord-0 p-2 rounded focus:outline-solid outline-nord-8 outline-0.5"
       aria-label={label}
     >
       {icon}

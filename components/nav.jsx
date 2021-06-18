@@ -56,7 +56,7 @@ function DesktopDropdown({ data }) {
               open || onPage
                 ? "text-gray-900 font-semibold dark:text-white"
                 : "text-nord-3 dark:text-gray-300",
-              "group inline-flex items-center text-base font-medium focus:outline-nord-8 rounded-md"
+              "group inline-flex items-center text-base font-medium !outline-nord-8 focus:outline-solid !outline-0.5 outline-offset-1 rounded-md"
             )}
           >
             <span>{data.name}</span>
@@ -111,7 +111,7 @@ function DesktopSingle({ data }) {
       href={data.href}
       activeClassName="!text-black dark:!text-white font-semibold"
     >
-      <a className="text-base font-medium text-nord-3 dark:text-gray-300 hover:text-gray-900 focus-visible:outline-nord-8 rounded-md">
+      <a className="text-base font-medium text-nord-3 dark:text-gray-300 hover:text-gray-900 outline-nord-8 focus:outline-solid outline-0.5 outline-offset-1 rounded-md">
         {data.name}
       </a>
     </ActiveLink>
@@ -151,7 +151,7 @@ export default function Nav() {
     return (
       <button
         type="button"
-        className="p-2 hover:bg-nord-4 dark:hover:bg-nord-2 rounded-lg focus:outline-nord-8-sm"
+        className="p-2 hover:bg-nord-4 dark:hover:bg-nord-2 rounded-lg focus:outline-solid focus:outline-nord-8 focus:outline-0.5"
         onClick={() => switchTheme(resolvedTheme, setTheme)}
         aria-label="Toggle Dark Mode"
       >
@@ -170,13 +170,13 @@ export default function Nav() {
         <div className="border-b-2 border-nord-6 dark:border-nord-0 h-18 md:grid md:grid-cols-12">
           <div className="flex justify-between items-center md:justify-center md:space-x-10 md:col-start-2 md:col-end-12 h-full">
             <Link href="/">
-              <a className="ml-4 md:hidden -my-2 focus:outline-nord-8-sm rounded-md p-2">
+              <a className="ml-4 md:hidden -my-2 focus:outline-solid outline-nord-8 outline-0.5 rounded-md p-2">
                 <span className="sr-only">Home</span>
                 <HomeIcon className="h-8 w-8 text-gray-500 dark:text-gray-300" />
               </a>
             </Link>
             <div className="-my-2 md:hidden px-4">
-              <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center hover:bg-nord-4 dark:hover:bg-nord-2 focus:outline-nord-8-sm">
+              <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center hover:bg-nord-4 dark:hover:bg-nord-2 focus:outline-solid focus:outline-nord-8 focus:outline-0.5">
                 <span className="sr-only">Open menu</span>
                 <MenuIcon
                   className="h-6 w-6 text-gray-400 hover:text-gray-500 dark:text-gray-300"
@@ -211,7 +211,7 @@ export default function Nav() {
             <div className="rounded-lg shadow-lg bg-nord-6 dark:bg-nord-0 pt-5 pb-6 px-5">
               <div className="flex items-center justify-between">
                 <ThemeComponent />
-                <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center  hover:bg-nord-4 dark:hover:bg-nord-2 focus:outline-nord-8-sm text-gray-400 hover:text-gray-500 dark:text-gray-300">
+                <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center  hover:bg-nord-4 dark:hover:bg-nord-2 focus:outline-nord-8 focus:outline-solid text-gray-400 hover:text-gray-500 dark:text-gray-300">
                   <span className="sr-only">Close menu</span>
                   <XIcon className="h-6 w-6 " aria-hidden="true" />
                 </Popover.Button>
