@@ -1,5 +1,6 @@
 import "../styles/index.css";
 import "../styles/prism-atom-dark.css";
+import "katex/dist/katex.css";
 import Head from "next/head";
 import { ThemeProvider } from "next-themes";
 import Script from "next/script";
