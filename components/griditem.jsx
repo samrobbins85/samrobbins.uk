@@ -41,6 +41,7 @@ export default function GridItem({
           width={screenshot.width}
           height={screenshot.height}
           src={screenshot.url}
+          sizes="(min-width: 768px) 42ch, 80vw"
           alt={title}
         />
       </div>
