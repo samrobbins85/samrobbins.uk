@@ -6,6 +6,7 @@ import { MDXRemote } from "next-mdx-remote";
 import { MyTable } from "@/components/mdx";
 import { useEffect } from "react";
 import math from "@/lib/remark-math";
+import "katex/dist/katex.css";
 
 const components = {
   table: MyTable,

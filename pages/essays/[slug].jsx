@@ -7,6 +7,7 @@ import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 import Layout from "@/components/layout";
 import { essaySlugs, getEssay } from "@/lib/datocms";
+import "katex/dist/katex.css";
 
 const components = {
   table: MyTable,
