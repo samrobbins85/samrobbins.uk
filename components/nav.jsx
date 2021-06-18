@@ -111,7 +111,7 @@ function DesktopSingle({ data }) {
       href={data.href}
       activeClassName="!text-black dark:!text-white font-semibold"
     >
-      <a className="text-base font-medium text-nord-3 dark:text-gray-300 hover:text-gray-900 outline-nord-8 focus:outline-solid outline-0.5 outline-offset-1 rounded-md">
+      <a className="text-base font-medium text-nord-3 dark:text-gray-300 hover:text-gray-900 outline-nord-8 focus-visible:outline-solid outline-0.5 outline-offset-1 rounded-md">
         {data.name}
       </a>
     </ActiveLink>

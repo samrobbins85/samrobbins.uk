@@ -158,6 +158,7 @@ module.exports = {
       boxShadow: ["group-focus"],
       outline: ["group-focus"],
       ringColor: ["hover", "active"],
+      outlinePlugin: ["hover", "focus", "group-focus"],
     },
   },
   plugins: [
