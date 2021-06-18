@@ -3,7 +3,6 @@ import TimeLineItem from "@/components/about/timeline";
 import { useState } from "react";
 import { ChevronDownIcon } from "@primer/octicons-react";
 import { ExternalLinkIcon } from "@heroicons/react/outline";
-import { render } from "datocms-structured-text-to-html-string";
 import Layout from "@/components/layout";
 import { getAbout } from "../lib/datocms";
 
@@ -113,9 +112,6 @@ export async function getStaticProps() {
     })
     .reverse();
 
-  about.timeline.forEach((item, index) => {
-    about.timeline[index].title = render(item.title);
-  });
   return {
     props: { about },
   };

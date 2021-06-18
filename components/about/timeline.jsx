@@ -41,10 +41,7 @@ function Description({ title, date, description }) {
   return (
     <>
       <div className="flex justify-between">
-        <h3
-          className="font-medium "
-          dangerouslySetInnerHTML={{ __html: title }}
-        />
+        <h3 className="font-medium ">{title}</h3>
         <p className="pl-4 text-sm tracking-wide text-nord2 dark:text-white text-right">
           {new Date(date).toLocaleString("en-gb", {
             month: "long",
