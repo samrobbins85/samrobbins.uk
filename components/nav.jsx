@@ -199,36 +199,27 @@ export default function Nav() {
           </div>
         </div>
 
-        <Transition
-          enter="duration-200 ease-out"
-          enterFrom="opacity-0 scale-95"
-          enterTo="opacity-100 scale-100"
-          leave="duration-100 ease-in"
-          leaveFrom="opacity-100 scale-100"
-          leaveTo="opacity-0 scale-95"
-        >
-          <Popover.Panel className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
-            <div className="rounded-lg shadow-lg bg-nord6 dark:bg-nord0 pt-5 pb-6 px-5">
-              <div className="flex items-center justify-between">
-                <ThemeComponent />
-                <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center  hover:bg-nord4 dark:hover:bg-nord2 focus:outline-nord8 focus:outline-solid text-gray-400 hover:text-gray-500 dark:text-gray-300">
-                  <span className="sr-only">Close menu</span>
-                  <XIcon className="h-6 w-6 " aria-hidden="true" />
-                </Popover.Button>
-              </div>
-              <nav className="grid gap-y-8 mt-4">
-                {items.map((item) => {
-                  if ("items" in item) {
-                    return item.items.map((x) => (
-                      <MobileItem key={x.name} data={x} />
-                    ));
-                  }
-                  return <MobileItem key={item.name} data={item} />;
-                })}
-              </nav>
+        <Popover.Panel className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+          <div className="rounded-lg shadow-lg bg-nord6 dark:bg-nord0 pt-5 pb-6 px-5">
+            <div className="flex items-center justify-between">
+              <ThemeComponent />
+              <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center  hover:bg-nord4 dark:hover:bg-nord2 focus:outline-nord8 focus:outline-solid text-gray-400 hover:text-gray-500 dark:text-gray-300">
+                <span className="sr-only">Close menu</span>
+                <XIcon className="h-6 w-6 " aria-hidden="true" />
+              </Popover.Button>
             </div>
-          </Popover.Panel>
-        </Transition>
+            <nav className="grid gap-y-8 mt-4">
+              {items.map((item) => {
+                if ("items" in item) {
+                  return item.items.map((x) => (
+                    <MobileItem key={x.name} data={x} />
+                  ));
+                }
+                return <MobileItem key={item.name} data={item} />;
+              })}
+            </nav>
+          </div>
+        </Popover.Panel>
       </>
     </Popover>
   );
