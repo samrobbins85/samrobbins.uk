@@ -42,7 +42,7 @@
     "postcss-import": "^14.0.2",
     "tailwind-nord": "^1.2.0",
     "tailwind-outline-plugin": "^2.0.1",
-    "tailwindcss": "^2.2.0"
+    "tailwindcss": "^2.2.2"
   },
   "license": "MIT"
 }
