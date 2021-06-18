@@ -1,7 +1,7 @@
 function Button({ count, title, onClick, item, category }) {
   return (
     <button
-      className={`flex items-center px-2 py-1 outline-nord-4 outline-solid outline-0.5 focus:outline-1 focus:outline-solid focus:outline-cyan-400 bg-nord-5 dark:bg-dark-contrast  ${
+      className={`flex items-center px-2 py-1 outline-nord4 outline-solid outline-0.5 focus:outline-1 focus:outline-solid focus:outline-cyan-400 bg-nord5 dark:bg-nord0  ${
         item === category && "outline-solid !outline-cyan-400 outline-0.5"
       }
     }`}

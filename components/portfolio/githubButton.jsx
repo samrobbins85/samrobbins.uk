@@ -14,7 +14,7 @@ function GitHubMultiple({ repos }) {
     <div className="relative inline-block text-left">
       <Menu>
         <>
-          <Menu.Button className="text-nord-3 dark:text-nord-4 dark:hover:text-white hover:text-black p-2 hover:bg-nord-4  dark:hover:bg-nord-0 rounded focus:ring focus:ring-nord-8 focus:outline-none highlight">
+          <Menu.Button className="text-nord3 dark:text-nord4 dark:hover:text-white hover:text-black p-2 hover:bg-nord4  dark:hover:bg-nord0 rounded focus:ring focus:ring-nord8 focus:outline-none highlight">
             <MarkGithubIcon size={16} className="h-6 w-6" />
           </Menu.Button>
 

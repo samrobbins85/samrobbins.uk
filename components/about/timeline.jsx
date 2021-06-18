@@ -10,7 +10,7 @@ function TimelineIcon({ type }) {
       return (
         <Pass
           aria-hidden="true"
-          className="text-nord-2 dark:text-nord-4 h-6 w-6"
+          className="text-nord2 dark:text-nord4 h-6 w-6"
         />
       );
     case "Education":
@@ -18,15 +18,15 @@ function TimelineIcon({ type }) {
         <MortarBoardIcon
           aria-hidden="true"
           size={16}
-          className="text-nord-15 h-6 w-6"
+          className="text-nord15 h-6 w-6"
         />
       );
     case "Hackathon":
-      return <CodeIcon aria-hidden="true" className="text-nord-10 h-6 w-6" />;
+      return <CodeIcon aria-hidden="true" className="text-nord10 h-6 w-6" />;
     case "Award":
-      return <Trophy aria-hidden="true" className="text-nord-13 h-6 w-6" />;
+      return <Trophy aria-hidden="true" className="text-nord13 h-6 w-6" />;
     case "Speaking":
-      return <Podium aria-hidden="true" className="text-nord-11 h-6 w-6" />;
+      return <Podium aria-hidden="true" className="text-nord11 h-6 w-6" />;
     default:
       return (
         <CodeIcon
@@ -45,7 +45,7 @@ function Description({ title, date, description }) {
           className="font-medium "
           dangerouslySetInnerHTML={{ __html: title }}
         />
-        <p className="pl-4 text-sm tracking-wide text-nord-2 dark:text-white text-right">
+        <p className="pl-4 text-sm tracking-wide text-nord2 dark:text-white text-right">
           {new Date(date).toLocaleString("en-gb", {
             month: "long",
             year: "numeric",

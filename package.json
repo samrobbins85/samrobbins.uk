@@ -52,6 +52,7 @@
     "next-sitemap": "^1.6.116",
     "postcss-import": "^14.0.2",
     "postcss-preset-env": "^6.7.0",
+    "tailwind-nord": "^1.2.0",
     "tailwind-outline-plugin": "^2.0.1",
     "tailwindcss": "^2.2.0"
   },

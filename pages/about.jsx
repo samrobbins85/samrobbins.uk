@@ -36,11 +36,11 @@ export default function Home({ about }) {
   const [expand, setExpand] = useState(false);
   return (
     <Layout title="About" description="About me">
-      <h1 className="text-5xl font-semibold pb-4 text-center text-nord-10 dark:text-nord-8">
+      <h1 className="text-5xl font-semibold pb-4 text-center text-nord10 dark:text-nord8">
         About
       </h1>
       <div className="flex justify-center">
-        <div className="border px-6 py-4 rounded text-lg bg-nord-6 dark:bg-dark-contrast dark:border-gray-800 text-center">
+        <div className="border px-6 py-4 rounded text-lg bg-nord6 dark:bg-nord0 dark:border-gray-800 text-center">
           For more details, check out my{" "}
           <a
             className="border-b-2 border-cyan-400"
@@ -57,7 +57,7 @@ export default function Home({ about }) {
           </a>
         </div>
       </div>
-      <h2 className="text-3xl font-semibold py-6 text-nord-10 dark:text-nord-8">
+      <h2 className="text-3xl font-semibold py-6 text-nord10 dark:text-nord8">
         Published Articles
       </h2>
       <div className="grid">
@@ -72,7 +72,7 @@ export default function Home({ about }) {
           />
         ))}
       </div>
-      <h2 className="text-3xl font-semibold py-6 text-nord-10 dark:text-nord-8">
+      <h2 className="text-3xl font-semibold py-6 text-nord10 dark:text-nord8">
         Timeline
       </h2>
       <ul className="px-1">

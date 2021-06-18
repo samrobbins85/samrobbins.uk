@@ -5,7 +5,7 @@ import Layout from "@/components/layout";
 export default function Blog({ blogs }) {
   return (
     <Layout title="Blog" description="Blogs about a range of technical topics">
-      <h1 className="text-5xl font-semibold text-center text-nord-10 dark:text-nord-8">
+      <h1 className="text-5xl font-semibold text-center text-nord10 dark:text-nord8">
         Blog
       </h1>
 

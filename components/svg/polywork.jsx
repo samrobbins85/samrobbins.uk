@@ -4,10 +4,10 @@ export default function Polywork(props) {
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 37 37"
       fill="none"
-      className="fill-nord-3"
+      className="fill-nord3"
       {...props}
     >
-      <g className="fill-nord-3" clipPath="url(#clip0)">
+      <g className="fill-nord3" clipPath="url(#clip0)">
         <path
           d="M12.7188 36.0635V25.0098H24.2812V29.5307C24.2782 31.2644 23.5873 32.926 22.3604 34.1508C21.1334 35.3756 19.4705 36.0635 17.7369 36.0635H12.7188Z"
           className="group-hover:fill-polywork-1"

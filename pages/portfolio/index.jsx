@@ -27,7 +27,7 @@ export default function Portfolio({ portfolios, categories }) {
   }, []);
   return (
     <Layout title="Portfolio" description="My portfolio of projects" fullWidth>
-      <h1 className="text-5xl font-semibold text-center text-nord-10 dark:text-nord-8">
+      <h1 className="text-5xl font-semibold text-center text-nord10 dark:text-nord8">
         Portfolio
       </h1>
 

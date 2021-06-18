@@ -20,7 +20,7 @@ function PullRequest({
   date,
 }) {
   return (
-    <div className="flex gap-4 bg-nord-5 border border-nord-4 dark:bg-nord-0 dark:border-nord-2 p-4">
+    <div className="flex gap-4 bg-nord5 border border-nord4 dark:bg-nord0 dark:border-nord2 p-4">
       <div className="h-12 w-12 flex-shrink-0 relative">
         <GitHubImage
           src={image}
@@ -34,18 +34,18 @@ function PullRequest({
         <div>
           <a
             href={link}
-            className="text-black hover:text-blue-600 dark:text-nord-6 dark:hover:text-blue-400"
+            className="text-black hover:text-blue-600 dark:text-nord6 dark:hover:text-blue-400"
           >
             <h2 className="font-semibold break-words">{title}</h2>
           </a>
           <a
-            className="text-nord-3 hover:text-blue-600 dark:text-nord-4 dark:hover:text-blue-400 break-all"
+            className="text-nord3 hover:text-blue-600 dark:text-nord4 dark:hover:text-blue-400 break-all"
             href={repo_url}
           >
             {owner_login}/{repo_name}
           </a>
         </div>
-        <p className="text-nord-3 dark:text-nord-4 italic">{date}</p>
+        <p className="text-nord3 dark:text-nord4 italic">{date}</p>
       </div>
     </div>
   );
@@ -57,7 +57,7 @@ export default function Home({ prs }) {
       title="Pull Requests"
       description="Pull requests I've made on GitHub"
     >
-      <h1 className="text-5xl font-semibold pb-6 text-center text-nord-10 dark:text-nord-8">
+      <h1 className="text-5xl font-semibold pb-6 text-center text-nord10 dark:text-nord8">
         Pull Requests
       </h1>
       <div className="grid gap-y-4">

@@ -31,7 +31,7 @@ function Category({ name, technologies }) {
         {items.map((y) => (
           <li key={y.name}>
             <a
-              className="text-nord-10 dark:text-nord-8 hover:underline focus:underline"
+              className="text-nord10 dark:text-nord8 hover:underline focus:underline"
               href={y.link}
             >
               {y.name}
@@ -72,7 +72,7 @@ export default function Portfolio({ data, renderedOutput, names, categories }) {
         </div>
       )}
 
-      <div className="bg-nord-6 dark:bg-nord-0 dark:border-gray-800 max-w-prose mx-auto my-4 border border-nord-5">
+      <div className="bg-nord6 dark:bg-nord0 dark:border-gray-800 max-w-prose mx-auto my-4 border border-nord5">
         <div className="grid sm:flex flex-wrap px-4 gap-y-6 py-6 justify-center text-center">
           {categories.map((x) => (
             <Category

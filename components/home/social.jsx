@@ -41,7 +41,7 @@ export default function SocialLinks() {
   return links.map((link) => (
     <a
       href={link.link}
-      className={`text-nord-3 dark:text-nord-4 ${link.className}`}
+      className={`text-nord3 dark:text-nord4 ${link.className}`}
       aria-label={link.name}
       key={link.name}
     >

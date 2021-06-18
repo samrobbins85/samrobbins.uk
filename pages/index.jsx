@@ -10,7 +10,7 @@ function ContactButton({ email }) {
   return (
     <a
       href={`mailto:${email}`}
-      className="w-32 text-center border border-nord-4 bg-nord-6 dark:border-gray-700 px-4 py-2 rounded hover:bg-nord-5 focus:bg-gray-50 dark:hover:bg-nord-2 dark:focus:bg-nord-2 font-medium whitespace-nowrap dark:bg-dark-contrast justify-self-center"
+      className="w-32 text-center border border-nord4 bg-nord6 dark:border-gray-700 px-4 py-2 rounded hover:bg-nord5 focus:bg-gray-50 dark:hover:bg-nord2 dark:focus:bg-nord2 font-medium whitespace-nowrap dark:bg-nord0 justify-self-center"
     >
       Contact Me
     </a>
@@ -34,7 +34,7 @@ export default function Home({ portfolios, home }) {
       </Head>
       <Nav />
       <div className="py-6 px-4 max-w-85ch mx-auto">
-        <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8 text-nord-10 dark:text-nord-8">
+        <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8 text-nord10 dark:text-nord8">
           {home.title}
         </h1>
         <h2 className="text-lg text-gray-800 dark:text-gray-200">
@@ -46,7 +46,7 @@ export default function Home({ portfolios, home }) {
             <SocialLinks />
           </div>
         </div>
-        <h2 className="text-3xl font-semibold text-nord-10 dark:text-nord-8">
+        <h2 className="text-3xl font-semibold text-nord10 dark:text-nord8">
           Projects
         </h2>
 

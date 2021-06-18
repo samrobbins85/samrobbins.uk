@@ -17,16 +17,16 @@ export default function GridItem({
 }) {
   return (
     <div
-      className={`bg-nord-6 dark:bg-nord-0 p-2 grid ${
+      className={`bg-nord6 dark:bg-nord0 p-2 grid ${
         wide ? "sm:grid-cols-2" : "max-w-sm"
       } rounded `}
       key={title}
     >
       <div className="text-center">
-        <p className="text-2xl font-semibold text-center pt-4 text-nord-2 dark:text-nord-6">
+        <p className="text-2xl font-semibold text-center pt-4 text-nord2 dark:text-nord6">
           {title}
         </p>
-        <p className="py-4 text-center dark:text-nord-5 h-16">{description}</p>
+        <p className="py-4 text-center dark:text-nord5 h-16">{description}</p>
         {wide && (
           <Link href={`/portfolio/${slug}`}>
             <a className="hidden sm:block hover:underline text-cyan-700 dark:text-cyan-300">

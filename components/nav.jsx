@@ -55,8 +55,8 @@ function DesktopDropdown({ data }) {
             className={classNames(
               open || onPage
                 ? "text-gray-900 font-semibold dark:text-white"
-                : "text-nord-3 dark:text-gray-300",
-              "group inline-flex items-center text-base font-medium !outline-nord-8 focus:outline-solid !outline-0.5 outline-offset-1 rounded-md"
+                : "text-nord3 dark:text-gray-300",
+              "group inline-flex items-center text-base font-medium !outline-nord8 focus:outline-solid !outline-0.5 outline-offset-1 rounded-md"
             )}
           >
             <span>{data.name}</span>
@@ -80,16 +80,16 @@ function DesktopDropdown({ data }) {
             leaveTo="opacity-0 translate-y-1"
           >
             <Popover.Panel className="absolute z-50  mt-3 transform px-2 w-screen max-w-xs sm:px-0 ml-0 left-1/2 -translate-x-1/2">
-              <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden relative grid gap-6 bg-nord-6 dark:bg-nord-0 px-5 py-6 sm:gap-8 sm:p-8">
+              <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden relative grid gap-6 bg-nord6 dark:bg-nord0 px-5 py-6 sm:gap-8 sm:p-8">
                 {data.items.map((item) => (
                   <ActiveLink
                     key={item.name}
                     href={item.href}
                     activeClassName="!text-black dark:!text-white font-semibold"
                   >
-                    <a className="-m-3 p-3 flex items-start rounded-lg hover:bg-nord-5 text-gray-600 dark:hover:bg-nord-2 dark:text-gray-200 focus:outline-none focus:bg-nord-5 dark:focus:bg-nord-2">
+                    <a className="-m-3 p-3 flex items-start rounded-lg hover:bg-nord5 text-gray-600 dark:hover:bg-nord2 dark:text-gray-200 focus:outline-none focus:bg-nord5 dark:focus:bg-nord2">
                       <item.icon
-                        className="flex-shrink-0 h-6 w-6 text-nord-10 dark:text-nord-8"
+                        className="flex-shrink-0 h-6 w-6 text-nord10 dark:text-nord8"
                         aria-hidden="true"
                       />
                       <p className="ml-4 text-base">{item.name}</p>
@@ -111,7 +111,7 @@ function DesktopSingle({ data }) {
       href={data.href}
       activeClassName="!text-black dark:!text-white font-semibold"
     >
-      <a className="text-base font-medium text-nord-3 dark:text-gray-300 hover:text-gray-900 outline-nord-8 focus-visible:outline-solid outline-0.5 outline-offset-1 rounded-md">
+      <a className="text-base font-medium text-nord3 dark:text-gray-300 hover:text-gray-900 outline-nord8 focus-visible:outline-solid outline-0.5 outline-offset-1 rounded-md">
         {data.name}
       </a>
     </ActiveLink>
@@ -125,9 +125,9 @@ function MobileItem({ data }) {
       href={data.href}
       activeClassName="!text-black dark:!text-white"
     >
-      <a className="-m-3 p-3 flex items-center rounded-md hover:bg-nord-4 text-gray-500 dark:text-gray-200 dark:hover:bg-nord-2 focus:bg-nord-4 dark:focus:bg-nord-2 focus:outline-none">
+      <a className="-m-3 p-3 flex items-center rounded-md hover:bg-nord4 text-gray-500 dark:text-gray-200 dark:hover:bg-nord2 focus:bg-nord4 dark:focus:bg-nord2 focus:outline-none">
         <data.icon
-          className="flex-shrink-0 h-6 w-6 text-nord-10 dark:text-nord-8"
+          className="flex-shrink-0 h-6 w-6 text-nord10 dark:text-nord8"
           aria-hidden="true"
         />
         <span className="ml-3 text-base font-medium ">{data.name}</span>
@@ -151,32 +151,32 @@ export default function Nav() {
     return (
       <button
         type="button"
-        className="p-2 hover:bg-nord-4 dark:hover:bg-nord-2 rounded-lg focus:outline-solid focus:outline-nord-8 focus:outline-0.5"
+        className="p-2 hover:bg-nord4 dark:hover:bg-nord2 rounded-lg focus:outline-solid focus:outline-nord8 focus:outline-0.5"
         onClick={() => switchTheme(resolvedTheme, setTheme)}
         aria-label="Toggle Dark Mode"
       >
         {resolvedTheme === "light" && (
-          <MoonIcon className="h-6 w-6 text-nord-0" />
+          <MoonIcon className="h-6 w-6 text-nord0" />
         )}
         {resolvedTheme === "dark" && (
-          <SunIcon className="h-6 w-6 text-nord-13" />
+          <SunIcon className="h-6 w-6 text-nord13" />
         )}
       </button>
     );
   }
   return (
-    <Popover className="relative bg-nord-6.1 dark:bg-nord-1 z-10">
+    <Popover className="relative bg-nord6.1 dark:bg-nord1 z-10">
       <>
-        <div className="border-b-2 border-nord-6 dark:border-nord-0 h-18 md:grid md:grid-cols-12">
+        <div className="border-b-2 border-nord6 dark:border-nord0 h-18 md:grid md:grid-cols-12">
           <div className="flex justify-between items-center md:justify-center md:space-x-10 md:col-start-2 md:col-end-12 h-full">
             <Link href="/">
-              <a className="ml-4 md:hidden -my-2 focus:outline-solid outline-nord-8 outline-0.5 rounded-md p-2">
+              <a className="ml-4 md:hidden -my-2 focus:outline-solid outline-nord8 outline-0.5 rounded-md p-2">
                 <span className="sr-only">Home</span>
                 <HomeIcon className="h-8 w-8 text-gray-500 dark:text-gray-300" />
               </a>
             </Link>
             <div className="-my-2 md:hidden px-4">
-              <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center hover:bg-nord-4 dark:hover:bg-nord-2 focus:outline-solid focus:outline-nord-8 focus:outline-0.5">
+              <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center hover:bg-nord4 dark:hover:bg-nord2 focus:outline-solid focus:outline-nord8 focus:outline-0.5">
                 <span className="sr-only">Open menu</span>
                 <MenuIcon
                   className="h-6 w-6 text-gray-400 hover:text-gray-500 dark:text-gray-300"
@@ -208,10 +208,10 @@ export default function Nav() {
           leaveTo="opacity-0 scale-95"
         >
           <Popover.Panel className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
-            <div className="rounded-lg shadow-lg bg-nord-6 dark:bg-nord-0 pt-5 pb-6 px-5">
+            <div className="rounded-lg shadow-lg bg-nord6 dark:bg-nord0 pt-5 pb-6 px-5">
               <div className="flex items-center justify-between">
                 <ThemeComponent />
-                <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center  hover:bg-nord-4 dark:hover:bg-nord-2 focus:outline-nord-8 focus:outline-solid text-gray-400 hover:text-gray-500 dark:text-gray-300">
+                <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center  hover:bg-nord4 dark:hover:bg-nord2 focus:outline-nord8 focus:outline-solid text-gray-400 hover:text-gray-500 dark:text-gray-300">
                   <span className="sr-only">Close menu</span>
                   <XIcon className="h-6 w-6 " aria-hidden="true" />
                 </Popover.Button>

@@ -8,7 +8,7 @@ import Layout from "@/components/layout";
 function Card({ title, slug, language, category }) {
   return (
     <Link href={`/snippets/${slug}`}>
-      <a className="w-full sm:w-1/2 lg:w-1/4 outline-gray-800 outline-offset-1 focus:outline-solid outline-1/2 rounded bg-nord-0">
+      <a className="w-full sm:w-1/2 lg:w-1/4 outline-gray-800 outline-offset-1 focus:outline-solid outline-1/2 rounded bg-nord0">
         <div className="h-full py-2 ">
           {category === "All" && (
             <div
