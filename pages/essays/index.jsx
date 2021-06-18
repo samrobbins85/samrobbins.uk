@@ -41,6 +41,13 @@ export default function Portfolio({ writings }) {
 
 export async function getStaticProps() {
   const writings = (await getAllEssays()) || [];
+  writings.forEach((item, index) => {
+    const date = new Date(item.date).toLocaleString("en-gb", {
+      month: "long",
+      year: "numeric",
+    });
+    writings[index].date = date;
+  });
   return {
     props: { writings },
   };

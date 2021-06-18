@@ -11,7 +11,7 @@ const components = {
   table: MyTable,
 };
 
-export default function Blog({ dato, content }) {
+export default function Blog({ dato, content, date }) {
   useEffect(() => {
     import("@/lib/rendermath").then((renderMath) => {
       renderMath.default();
@@ -24,10 +24,7 @@ export default function Blog({ dato, content }) {
           {dato.title}
         </h1>
         <p className="text-center py-1 text-gray-600 dark:text-gray-200">
-          {new Date(Date.parse(dato.date)).toLocaleString("en-gb", {
-            month: "short",
-            year: "numeric",
-          })}
+          {date}
         </p>
       </header>
       <main>
@@ -47,10 +44,17 @@ export async function getStaticProps({ params }) {
       rehypePlugins: [rehypePrism],
     },
   });
+  const date = new Date(Date.parse(dato.date)).toLocaleString("en-gb", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
   return {
     props: {
       dato,
       content,
+      date,
     },
   };
 }

@@ -12,7 +12,7 @@ const components = {
   table: MyTable,
   img: MyImg,
 };
-export default function Portfolio({ data, renderedOutput }) {
+export default function Portfolio({ data, renderedOutput, date }) {
   useEffect(() => {
     import("@/lib/rendermath").then((renderMath) => {
       renderMath.default();
@@ -22,12 +22,7 @@ export default function Portfolio({ data, renderedOutput }) {
     <Layout title={data.title}>
       <header className="font-serif pb-2">
         <h1 className="text-center text-4xl font-semibold">{data.title}</h1>
-        <p className="text-center text-xl">
-          {new Date(data.date).toLocaleString("en-gb", {
-            month: "short",
-            year: "numeric",
-          })}
-        </p>
+        <p className="text-center text-xl">{date}</p>
       </header>
 
       <main>
@@ -48,11 +43,16 @@ export async function getStaticProps({ params }) {
       rehypePlugins: [rehypePrism],
     },
   });
+  const date = new Date(data.date).toLocaleString("en-gb", {
+    month: "long",
+    year: "numeric",
+  });
 
   return {
     props: {
       data,
       renderedOutput,
+      date,
     },
   };
 }
