@@ -6,23 +6,15 @@ import OtherGrid from "@/components/portfolio/otherGrid";
 import Layout from "@/components/layout";
 import GridItem from "@/components/griditem";
 
-
-// interface Category {
-//   name: string | Boolean;
-// }
 export default function Portfolio({ portfolios, categories }) {
-  
-
   const router = useRouter();
-  const [category, setCategory] = useState<Boolean | string>(false);
+  const [category, setCategory] = useState("All");
   useEffect(() => {
-    if (category) {
       if (category !== "All" && category !== router.asPath.split("#")[1]) {
         router.replace(`#${category}`, undefined, { shallow: true });
       } else if (category === "All") {
         router.replace("", undefined, { shallow: true });
       }
-    }
   }, [category]);
   useEffect(() => {
     if (Object.keys(categories).includes(router.asPath.split("#")[1])) {

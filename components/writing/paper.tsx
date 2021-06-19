@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function Paper({ slug, title, date }) {
+export default function Paper({ slug, title, date }:{slug: string, title: string, date:string}) {
   return (
     <Link href={`/essays/${slug}`}>
       <a>

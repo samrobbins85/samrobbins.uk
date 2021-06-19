@@ -1,11 +1,18 @@
 import Link from "next/link";
 
-export default function OtherGrid({ portfolios, category }) {
+interface Portfolio{
+  categories: string[],
+  title: string,
+  slug: string,
+  description: string
+}
+
+export default function OtherGrid({ portfolios, category }: {portfolios: Portfolio[], category: string}) {
   return (
     <div className="flex flex-wrap  justify-center mx-auto gap-x-4 gap-y-4">
       {portfolios
         .filter((item) =>
-          category !== "All" ? item.categories.includes(category) : item
+           category !== "All" ? item.categories.includes(category) : item
         )
         .map((x) => (
           <div className="w-full sm:w-2/5 lg:w-1/5" key={x.title}>

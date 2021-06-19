@@ -37,7 +37,7 @@ function TimelineIcon({ type }) {
   }
 }
 
-function Description({ title, date, description }) {
+function Description({ title, date, description }:{title: string, date: string, description:string}) {
   return (
     <>
       <div className="flex justify-between">

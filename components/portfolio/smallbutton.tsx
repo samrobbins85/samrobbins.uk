@@ -2,7 +2,7 @@ import { GlobeAltIcon } from "@heroicons/react/outline";
 import Npm from "@/svg/npm";
 import { MarkGithubIcon } from "@primer/octicons-react";
 
-function GenericButton({ url, label, icon }) {
+function GenericButton({ url, label, icon }: {url: string, label:string, icon:JSX.Element}) {
   return (
     <a
       href={url}

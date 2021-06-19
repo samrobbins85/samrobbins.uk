@@ -2,7 +2,7 @@ import { Menu } from "@headlessui/react";
 import { RepoIcon, MarkGithubIcon } from "@primer/octicons-react";
 import { GitHubSingle } from "./smallbutton";
 
-export default function GitHubButton({ repos }) {
+export default function GitHubButton({ repos }: {repos: Object[]}) {
   if (repos.length > 1) {
     return <GitHubMultiple repos={repos} />;
   }

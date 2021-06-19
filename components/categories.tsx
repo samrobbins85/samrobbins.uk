@@ -1,4 +1,4 @@
-function Button({ count, title, onClick, item, category }: {count?: Number, title: string, onClick: any, item:string, category: string}) {
+function Button({ count, title, onClick, item, category }: {count?: Number, title: string, onClick: any, item:string, category: string|Boolean}) {
   return (
     <button
       className={`flex items-center px-2 py-1 outline-nord4 outline-solid outline-0.5 focus:outline-1 focus:outline-solid focus:outline-cyan-400 bg-nord5 dark:bg-nord0  ${
@@ -19,7 +19,7 @@ function Button({ count, title, onClick, item, category }: {count?: Number, titl
   );
 }
 
-export default function Categories({ setCategory, category, categories }) {
+export default function Categories({ setCategory, category, categories }: {setCategory: Function, category: string|Boolean, categories:string[]}) {
   return (
     <>
       <Button

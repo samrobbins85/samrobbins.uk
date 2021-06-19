@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function Coder({ username, name }) {
+export default function Coder({ username, name }: {username: string, name: string}) {
   return (
     <div className="flex items-center gap-x-2" key={username}>
       <div className="inline-block h-10 w-10 relative">
