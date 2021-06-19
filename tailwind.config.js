@@ -7,7 +7,11 @@ module.exports = {
   presets: [require("@samrobbins/typography")],
   darkMode: "class",
   mode: "jit",
-  purge: ["./components/**/*.jsx", "./pages/**/*.jsx", "./lib/snippet.js"],
+  purge: [
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./lib/snippet.js",
+  ],
   theme: {
     extend: {
       colors: {

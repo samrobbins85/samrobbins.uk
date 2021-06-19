@@ -136,7 +136,7 @@ function MobileItem({ data }) {
   );
 }
 
-function switchTheme(theme, setTheme) {
+function switchTheme(theme: string, setTheme: Function) {
   if (theme === "light") {
     setTheme("dark");
   } else {

@@ -38,7 +38,6 @@ export default function Portfolio({ data, renderedOutput, date }) {
 export async function getStaticProps({ params }) {
   const data = await getEssay(params.slug);
   const renderedOutput = await serialize(data.content, {
-    components,
     mdxOptions: {
       remarkPlugins: [footnotes, math],
       rehypePlugins: [rehypePrism],

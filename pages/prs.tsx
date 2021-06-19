@@ -1,7 +1,7 @@
 import getSearch from "@/lib/githubapi";
 import Layout from "@/components/layout";
 import Image from "next/image";
-
+import { GetStaticProps } from "next";
 const githubLoader = ({ src, width }) => `${src}&s=${width}`;
 
 function GitHubImage(props) {
@@ -79,7 +79,7 @@ export default function Home({ prs }) {
   );
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   let prs = await getSearch();
   prs = prs.map((x) => x.node);
   prs.forEach((_, index) => {
@@ -94,4 +94,4 @@ export async function getStaticProps() {
     props: { prs },
     revalidate: 86400,
   };
-}
+};

@@ -95,7 +95,6 @@ export async function getStaticProps({ params }) {
   const categories = await getTechnologyCategories();
 
   const renderedOutput = await serialize(data.markdown, {
-    components,
     mdxOptions: {
       rehypePlugins: [rehypePrism],
     },

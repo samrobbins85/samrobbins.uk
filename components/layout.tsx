@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Nav from "@/components/nav";
 
-export default function Layout({ title, children, fullWidth, description }) {
+export default function Layout({ title, children, fullWidth, description }: {title: string, children: React.ReactNode, fullWidth?: Boolean, description?: string }) {
   return (
     <>
       <Head>

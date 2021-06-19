@@ -5,8 +5,10 @@ import Nav from "@/components/nav";
 import GridItem from "@/components/griditem";
 import { getPortfolios } from "../lib/graphcms";
 import { getHome } from "../lib/datocms";
+import {GetStaticProps} from "next"
 
-function ContactButton({ email }) {
+
+function ContactButton({ email }: {email: string}) {
   return (
     <a
       href={`mailto:${email}`}
@@ -81,7 +83,7 @@ export default function Home({ portfolios, home }) {
   );
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const portfolios = (await getPortfolios()) || [];
   const home = (await getHome()) || {};
 

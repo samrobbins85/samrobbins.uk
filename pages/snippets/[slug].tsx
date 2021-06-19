@@ -25,7 +25,6 @@ export default function Snippet({ data, serialized }) {
 export async function getStaticProps({ params }) {
   const data = await getSnippet(params.slug);
   const serialized = await serialize(data.content, {
-    components,
     mdxOptions: {
       rehypePlugins: [rehypePrism],
     },

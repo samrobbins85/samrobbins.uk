@@ -3,8 +3,19 @@ import "../styles/prism-atom-dark.css";
 import Head from "next/head";
 import { ThemeProvider } from "next-themes";
 import Script from "next/script";
+import type {  AppProps } from "next/app";
 
-function MyApp({ Component, pageProps }) {
+
+
+interface CustomComponent{
+  Component: {
+    theme: string
+  }
+}
+
+type CustomApp = CustomComponent & AppProps
+
+function MyApp({ Component, pageProps }: CustomApp) {
   return (
     <>
       <Head>

@@ -8,19 +8,24 @@ const graphcmsLoader = ({ src, width }) => {
   return url;
 };
 
+interface Screenshot{
+  width: string,
+  height: string,
+  url: string
+}
+
 export default function GridItem({
   title,
   description,
   screenshot,
   slug,
   wide,
-}) {
+}: {title: string, description: string, screenshot: Screenshot, slug: string, wide?: Boolean}) {
   return (
     <div
       className={`bg-nord6 dark:bg-nord0 p-2 grid ${
         wide ? "sm:grid-cols-2" : "w-[24rem]"
       } rounded `}
-      key={title}
     >
       <div className="text-center">
         <p className="text-2xl font-semibold text-center pt-4 text-nord2 dark:text-nord6">

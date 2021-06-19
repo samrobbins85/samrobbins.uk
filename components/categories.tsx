@@ -1,4 +1,4 @@
-function Button({ count, title, onClick, item, category }) {
+function Button({ count, title, onClick, item, category }: {count?: Number, title: string, onClick: any, item:string, category: string}) {
   return (
     <button
       className={`flex items-center px-2 py-1 outline-nord4 outline-solid outline-0.5 focus:outline-1 focus:outline-solid focus:outline-cyan-400 bg-nord5 dark:bg-nord0  ${

@@ -31,6 +31,7 @@
   "devDependencies": {
     "@samrobbins/typography": "2.0.1",
     "@tailwindcss/jit": "^0.1.18",
+    "@types/react": "^17.0.11",
     "autoprefixer": "^10.2.6",
     "eslint": "^7.28.0",
     "eslint-config-next": "^11.0.0",
@@ -42,7 +43,8 @@
     "postcss-import": "^14.0.2",
     "tailwind-nord": "^1.2.0",
     "tailwind-outline-plugin": "^2.0.1",
-    "tailwindcss": "^2.2.2"
+    "tailwindcss": "^2.2.2",
+    "typescript": "^4.3.4"
   },
   "license": "MIT"
 }

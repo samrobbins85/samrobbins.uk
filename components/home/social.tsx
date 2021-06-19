@@ -38,18 +38,22 @@ export default function SocialLinks() {
       className: "hover:!text-black focus:!text-black",
     },
   ];
-  return links.map((link) => (
-    <a
-      href={link.link}
-      className={`text-nord3 dark:text-nord4 ${link.className}`}
-      aria-label={link.name}
-      key={link.name}
-    >
-      <link.icon
-        aria-hidden="true"
-        size={16}
-        className={`h-6 ${link.modifier}`}
-      />
-    </a>
-  ));
+  return (
+    <>
+      {links.map((link) => (
+        <a
+          href={link.link}
+          className={`text-nord3 dark:text-nord4 ${link.className}`}
+          aria-label={link.name}
+          key={link.name}
+        >
+          <link.icon
+            aria-hidden="true"
+            size={16}
+            className={`h-6 ${link.modifier}`}
+          />
+        </a>
+      ))}
+    </>
+  );
 }
