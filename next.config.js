@@ -47,13 +47,13 @@ module.exports = withBundleAnalyzer({
   eslint: {
     dirs: ["pages", "components"],
   },
-  async headers() {
-    return [
-      {
-        // Apply these headers to all routes in your application.
-        source: "/(.*)",
-        headers: securityHeaders,
-      },
-    ];
-  },
+  // async headers() {
+  //   return [
+  //     {
+  //       // Apply these headers to all routes in your application.
+  //       source: "/(.*)",
+  //       headers: securityHeaders,
+  //     },
+  //   ];
+  // },
 });
