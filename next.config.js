@@ -2,6 +2,11 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
   enabled: process.env.ANALYZE === "true",
 });
 
+const csp = `default-src 'self' cloudflareinsights.com;
+img-src 'self' https://media.graphcms.com https://avatars.githubusercontent.com https://res.cloudinary.com https://www.datocms-assets.com;
+script-src 'self' 'unsafe-eval' 'unsafe-inline' *.cloudflareinsights.com;
+style-src 'self' 'unsafe-inline' `;
+
 const securityHeaders = [
   {
     key: "X-DNS-Prefetch-Control",
@@ -33,8 +38,7 @@ const securityHeaders = [
   },
   {
     key: "Content-Security-Policy",
-    value:
-      "default-src 'self'; img-src 'self' https://media.graphcms.com https://avatars.githubusercontent.com https://res.cloudinary.com https://www.datocms-assets.com; object-src 'none'; script-src 'self'; style-src 'self'",
+    value: csp.replace(/\n/g, ""),
   },
 ];
 
@@ -47,13 +51,13 @@ module.exports = withBundleAnalyzer({
   eslint: {
     dirs: ["pages", "components"],
   },
-  // async headers() {
-  //   return [
-  //     {
-  //       // Apply these headers to all routes in your application.
-  //       source: "/(.*)",
-  //       headers: securityHeaders,
-  //     },
-  //   ];
-  // },
+  async headers() {
+    return [
+      {
+        // Apply these headers to all routes in your application.
+        source: "/(.*)",
+        headers: securityHeaders,
+      },
+    ];
+  },
 });
