@@ -3,7 +3,7 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 });
 
 const csp = `default-src 'self' cloudflareinsights.com;
-img-src 'self' https://media.graphcms.com https://avatars.githubusercontent.com https://res.cloudinary.com https://www.datocms-assets.com;
+img-src 'self' blob: data: https://media.graphcms.com https://avatars.githubusercontent.com https://res.cloudinary.com https://www.datocms-assets.com;
 script-src 'self' 'unsafe-eval' 'unsafe-inline' *.cloudflareinsights.com;
 style-src 'self' 'unsafe-inline' `;
 
