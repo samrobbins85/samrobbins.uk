@@ -38,7 +38,7 @@ export default function Home({ portfolios, home }) {
         <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8 ">
           {home.title}
         </h1>
-        <h2 className="text-lg text-gray-800 dark:text-gray-200">
+        <h2 className="text-lg text-gray-600 dark:text-gray-200">
           {home.description}
         </h2>
         <div className="grid sm:flex gap-x-4 pt-8 pb-4 items-start gap-y-4 flex-wrap justify-center sm:justify-start">

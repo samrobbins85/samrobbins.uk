@@ -34,7 +34,7 @@ export default function GridItem({
       } rounded `}
     >
       <div className="text-center">
-        <p className="text-2xl font-semibold text-center pt-4 text-nord2 dark:text-nord6">
+        <p className="text-2xl font-semibold text-center pt-4 dark:text-nord6">
           {title}
         </p>
         <p className={`py-4 text-center dark:text-nord5 ${!wide && "h-16"}`}>

@@ -31,7 +31,7 @@ function Category({ name, technologies }) {
         {items.map((y) => (
           <li key={y.name}>
             <a
-              className="text-nord10 dark:text-nord8 hover:underline focus:underline"
+              className="text-link dark:text-darkLink hover:underline focus:underline"
               href={y.link}
             >
               {y.name}
