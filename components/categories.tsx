@@ -13,8 +13,8 @@ function Button({
 }) {
   return (
     <button
-      className={`flex items-center px-2 py-1 outline-nord4 dark:outline-nord3 outline-solid outline-0.5 focus:outline-1 focus:outline-solid focus:outline-cyan-400 dark:focus:outline-cyan-400 bg-nord5 dark:bg-nord0  ${
-        item === category && "outline-solid !outline-cyan-400 outline-0.5"
+      className={`flex items-center px-2 py-1 outline-nord4 dark:outline-nord3 outline-solid outline-0.5 focus:outline-solid focus:outline-nord3 dark:focus:!outline-nord4 bg-nord5 dark:bg-nord0  ${
+        item === category && "outline-solid !outline-nord3 dark:!outline-nord4"
       }
     }`}
       type="button"

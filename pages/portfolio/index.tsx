@@ -10,11 +10,11 @@ export default function Portfolio({ portfolios, categories }) {
   const router = useRouter();
   const [category, setCategory] = useState("All");
   useEffect(() => {
-      if (category !== "All" && category !== router.asPath.split("#")[1]) {
-        router.replace(`#${category}`, undefined, { shallow: true });
-      } else if (category === "All") {
-        router.replace("", undefined, { shallow: true });
-      }
+    if (category !== "All" && category !== router.asPath.split("#")[1]) {
+      router.replace(`#${category}`, undefined, { shallow: true });
+    } else if (category === "All") {
+      router.replace("", undefined, { shallow: true });
+    }
   }, [category]);
   useEffect(() => {
     if (Object.keys(categories).includes(router.asPath.split("#")[1])) {
@@ -25,9 +25,7 @@ export default function Portfolio({ portfolios, categories }) {
   }, []);
   return (
     <Layout title="Portfolio" description="My portfolio of projects" fullWidth>
-      <h1 className="text-5xl font-semibold text-center text-nord10 dark:text-nord8">
-        Portfolio
-      </h1>
+      <h1 className="text-5xl font-semibold text-center ">Portfolio</h1>
 
       <div className="flex justify-center mx-auto gap-x-8 gap-y-8 py-4 flex-wrap">
         {portfolios

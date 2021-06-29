@@ -43,7 +43,7 @@ export default function GridItem({
         {wide && (
           <div className="flex justify-center">
             <Link href={`/portfolio/${slug}`}>
-              <a className="hidden sm:block hover:underline text-cyan-700 dark:text-cyan-300">
+              <a className="hidden sm:block hover:underline text-link dark:text-darkLink">
                 Find out more
               </a>
             </Link>
@@ -65,7 +65,7 @@ export default function GridItem({
           <a
             className={`${
               wide && "sm:hidden"
-            } hover:underline mb-2 text-center text-cyan-700 dark:text-cyan-300`}
+            } hover:underline mb-2 text-center text-link dark:text-darkLink`}
           >
             Find out more
           </a>

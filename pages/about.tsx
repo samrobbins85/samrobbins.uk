@@ -20,7 +20,7 @@ function Article({ image, publisher, link, title, description }) {
       <div className="grid">
         <a
           href={link}
-          className="text-xl font-semibold text-cyan-700 dark:text-cyan-300 hover:underline flex items-baseline gap-x-1"
+          className="text-xl font-semibold text-link dark:text-darkLink hover:underline flex items-baseline gap-x-1"
         >
           {title}
           <ExternalLinkIcon className="h-4 w-4" />
@@ -35,28 +35,26 @@ export default function Home({ about }) {
   const [expand, setExpand] = useState(false);
   return (
     <Layout title="About" description="About me">
-      <h1 className="text-5xl font-semibold pb-4 text-center text-nord10 dark:text-nord8">
-        About
-      </h1>
+      <h1 className="text-5xl font-semibold pb-4 text-center ">About</h1>
       <div className="flex justify-center">
         <div className="border px-6 py-4 rounded text-lg bg-nord6 dark:bg-nord0 dark:border-gray-800 text-center">
           For more details, check out my{" "}
           <a
-            className="border-b-2 border-cyan-400"
+            className="border-b-2 border-link dark:border-darkLink"
             href="https://cv.samrobbins.uk"
           >
             CV
           </a>{" "}
           or{" "}
           <a
-            className="border-b-2 border-cyan-400"
+            className="border-b-2 border-link dark:border-darkLink"
             href="https://www.polywork.com/samrobbins"
           >
             Polywork
           </a>
         </div>
       </div>
-      <h2 className="text-3xl font-semibold py-6 text-nord10 dark:text-nord8">
+      <h2 className="text-3xl font-semibold py-6 text-nord0 dark:text-nord5">
         Published Articles
       </h2>
       <div className="grid">
@@ -71,7 +69,7 @@ export default function Home({ about }) {
           />
         ))}
       </div>
-      <h2 className="text-3xl font-semibold py-6 text-nord10 dark:text-nord8">
+      <h2 className="text-3xl font-semibold py-6 text-nord0 dark:text-nord5">
         Timeline
       </h2>
       <ul className="px-1">

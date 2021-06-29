@@ -5,10 +5,9 @@ import Nav from "@/components/nav";
 import GridItem from "@/components/griditem";
 import { getPortfolios } from "../lib/graphcms";
 import { getHome } from "../lib/datocms";
-import {GetStaticProps} from "next"
+import { GetStaticProps } from "next";
 
-
-function ContactButton({ email }: {email: string}) {
+function ContactButton({ email }: { email: string }) {
   return (
     <a
       href={`mailto:${email}`}
@@ -36,7 +35,7 @@ export default function Home({ portfolios, home }) {
       </Head>
       <Nav />
       <div className="py-6 px-4 max-w-85ch mx-auto">
-        <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8 text-nord10 dark:text-nord8">
+        <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8 ">
           {home.title}
         </h1>
         <h2 className="text-lg text-gray-800 dark:text-gray-200">
@@ -48,7 +47,7 @@ export default function Home({ portfolios, home }) {
             <SocialLinks />
           </div>
         </div>
-        <h2 className="text-3xl font-semibold text-nord10 dark:text-nord8">
+        <h2 className="text-3xl font-semibold text-nord0 dark:text-nord5">
           Projects
         </h2>
 
@@ -72,7 +71,7 @@ export default function Home({ portfolios, home }) {
           <p className="text-center">
             To see all my projects, check out my{" "}
             <Link href="/portfolio">
-              <a className="text-cyan-700 hover:underline dark:text-cyan-300">
+              <a className="text-link hover:underline dark:text-darkLink">
                 portfolio
               </a>
             </Link>
@@ -90,4 +89,4 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: { portfolios, home },
   };
-}
+};
