@@ -8,10 +8,10 @@ const graphcmsLoader = ({ src, width }) => {
   return url;
 };
 
-interface Screenshot{
-  width: string,
-  height: string,
-  url: string
+interface Screenshot {
+  width: string;
+  height: string;
+  url: string;
 }
 
 export default function GridItem({
@@ -20,7 +20,13 @@ export default function GridItem({
   screenshot,
   slug,
   wide,
-}: {title: string, description: string, screenshot: Screenshot, slug: string, wide?: Boolean}) {
+}: {
+  title: string;
+  description: string;
+  screenshot: Screenshot;
+  slug: string;
+  wide?: Boolean;
+}) {
   return (
     <div
       className={`bg-nord6 dark:bg-nord0 p-2 grid ${
@@ -31,7 +37,9 @@ export default function GridItem({
         <p className="text-2xl font-semibold text-center pt-4 text-nord2 dark:text-nord6">
           {title}
         </p>
-        <p className="py-4 text-center dark:text-nord5 h-16">{description}</p>
+        <p className={`py-4 text-center dark:text-nord5 ${!wide && "h-16"}`}>
+          {description}
+        </p>
         {wide && (
           <Link href={`/portfolio/${slug}`}>
             <a className="hidden sm:block hover:underline text-cyan-700 dark:text-cyan-300">

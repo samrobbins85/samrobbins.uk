@@ -15,7 +15,7 @@ export default function Blog({ blogs }) {
             <div>
               <Link href={`/blog/${item.slug}`}>
                 <a>
-                  <h2 className="font-semibold text-xl sm:text-2xl text-cyan-700 dark:text-cyan-400">
+                  <h2 className="font-semibold text-xl sm:text-2xl text-cyan-700 dark:text-nord6">
                     {item.title}
                   </h2>
                 </a>
@@ -32,7 +32,9 @@ export default function Blog({ blogs }) {
                   })}
                 </time>
               </div>
-              <p className="sm:text-lg">{item.description}</p>
+              <p className="sm:text-lg text-nord2 dark:text-nord5">
+                {item.description}
+              </p>
             </div>
           </div>
         ))}
