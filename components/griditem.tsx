@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-
+import style from "./griditem.module.css";
 const graphcmsLoader = ({ src, width }) => {
   let url = src.split("/");
   url.splice(3, 0, `resize=width:${width}`);
@@ -8,10 +8,10 @@ const graphcmsLoader = ({ src, width }) => {
   return url;
 };
 
-interface Screenshot{
-  width: string,
-  height: string,
-  url: string
+interface Screenshot {
+  width: string;
+  height: string;
+  url: string;
 }
 
 export default function GridItem({
@@ -20,27 +20,25 @@ export default function GridItem({
   screenshot,
   slug,
   wide,
-}: {title: string, description: string, screenshot: Screenshot, slug: string, wide?: Boolean}) {
+}: {
+  title: string;
+  description: string;
+  screenshot: Screenshot;
+  slug: string;
+  wide?: Boolean;
+}) {
   return (
-    <div
-      className={`bg-nord6 dark:bg-nord0 p-2 grid ${
-        wide ? "sm:grid-cols-2" : "w-[24rem]"
-      } rounded `}
-    >
-      <div className="text-center">
-        <p className="text-2xl font-semibold text-center pt-4 text-nord2 dark:text-nord6">
-          {title}
-        </p>
-        <p className="py-4 text-center dark:text-nord5 h-16">{description}</p>
+    <div className={wide ? style.wideWrapper : style.narrowWrapper}>
+      <div className={style.titleWrapper}>
+        <p className={style.title}>{title}</p>
+        <p className={style.description}>{description}</p>
         {wide && (
           <Link href={`/portfolio/${slug}`}>
-            <a className="hidden sm:block hover:underline text-cyan-700 dark:text-cyan-300">
-              Find out more
-            </a>
+            <a className={style.link}>Find out more</a>
           </Link>
         )}
       </div>
-      <div className="p-4">
+      <div className={style.imageWrapper}>
         <Image
           loader={graphcmsLoader}
           width={screenshot.width}
@@ -51,11 +49,7 @@ export default function GridItem({
         />
       </div>
       <Link href={`/portfolio/${slug}`}>
-        <a
-          className={`${
-            wide && "sm:hidden"
-          } hover:underline pb-2 text-center text-cyan-700 dark:text-cyan-300`}
-        >
+        <a className={wide ? style.wideBottomLink : style.bottomLink}>
           Find out more
         </a>
       </Link>

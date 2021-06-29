@@ -5,19 +5,9 @@ import Nav from "@/components/nav";
 import GridItem from "@/components/griditem";
 import { getPortfolios } from "../lib/graphcms";
 import { getHome } from "../lib/datocms";
-import {GetStaticProps} from "next"
-
-
-function ContactButton({ email }: {email: string}) {
-  return (
-    <a
-      href={`mailto:${email}`}
-      className="w-32 text-center border border-nord4 bg-nord6 dark:border-gray-700 px-4 py-2 rounded hover:bg-nord5 focus:bg-gray-50 dark:hover:bg-nord2 dark:focus:bg-nord2 font-medium whitespace-nowrap dark:bg-nord0 justify-self-center"
-    >
-      Contact Me
-    </a>
-  );
-}
+import { GetStaticProps } from "next";
+import style from "./index.module.css";
+import ContactButton from "@/components/home/contactButton";
 
 export default function Home({ portfolios, home }) {
   return (
@@ -35,24 +25,18 @@ export default function Home({ portfolios, home }) {
         />
       </Head>
       <Nav />
-      <div className="py-6 px-4 max-w-85ch mx-auto">
-        <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8 text-nord10 dark:text-nord8">
-          {home.title}
-        </h1>
-        <h2 className="text-lg text-gray-800 dark:text-gray-200">
-          {home.description}
-        </h2>
-        <div className="grid sm:flex gap-x-4 pt-8 pb-4 items-start gap-y-4 flex-wrap justify-center sm:justify-start">
+      <div className={style.wrapper}>
+        <h1 className={style.title}>{home.title}</h1>
+        <h2 className={style.description}>{home.description}</h2>
+        <div className={style.contact}>
           <ContactButton email={home.email} />
-          <div className="flex flex-wrap gap-x-4 gap-y-2 py-2 justify-center ">
+          <div className={style.socialLinks}>
             <SocialLinks />
           </div>
         </div>
-        <h2 className="text-3xl font-semibold text-nord10 dark:text-nord8">
-          Projects
-        </h2>
+        <h2 className={style.projectsTitle}>Projects</h2>
 
-        <div className="grid gap-8 py-4">
+        <div className={style.portfolioGrid}>
           {portfolios
             .filter((item) => item.featured)
             .slice(0, 3)
@@ -68,16 +52,12 @@ export default function Home({ portfolios, home }) {
             ))}
         </div>
 
-        <div>
-          <p className="text-center">
-            To see all my projects, check out my{" "}
-            <Link href="/portfolio">
-              <a className="text-cyan-700 hover:underline dark:text-cyan-300">
-                portfolio
-              </a>
-            </Link>
-          </p>
-        </div>
+        <p className={style.portfolioCallout}>
+          To see all my projects, check out my{" "}
+          <Link href="/portfolio">
+            <a className="link">portfolio</a>
+          </Link>
+        </p>
       </div>
     </>
   );
@@ -90,4 +70,4 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: { portfolios, home },
   };
-}
+};

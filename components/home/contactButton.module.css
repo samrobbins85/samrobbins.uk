@@ -1,0 +1,27 @@
+.button {
+  width: 8rem;
+  text-align: center;
+  border-width: 1px;
+  border-color: var(--nord4);
+  background-color: var(--nord6);
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-weight: 500;
+  white-space: nowrap;
+  justify-self: center;
+}
+
+.button:hover,
+.button:hover {
+  background-color: var(--nord5);
+}
+
+:global(.dark) .button {
+  border-color: var(--nord2);
+  background-color: var(--nord0);
+}
+
+:global(.dark) .button:hover,
+.button:focus {
+  background-color: var(--nord3);
+}

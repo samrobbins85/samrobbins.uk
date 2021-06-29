@@ -1,0 +1,45 @@
+.link {
+  color: var(--nord3);
+}
+
+:global(.dark) .link {
+  color: var(--nord4);
+}
+
+.github,
+.npm,
+.linkedin,
+.twitter,
+.unsplash {
+  composes: link;
+}
+
+.link > svg {
+  height: 1.5rem;
+}
+
+.github > svg {
+  width: 1.5rem;
+}
+
+.github:hover,
+.github:focus,
+.unsplash:hover,
+.unsplash:focus {
+  color: black;
+}
+
+.npm:hover,
+.npm:focus {
+  color: #cb3837;
+}
+
+.linkedin:hover,
+.linkedin:focus {
+  color: #0a66c2;
+}
+
+.twitter:hover,
+.twitter:focus {
+  color: #1da1f2;
+}

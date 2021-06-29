@@ -1,0 +1,76 @@
+.wrapper {
+  background-color: var(--nord6);
+  padding: 0.5rem;
+  display: grid;
+  border-radius: 0.5rem;
+}
+
+.wideWrapper {
+  composes: wrapper;
+}
+
+.narrowWrapper {
+  composes: wrapper;
+  width: 24rem;
+}
+
+:global(.dark) .wrapper {
+  background-color: var(--nord0);
+}
+
+.titleWrapper {
+  text-align: center;
+}
+
+.title {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 600;
+  padding-top: 1rem;
+  color: var(--nord2);
+}
+
+:global(.dark) .title {
+  color: var(--nord6);
+}
+
+.description {
+  padding: 1rem 0;
+  height: 4rem;
+}
+
+:global(.dark) .description {
+  color: var(--nord5);
+}
+
+.link {
+  composes: link from global;
+  display: none;
+}
+
+.imageWrapper {
+  padding: 1rem;
+}
+
+.bottomLink {
+  composes: link from global;
+  text-align: center;
+  padding-bottom: 0.5rem;
+}
+
+.wideBottomLink {
+  composes: bottomLink;
+}
+
+/* sm */
+@media (min-width: 640px) {
+  .wideWrapper {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .link {
+    display: block;
+  }
+  .wideBottomLink {
+    display: none;
+  }
+}
