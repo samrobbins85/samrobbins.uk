@@ -41,11 +41,13 @@ export default function GridItem({
           {description}
         </p>
         {wide && (
-          <Link href={`/portfolio/${slug}`}>
-            <a className="hidden sm:block hover:underline text-cyan-700 dark:text-cyan-300">
-              Find out more
-            </a>
-          </Link>
+          <div className="flex justify-center">
+            <Link href={`/portfolio/${slug}`}>
+              <a className="hidden sm:block hover:underline text-cyan-700 dark:text-cyan-300">
+                Find out more
+              </a>
+            </Link>
+          </div>
         )}
       </div>
       <div className="p-4">
@@ -58,15 +60,17 @@ export default function GridItem({
           alt={title}
         />
       </div>
-      <Link href={`/portfolio/${slug}`}>
-        <a
-          className={`${
-            wide && "sm:hidden"
-          } hover:underline pb-2 text-center text-cyan-700 dark:text-cyan-300`}
-        >
-          Find out more
-        </a>
-      </Link>
+      <div className="flex justify-center">
+        <Link href={`/portfolio/${slug}`}>
+          <a
+            className={`${
+              wide && "sm:hidden"
+            } hover:underline mb-2 text-center text-cyan-700 dark:text-cyan-300`}
+          >
+            Find out more
+          </a>
+        </Link>
+      </div>
     </div>
   );
 }
