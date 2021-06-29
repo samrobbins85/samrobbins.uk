@@ -1,0 +1,333 @@
+.nord8Outline:focus {
+  outline-style: solid;
+  outline-color: var(--nord8);
+  outline-width: 0.125rem;
+}
+
+.desktopButton {
+  composes: nord8Outline;
+  outline-offset: 0.25rem;
+  display: inline-flex;
+  align-items: center;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+}
+
+.openDesktopButton {
+  composes: desktopButton;
+  color: black;
+  font-weight: 600;
+}
+
+:global(.dark) .openDesktopButton {
+  color: white;
+}
+
+.closedDesktopButton {
+  composes: desktopButton;
+  color: var(--nord3);
+}
+
+:global(.dark) .closedDesktopButton {
+  color: #d1d5db;
+}
+
+.desktopChevron {
+  margin-left: 0.5rem;
+  height: 1.25rem;
+  width: 1.25rem;
+}
+
+.desktopButton:hover > .desktopChevron {
+  color: #6b7280;
+}
+
+:global(.dark) .desktopButton:hover > .desktopChevron {
+  color: white;
+}
+
+.openChevron {
+  composes: desktopChevron;
+  color: #4b5563;
+}
+
+:global(.dark) .openChevron {
+  color: white;
+}
+
+.closedChevron {
+  composes: desktopChevron;
+  color: #9ca3af;
+}
+
+.enter {
+  transition-property: background-color, border-color, color, fill, stroke,
+    opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+.enterFrom {
+  opacity: 0;
+  transform: translateY(0.25rem);
+}
+
+.enterTo {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.leave {
+  transition-property: background-color, border-color, color, fill, stroke,
+    opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+  transition-duration: 150ms;
+}
+
+.leaveFrom {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.leaveTo {
+  opacity: 0;
+  transform: translateY(1);
+}
+
+.desktopPopover {
+  position: absolute;
+  z-index: 50;
+  margin-top: 0.75rem;
+  padding: 0;
+  width: 100vw;
+  max-width: 20rem;
+  margin-left: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.popoverItem {
+  border-radius: 0.5rem;
+  overflow: hidden;
+  position: relative;
+  display: grid;
+  gap: 1.5rem;
+  background-color: var(--nord6);
+  padding: 1.5rem 1.25rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+:global(.dark) .popoverItem {
+  background-color: var(--nord0);
+}
+
+/* sm */
+@media (min-width: 640px) {
+  .popoverItem {
+    gap: 2rem;
+    padding: 2rem;
+  }
+}
+
+.itemLink {
+  margin: -0.75rem;
+  padding: 0.75rem;
+  display: flex;
+  align-items: flex-start;
+  border-radius: 0.5rem;
+  color: #4b5563;
+}
+
+:global(.dark) .itemLink {
+  color: #e5e7eb;
+}
+
+.itemLink:focus,
+.itemLink:hover {
+  outline-style: none;
+  background-color: var(--nord5) !important;
+}
+
+:global(.dark) .itemLink:focus,
+:global(.dark) .itemLink:hover {
+  background-color: var(--nord2) !important;
+}
+
+.activeItemLink {
+  color: black;
+  font-weight: 600;
+}
+
+:global(.dark) .activeItemLink {
+  color: white;
+}
+
+.icon {
+  composes: nord10 from global;
+  flex-shrink: 0;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.desktopDropdownText {
+  margin-left: 1rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.desktopSingleLink {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+  color: var(--nord3);
+  composes: nord8Outline;
+  outline-offset: 0.25rem;
+  border-radius: 0.375rem;
+}
+
+.desktopSingleLink:focus-visible {
+  outline-style: solid !important;
+}
+
+.desktopSingleLink:focus {
+  outline-style: none;
+}
+
+.desktopSingleLink:hover {
+  color: #111827;
+}
+
+:global(.dark) .desktopSingleLink {
+  color: #d1d5db;
+}
+
+.mobileItemText {
+  margin-left: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 500;
+}
+
+.themeButton {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  composes: nord8Outline;
+}
+
+:global(.dark) .themeButton:hover {
+  background-color: var(--nord2);
+}
+
+.themeIcon {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.moonIcon {
+  composes: themeIcon;
+  color: var(--nord0);
+}
+
+.sunIcon {
+  composes: themeIcon;
+  color: var(--nord13);
+}
+
+.popover {
+  position: relative;
+  z-index: 10;
+}
+
+.wrapper {
+  border-bottom-width: 2px;
+  border-color: var(--nord6);
+  height: 4.5rem;
+}
+
+:global(.dark) .wrapper {
+  border-color: var(--nord0);
+}
+
+.innerWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.homeLink {
+  margin-left: 1rem;
+  margin-top: -0.5rem;
+  margin-bottom: -0.5rem;
+  composes: nord8Outline;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+}
+
+.homeIcon {
+  height: 2rem;
+  width: 2rem;
+  color: #6b7280;
+}
+
+:global(.dark) .homeIcon {
+  color: #d1d5db;
+}
+
+.menuButtonWrapper {
+  margin: -0.5rem 0;
+  padding: 0 1rem;
+}
+
+.menuButton {
+  composes: nord8Outline;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuButton:hover {
+  background-color: var(--nord4);
+}
+
+:global(.dark) .menuButton:hover {
+  background-color: var(--nord2);
+}
+
+.menuIcon {
+  height: 1.5rem;
+  width: 1.5rem;
+  color: #9ca3af;
+}
+
+.menuIcon:hover {
+  color: #6b7280;
+}
+
+:global(.dark) .menuIcon {
+  color: #d1d5db;
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+  }
+  .innerWrapper {
+    justify-content: center;
+    column-gap: 2.5rem;
+    grid-column-start: 2;
+    grid-column-end: 12;
+  }
+  .homeLink {
+    display: none;
+  }
+  .menuButtonWrapper {
+    display: none;
+  }
+}

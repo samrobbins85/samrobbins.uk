@@ -12,7 +12,7 @@
 }
 
 .button:hover,
-.button:hover {
+.button:focus {
   background-color: var(--nord5);
 }
 
@@ -22,6 +22,6 @@
 }
 
 :global(.dark) .button:hover,
-.button:focus {
+:global(.dark) .button:focus {
   background-color: var(--nord3);
 }

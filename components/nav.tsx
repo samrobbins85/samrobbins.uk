@@ -17,7 +17,7 @@ import ActiveLink from "@/components/ActiveLink";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useTheme } from "next-themes";
-
+import style from "./nav.module.css";
 const items = [
   { name: "About", href: "/about", icon: UserIcon },
   {
@@ -37,10 +37,6 @@ const items = [
   },
 ];
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
-
 function DesktopDropdown({ data }) {
   const { asPath } = useRouter();
   const onPage = items
@@ -52,47 +48,40 @@ function DesktopDropdown({ data }) {
       {({ open }) => (
         <>
           <Popover.Button
-            className={classNames(
+            className={
               open || onPage
-                ? "text-gray-900 font-semibold dark:text-white"
-                : "text-nord3 dark:text-gray-300",
-              "group inline-flex items-center text-base font-medium !outline-nord8 focus:outline-solid !outline-0.5 outline-offset-1 rounded-md"
-            )}
+                ? style.openDesktopButton
+                : style.closedDesktopButton
+            }
           >
             <span>{data.name}</span>
             <ChevronDownIcon
-              className={classNames(
-                open || onPage
-                  ? "text-gray-600 dark:text-white"
-                  : "text-gray-400",
-                "ml-2 h-5 w-5 group-hover:text-gray-500 dark:group-hover:text-white"
-              )}
+              className={
+                open || onPage ? style.openChevron : style.closedChevron
+              }
               aria-hidden="true"
             />
           </Popover.Button>
 
           <Transition
-            enter="transition ease-out duration-200"
-            enterFrom="opacity-0 translate-y-1"
-            enterTo="opacity-100 translate-y-0"
-            leave="transition ease-in duration-150"
-            leaveFrom="opacity-100 translate-y-0"
-            leaveTo="opacity-0 translate-y-1"
+            enter={style.enter}
+            enterFrom={style.enterFrom}
+            enterTo={style.enterTo}
+            leave={style.leave}
+            leaveFrom={style.leaveFrom}
+            leaveTo={style.leaveTo}
           >
-            <Popover.Panel className="absolute z-50  mt-3 transform px-2 w-screen max-w-xs sm:px-0 ml-0 left-1/2 -translate-x-1/2">
-              <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden relative grid gap-6 bg-nord6 dark:bg-nord0 px-5 py-6 sm:gap-8 sm:p-8">
+            <Popover.Panel className={style.desktopPopover}>
+              <div className={style.popoverItem}>
                 {data.items.map((item) => (
                   <ActiveLink
                     key={item.name}
                     href={item.href}
-                    activeClassName="!text-black dark:!text-white font-semibold"
+                    activeClassName={style.activeItemLink}
                   >
-                    <a className="-m-3 p-3 flex items-start rounded-lg hover:bg-nord5 text-gray-600 dark:hover:bg-nord2 dark:text-gray-200 focus:outline-none focus:bg-nord5 dark:focus:bg-nord2">
-                      <item.icon
-                        className="flex-shrink-0 h-6 w-6 text-nord10 dark:text-nord8"
-                        aria-hidden="true"
-                      />
-                      <p className="ml-4 text-base">{item.name}</p>
+                    <a className={style.itemLink}>
+                      <item.icon className={style.icon} aria-hidden="true" />
+                      <p className={style.desktopDropdownText}>{item.name}</p>
                     </a>
                   </ActiveLink>
                 ))}
@@ -111,9 +100,7 @@ function DesktopSingle({ data }) {
       href={data.href}
       activeClassName="!text-black dark:!text-white font-semibold"
     >
-      <a className="text-base font-medium text-nord3 dark:text-gray-300 hover:text-gray-900 outline-nord8 focus-visible:outline-solid outline-0.5 outline-offset-1 rounded-md">
-        {data.name}
-      </a>
+      <a className={style.desktopSingleLink}>{data.name}</a>
     </ActiveLink>
   );
 }
@@ -123,65 +110,61 @@ function MobileItem({ data }) {
     <ActiveLink
       key={data.name}
       href={data.href}
-      activeClassName="!text-black dark:!text-white"
+      activeClassName={style.activeItemLink}
     >
-      <a className="-m-3 p-3 flex items-center rounded-md hover:bg-nord4 text-gray-500 dark:text-gray-200 dark:hover:bg-nord2 focus:bg-nord4 dark:focus:bg-nord2 focus:outline-none">
-        <data.icon
-          className="flex-shrink-0 h-6 w-6 text-nord10 dark:text-nord8"
-          aria-hidden="true"
-        />
-        <span className="ml-3 text-base font-medium ">{data.name}</span>
+      <a className={style.itemLink}>
+        <data.icon className={style.icon} aria-hidden="true" />
+        <span className={style.mobileItemText}>{data.name}</span>
       </a>
     </ActiveLink>
   );
 }
 
-function switchTheme(theme: string, setTheme: Function) {
-  if (theme === "light") {
-    setTheme("dark");
-  } else {
-    setTheme("light");
+function ThemeComponent({
+  resolvedTheme,
+  setTheme,
+}: {
+  resolvedTheme: string;
+  setTheme: Function;
+}) {
+  function switchTheme() {
+    if (resolvedTheme === "light") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
   }
+  return (
+    <button
+      type="button"
+      className={style.themeButton}
+      onClick={() => switchTheme()}
+      aria-label="Toggle Dark Mode"
+    >
+      {resolvedTheme === "light" && <MoonIcon className={style.moonIcon} />}
+      {resolvedTheme === "dark" && <SunIcon className={style.sunIcon} />}
+    </button>
+  );
 }
 
 export default function Nav() {
   const { resolvedTheme, setTheme } = useTheme();
-
-  function ThemeComponent() {
-    return (
-      <button
-        type="button"
-        className="p-2 hover:bg-nord4 dark:hover:bg-nord2 rounded-lg focus:outline-solid focus:outline-nord8 focus:outline-0.5"
-        onClick={() => switchTheme(resolvedTheme, setTheme)}
-        aria-label="Toggle Dark Mode"
-      >
-        {resolvedTheme === "light" && (
-          <MoonIcon className="h-6 w-6 text-nord0" />
-        )}
-        {resolvedTheme === "dark" && (
-          <SunIcon className="h-6 w-6 text-nord13" />
-        )}
-      </button>
-    );
-  }
   return (
-    <Popover className="relative bg-nord6.1 dark:bg-nord1 z-10">
+    <Popover className={style.popover}>
       <>
-        <div className="border-b-2 border-nord6 dark:border-nord0 h-18 md:grid md:grid-cols-12">
-          <div className="flex justify-between items-center md:justify-center md:space-x-10 md:col-start-2 md:col-end-12 h-full">
+        <div className={style.wrapper}>
+          <div className={style.innerWrapper}>
             <Link href="/">
-              <a className="ml-4 md:hidden -my-2 focus:outline-solid outline-nord8 outline-0.5 rounded-md p-2">
-                <span className="sr-only">Home</span>
-                <HomeIcon className="h-8 w-8 text-gray-500 dark:text-gray-300" />
+              <a className={style.homeLink} aria-label="Home">
+                <HomeIcon className={style.homeIcon} />
               </a>
             </Link>
-            <div className="-my-2 md:hidden px-4">
-              <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center hover:bg-nord4 dark:hover:bg-nord2 focus:outline-solid focus:outline-nord8 focus:outline-0.5">
-                <span className="sr-only">Open menu</span>
-                <MenuIcon
-                  className="h-6 w-6 text-gray-400 hover:text-gray-500 dark:text-gray-300"
-                  aria-hidden="true"
-                />
+            <div className={style.menuButtonWrapper}>
+              <Popover.Button
+                className={style.menuButton}
+                aria-label="Open Menu"
+              >
+                <MenuIcon className={style.menuIcon} aria-hidden="true" />
               </Popover.Button>
             </div>
             <Popover.Group as="nav" className="hidden md:flex space-x-10">
@@ -195,14 +178,17 @@ export default function Nav() {
             </Popover.Group>
           </div>
           <div className="col-start-12 hidden md:grid justify-center content-center auto-rows-min ">
-            <ThemeComponent />
+            <ThemeComponent resolvedTheme={resolvedTheme} setTheme={setTheme} />
           </div>
         </div>
 
         <Popover.Panel className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
           <div className="rounded-lg shadow-lg bg-nord6 dark:bg-nord0 pt-5 pb-6 px-5">
             <div className="flex items-center justify-between">
-              <ThemeComponent />
+              <ThemeComponent
+                resolvedTheme={resolvedTheme}
+                setTheme={setTheme}
+              />
               <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center  hover:bg-nord4 dark:hover:bg-nord2 focus:outline-nord8 focus:outline-solid text-gray-400 hover:text-gray-500 dark:text-gray-300">
                 <span className="sr-only">Close menu</span>
                 <XIcon className="h-6 w-6 " aria-hidden="true" />
