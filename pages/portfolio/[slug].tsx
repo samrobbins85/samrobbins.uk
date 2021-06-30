@@ -75,11 +75,7 @@ export default function Portfolio({ data, renderedOutput, names, categories }) {
       <div className="bg-nord6 dark:bg-nord0 dark:border-gray-800 max-w-prose mx-auto my-4 border border-nord5">
         <div className="flex flex-wrap px-4 gap-y-6 py-6 justify-center text-center">
           {categories.map((x) => (
-            <Category
-              name={x.name}
-              technologies={data.technologies}
-              key={x.name}
-            />
+            <Category name={x} technologies={data.technologies} key={x} />
           ))}
         </div>
       </div>
@@ -92,7 +88,15 @@ export default function Portfolio({ data, renderedOutput, names, categories }) {
 
 export async function getStaticProps({ params }) {
   const data = await getPortfolio(params.slug);
-  const categories = await getTechnologyCategories();
+  let categories = await getTechnologyCategories();
+  categories = categories.map((x) => x.name);
+  // Sorts categories by how many items have that category
+  const techlist = data.technologies.map((item) => item.category);
+  categories = categories.sort(
+    (a, b) =>
+      techlist.filter((item) => item === b).length -
+      techlist.filter((item) => item === a).length
+  );
 
   const renderedOutput = await serialize(data.markdown, {
     mdxOptions: {
