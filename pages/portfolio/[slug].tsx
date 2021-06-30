@@ -23,7 +23,7 @@ function Category({ name, technologies }) {
     return null;
   }
   return (
-    <div className="flex-1/4">
+    <div className="flex-1/2 sm:flex-1/4">
       <p className="font-semibold text-sm uppercase pb-1 tracking-wide">
         {name}
       </p>
@@ -73,7 +73,7 @@ export default function Portfolio({ data, renderedOutput, names, categories }) {
       )}
 
       <div className="bg-nord6 dark:bg-nord0 dark:border-gray-800 max-w-prose mx-auto my-4 border border-nord5">
-        <div className="grid grid-cols-2 sm:flex flex-wrap px-4 gap-y-6 py-6 justify-center text-center">
+        <div className="flex flex-wrap px-4 gap-y-6 py-6 justify-center text-center">
           {categories.map((x) => (
             <Category
               name={x.name}

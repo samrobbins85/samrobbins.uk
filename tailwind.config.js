@@ -82,6 +82,7 @@ module.exports = {
       },
       flex: {
         "1/4": "1 0 25%",
+        "1/2": "1 0 50%",
       },
       fontFamily: {
         latex: ["Latin Modern"],
