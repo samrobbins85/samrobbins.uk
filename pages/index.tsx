@@ -11,7 +11,7 @@ function ContactButton({ email }: { email: string }) {
   return (
     <a
       href={`mailto:${email}`}
-      className="w-32 text-center border border-nord4 bg-nord6 dark:border-gray-700 px-4 py-2 rounded hover:bg-nord5 focus:bg-gray-50 dark:hover:bg-nord2 dark:focus:bg-nord2 font-medium whitespace-nowrap dark:bg-nord0 justify-self-center"
+      className="w-32 text-center px-4 py-2 rounded justify-self-center bg-radix-sky3 hover:bg-radix-sky4 focus:bg-radix-sky5 text-radix-sky11 border border-radix-sky7 hover:border-radix-sky8"
     >
       Contact Me
     </a>
@@ -35,7 +35,7 @@ export default function Home({ portfolios, home }) {
       </Head>
       <Nav />
       <div className="py-6 px-4 max-w-85ch mx-auto">
-        <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8 ">
+        <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8 text-radix-sky11">
           {home.title}
         </h1>
         <h2 className="text-lg text-gray-600 dark:text-gray-200">

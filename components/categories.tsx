@@ -13,8 +13,8 @@ function Button({
 }) {
   return (
     <button
-      className={`flex items-center px-2 py-1 outline-nord4 dark:outline-nord3 outline-solid outline-0.5 focus:outline-solid focus:outline-nord3 dark:focus:!outline-nord4 bg-nord5 dark:bg-nord0  ${
-        item === category && "outline-solid !outline-nord3 dark:!outline-nord4"
+      className={`flex items-center px-2 py-1 font-medium rounded bg-radix-sky4  text-radix-sky11 hover:bg-radix-sky5 focus:bg-radix-sky6 ${
+        item === category && "bg-radix-sky6"
       }
     }`}
       type="button"
@@ -22,11 +22,7 @@ function Button({
       onClick={onClick}
     >
       <span className={`capitalize ${count && "pr-2"}`}>{title}</span>{" "}
-      {count && (
-        <span className="text-sm text-gray-600 dark:text-gray-200">
-          {count}
-        </span>
-      )}
+      {count && <span className="text-sm text-radix-gray11">{count}</span>}
     </button>
   );
 }

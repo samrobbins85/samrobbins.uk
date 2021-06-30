@@ -65,3 +65,7 @@ body,
 .highlight[aria-expanded="true"] {
   @apply text-black dark:!text-white;
 }
+
+:root {
+  --primary: #90e0ef;
+}

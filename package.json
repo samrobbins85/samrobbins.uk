@@ -15,6 +15,7 @@
     "@mapbox/rehype-prism": "^0.6.0",
     "@next/bundle-analyzer": "^11.0.1",
     "@primer/octicons-react": "^14.2.2",
+    "@radix-ui/colors": "^0.1.7",
     "dotenv": "^10.0.0",
     "eslint-config-prettier": "^8.3.0",
     "feed": "^4.2.2",

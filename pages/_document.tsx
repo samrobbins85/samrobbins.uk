@@ -37,7 +37,9 @@ export default class MyDocument extends Document {
           />
         </Head>
 
-        <body className="dark:bg-nord1 dark:text-white bg-nord6.1 text-gray-800">
+        <body
+          className={`dark:bg-nord1 dark:text-white bg-nord6.1 text-gray-800`}
+        >
           <Main />
 
           <NextScript />
