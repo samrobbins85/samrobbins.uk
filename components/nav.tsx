@@ -170,7 +170,7 @@ export default function Nav() {
         <div className="border-b-2 border-nord6 dark:border-nord0 h-18 md:grid md:grid-cols-12">
           <div className="flex justify-between items-center md:justify-center md:space-x-10 md:col-start-2 md:col-end-12 h-full">
             <Link href="/">
-              <a className="ml-4 md:hidden -my-2 focus:outline-solid outline-nord8 outline-0.5 rounded-md p-2">
+              <a className="ml-4 md:hidden -my-2 focus-visible:outline-solid outline-nord8 outline-0.5 rounded-md p-2">
                 <span className="sr-only">Home</span>
                 <HomeIcon className="h-8 w-8 text-gray-500 dark:text-gray-300" />
               </a>
