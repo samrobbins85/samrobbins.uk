@@ -73,11 +73,11 @@ function DesktopDropdown({ data }) {
 
           <Transition
             enter="transition ease-out duration-200"
-            enterFrom="opacity-0 translate-y-1"
-            enterTo="opacity-100 translate-y-0"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
             leave="transition ease-in duration-150"
-            leaveFrom="opacity-100 translate-y-0"
-            leaveTo="opacity-0 translate-y-1"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
           >
             <Popover.Panel className="absolute z-50  mt-3 transform px-2 w-screen max-w-xs sm:px-0 ml-0 left-1/2 -translate-x-1/2">
               <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden relative grid gap-6 bg-nord6 dark:bg-nord0 px-5 py-6 sm:gap-8 sm:p-8">
