@@ -1,0 +1,57 @@
+/* A basic slate background */
+
+.slate-bg {
+  background-color: var(--slate3);
+}
+
+/* A slate background that is interactive */
+
+.slate-bg-int:hover {
+  background-color: var(--slate4);
+}
+
+.slate-bg-int:focus {
+  background-color: var(--slate5);
+}
+
+/* A slate Call to Action, like the component but one step up */
+
+.slate-cta {
+  background-color: var(--slate4);
+}
+
+.slate-cta:hover {
+  background-color: var(--slate5);
+}
+
+.slate-cta:focus {
+  background-color: var(--slate6);
+}
+
+/* A slate border for non interactive */
+
+.slate-border-nint {
+  border-color: var(--slate6);
+}
+
+/* A slate border for interactive */
+
+.slate-border {
+  border-color: var(--slate7);
+}
+
+.slate-border:hover {
+  border-color: var(--slate8);
+}
+
+/* A solid slate component */
+
+.slate-solid {
+  border-color: var(--slate9);
+}
+
+/* With interactivity */
+
+.slate-solid-int:hover {
+  border-color: var(--slate10);
+}

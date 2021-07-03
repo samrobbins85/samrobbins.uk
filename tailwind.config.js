@@ -2,7 +2,23 @@
 /* eslint-disable global-require */
 const colors = require("tailwindcss/colors");
 const defaultTheme = require("tailwindcss/defaultTheme");
-// const radix = require("@radix-ui/colors");
+const radix = require("@radix-ui/colors");
+
+const usedColors = ["cyan", "sky", "blue", "purple", "slate"];
+const filtered = Object.keys(radix)
+  .filter(
+    (color) =>
+      usedColors.includes(color) &&
+      !color.includes("A") &&
+      !color.includes("Dark")
+  )
+  .reduce((obj, key) => {
+    Object.keys(radix[key]).forEach(
+      (color) => (obj[color] = `var(--${color})`)
+    );
+    return obj;
+  }, {});
+
 module.exports = {
   presets: [require("@samrobbins/typography")],
   darkMode: "class",
@@ -33,66 +49,7 @@ module.exports = {
         darkLink: "#96d0ff",
         test: "var(--primary)",
         radix: {
-          sky1: "var(--sky1)",
-          sky2: "var(--sky2)",
-          sky3: "var(--sky3)",
-          sky4: "var(--sky4)",
-          sky5: "var(--sky5)",
-          sky6: "var(--sky6)",
-          sky7: "var(--sky7)",
-          sky8: "var(--sky8)",
-          sky9: "var(--sky9)",
-          sky10: "var(--sky10)",
-          sky11: "var(--sky11)",
-          sky12: "var(--sky12)",
-          cyan1: "var(--cyan1)",
-          cyan2: "var(--cyan2)",
-          cyan3: "var(--cyan3)",
-          cyan4: "var(--cyan4)",
-          cyan5: "var(--cyan5)",
-          cyan6: "var(--cyan6)",
-          cyan7: "var(--cyan7)",
-          cyan8: "var(--cyan8)",
-          cyan9: "var(--cyan9)",
-          cyan10: "var(--cyan10)",
-          cyan11: "var(--cyan11)",
-          cyan12: "var(--cyan12)",
-          blue1: "var(--blue1)",
-          blue2: "var(--blue2)",
-          blue3: "var(--blue3)",
-          blue4: "var(--blue4)",
-          blue5: "var(--blue5)",
-          blue6: "var(--blue6)",
-          blue7: "var(--blue7)",
-          blue8: "var(--blue8)",
-          blue9: "var(--blue9)",
-          blue10: "var(--blue10)",
-          blue11: "var(--blue11)",
-          blue12: "var(--blue12)",
-          purple1: "var(--purple1)",
-          purple2: "var(--purple2)",
-          purple3: "var(--purple3)",
-          purple4: "var(--purple4)",
-          purple5: "var(--purple5)",
-          purple6: "var(--purple6)",
-          purple7: "var(--purple7)",
-          purple8: "var(--purple8)",
-          purple9: "var(--purple9)",
-          purple10: "var(--purple10)",
-          purple11: "var(--purple11)",
-          purple12: "var(--purple12)",
-          slate1: "var(--slate1)",
-          slate2: "var(--slate2)",
-          slate3: "var(--slate3)",
-          slate4: "var(--slate4)",
-          slate5: "var(--slate5)",
-          slate6: "var(--slate6)",
-          slate7: "var(--slate7)",
-          slate8: "var(--slate8)",
-          slate9: "var(--slate9)",
-          slate10: "var(--slate10)",
-          slate11: "var(--slate11)",
-          slate12: "var(--slate12)",
+          ...filtered,
         },
       },
       zIndex: {
