@@ -2,11 +2,19 @@ import { GlobeAltIcon } from "@heroicons/react/outline";
 import Npm from "@/svg/npm";
 import { MarkGithubIcon } from "@primer/octicons-react";
 
-function GenericButton({ url, label, icon }: {url: string, label:string, icon:JSX.Element}) {
+function GenericButton({
+  url,
+  label,
+  icon,
+}: {
+  url: string;
+  label: string;
+  icon: JSX.Element;
+}) {
   return (
     <a
       href={url}
-      className="text-nord3 dark:text-nord4 hover:text-black dark:hover:text-white hover:bg-nord4 dark:hover:bg-nord0 p-2 rounded focus:outline-solid outline-nord8 outline-0.5"
+      className="text-radix-slate11 hover:text-radix-slate12 hover:bg-radix-slate4 p-2 rounded focus:outline-solid outline-radix-sky8 outline-0.5"
       aria-label={label}
     >
       {icon}

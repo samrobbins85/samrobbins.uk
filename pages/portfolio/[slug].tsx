@@ -31,7 +31,7 @@ function Category({ name, technologies }) {
         {items.map((y) => (
           <li key={y.name}>
             <a
-              className="text-link dark:text-darkLink hover:underline focus:underline"
+              className="text-radix-cyan11 hover:underline focus:underline"
               href={y.link}
             >
               {y.name}
@@ -49,7 +49,7 @@ export default function Portfolio({ data, renderedOutput, names, categories }) {
       <h1 className="text-5xl sm:text-6xl text-center font-bold pt-2">
         {data.title}
       </h1>
-      <h2 className="text-center text-gray-600 text-lg pt-6 dark:text-gray-300">
+      <h2 className="text-center text-radix-slate11 text-lg pt-6">
         {data.description}
       </h2>
       <div className="flex justify-center pt-6 gap-x-12 flex-wrap gap-y-4 items-center">
@@ -72,7 +72,7 @@ export default function Portfolio({ data, renderedOutput, names, categories }) {
         </div>
       )}
 
-      <div className="bg-nord6 dark:bg-nord0 dark:border-gray-800 max-w-prose mx-auto my-4 border border-nord5">
+      <div className="bg-radix-slate3 border-radix-slate6 max-w-prose mx-auto my-4 border ">
         <div className="flex flex-wrap px-4 gap-y-6 py-6 justify-center text-center">
           {categories.map((x) => (
             <Category name={x} technologies={data.technologies} key={x} />

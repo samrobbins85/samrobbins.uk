@@ -24,9 +24,7 @@ export default function Blog({ dato, content, date }) {
         <h1 className="text-4xl sm:text-5xl font-semibold text-center">
           {dato.title}
         </h1>
-        <p className="text-center py-1 text-gray-600 dark:text-gray-200">
-          {date}
-        </p>
+        <p className="text-center py-1 text-radix-slate11">{date}</p>
       </header>
       <main>
         <article className="prose dark:prose-light mx-auto">

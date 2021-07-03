@@ -5,7 +5,9 @@ import Layout from "@/components/layout";
 export default function Blog({ blogs }) {
   return (
     <Layout title="Blog" description="Blogs about a range of technical topics">
-      <h1 className="text-5xl font-semibold text-center ">Blog</h1>
+      <h1 className="text-5xl font-semibold text-center text-radix-purple11">
+        Blog
+      </h1>
 
       <div className="grid">
         {blogs.map((item) => (
@@ -13,14 +15,14 @@ export default function Blog({ blogs }) {
             <div>
               <Link href={`/blog/${item.slug}`}>
                 <a>
-                  <h2 className="font-semibold text-xl sm:text-2xl text-link dark:text-darkLink">
+                  <h2 className="font-semibold text-xl sm:text-2xl text-radix-cyan11">
                     {item.title}
                   </h2>
                 </a>
               </Link>
               <div className="py-1">
                 <time
-                  className="text-gray-600 dark:text-gray-300 text-sm uppercase"
+                  className="text-radix-slate11 text-sm uppercase"
                   dateTime={item.date}
                 >
                   {new Date(item.date).toLocaleString("en-gb", {
@@ -30,7 +32,7 @@ export default function Blog({ blogs }) {
                   })}
                 </time>
               </div>
-              <p className="sm:text-lg text-nord2 dark:text-nord5">
+              <p className="sm:text-lg text-radix-slate11">
                 {item.description}
               </p>
             </div>

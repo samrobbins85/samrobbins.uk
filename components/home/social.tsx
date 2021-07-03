@@ -10,7 +10,7 @@ export default function SocialLinks() {
       name: "GitHub",
       icon: MarkGithubIcon,
       link: "https://github.com/samrobbins85",
-      className: "hover:!text-black focus:!text-black",
+      className: "hover:text-radix-slate12 focus:text-radix-slate12",
       modifier: "w-6",
     },
     {
@@ -35,7 +35,7 @@ export default function SocialLinks() {
       name: "Unsplash",
       icon: Unsplash,
       link: "https://unsplash.com/@samrobbins",
-      className: "hover:!text-black focus:!text-black",
+      className: "hover:text-radix-slate12 focus:text-radix-slate12",
     },
   ];
   return (
@@ -43,7 +43,7 @@ export default function SocialLinks() {
       {links.map((link) => (
         <a
           href={link.link}
-          className={`text-nord3 dark:text-nord4 ${link.className}`}
+          className={`text-radix-slate11 ${link.className}`}
           aria-label={link.name}
           key={link.name}
         >

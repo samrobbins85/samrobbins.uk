@@ -25,7 +25,9 @@ export default function Portfolio({ portfolios, categories }) {
   }, []);
   return (
     <Layout title="Portfolio" description="My portfolio of projects" fullWidth>
-      <h1 className="text-5xl font-semibold text-center ">Portfolio</h1>
+      <h1 className="text-5xl font-semibold text-center text-radix-purple11">
+        Portfolio
+      </h1>
 
       <div className="flex justify-center mx-auto gap-x-8 gap-y-8 py-4 flex-wrap">
         {portfolios

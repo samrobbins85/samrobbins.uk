@@ -1,9 +1,8 @@
 import "../styles/index.css";
 import "../styles/prism-atom-dark.css";
-import "../styles/radix/sky.css";
 import "../styles/radix/skyDark.css";
-import "../styles/radix/gray.css";
 import "../styles/radix/grayDark.css";
+
 import Head from "next/head";
 import { ThemeProvider } from "next-themes";
 import Script from "next/script";
