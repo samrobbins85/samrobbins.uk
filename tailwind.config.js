@@ -2,7 +2,7 @@
 /* eslint-disable global-require */
 const colors = require("tailwindcss/colors");
 const defaultTheme = require("tailwindcss/defaultTheme");
-// const radix = require("@radix-ui/colors");
+
 module.exports = {
   presets: [require("@samrobbins/typography")],
   darkMode: "class",
@@ -31,45 +31,6 @@ module.exports = {
         "nord6.1": "#f8f9fb",
         link: "#0077aa",
         darkLink: "#96d0ff",
-        test: "var(--primary)",
-        radix: {
-          sky1: "var(--sky1)",
-          sky2: "var(--sky2)",
-          sky3: "var(--sky3)",
-          sky4: "var(--sky4)",
-          sky5: "var(--sky5)",
-          sky6: "var(--sky6)",
-          sky7: "var(--sky7)",
-          sky8: "var(--sky8)",
-          sky9: "var(--sky9)",
-          sky10: "var(--sky10)",
-          sky11: "var(--sky11)",
-          sky12: "var(--sky12)",
-          gray1: "var(--gray1)",
-          gray2: "var(--gray2)",
-          gray3: "var(--gray3)",
-          gray4: "var(--gray4)",
-          gray5: "var(--gray5)",
-          gray6: "var(--gray6)",
-          gray7: "var(--gray7)",
-          gray8: "var(--gray8)",
-          gray9: "var(--gray9)",
-          gray10: "var(--gray10)",
-          gray11: "var(--gray11)",
-          gray12: "var(--gray12)",
-          slate1: "var(--slate1)",
-          slate2: "var(--slate2)",
-          slate3: "var(--slate3)",
-          slate4: "var(--slate4)",
-          slate5: "var(--slate5)",
-          slate6: "var(--slate6)",
-          slate7: "var(--slate7)",
-          slate8: "var(--slate8)",
-          slate9: "var(--slate9)",
-          slate10: "var(--slate10)",
-          slate11: "var(--slate11)",
-          slate12: "var(--slate12)",
-        },
       },
       zIndex: {
         "-10": "-10",
@@ -105,5 +66,11 @@ module.exports = {
       outlinePlugin: ["hover", "focus", "group-focus"],
     },
   },
-  plugins: [require("tailwind-outline-plugin"), require("tailwind-nord")],
+  plugins: [
+    require("tailwind-outline-plugin"),
+    require("tailwind-nord"),
+    require("radix-colors-for-tailwind")({
+      colors: ["cyan", "sky", "blue", "purple", "slate", "mint"],
+    }),
+  ],
 };

@@ -20,7 +20,7 @@ function PullRequest({
   date,
 }) {
   return (
-    <div className="flex gap-4 bg-nord5 border border-nord4 dark:bg-nord0 dark:border-nord2 p-4">
+    <div className="flex gap-4 border slate-bg slate-border p-4">
       <div className="h-12 w-12 flex-shrink-0 relative">
         <GitHubImage
           src={image}
@@ -32,20 +32,17 @@ function PullRequest({
       </div>
       <div className="grid sm:flex justify-between flex-grow flex-wrap gap-x-2">
         <div>
-          <a
-            href={link}
-            className="text-black hover:text-blue-600 dark:text-nord6 dark:hover:text-blue-400"
-          >
+          <a href={link} className="hover:text-radix-blue11">
             <h2 className="font-semibold break-words">{title}</h2>
           </a>
           <a
-            className="text-nord3 hover:text-blue-600 dark:text-nord4 dark:hover:text-blue-400 break-all"
+            className="text-radix-slate11 hover:text-radix-blue11 break-all"
             href={repo_url}
           >
             {owner_login}/{repo_name}
           </a>
         </div>
-        <p className="text-nord3 dark:text-nord4 italic">{date}</p>
+        <p className="text-radix-slate11 italic">{date}</p>
       </div>
     </div>
   );
@@ -57,7 +54,7 @@ export default function Home({ prs }) {
       title="Pull Requests"
       description="Pull requests I've made on GitHub"
     >
-      <h1 className="text-5xl font-semibold pb-6 text-center ">
+      <h1 className="text-5xl font-semibold pb-6 text-center text-radix-mint11">
         Pull Requests
       </h1>
       <div className="grid gap-y-4">

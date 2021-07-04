@@ -1,6 +1,12 @@
 import Image from "next/image";
 
-export default function Coder({ username, name }: {username: string, name: string}) {
+export default function Coder({
+  username,
+  name,
+}: {
+  username: string;
+  name: string;
+}) {
   return (
     <div className="flex items-center gap-x-2" key={username}>
       <div className="inline-block h-10 w-10 relative">
@@ -16,7 +22,7 @@ export default function Coder({ username, name }: {username: string, name: strin
       <div className="flex flex-col">
         <p>{name}</p>
         <a
-          className="text-nord10 dark:text-nord8 hover:underline"
+          className="text-radix-blue11 hover:underline"
           href={`https://github.com/${username}`}
         >
           <p>{username}</p>

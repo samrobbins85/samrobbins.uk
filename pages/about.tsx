@@ -20,12 +20,12 @@ function Article({ image, publisher, link, title, description }) {
       <div className="grid">
         <a
           href={link}
-          className="text-xl font-semibold text-link dark:text-darkLink hover:underline flex items-baseline gap-x-1"
+          className="text-xl font-semibold text-radix-cyan11 hover:underline flex items-baseline gap-x-1"
         >
           {title}
           <ExternalLinkIcon className="h-4 w-4" />
         </a>
-        <span className="text-gray-600 dark:text-gray-300">{description}</span>
+        <span className="text-radix-slate11">{description}</span>
       </div>
     </div>
   );
@@ -35,28 +35,28 @@ export default function Home({ about }) {
   const [expand, setExpand] = useState(false);
   return (
     <Layout title="About" description="About me">
-      <h1 className="text-5xl font-semibold pb-4 text-center ">About</h1>
+      <h1 className="text-5xl font-semibold pb-4 text-center text-radix-mint11">
+        About
+      </h1>
       <div className="flex justify-center">
-        <div className="border px-6 py-4 rounded text-lg bg-nord6 dark:bg-nord0 dark:border-gray-800 text-center">
+        <div className="border px-6 py-4 rounded text-lg slate-bg slate-border  text-center">
           For more details, check out my{" "}
           <a
-            className="border-b-2 border-link dark:border-darkLink"
+            className="border-b-2 border-radix-cyan11"
             href="https://cv.samrobbins.uk"
           >
             CV
           </a>{" "}
           or{" "}
           <a
-            className="border-b-2 border-link dark:border-darkLink"
+            className="border-b-2 border-radix-cyan11"
             href="https://www.polywork.com/samrobbins"
           >
             Polywork
           </a>
         </div>
       </div>
-      <h2 className="text-3xl font-semibold py-6 text-nord0 dark:text-nord5">
-        Published Articles
-      </h2>
+      <h2 className="text-3xl font-semibold py-6">Published Articles</h2>
       <div className="grid">
         {about.articles.map((x) => (
           <Article
@@ -69,9 +69,7 @@ export default function Home({ about }) {
           />
         ))}
       </div>
-      <h2 className="text-3xl font-semibold py-6 text-nord0 dark:text-nord5">
-        Timeline
-      </h2>
+      <h2 className="text-3xl font-semibold py-6">Timeline</h2>
       <ul className="px-1">
         {about.timeline
           .slice(0, expand ? about.timeline.length : 5)

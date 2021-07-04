@@ -11,7 +11,7 @@ function ContactButton({ email }: { email: string }) {
   return (
     <a
       href={`mailto:${email}`}
-      className="w-32 text-center px-4 py-2 rounded justify-self-center bg-radix-sky3 hover:bg-radix-sky4 focus:bg-radix-sky5 text-radix-sky11 border border-radix-sky7 hover:border-radix-sky8 font-semibold"
+      className="w-32 text-center px-4 py-2 rounded justify-self-center sky-bg-int text-radix-sky11 border sky-border-int font-semibold"
     >
       Contact Me
     </a>
@@ -35,21 +35,17 @@ export default function Home({ portfolios, home }) {
       </Head>
       <Nav />
       <div className="py-6 px-4 max-w-85ch mx-auto">
-        <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8 text-radix-sky11">
+        <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8 text-radix-mint11">
           {home.title}
         </h1>
-        <h2 className="text-lg text-gray-600 dark:text-gray-200">
-          {home.description}
-        </h2>
+        <h2 className="text-lg text-radix-slate11">{home.description}</h2>
         <div className="grid sm:flex gap-x-4 pt-8 pb-4 items-start gap-y-4 flex-wrap justify-center sm:justify-start">
           <ContactButton email={home.email} />
           <div className="flex flex-wrap gap-x-4 gap-y-2 py-2 justify-center ">
             <SocialLinks />
           </div>
         </div>
-        <h2 className="text-3xl font-semibold text-nord0 dark:text-nord5">
-          Projects
-        </h2>
+        <h2 className="text-3xl font-semibold">Projects</h2>
 
         <div className="grid gap-8 py-4">
           {portfolios
@@ -71,9 +67,7 @@ export default function Home({ portfolios, home }) {
           <p className="text-center">
             To see all my projects, check out my{" "}
             <Link href="/portfolio">
-              <a className="text-link hover:underline dark:text-darkLink">
-                portfolio
-              </a>
+              <a className="hover:underline text-radix-cyan11">portfolio</a>
             </Link>
           </p>
         </div>

@@ -29,21 +29,19 @@ export default function GridItem({
 }) {
   return (
     <div
-      className={`bg-nord6 dark:bg-nord0 p-2 grid ${
+      className={`bg-radix-slate3 p-2 grid ${
         wide ? "sm:grid-cols-2" : "w-[24rem]"
       } rounded `}
     >
       <div className="text-center">
-        <p className="text-2xl font-semibold text-center pt-4 dark:text-nord6">
-          {title}
-        </p>
-        <p className={`py-4 text-center dark:text-nord5 ${!wide && "h-16"}`}>
+        <p className="text-2xl font-semibold text-center pt-4">{title}</p>
+        <p className={`py-4 text-center text-radix-slate11 ${!wide && "h-16"}`}>
           {description}
         </p>
         {wide && (
           <div className="flex justify-center">
             <Link href={`/portfolio/${slug}`}>
-              <a className="hidden sm:block hover:underline text-link dark:text-darkLink">
+              <a className="hidden sm:block hover:underline text-radix-cyan11">
                 Find out more
               </a>
             </Link>
@@ -65,7 +63,7 @@ export default function GridItem({
           <a
             className={`${
               wide && "sm:hidden"
-            } hover:underline mb-2 text-center text-link dark:text-darkLink`}
+            } hover:underline mb-2 text-center text-radix-cyan11`}
           >
             Find out more
           </a>

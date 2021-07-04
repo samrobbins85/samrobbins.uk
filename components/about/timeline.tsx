@@ -37,19 +37,27 @@ function TimelineIcon({ type }) {
   }
 }
 
-function Description({ title, date, description }:{title: string, date: string, description:string}) {
+function Description({
+  title,
+  date,
+  description,
+}: {
+  title: string;
+  date: string;
+  description: string;
+}) {
   return (
     <>
       <div className="flex justify-between">
         <h3 className="font-medium ">{title}</h3>
-        <p className="pl-4 text-sm tracking-wide text-nord2 dark:text-white text-right">
+        <p className="pl-4 text-sm tracking-wide text-radix-slate12 text-right">
           {new Date(date).toLocaleString("en-gb", {
             month: "long",
             year: "numeric",
           })}
         </p>
       </div>
-      <div className="text-gray-700 dark:text-gray-300">{description}</div>
+      <div className="text-radix-slate11">{description}</div>
     </>
   );
 }
