@@ -26,11 +26,9 @@ export default function Portfolio({ data, renderedOutput, date }) {
         <p className="text-center text-xl">{date}</p>
       </header>
 
-      <main>
-        <article className="mx-auto prose prose-serif dark:prose-light dark:prose-serifLight">
-          <MDXRemote {...renderedOutput} components={components} />
-        </article>
-      </main>
+      <article className="mx-auto prose prose-serif dark:prose-light dark:prose-serifLight">
+        <MDXRemote {...renderedOutput} components={components} />
+      </article>
     </Layout>
   );
 }

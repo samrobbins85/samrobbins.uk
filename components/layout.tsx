@@ -1,7 +1,17 @@
 import Head from "next/head";
 import Nav from "@/components/nav";
 
-export default function Layout({ title, children, fullWidth, description }: {title: string, children: React.ReactNode, fullWidth?: Boolean, description?: string }) {
+export default function Layout({
+  title,
+  children,
+  fullWidth,
+  description,
+}: {
+  title: string;
+  children: React.ReactNode;
+  fullWidth?: Boolean;
+  description?: string;
+}) {
   return (
     <>
       <Head>
@@ -16,9 +26,9 @@ export default function Layout({ title, children, fullWidth, description }: {tit
         )}
       </Head>
       <Nav />
-      <div className={`${!fullWidth && "max-w-85ch"} mx-auto p-4`}>
+      <main className={`${!fullWidth && "max-w-85ch"} mx-auto p-4`}>
         {children}
-      </div>
+      </main>
     </>
   );
 }

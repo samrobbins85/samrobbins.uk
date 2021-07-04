@@ -35,60 +35,66 @@ export default function Home({ about }) {
   const [expand, setExpand] = useState(false);
   return (
     <Layout title="About" description="About me">
-      <h1 className="text-5xl font-semibold pb-4 text-center text-radix-mint11">
-        About
-      </h1>
-      <div className="flex justify-center">
-        <div className="border px-6 py-4 rounded text-lg slate-bg slate-border  text-center">
-          For more details, check out my{" "}
-          <a
-            className="border-b-2 border-radix-cyan11"
-            href="https://cv.samrobbins.uk"
-          >
-            CV
-          </a>{" "}
-          or{" "}
-          <a
-            className="border-b-2 border-radix-cyan11"
-            href="https://www.polywork.com/samrobbins"
-          >
-            Polywork
-          </a>
-        </div>
-      </div>
-      <h2 className="text-3xl font-semibold py-6">Published Articles</h2>
-      <div className="grid">
-        {about.articles.map((x) => (
-          <Article
-            image={x.logo}
-            publisher={x.publisher}
-            link={x.link}
-            title={x.title}
-            description={x.description}
-            key={x.title}
-          />
-        ))}
-      </div>
-      <h2 className="text-3xl font-semibold py-6">Timeline</h2>
-      <ul className="px-1">
-        {about.timeline
-          .slice(0, expand ? about.timeline.length : 5)
-          .map((item) => (
-            <TimeLineItem data={item} key={item.description} />
-          ))}
-      </ul>
-      {!expand && (
+      <header>
+        <h1 className="text-5xl font-semibold pb-4 text-center text-radix-mint11">
+          About
+        </h1>
         <div className="flex justify-center">
-          <button
-            className="flex items-center"
-            type="button"
-            onClick={() => setExpand(true)}
-          >
-            <ChevronDownIcon aria-hidden="true" className="mr-2" size={16} />
-            <span>Show more</span>
-          </button>
+          <div className="border px-6 py-4 rounded text-lg slate-bg slate-border  text-center">
+            For more details, check out my{" "}
+            <a
+              className="border-b-2 border-radix-cyan11"
+              href="https://cv.samrobbins.uk"
+            >
+              CV
+            </a>{" "}
+            or{" "}
+            <a
+              className="border-b-2 border-radix-cyan11"
+              href="https://www.polywork.com/samrobbins"
+            >
+              Polywork
+            </a>
+          </div>
         </div>
-      )}
+      </header>
+      <section>
+        <h2 className="text-3xl font-semibold py-6">Published Articles</h2>
+        <div className="grid">
+          {about.articles.map((x) => (
+            <Article
+              image={x.logo}
+              publisher={x.publisher}
+              link={x.link}
+              title={x.title}
+              description={x.description}
+              key={x.title}
+            />
+          ))}
+        </div>
+      </section>
+      <section>
+        <h2 className="text-3xl font-semibold py-6">Timeline</h2>
+        <ul className="px-1">
+          {about.timeline
+            .slice(0, expand ? about.timeline.length : 5)
+            .map((item) => (
+              <TimeLineItem data={item} key={item.description} />
+            ))}
+        </ul>
+        {!expand && (
+          <div className="flex justify-center">
+            <button
+              className="flex items-center"
+              type="button"
+              onClick={() => setExpand(true)}
+            >
+              <ChevronDownIcon aria-hidden="true" className="mr-2" size={16} />
+              <span>Show more</span>
+            </button>
+          </div>
+        )}
+      </section>
     </Layout>
   );
 }

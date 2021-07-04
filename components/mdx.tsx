@@ -18,3 +18,8 @@ export function MyTable(props) {
     </div>
   );
 }
+
+export function MyPre(props) {
+  // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+  return <pre {...props} tabIndex="0" />;
+}

@@ -3,13 +3,14 @@ import rehypePrism from "@mapbox/rehype-prism";
 import Layout from "@/components/layout";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
-import { MyTable } from "@/components/mdx";
+import { MyTable, MyPre } from "@/components/mdx";
 import { useEffect } from "react";
 import math from "@/lib/remark-math";
 import "katex/dist/katex.css";
 
 const components = {
   table: MyTable,
+  pre: MyPre,
 };
 
 export default function Blog({ dato, content, date }) {
@@ -26,11 +27,9 @@ export default function Blog({ dato, content, date }) {
         </h1>
         <p className="text-center py-1 text-radix-slate11">{date}</p>
       </header>
-      <main>
-        <article className="prose dark:prose-light mx-auto">
-          <MDXRemote {...content} components={components} />
-        </article>
-      </main>
+      <article className="prose dark:prose-light mx-auto">
+        <MDXRemote {...content} components={components} />
+      </article>
     </Layout>
   );
 }

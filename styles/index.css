@@ -56,3 +56,8 @@ body,
 .highlight[aria-expanded="true"] {
   @apply text-black dark:!text-white;
 }
+
+.inset-outline {
+  outline-width: 2px;
+  outline-offset: -2px;
+}

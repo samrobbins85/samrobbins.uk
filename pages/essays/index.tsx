@@ -24,7 +24,7 @@ export default function Portfolio({ writings }) {
             Essays
           </h1>
         </header>
-        <main className="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
+        <div className="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
           {writings.map((item) => (
             <Paper
               slug={item.slug}
@@ -33,7 +33,7 @@ export default function Portfolio({ writings }) {
               key={item.title}
             />
           ))}
-        </main>
+        </div>
       </Layout>
     </>
   );

@@ -13,10 +13,10 @@ function Button({
 }) {
   return (
     <button
-      className={`flex items-center px-2 py-1 font-medium rounded sky-cta-int  text-radix-sky11 ${
-        item === category && "bg-radix-sky7"
+      className={`flex items-center px-2 py-1 font-medium rounded sky-bg-int  text-radix-sky11 ${
+        item === category && "outline-solid outline-radix-sky7 inset-outline"
       }
-    }`}
+    `}
       type="button"
       key={item}
       onClick={onClick}

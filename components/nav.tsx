@@ -164,65 +164,60 @@ function ThemeComponent({
 export default function Nav() {
   const { resolvedTheme, setTheme } = useTheme();
   return (
-    <Popover className="relative z-10">
-      <>
-        <div className="border-b-2 border-radix-slate6 h-18 md:grid md:grid-cols-12">
-          <div className="flex justify-between items-center md:justify-center md:space-x-10 md:col-start-2 md:col-end-12 h-full">
-            <Link href="/">
-              <a className="ml-4 md:hidden -my-2 focus-visible:outline-solid outline-radix-sky8 outline-0.5 rounded-md p-2">
-                <span className="sr-only">Home</span>
-                <HomeIcon className="h-8 w-8 text-radix-slate11" />
-              </a>
-            </Link>
-            <div className="-my-2 md:hidden px-4">
-              <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center hover:bg-radix-slate4 focus:outline-solid focus:outline-radix-sky8 focus:outline-0.5">
-                <span className="sr-only">Open menu</span>
-                <MenuIcon
-                  className="h-6 w-6 text-radix-slate11 "
-                  aria-hidden="true"
-                />
-              </Popover.Button>
-            </div>
-            <Popover.Group as="nav" className="hidden md:flex space-x-10">
-              <DesktopSingle data={{ name: "Home", href: "/" }} />
-              {items.map((x) => {
-                if ("items" in x) {
-                  return <DesktopDropdown key={x.name} data={x} />;
-                }
-                return <DesktopSingle key={x.name} data={x} />;
-              })}
-            </Popover.Group>
+    <Popover as="nav" className="relative z-10">
+      <div className="border-b-2 border-radix-slate6 h-18 md:grid md:grid-cols-12">
+        <div className="flex justify-between items-center md:justify-center md:space-x-10 md:col-start-2 md:col-end-12 h-full">
+          <Link href="/">
+            <a className="ml-4 md:hidden -my-2 focus-visible:outline-solid outline-radix-sky8 outline-0.5 rounded-md p-2">
+              <span className="sr-only">Home</span>
+              <HomeIcon className="h-8 w-8 text-radix-slate11" />
+            </a>
+          </Link>
+          <div className="-my-2 md:hidden px-4">
+            <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center hover:bg-radix-slate4 focus:outline-solid focus:outline-radix-sky8 focus:outline-0.5">
+              <span className="sr-only">Open menu</span>
+              <MenuIcon
+                className="h-6 w-6 text-radix-slate11 "
+                aria-hidden="true"
+              />
+            </Popover.Button>
           </div>
-          <div className="col-start-12 hidden md:grid justify-center content-center auto-rows-min ">
+          <Popover.Group className="hidden md:flex space-x-10">
+            <DesktopSingle data={{ name: "Home", href: "/" }} />
+            {items.map((x) => {
+              if ("items" in x) {
+                return <DesktopDropdown key={x.name} data={x} />;
+              }
+              return <DesktopSingle key={x.name} data={x} />;
+            })}
+          </Popover.Group>
+        </div>
+        <div className="col-start-12 hidden md:grid justify-center content-center auto-rows-min ">
+          <ThemeComponent setTheme={setTheme} resolvedTheme={resolvedTheme} />
+        </div>
+      </div>
+
+      <Popover.Panel className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
+        <div className="rounded-lg shadow-lg bg-radix-slate3 pt-5 pb-6 px-5">
+          <div className="flex items-center justify-between">
             <ThemeComponent setTheme={setTheme} resolvedTheme={resolvedTheme} />
+            <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center focus:outline-radix-sky8 focus:outline-solid text-radix-slate11 hover:bg-radix-slate4">
+              <span className="sr-only">Close menu</span>
+              <XIcon className="h-6 w-6 " aria-hidden="true" />
+            </Popover.Button>
+          </div>
+          <div className="grid gap-y-8 mt-4">
+            {items.map((item) => {
+              if ("items" in item) {
+                return item.items.map((x) => (
+                  <MobileItem key={x.name} data={x} />
+                ));
+              }
+              return <MobileItem key={item.name} data={item} />;
+            })}
           </div>
         </div>
-
-        <Popover.Panel className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
-          <div className="rounded-lg shadow-lg bg-radix-slate3 pt-5 pb-6 px-5">
-            <div className="flex items-center justify-between">
-              <ThemeComponent
-                setTheme={setTheme}
-                resolvedTheme={resolvedTheme}
-              />
-              <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center focus:outline-radix-sky8 focus:outline-solid text-radix-slate11 hover:bg-radix-slate4">
-                <span className="sr-only">Close menu</span>
-                <XIcon className="h-6 w-6 " aria-hidden="true" />
-              </Popover.Button>
-            </div>
-            <nav className="grid gap-y-8 mt-4">
-              {items.map((item) => {
-                if ("items" in item) {
-                  return item.items.map((x) => (
-                    <MobileItem key={x.name} data={x} />
-                  ));
-                }
-                return <MobileItem key={item.name} data={item} />;
-              })}
-            </nav>
-          </div>
-        </Popover.Panel>
-      </>
+      </Popover.Panel>
     </Popover>
   );
 }

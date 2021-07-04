@@ -34,44 +34,46 @@ export default function Home({ portfolios, home }) {
         />
       </Head>
       <Nav />
-      <div className="py-6 px-4 max-w-85ch mx-auto">
-        <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8 text-radix-mint11">
-          {home.title}
-        </h1>
-        <h2 className="text-lg text-radix-slate11">{home.description}</h2>
-        <div className="grid sm:flex gap-x-4 pt-8 pb-4 items-start gap-y-4 flex-wrap justify-center sm:justify-start">
-          <ContactButton email={home.email} />
-          <div className="flex flex-wrap gap-x-4 gap-y-2 py-2 justify-center ">
-            <SocialLinks />
+      <main className="py-6 px-4 max-w-85ch mx-auto">
+        <header>
+          <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8 text-radix-mint11">
+            {home.title}
+          </h1>
+          <h2 className="text-lg text-radix-slate11">{home.description}</h2>
+          <div className="grid sm:flex gap-x-4 pt-8 pb-4 items-start gap-y-4 flex-wrap justify-center sm:justify-start">
+            <ContactButton email={home.email} />
+            <div className="flex flex-wrap gap-x-4 gap-y-2 py-2 justify-center ">
+              <SocialLinks />
+            </div>
           </div>
-        </div>
-        <h2 className="text-3xl font-semibold">Projects</h2>
-
-        <div className="grid gap-8 py-4">
-          {portfolios
-            .filter((item) => item.featured)
-            .slice(0, 3)
-            .map((item) => (
-              <GridItem
-                title={item.title}
-                description={item.description}
-                screenshot={item.screenshot}
-                slug={item.slug}
-                key={item.title}
-                wide
-              />
-            ))}
-        </div>
-
-        <div>
-          <p className="text-center">
-            To see all my projects, check out my{" "}
-            <Link href="/portfolio">
-              <a className="hover:underline text-radix-cyan11">portfolio</a>
-            </Link>
-          </p>
-        </div>
-      </div>
+        </header>
+        <section>
+          <h2 className="text-3xl font-semibold">Projects</h2>
+          <div className="grid gap-8 py-4">
+            {portfolios
+              .filter((item) => item.featured)
+              .slice(0, 3)
+              .map((item) => (
+                <GridItem
+                  title={item.title}
+                  description={item.description}
+                  screenshot={item.screenshot}
+                  slug={item.slug}
+                  key={item.title}
+                  wide
+                />
+              ))}
+          </div>
+          <div>
+            <p className="text-center">
+              To see all my projects, check out my{" "}
+              <Link href="/portfolio">
+                <a className="hover:underline text-radix-cyan11">portfolio</a>
+              </Link>
+            </p>
+          </div>
+        </section>
+      </main>
     </>
   );
 }
