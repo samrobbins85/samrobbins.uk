@@ -16,6 +16,7 @@
     "@next/bundle-analyzer": "^11.0.1",
     "@primer/octicons-react": "^14.2.2",
     "@radix-ui/colors": "^0.1.7",
+    "@samrobbins/custom-typography": "^1.1.0",
     "dotenv": "^10.0.0",
     "eslint-config-prettier": "^8.3.0",
     "feed": "^4.2.2",
@@ -33,9 +34,9 @@
   "devDependencies": {
     "@samrobbins/typography": "2.0.1",
     "@tailwindcss/jit": "^0.1.18",
-    "@types/react": "^17.0.11",
+    "@types/react": "^17.0.13",
     "autoprefixer": "^10.2.6",
-    "eslint": "^7.29.0",
+    "eslint": "^7.30.0",
     "eslint-config-next": "^11.0.1",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
@@ -46,7 +47,7 @@
     "tailwind-nord": "^1.2.0",
     "tailwind-outline-plugin": "^2.0.1",
     "tailwindcss": "^2.2.4",
-    "typescript": "^4.3.4"
+    "typescript": "^4.3.5"
   },
   "license": "MIT"
 }

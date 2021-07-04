@@ -21,13 +21,13 @@ export default function Portfolio({ data, renderedOutput, date }) {
   }, []);
   return (
     <Layout title={data.title}>
-      <header className="font-serif pb-2">
+      <header className="font-serif pb-8">
         <h1 className="text-center text-4xl font-semibold">{data.title}</h1>
         <p className="text-center text-xl">{date}</p>
       </header>
 
       <main>
-        <article className="mx-auto prose font-serif dark:prose-light">
+        <article className="mx-auto prose prose-serif dark:prose-light dark:prose-serifLight">
           <MDXRemote {...renderedOutput} components={components} />
         </article>
       </main>
