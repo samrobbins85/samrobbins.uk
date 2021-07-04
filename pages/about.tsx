@@ -35,7 +35,7 @@ export default function Home({ about }) {
   const [expand, setExpand] = useState(false);
   return (
     <Layout title="About" description="About me">
-      <h1 className="text-5xl font-semibold pb-4 text-center text-radix-purple10">
+      <h1 className="text-5xl font-semibold pb-4 text-center text-radix-mint11">
         About
       </h1>
       <div className="flex justify-center">

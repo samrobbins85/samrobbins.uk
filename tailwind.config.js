@@ -70,7 +70,7 @@ module.exports = {
     require("tailwind-outline-plugin"),
     require("tailwind-nord"),
     require("radix-colors-for-tailwind")({
-      colors: ["cyan", "sky", "blue", "purple", "slate"],
+      colors: ["cyan", "sky", "blue", "purple", "slate", "mint"],
     }),
   ],
 };
