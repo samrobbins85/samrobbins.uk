@@ -169,13 +169,13 @@ export default function Nav() {
         <div className="border-b-2 border-radix-slate6 h-18 md:grid md:grid-cols-12">
           <div className="flex justify-between items-center md:justify-center md:space-x-10 md:col-start-2 md:col-end-12 h-full">
             <Link href="/">
-              <a className="ml-4 md:hidden -my-2 focus-visible:outline-solid outline-nord8 outline-0.5 rounded-md p-2">
+              <a className="ml-4 md:hidden -my-2 focus-visible:outline-solid outline-radix-sky8 outline-0.5 rounded-md p-2">
                 <span className="sr-only">Home</span>
                 <HomeIcon className="h-8 w-8 text-radix-slate11" />
               </a>
             </Link>
             <div className="-my-2 md:hidden px-4">
-              <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center hover:bg-radix-slate4 focus:outline-solid focus:outline-nord8 focus:outline-0.5">
+              <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center hover:bg-radix-slate4 focus:outline-solid focus:outline-radix-sky8 focus:outline-0.5">
                 <span className="sr-only">Open menu</span>
                 <MenuIcon
                   className="h-6 w-6 text-radix-slate11 "
