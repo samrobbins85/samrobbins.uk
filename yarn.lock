@@ -480,10 +480,10 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.0.6.tgz#023d72a5c4531b4ce204528971700a78a85a0c50"
   integrity sha512-Myxw//kzromB9yWgS8qYGuGVf91oBUUJpNvy5eM50sqvmKLbKjwLxohJnkWGTeeI9v9IBMtPLxz5Gc60FIfvCA==
 
-"@samrobbins/custom-typography@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@samrobbins/custom-typography/-/custom-typography-1.1.0.tgz#3e2d1433cf3342d779f00d111deb8f089f51f6f8"
-  integrity sha512-RYHN9uXkUvB4eFJRkHPb32yhRTqR/aUVWerAgR+MZKORZVveYCHbWZkrcdiUQmrLnl3HdRF/g43KRuzH4jyycQ==
+"@samrobbins/custom-typography@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@samrobbins/custom-typography/-/custom-typography-1.2.0.tgz#fc8ad9813bff60049311459476317e1bb041a9ad"
+  integrity sha512-XofynwEaJlPIjoHWQ1PYQpZUfzZobhnClep7rh0LPa1Yw5rL+UJ5wA75kXNqyyln0pCYPKzwYEgYci6VtS26Mw==
   dependencies:
     lodash.castarray "^4.4.0"
     lodash.merge "^4.6.2"
