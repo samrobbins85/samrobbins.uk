@@ -39,7 +39,7 @@ export default function Home({ about }) {
         About
       </h1>
       <div className="flex justify-center">
-        <div className="border px-6 py-4 rounded text-lg bg-radix-slate3 border-radix-slate6 text-center">
+        <div className="border px-6 py-4 rounded text-lg slate-bg slate-border  text-center">
           For more details, check out my{" "}
           <a
             className="border-b-2 border-radix-cyan11"

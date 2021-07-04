@@ -20,7 +20,7 @@ function PullRequest({
   date,
 }) {
   return (
-    <div className="flex gap-4 border bg-radix-slate3 border-radix-slate6 p-4">
+    <div className="flex gap-4 border slate-bg slate-border p-4">
       <div className="h-12 w-12 flex-shrink-0 relative">
         <GitHubImage
           src={image}

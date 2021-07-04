@@ -11,7 +11,7 @@ function ContactButton({ email }: { email: string }) {
   return (
     <a
       href={`mailto:${email}`}
-      className="w-32 text-center px-4 py-2 rounded justify-self-center bg-radix-sky3 hover:bg-radix-sky4 focus:bg-radix-sky5 text-radix-sky11 border border-radix-sky7 hover:border-radix-sky8 font-semibold"
+      className="w-32 text-center px-4 py-2 rounded justify-self-center sky-bg-int text-radix-sky11 border sky-border-int font-semibold"
     >
       Contact Me
     </a>

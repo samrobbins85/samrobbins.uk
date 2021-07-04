@@ -1,8 +1,3 @@
-@import "@radix-ui/colors/slate.css";
-@import "@radix-ui/colors/cyan.css";
-@import "@radix-ui/colors/sky.css";
-@import "@radix-ui/colors/blue.css";
-@import "@radix-ui/colors/purple.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

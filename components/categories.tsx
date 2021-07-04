@@ -13,7 +13,7 @@ function Button({
 }) {
   return (
     <button
-      className={`flex items-center px-2 py-1 font-medium rounded bg-radix-sky4  text-radix-sky11 hover:bg-radix-sky5 focus:bg-radix-sky6 ${
+      className={`flex items-center px-2 py-1 font-medium rounded sky-cta  text-radix-sky11 ${
         item === category && "border-2 border-radix-sky7"
       }
     }`}

@@ -72,7 +72,7 @@ export default function Portfolio({ data, renderedOutput, names, categories }) {
         </div>
       )}
 
-      <div className="bg-radix-slate3 border-radix-slate6 max-w-prose mx-auto my-4 border ">
+      <div className="slate-bg slate-border max-w-prose mx-auto my-4 border ">
         <div className="flex flex-wrap px-4 gap-y-6 py-6 justify-center text-center">
           {categories.map((x) => (
             <Category name={x} technologies={data.technologies} key={x} />

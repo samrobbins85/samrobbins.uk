@@ -2,22 +2,6 @@
 /* eslint-disable global-require */
 const colors = require("tailwindcss/colors");
 const defaultTheme = require("tailwindcss/defaultTheme");
-const radix = require("@radix-ui/colors");
-
-const usedColors = ["cyan", "sky", "blue", "purple", "slate"];
-const filtered = Object.keys(radix)
-  .filter(
-    (color) =>
-      usedColors.includes(color) &&
-      !color.includes("A") &&
-      !color.includes("Dark")
-  )
-  .reduce((obj, key) => {
-    Object.keys(radix[key]).forEach(
-      (color) => (obj[color] = `var(--${color})`)
-    );
-    return obj;
-  }, {});
 
 module.exports = {
   presets: [require("@samrobbins/typography")],
@@ -47,10 +31,6 @@ module.exports = {
         "nord6.1": "#f8f9fb",
         link: "#0077aa",
         darkLink: "#96d0ff",
-        test: "var(--primary)",
-        radix: {
-          ...filtered,
-        },
       },
       zIndex: {
         "-10": "-10",
@@ -86,5 +66,11 @@ module.exports = {
       outlinePlugin: ["hover", "focus", "group-focus"],
     },
   },
-  plugins: [require("tailwind-outline-plugin"), require("tailwind-nord")],
+  plugins: [
+    require("tailwind-outline-plugin"),
+    require("tailwind-nord"),
+    require("radix-colors-for-tailwind")({
+      colors: ["cyan", "sky", "blue", "purple", "slate"],
+    }),
+  ],
 };
