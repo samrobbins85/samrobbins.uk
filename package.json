@@ -44,6 +44,8 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "next-sitemap": "^1.6.124",
     "postcss-import": "^14.0.2",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0",
     "tailwind-nord": "^1.2.0",
     "tailwind-outline-plugin": "^2.0.1",
     "tailwindcss": "^2.2.4",

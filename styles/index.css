@@ -36,6 +36,7 @@
 
 .footnotes > ol::before {
   content: "References";
+
   @apply mb-4 text-2xl font-semibold;
 }
 
