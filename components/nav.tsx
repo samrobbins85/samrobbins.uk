@@ -134,38 +134,39 @@ function MobileItem({ data }) {
   );
 }
 
-function switchTheme(theme: string, setTheme: Function) {
-  if (theme === "light") {
-    setTheme("dark");
-  } else {
-    setTheme("light");
+function ThemeComponent({
+  setTheme,
+  resolvedTheme,
+}: {
+  setTheme: Function;
+  resolvedTheme: string;
+}) {
+  function switchTheme(theme: string, setTheme: Function) {
+    if (theme === "light") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
   }
+  return (
+    <button
+      type="button"
+      className="p-2 hover:bg-radix-slate4 rounded-lg focus:outline-solid focus:outline-radix-sky8 focus:outline-0.5"
+      onClick={() => switchTheme(resolvedTheme, setTheme)}
+      aria-label="Toggle Dark Mode"
+    >
+      {resolvedTheme === "light" && <MoonIcon className="h-6 w-6 text-nord0" />}
+      {resolvedTheme === "dark" && <SunIcon className="h-6 w-6 text-nord13" />}
+    </button>
+  );
 }
 
 export default function Nav() {
   const { resolvedTheme, setTheme } = useTheme();
-
-  function ThemeComponent() {
-    return (
-      <button
-        type="button"
-        className="p-2 hover:bg-radix-slate4 rounded-lg focus:outline-solid focus:outline-radix-sky8 focus:outline-0.5"
-        onClick={() => switchTheme(resolvedTheme, setTheme)}
-        aria-label="Toggle Dark Mode"
-      >
-        {resolvedTheme === "light" && (
-          <MoonIcon className="h-6 w-6 text-nord0" />
-        )}
-        {resolvedTheme === "dark" && (
-          <SunIcon className="h-6 w-6 text-nord13" />
-        )}
-      </button>
-    );
-  }
   return (
     <Popover className="relative z-10">
       <>
-        <div className="border-b-2 border-radix-slate7 h-18 md:grid md:grid-cols-12">
+        <div className="border-b-2 border-radix-slate6 h-18 md:grid md:grid-cols-12">
           <div className="flex justify-between items-center md:justify-center md:space-x-10 md:col-start-2 md:col-end-12 h-full">
             <Link href="/">
               <a className="ml-4 md:hidden -my-2 focus-visible:outline-solid outline-nord8 outline-0.5 rounded-md p-2">
@@ -193,14 +194,17 @@ export default function Nav() {
             </Popover.Group>
           </div>
           <div className="col-start-12 hidden md:grid justify-center content-center auto-rows-min ">
-            <ThemeComponent />
+            <ThemeComponent setTheme={setTheme} resolvedTheme={resolvedTheme} />
           </div>
         </div>
 
         <Popover.Panel className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
           <div className="rounded-lg shadow-lg bg-radix-slate3 pt-5 pb-6 px-5">
             <div className="flex items-center justify-between">
-              <ThemeComponent />
+              <ThemeComponent
+                setTheme={setTheme}
+                resolvedTheme={resolvedTheme}
+              />
               <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center focus:outline-radix-sky8 focus:outline-solid text-radix-slate11 hover:bg-radix-slate4">
                 <span className="sr-only">Close menu</span>
                 <XIcon className="h-6 w-6 " aria-hidden="true" />
