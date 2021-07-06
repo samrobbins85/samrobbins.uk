@@ -28,6 +28,7 @@ module.exports = {
         gmail: "#EA4335",
         twitter: "#1DA1F2",
         linkedin: "#0A66C2",
+        polywork: "#543DE0",
         "nord6.1": "#f8f9fb",
         link: "#0077aa",
         darkLink: "#96d0ff",

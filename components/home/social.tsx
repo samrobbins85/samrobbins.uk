@@ -1,14 +1,12 @@
-import { MarkGithubIcon } from "@primer/octicons-react";
-import Linkedin from "@/svg/linkedin";
+// import { MarkGithubIcon } from "@primer/octicons-react";
 import Npm from "@/svg/npm";
-import Twitter from "@/svg/twitter";
-import Unsplash from "@/svg/unsplash";
-
+import { Linkedin, Twitter, Github } from "@icons-pack/react-simple-icons";
+import Polywork from "@/svg/polywork";
 export default function SocialLinks() {
   const links = [
     {
       name: "GitHub",
-      icon: MarkGithubIcon,
+      icon: Github,
       link: "https://github.com/samrobbins85",
       className: "hover:text-radix-slate12 focus:text-radix-slate12",
       modifier: "w-6",
@@ -20,22 +18,22 @@ export default function SocialLinks() {
       className: "hover:!text-npm focus:!text-npm",
     },
     {
-      name: "LinkedIn",
-      icon: Linkedin,
-      link: "https://www.linkedin.com/in/sam-robbins-gb/",
-      className: "hover:!text-linkedin focus:!text-linkedin",
-    },
-    {
       name: "Twitter",
       icon: Twitter,
       link: "https://twitter.com/samrobbins85",
       className: "hover:!text-twitter focus:!text-twitter",
     },
     {
-      name: "Unsplash",
-      icon: Unsplash,
-      link: "https://unsplash.com/@samrobbins",
-      className: "hover:text-radix-slate12 focus:text-radix-slate12",
+      name: "Polywork",
+      icon: Polywork,
+      link: "https://www.polywork.com/samrobbins",
+      className: "hover:text-polywork focus:text-polywork",
+    },
+    {
+      name: "LinkedIn",
+      icon: Linkedin,
+      link: "https://www.linkedin.com/in/sam-robbins-gb/",
+      className: "hover:!text-linkedin focus:!text-linkedin",
     },
   ];
   return (
@@ -49,8 +47,8 @@ export default function SocialLinks() {
         >
           <link.icon
             aria-hidden="true"
-            size={16}
-            className={`h-6 ${link.modifier}`}
+            size={24}
+            className={`h-6${" " + link.modifier || ""}`}
           />
         </a>
       ))}
