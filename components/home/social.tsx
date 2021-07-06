@@ -1,4 +1,3 @@
-// import { MarkGithubIcon } from "@primer/octicons-react";
 import Npm from "@/svg/npm";
 import { Linkedin, Twitter, Github } from "@icons-pack/react-simple-icons";
 import Polywork from "@/svg/polywork";
@@ -15,13 +14,13 @@ export default function SocialLinks() {
       name: "npm",
       icon: Npm,
       link: "https://www.npmjs.com/~samrobbins",
-      className: "hover:!text-npm focus:!text-npm",
+      className: "hover:text-npm focus:text-npm",
     },
     {
       name: "Twitter",
       icon: Twitter,
       link: "https://twitter.com/samrobbins85",
-      className: "hover:!text-twitter focus:!text-twitter",
+      className: "hover:text-twitter focus:text-twitter",
     },
     {
       name: "Polywork",
@@ -33,7 +32,7 @@ export default function SocialLinks() {
       name: "LinkedIn",
       icon: Linkedin,
       link: "https://www.linkedin.com/in/sam-robbins-gb/",
-      className: "hover:!text-linkedin focus:!text-linkedin",
+      className: "hover:text-linkedin focus:text-linkedin",
     },
   ];
   return (
