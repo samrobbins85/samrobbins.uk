@@ -26,6 +26,30 @@
   src: url(/fonts/newsreader-italic.woff2) format("woff2");
 }
 
+@font-face {
+  font-family: "et-book";
+  src: url(/fonts/et-book/normal.woff2) format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "et-book";
+  src: url(/fonts/et-book/italic.woff2) format("woff2");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "et-book";
+  src: url(/fonts/et-book/bold.woff2) format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
 .prose.font-serif h2,
 .prose.font-serif h3,
 .prose.font-serif h4,

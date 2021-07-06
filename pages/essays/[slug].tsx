@@ -22,8 +22,8 @@ export default function Portfolio({ data, renderedOutput, date }) {
   return (
     <Layout title={data.title}>
       <header className="font-serif pb-8">
-        <h1 className="text-center text-4xl font-semibold">{data.title}</h1>
-        <p className="text-center text-xl">{date}</p>
+        <h1 className="text-center text-4xl">{data.title}</h1>
+        <p className="text-center text-2xl italic">{date}</p>
       </header>
 
       <article className="mx-auto prose prose-serif dark:prose-light dark:prose-serifLight">
