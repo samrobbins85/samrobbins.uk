@@ -58,7 +58,7 @@ export default function Portfolio({ data, renderedOutput, names, categories }) {
         {data.npm ? <NPMButton url={data.npm} /> : undefined}
       </div>
       {data.coders.length !== 0 && (
-        <div className="pt-4">
+        <aside className="pt-4">
           <h2 className="text tracking-widest text-center uppercase ">
             Made by
           </h2>
@@ -69,16 +69,16 @@ export default function Portfolio({ data, renderedOutput, names, categories }) {
               ))}
             </div>
           </div>
-        </div>
+        </aside>
       )}
 
-      <div className="slate-bg slate-border max-w-prose mx-auto my-4 border ">
+      <aside className="slate-bg slate-border max-w-prose mx-auto my-4 border ">
         <div className="flex flex-wrap px-4 gap-y-6 py-6 justify-center text-center">
           {categories.map((x) => (
             <Category name={x} technologies={data.technologies} key={x} />
           ))}
         </div>
-      </div>
+      </aside>
       <div className="prose dark:prose-light mx-auto">
         <MDXRemote {...renderedOutput} components={components} />
       </div>
