@@ -1,38 +1,14 @@
-import DatoImage from "@/components/datoimage";
 import TimeLineItem from "@/components/about/timeline";
 import { useState } from "react";
 import { ChevronDownIcon } from "@primer/octicons-react";
-import { ExternalLinkIcon } from "@heroicons/react/outline";
 import Layout from "@/components/layout";
 import { getAbout } from "../lib/datocms";
+import Image from "next/image";
+import { useTheme } from "next-themes";
 
-function Article({ image, publisher, link, title, description }) {
-  return (
-    <div className="flex">
-      <div className="h-12 w-12 mr-2">
-        <DatoImage
-          height={image.height}
-          width={image.width}
-          src={image.url}
-          alt={publisher}
-        />
-      </div>
-      <div className="grid">
-        <a
-          href={link}
-          className="text-xl font-semibold text-radix-cyan11 hover:underline flex items-baseline gap-x-1"
-        >
-          {title}
-          <ExternalLinkIcon className="h-4 w-4" />
-        </a>
-        <span className="text-radix-slate11">{description}</span>
-      </div>
-    </div>
-  );
-}
-
-export default function Home({ about }) {
+export default function About({ about }) {
   const [expand, setExpand] = useState(false);
+  const { resolvedTheme } = useTheme();
   return (
     <Layout title="About" description="About me">
       <header>
@@ -59,17 +35,24 @@ export default function Home({ about }) {
         </div>
       </header>
       <section>
-        <h2 className="text-3xl font-semibold py-6">Published Articles</h2>
-        <div className="grid">
-          {about.articles.map((x) => (
-            <Article
-              image={x.logo}
-              publisher={x.publisher}
-              link={x.link}
-              title={x.title}
-              description={x.description}
-              key={x.title}
-            />
+        <h2 className="text-3xl font-semibold pt-6">Skills</h2>
+        <p className="text-lg text-radix-slate11">
+          Some of my favourite technologies to use
+        </p>
+        <div className="flex justify-center gap-x-8 flex-wrap gap-y-4 py-4">
+          {about.skills.map((item) => (
+            <a className="relative h-18 w-24" href={item.link} key={item.name}>
+              <Image
+                src={
+                  resolvedTheme === "light"
+                    ? item.logo.url
+                    : item.lightlogo?.url || item.logo.url
+                }
+                alt={item.name}
+                layout="fill"
+                objectFit="contain"
+              />
+            </a>
           ))}
         </div>
       </section>
