@@ -1,6 +1,10 @@
 import Npm from "@/svg/npm";
-import { Linkedin, Twitter, Github } from "@icons-pack/react-simple-icons";
-import Polywork from "@/svg/polywork";
+import {
+  Linkedin,
+  Twitter,
+  Github,
+  Polywork,
+} from "@icons-pack/react-simple-icons";
 export default function SocialLinks() {
   const links = [
     {

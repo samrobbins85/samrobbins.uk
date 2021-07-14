@@ -507,10 +507,10 @@
   resolved "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.0.tgz"
   integrity sha512-wdppn25U8z/2yiaT6YGquE6X8sSv7hNMWSXYSSU1jGv/yd6XqjXgTDJ8KP4NgjTXfJ3GbRjeeb8RTV7a/VpM+w==
 
-"@icons-pack/react-simple-icons@^4.4.0":
-  version "4.4.0"
-  resolved "https://registry.npmjs.org/@icons-pack/react-simple-icons/-/react-simple-icons-4.4.0.tgz"
-  integrity sha512-LzGL9aeO/KgDkkvgt96fdel1z2KrUW0gC7F9frl9Pd9ocwi42d14nIWlN9buEAZHQplDmfyMBpixcje7xhs8bA==
+"@icons-pack/react-simple-icons@^4.6.1":
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/@icons-pack/react-simple-icons/-/react-simple-icons-4.6.1.tgz#47e07a43ff90ce3ff7d64806cdac76fa68b986fc"
+  integrity sha512-ICONbofFzeTkXvmbnptDv4P9cqtW/N/8EFOqyzJQJ80b8fJoLzqhM7EKslBmWziIwjY9FBnOoL2ofzQOoDG1Gg==
   dependencies:
     prop-types "^15.7.2"
 
@@ -2006,10 +2006,10 @@ es6-object-assign@^1.1.0:
   resolved "https://registry.npmjs.org/es6-object-assign/-/es6-object-assign-1.1.0.tgz"
   integrity sha1-wsNYJlYkfDnqEHyx5mUrb58kUjw=
 
-esbuild@^0.11.12:
-  version "0.11.21"
-  resolved "https://registry.npmjs.org/esbuild/-/esbuild-0.11.21.tgz"
-  integrity sha512-FqpYdJqiTeLDbj3vqxc/fG8UmHIEvQrDaUxSw1oJf4giLd/tnMDUUlXellCjOab7qGKQ5hUFD5eQgmO+tkZeow==
+esbuild@^0.12.9:
+  version "0.12.15"
+  resolved "https://registry.yarnpkg.com/esbuild/-/esbuild-0.12.15.tgz#9d99cf39aeb2188265c5983e983e236829f08af0"
+  integrity sha512-72V4JNd2+48eOVCXx49xoSWHgC3/cCy96e7mbXKY+WOWghN00cCmlGnwVLRhRHorvv0dgCyuMYBZlM2xDM5OQw==
 
 escalade@^3.1.1:
   version "3.1.1"
@@ -3616,20 +3616,20 @@ natural-compare@^1.4.0:
   resolved "https://registry.npmjs.org/natural-compare/-/natural-compare-1.4.0.tgz"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-next-mdx-remote@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.npmjs.org/next-mdx-remote/-/next-mdx-remote-3.0.2.tgz"
-  integrity sha512-imLrrw6c/Hi1BKRyJE9yLhk45N5zzw+/CxSQRHOAByYUSOhd+DNjUaqm2jtd+/GgxJeYB1d3fJPXmvUZTez1MQ==
+next-mdx-remote@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/next-mdx-remote/-/next-mdx-remote-3.0.4.tgz#c9b4aff4ec0780b08f34ccd6be966e569d6d4fda"
+  integrity sha512-n/xN6GaeBgJiuTJDrG6iqJ2EY5rEZ99Vf2H1nc75MNn1a6XnZLgT6uQJxqbSN84svc9aU3CSxfRlOqgqVVPHIg==
   dependencies:
     "@mdx-js/mdx" "^1.6.22"
     "@mdx-js/react" "^1.6.22"
-    esbuild "^0.11.12"
+    esbuild "^0.12.9"
     pkg-dir "^5.0.0"
 
-next-sitemap@^1.6.133:
-  version "1.6.133"
-  resolved "https://registry.npmjs.org/next-sitemap/-/next-sitemap-1.6.133.tgz"
-  integrity sha512-AG4BIXoVO+Nl0nyIYCuz/Vh7Vtn0BO0Lc8ssr3YWiFQFXqHTdKVHUXNP3ZSekmT32BjcMgWtpyoiEAmpXty0ZA==
+next-sitemap@^1.6.140:
+  version "1.6.140"
+  resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-1.6.140.tgz#b391633596f4845ec9ceb54a51da8c1f6f97ae43"
+  integrity sha512-VTOQMae/nDLBRGBHnkmGoIsArymlOpJWkZUDvPapktF4QX2U7yvwHIHe7V7amqV2gE2xiDYgd0ayXOBBGuFHog==
   dependencies:
     "@corex/deepmerge" "^2.6.20"
     matcher "^4.0.0"
