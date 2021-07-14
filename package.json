@@ -30,7 +30,9 @@
     "radix-colors-for-tailwind": "2.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "remark-numbered-footnotes": "^2.0.0"
+    "remark-behead": "^2.3.3",
+    "remark-numbered-footnotes": "^2.0.0",
+    "victory": "^35.9.0"
   },
   "devDependencies": {
     "@samrobbins/typography": "2.0.1",

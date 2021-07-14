@@ -7,11 +7,25 @@ import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 import Layout from "@/components/layout";
 import { essaySlugs, getEssay } from "@/lib/datocms";
+import { VictoryBar, VictoryChart, VictoryAxis } from "victory";
+import behead from "remark-behead";
 import "katex/dist/katex.css";
-
+import {
+  LineChart,
+  BarChart,
+  PieChart,
+  BarChartDual,
+} from "@/components/writing/chart";
 const components = {
   table: MyTable,
   img: MyImg,
+  VictoryBar,
+  VictoryChart,
+  VictoryAxis,
+  BarChart,
+  LineChart,
+  PieChart,
+  BarChartDual,
 };
 export default function Portfolio({ data, renderedOutput, date }) {
   useEffect(() => {
@@ -37,7 +51,7 @@ export async function getStaticProps({ params }) {
   const data = await getEssay(params.slug);
   const renderedOutput = await serialize(data.content, {
     mdxOptions: {
-      remarkPlugins: [footnotes, math],
+      remarkPlugins: [footnotes, math, [behead, { depth: 1 }]],
       rehypePlugins: [rehypePrism],
     },
   });
