@@ -38,7 +38,12 @@ export function LineChart({
         <VictoryChart
           domainPadding={40}
           width={width}
-          containerComponent={<VictoryContainer responsive={false} />}
+          containerComponent={
+            <VictoryContainer
+              responsive={false}
+              style={{ touchAction: "unset" }}
+            />
+          }
           padding={{ left: 90, right: 0, top: 50, bottom: 110 }}
           height={370}
         >
@@ -137,7 +142,12 @@ export function BarChart({ data, width, xlabel, ylabel, caption }: Bar) {
         <VictoryChart
           domainPadding={40}
           width={width}
-          containerComponent={<VictoryContainer responsive={false} />}
+          containerComponent={
+            <VictoryContainer
+              responsive={false}
+              style={{ touchAction: "unset" }}
+            />
+          }
           padding={{ left: 90, right: 10, top: 50, bottom: 50 }}
         >
           <VictoryAxis
@@ -207,7 +217,12 @@ export function BarChartDual({
         <VictoryChart
           domainPadding={80}
           width={width}
-          containerComponent={<VictoryContainer responsive={false} />}
+          containerComponent={
+            <VictoryContainer
+              responsive={false}
+              style={{ touchAction: "unset" }}
+            />
+          }
           padding={{ left: 90, right: 0, top: 50, bottom: dataName ? 70 : 30 }}
         >
           {dataName && data1Name && (
