@@ -74,3 +74,7 @@ body,
 .math.math-display {
   @apply overflow-x-auto;
 }
+
+.prose a {
+  word-break: break-all;
+}
