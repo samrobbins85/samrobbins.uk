@@ -16,6 +16,7 @@ import {
   PieChart,
   BarChartDual,
 } from "@/components/writing/chart";
+import Map from "@/components/writing/map";
 const components = {
   table: MyTable,
   img: MyImg,
@@ -26,8 +27,10 @@ const components = {
   LineChart,
   PieChart,
   BarChartDual,
+  Map,
 };
-export default function Portfolio({ data, renderedOutput, date }) {
+
+export default function Essay({ data, renderedOutput, date }) {
   useEffect(() => {
     import("@/lib/rendermath").then((renderMath) => {
       renderMath.default();
@@ -42,6 +45,19 @@ export default function Portfolio({ data, renderedOutput, date }) {
 
       <article className="mx-auto prose prose-serif dark:prose-light dark:prose-serifLight">
         <MDXRemote {...renderedOutput} components={components} />
+        <Map
+          data={{
+            UKC: 0.0,
+            UKD: 0.0,
+            UKE: 0.0,
+            UKF: 0.0,
+            UKG: 0.0,
+            UKH: 0.4444444444,
+            UKI: null,
+            UKJ: 0.1290322581,
+            UKK: 0.0,
+          }}
+        />
       </article>
     </Layout>
   );
