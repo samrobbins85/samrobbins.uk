@@ -316,13 +316,3 @@ export function PieChart({ data }: { data: Object[] }) {
     </div>
   );
 }
-
-<BarChart
-  data={[
-    { x: "JavaScript", y: 61.4 },
-    { x: "Web Assembly", y: 28.8 },
-    { x: "ImageMagick", y: 10.6 },
-  ]}
-  ylabel="Memory(megabytes)"
-  caption="Memory consumption of process"
-/>;
