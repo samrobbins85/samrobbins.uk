@@ -18,7 +18,7 @@
     "@primer/octicons-react": "^14.2.2",
     "@radix-ui/colors": "^0.1.7",
     "@samrobbins/custom-typography": "^1.2.0",
-    "d3-scale": "^4.0.0",
+    "d3-scale": "3.3.0",
     "dotenv": "^10.0.0",
     "eslint-config-prettier": "^8.3.0",
     "feed": "^4.2.2",

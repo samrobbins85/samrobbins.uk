@@ -75,6 +75,6 @@ body,
   @apply overflow-x-auto;
 }
 
-.prose a {
+.prose .footnotes a {
   word-break: break-all;
 }

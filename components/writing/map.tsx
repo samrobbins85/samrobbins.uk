@@ -24,36 +24,39 @@ export default function Map({ data }: { data: Object }) {
   const altUrl = "/nuts1.json";
 
   return (
-    <>
-      <ComposableMap data-tip="" projectionConfig={PROJECTION_CONFIG}>
-        <ZoomableGroup>
-          <Geographies geography={altUrl}>
-            {({ geographies }) =>
-              geographies.map((geo) => (
-                <Geography
-                  key={geo.rsmKey}
-                  geography={geo}
-                  stroke="#000"
-                  fill={
-                    data[geo.properties.nuts118cd]
-                      ? colorscale(data[geo.properties.nuts118cd])
-                      : "#FFF"
-                  }
-                  onMouseEnter={() =>
-                    setContent(
-                      `${geo.properties.nuts118nm}: ${(
-                        data[geo.properties.nuts118cd] * 100
-                      ).toFixed(1)}%`
-                    )
-                  }
-                  onMouseLeave={() => setContent("")}
-                />
-              ))
-            }
-          </Geographies>
-        </ZoomableGroup>
-      </ComposableMap>
-      <DynamicTooltip>{content}</DynamicTooltip>
-    </>
+    <figure>
+      <div className="border">
+        <ComposableMap data-tip="" projectionConfig={PROJECTION_CONFIG}>
+          <ZoomableGroup>
+            <Geographies geography={altUrl}>
+              {({ geographies }) =>
+                geographies.map((geo) => (
+                  <Geography
+                    key={geo.rsmKey}
+                    geography={geo}
+                    stroke="#000"
+                    fill={
+                      data[geo.properties.nuts118cd]
+                        ? colorscale(data[geo.properties.nuts118cd])
+                        : "#FFF"
+                    }
+                    onMouseEnter={() =>
+                      setContent(
+                        `${geo.properties.nuts118nm}: ${(
+                          data[geo.properties.nuts118cd] * 100
+                        ).toFixed(1)}%`
+                      )
+                    }
+                    onMouseLeave={() => setContent("")}
+                  />
+                ))
+              }
+            </Geographies>
+          </ZoomableGroup>
+        </ComposableMap>
+        <DynamicTooltip>{content}</DynamicTooltip>
+      </div>
+      <figcaption>A map</figcaption>
+    </figure>
   );
 }
