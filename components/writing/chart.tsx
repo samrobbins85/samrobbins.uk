@@ -222,9 +222,20 @@ export function BarMulti({
             label={axisLabel}
             axisLabelComponent={<VictoryLabel dy={-12} />}
             dependentAxis
+            style={{
+              axisLabel: { fill: "var(--slate12)" },
+              axis: { stroke: "var(--slate12)" },
+              tickLabels: { fill: "var(--slate12)" },
+            }}
           />
 
-          <VictoryAxis />
+          <VictoryAxis
+            style={{
+              axisLabel: { fill: "var(--slate12)" },
+              axis: { stroke: "var(--slate12)" },
+              tickLabels: { fill: "var(--slate12)" },
+            }}
+          />
 
           {data.length > 1 && (
             <VictoryLegend
@@ -232,8 +243,11 @@ export function BarMulti({
               y={260}
               orientation="horizontal"
               gutter={30}
-              style={{ border: { stroke: "black" } }}
               colorScale="qualitative"
+              style={{
+                border: { stroke: "var(--slate12)" },
+                labels: { fill: "var(--slate12)" },
+              }}
               data={data.map((item) => ({
                 name: item.title,
               }))}
@@ -245,6 +259,11 @@ export function BarMulti({
                 labels={({ datum }) => `${datum.y}`}
                 data={item.data}
                 key={index}
+                style={{
+                  labels: {
+                    fill: "var(--slate12)",
+                  },
+                }}
               />
             ))}
           </VictoryGroup>
