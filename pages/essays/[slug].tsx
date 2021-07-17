@@ -16,6 +16,7 @@ import {
   PieChart,
   BarChartDual,
 } from "@/components/writing/chart";
+import Map from "@/components/writing/map";
 const components = {
   table: MyTable,
   img: MyImg,
@@ -26,8 +27,10 @@ const components = {
   LineChart,
   PieChart,
   BarChartDual,
+  Map,
 };
-export default function Portfolio({ data, renderedOutput, date }) {
+
+export default function Essay({ data, renderedOutput, date }) {
   useEffect(() => {
     import("@/lib/rendermath").then((renderMath) => {
       renderMath.default();

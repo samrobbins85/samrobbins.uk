@@ -18,6 +18,7 @@
     "@primer/octicons-react": "^14.2.2",
     "@radix-ui/colors": "^0.1.7",
     "@samrobbins/custom-typography": "^1.2.0",
+    "d3-scale": "3.3.0",
     "dotenv": "^10.0.0",
     "eslint-config-prettier": "^8.3.0",
     "feed": "^4.2.2",
@@ -30,6 +31,8 @@
     "radix-colors-for-tailwind": "2.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-simple-maps": "^2.3.0",
+    "react-tooltip": "^4.2.21",
     "remark-behead": "^2.3.3",
     "remark-numbered-footnotes": "^2.0.0",
     "victory": "^35.9.0"
