@@ -78,3 +78,8 @@ body,
 .prose .footnotes a {
   word-break: break-all;
 }
+
+.map-key {
+  background: linear-gradient(to right, #ffffff, #68246d);
+  height: 0.5rem;
+}

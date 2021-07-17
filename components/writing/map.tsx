@@ -9,7 +9,13 @@ import dynamic from "next/dynamic";
 import { useState } from "react";
 const DynamicTooltip = dynamic(() => import("react-tooltip"), { ssr: false });
 
-export default function Map({ data }: { data: Object }) {
+export default function Map({
+  data,
+  caption,
+}: {
+  data: Object;
+  caption: string;
+}) {
   const max_value = Math.max(...Object.values(data));
   const [content, setContent] = useState("");
 
@@ -25,7 +31,7 @@ export default function Map({ data }: { data: Object }) {
 
   return (
     <figure>
-      <div className="border">
+      <div className="border border-radix-slate6">
         <ComposableMap data-tip="" projectionConfig={PROJECTION_CONFIG}>
           <ZoomableGroup>
             <Geographies geography={altUrl}>
@@ -55,8 +61,16 @@ export default function Map({ data }: { data: Object }) {
           </ZoomableGroup>
         </ComposableMap>
         <DynamicTooltip>{content}</DynamicTooltip>
+        <div className="mb-4 px-20">
+          <div className="flex justify-between">
+            <span>0%</span>
+            <span>{(max_value * 100).toFixed(1)}%</span>
+          </div>
+          <div className="map-key rounded" />
+        </div>
       </div>
-      <figcaption>A map</figcaption>
+
+      <figcaption>{caption}</figcaption>
     </figure>
   );
 }

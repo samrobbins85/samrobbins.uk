@@ -45,19 +45,6 @@ export default function Essay({ data, renderedOutput, date }) {
 
       <article className="mx-auto prose prose-serif dark:prose-light dark:prose-serifLight">
         <MDXRemote {...renderedOutput} components={components} />
-        <Map
-          data={{
-            UKC: 0.0,
-            UKD: 0.0,
-            UKE: 0.0,
-            UKF: 0.0,
-            UKG: 0.0,
-            UKH: 0.4444444444,
-            UKI: null,
-            UKJ: 0.1290322581,
-            UKK: 0.0,
-          }}
-        />
       </article>
     </Layout>
   );
