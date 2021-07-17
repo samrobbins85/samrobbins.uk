@@ -190,107 +190,63 @@ export function BarChart({ data, width, xlabel, ylabel, caption }: Bar) {
   );
 }
 
-interface BarDual {
-  data: Object[];
-  data1: Object[];
-  width?: number;
-  xlabel?: string;
-  ylabel?: string;
-  caption?: string;
-  data1Name?: string;
-  dataName?: string;
-}
-
-export function BarChartDual({
+export function BarMulti({
   data,
-  data1,
-  width,
-  xlabel,
-  ylabel,
+  axisLabel,
   caption,
-  dataName,
-  data1Name,
-}: BarDual) {
+  width,
+  padding,
+  legendPos,
+  offset,
+}) {
   return (
     <figure className="grid justify-center">
       <div className="overflow-x-auto">
         <VictoryChart
-          domainPadding={80}
           width={width}
+          domainPadding={padding}
           containerComponent={
             <VictoryContainer
               responsive={false}
               style={{ touchAction: "unset" }}
             />
           }
-          padding={{ left: 90, right: 0, top: 50, bottom: dataName ? 70 : 30 }}
+          padding={{
+            left: 90,
+            right: 10,
+            top: 50,
+            bottom: data.length > 1 ? 70 : 30,
+          }}
         >
-          {dataName && data1Name && (
+          <VictoryAxis
+            label={axisLabel}
+            axisLabelComponent={<VictoryLabel dy={-12} />}
+            dependentAxis
+          />
+
+          <VictoryAxis />
+
+          {data.length > 1 && (
             <VictoryLegend
-              x={150}
+              x={legendPos}
               y={260}
               orientation="horizontal"
               gutter={30}
-              style={{
-                border: { stroke: "var(--slate12)" },
-                labels: { fill: "var(--slate12)" },
-              }}
-              data={[
-                { name: dataName, symbol: { fill: "#68246d" } },
-                { name: data1Name, symbol: { fill: "#00aeef" } },
-              ]}
+              style={{ border: { stroke: "black" } }}
+              colorScale="qualitative"
+              data={data.map((item) => ({
+                name: item.title,
+              }))}
             />
           )}
-          <VictoryAxis
-            label={xlabel}
-            axisLabelComponent={<VictoryLabel dy={10} />}
-            style={{
-              axisLabel: { fill: "var(--slate12)" },
-              axis: { stroke: "var(--slate12)" },
-              tickLabels: { fill: "var(--slate12)" },
-            }}
-          />
-          <VictoryAxis
-            dependentAxis
-            label={ylabel}
-            axisLabelComponent={<VictoryLabel dy={-40} />}
-            style={{
-              axisLabel: { fill: "var(--slate12)" },
-              axis: { stroke: "var(--slate12)" },
-              tickLabels: { fill: "var(--slate12)" },
-            }}
-          />
-          <VictoryGroup offset={45}>
-            <VictoryBar
-              data={data}
-              barWidth={40}
-              x="x"
-              y="y"
-              labels={({ datum }) => `${datum.y}`}
-              style={{
-                data: {
-                  fill: "#68246d",
-                },
-                labels: {
-                  fill: "var(--slate12)",
-                },
-              }}
-            />
-            <VictoryBar
-              data={data1}
-              barWidth={40}
-              x="x"
-              y="y"
-              labels={({ datum }) => `${datum.y}`}
-              style={{
-                data: {
-                  fill: "#00aeef",
-                },
-                labels: {
-                  fill: "var(--slate12)",
-                },
-              }}
-            />
+          <VictoryGroup offset={offset} colorScale={"qualitative"}>
+            {data.map((item, index) => (
+              <VictoryBar
+                labels={({ datum }) => `${datum.y}`}
+                data={item.data}
+                key={index}
+              />
+            ))}
           </VictoryGroup>
         </VictoryChart>
       </div>

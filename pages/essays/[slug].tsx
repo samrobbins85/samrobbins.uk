@@ -14,7 +14,7 @@ import {
   LineChart,
   BarChart,
   PieChart,
-  BarChartDual,
+  BarMulti,
 } from "@/components/writing/chart";
 import Map from "@/components/writing/map";
 const components = {
@@ -26,7 +26,7 @@ const components = {
   BarChart,
   LineChart,
   PieChart,
-  BarChartDual,
+  BarMulti,
   Map,
 };
 
