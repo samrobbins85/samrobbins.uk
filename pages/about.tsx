@@ -5,7 +5,7 @@ import Layout from "@/components/layout";
 import { getAbout } from "../lib/datocms";
 import Image from "next/image";
 import { useTheme } from "next-themes";
-
+import Job from "@/components/about/job";
 export default function About({ about }) {
   const [expand, setExpand] = useState(false);
   const { resolvedTheme } = useTheme();
@@ -34,6 +34,20 @@ export default function About({ about }) {
           </div>
         </div>
       </header>
+      <section className="pt-4">
+        <h2 className="text-3xl font-semibold">Jobs</h2>
+        <div className="grid sm:grid-cols-2 gap-4">
+          {about.jobs.map((item) => (
+            <Job
+              key={item.company}
+              logo={item.logo}
+              title={item.role}
+              duration={item.duration}
+              company={item.company}
+            />
+          ))}
+        </div>
+      </section>
       <section>
         <h2 className="text-3xl font-semibold pt-6">Skills</h2>
         <p className="text-lg text-radix-slate11">
