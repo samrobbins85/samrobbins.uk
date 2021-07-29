@@ -16,6 +16,7 @@ export default class MyDocument extends Document {
             type="font/woff2"
             crossOrigin="anonymous"
           />
+          <link rel="icon" href="/favicon.ico" sizes="any" />
           <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
           <link
             rel="alternate"
