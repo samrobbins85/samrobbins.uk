@@ -4,7 +4,6 @@ const colors = require("tailwindcss/colors");
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
-  // presets: [require("@samrobbins/typography")],
   darkMode: "class",
   mode: "jit",
   purge: [
