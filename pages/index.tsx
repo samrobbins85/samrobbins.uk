@@ -24,6 +24,11 @@ export default function Home({ portfolios, home }) {
       <Head>
         <title>Sam Robbins</title>
         <meta
+          name="description"
+          content="The personal website of Sam Robbins, software developer"
+        />
+
+        <meta
           property="og:image"
           content={`https://og.samrobbins.uk/api/${escape("Sam Robbins")}`}
         />

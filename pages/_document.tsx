@@ -5,10 +5,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <meta
-            name="Description"
-            content="The personal website of Sam Robbins, Computer Science Graduate from Durham University"
-          />
           <link
             rel="preload"
             href="/fonts/Inter.var.woff2"

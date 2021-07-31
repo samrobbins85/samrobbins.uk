@@ -22,7 +22,10 @@ export default function Layout({
         />
         <meta property="og:title" content={title} />
         {description && (
-          <meta property="og:description" content={description} />
+          <>
+            <meta name="description" content={description} />
+            <meta property="og:description" content={description} />
+          </>
         )}
       </Head>
       <Nav />

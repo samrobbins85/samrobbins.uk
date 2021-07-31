@@ -20,7 +20,7 @@ export default function Blog({ dato, content, date }) {
     });
   }, []);
   return (
-    <Layout title={dato.title}>
+    <Layout title={dato.title} description={dato.description}>
       <header className="py-2 pb-4">
         <h1 className="text-4xl sm:text-5xl font-semibold text-center">
           {dato.title}

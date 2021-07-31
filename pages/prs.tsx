@@ -52,7 +52,7 @@ export default function Home({ prs }) {
   return (
     <Layout
       title="Pull Requests"
-      description="Pull requests I've made on GitHub"
+      description="Contributions made to open source projects on GitHub"
     >
       <h1 className="text-5xl font-semibold pb-6 text-center text-radix-mint11">
         Pull Requests

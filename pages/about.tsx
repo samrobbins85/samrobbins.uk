@@ -10,7 +10,10 @@ export default function About({ about }) {
   const [expand, setExpand] = useState(false);
   const { resolvedTheme } = useTheme();
   return (
-    <Layout title="About" description="About me">
+    <Layout
+      title="About"
+      description="Front end software developer specialising in React and Durham University Graduate"
+    >
       <header>
         <h1 className="text-5xl font-semibold pb-4 text-center text-radix-mint11">
           About
