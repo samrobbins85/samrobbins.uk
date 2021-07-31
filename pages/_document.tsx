@@ -7,7 +7,7 @@ export default class MyDocument extends Document {
         <Head>
           <meta
             name="Description"
-            content="The personal website of Sam Robbins, Computer Science student from Durham University"
+            content="The personal website of Sam Robbins, Computer Science Graduate from Durham University"
           />
           <link
             rel="preload"
