@@ -14,8 +14,8 @@ export default function Job({ company, logo, title, duration }) {
       </div>
       <div className="grid">
         <span className="font-semibold">{title}</span>
-        <span className="text-gray-700">{company}</span>
-        <span className="text-gray-700">{duration}</span>
+        <span className="text-radix-slate11">{company}</span>
+        <span className="text-radix-slate11">{duration}</span>
       </div>
     </div>
   );
