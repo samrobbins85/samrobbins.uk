@@ -6,7 +6,6 @@ extends:
   - "plugin:react/recommended"
   - "plugin:jsx-a11y/recommended"
   - "plugin:react-hooks/recommended"
-  - "plugin:import/recommended"
   - "next"
   - "next/core-web-vitals"
   - "prettier"
