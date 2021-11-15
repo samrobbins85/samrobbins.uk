@@ -274,11 +274,20 @@ export function BarMulti({
   );
 }
 
-export function PieChart({ data }: { data: Object[] }) {
+export function PieChart({
+  data,
+  caption,
+  height,
+}: {
+  data: Object[];
+  caption: string;
+  height: number;
+}) {
   return (
-    <div className="max-w-md mx-auto">
+    <figure className="max-w-md mx-auto">
       <VictoryPie
-        padding={{ left: 90, right: 90, top: 90, bottom: 90 }}
+        height={height}
+        padding={{ left: 110, right: 110, top: 0, bottom: 0 }}
         data={data}
         colorScale="qualitative"
         labels={({ datum }) => `${datum.x}: ${datum.y}`}
@@ -288,6 +297,7 @@ export function PieChart({ data }: { data: Object[] }) {
           },
         }}
       />
-    </div>
+      <figcaption>{caption}</figcaption>
+    </figure>
   );
 }

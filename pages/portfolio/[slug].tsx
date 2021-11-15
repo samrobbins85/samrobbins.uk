@@ -12,6 +12,7 @@ import { MDXRemote } from "next-mdx-remote";
 
 import { WebsiteButton, NPMButton } from "@/components/portfolio/smallbutton";
 import Layout from "@/components/layout";
+import remarkUnwrapImages from "remark-unwrap-images";
 
 const components = {
   table: MyTable,

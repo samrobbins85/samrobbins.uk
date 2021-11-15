@@ -7,6 +7,7 @@ import { MyTable, MyPre } from "@/components/mdx";
 import { useEffect } from "react";
 import math from "@/lib/remark-math";
 import "katex/dist/katex.css";
+import remarkUnwrapImages from "remark-unwrap-images";
 
 const components = {
   table: MyTable,
@@ -38,7 +39,7 @@ export async function getStaticProps({ params }) {
   const dato = await getBlog(params.slug);
   const content = await serialize(dato.markdown, {
     mdxOptions: {
-      remarkPlugins: [math],
+      remarkPlugins: [math, remarkUnwrapImages],
       rehypePlugins: [rehypePrism],
     },
   });

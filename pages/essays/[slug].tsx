@@ -17,6 +17,7 @@ import {
   BarMulti,
 } from "@/components/writing/chart";
 import Map from "@/components/writing/map";
+import remarkUnwrapImages from "remark-unwrap-images";
 const components = {
   table: MyTable,
   img: MyImg,
@@ -54,7 +55,12 @@ export async function getStaticProps({ params }) {
   const data = await getEssay(params.slug);
   const renderedOutput = await serialize(data.content, {
     mdxOptions: {
-      remarkPlugins: [footnotes, math, [behead, { depth: 1 }]],
+      remarkPlugins: [
+        footnotes,
+        math,
+        [behead, { depth: 1 }],
+        remarkUnwrapImages,
+      ],
       rehypePlugins: [rehypePrism],
     },
   });
