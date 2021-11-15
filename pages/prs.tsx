@@ -68,7 +68,7 @@ export default function Home({ prs }) {
             owner_login={pr.repository.owner.login}
             owner_name={pr.repository.owner.name}
             repo_name={pr.repository.name}
-            date={pr.mergedAt}
+            date={pr.createdAt}
           />
         ))}
       </div>
@@ -80,12 +80,12 @@ export const getStaticProps: GetStaticProps = async () => {
   let prs = await getSearch();
   prs = prs.map((x) => x.node);
   prs.forEach((_, index) => {
-    const date = new Date(prs[index].mergedAt).toLocaleString("en-gb", {
+    const date = new Date(prs[index].createdAt).toLocaleString("en-gb", {
       day: "numeric",
       month: "long",
       year: "numeric",
     });
-    prs[index].mergedAt = date;
+    prs[index].createdAt = date;
   });
   return {
     props: { prs },
