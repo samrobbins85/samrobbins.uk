@@ -20,6 +20,12 @@ async function fetchAPI(query, { variables } = {}) {
   return json.data;
 }
 
+import { getSdk } from "./graphql";
+import { GraphQLClient } from "graphql-request";
+const client = new GraphQLClient("https://graphql.datocms.com/", {
+  headers: { Authorization: `Bearer ${process.env.DATO}` },
+});
+const sdk = getSdk(client);
 export async function getAllBlogsWithSlug() {
   const data = await fetchAPI(`
     {
@@ -70,54 +76,7 @@ export async function getAllEssays() {
 }
 
 export async function getAbout() {
-  const data = await fetchAPI(`
-  {
-    about {
-      articles {
-        title
-        link
-        description
-        publisher
-        logo {
-          url
-          width
-          height
-        }
-      }
-      jobs {
-        role
-        logo {
-          url
-          width
-          height
-        }
-        duration
-        company
-      }
-      timeline {
-        title
-        description
-        category
-        date
-        link
-      }
-      skills {
-        name
-        link
-        logo {
-          width
-          height
-          url
-        }
-        lightlogo {
-          width
-          height
-          url
-        }
-      }
-    }
-  }
-  `);
+  const data = await sdk.getAbout();
   return data.about;
 }
 
@@ -141,24 +100,25 @@ export async function getHome() {
 }
 
 export async function getBlog(slug) {
-  const data = await fetchAPI(
-    `
-query MyQuery($slug: String!) {
-  article(filter: {slug: {eq: $slug}}) {
-    title
-    description
-    date
-    markdown
-  }
-}
-  `,
+  //   const data = await fetchAPI(
+  //     `
+  // query MyQuery($slug: String!) {
+  //   article(filter: {slug: {eq: $slug}}) {
+  //     title
+  //     description
+  //     date
+  //     markdown
+  //   }
+  // }
+  //   `,
 
-    {
-      variables: {
-        slug,
-      },
-    }
-  );
+  //     {
+  //       variables: {
+  //         slug,
+  //       },
+  //     }
+  //   );
+  const data = await sdk.GetBlog({ slug });
   return data.article;
 }
 

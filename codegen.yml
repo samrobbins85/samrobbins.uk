@@ -1,0 +1,20 @@
+overwrite: true
+schema:
+  - "https://graphql.datocms.com":
+      headers:
+        Authorization: Bearer ${DATO}
+documents: "lib/graphql/**.graphql"
+generates:
+  lib/graphql.ts:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-document-nodes"
+      - "typescript-graphql-request"
+    config:
+      namingConvention:
+        enumValues: keep
+        transformUnderscore: false
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"

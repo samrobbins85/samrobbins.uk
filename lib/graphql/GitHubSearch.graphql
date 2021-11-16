@@ -1,30 +1,45 @@
-{
-  search(
-    query: "is:pr author:samrobbins85 archived:false is:merged -org:samrobbins85"
-    type: ISSUE
-    first: 100
-  ) {
-    edges {
-      node {
-        ... on PullRequest {
-          title
-          permalink
-          createdAt
-          repository {
-            name
-            url
-            owner {
-              avatarUrl
-              login
-              ... on Organization {
-                name
-              }
-              ... on User {
-                name
-              }
-            }
-          }
-        }
+query getAbout {
+  about {
+    articles {
+      title
+      link
+      description
+      publisher
+      logo {
+        url
+        width
+        height
+      }
+    }
+    jobs {
+      role
+      logo {
+        url
+        width
+        height
+      }
+      duration
+      company
+    }
+    timeline {
+      title
+      description
+      category
+      date
+      link
+    }
+    skills {
+      name
+      link
+      logo {
+        width
+        height
+        url
+      }
+      lightlogo {
+        width
+        height
+        url
       }
     }
   }
