@@ -1,0 +1,31 @@
+{
+  search(
+    query: "is:pr author:samrobbins85 archived:false is:merged -org:samrobbins85"
+    type: ISSUE
+    first: 100
+  ) {
+    edges {
+      node {
+        ... on PullRequest {
+          title
+          permalink
+          createdAt
+          repository {
+            name
+            url
+            owner {
+              avatarUrl
+              login
+              ... on Organization {
+                name
+              }
+              ... on User {
+                name
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
