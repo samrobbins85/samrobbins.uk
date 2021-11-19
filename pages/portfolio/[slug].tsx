@@ -81,7 +81,7 @@ export default function Portfolio({
       <aside className="slate-bg slate-border max-w-prose mx-auto my-4 border ">
         <div className="flex flex-wrap px-4 gap-y-6 py-6 justify-center text-center">
           {categories.map((x) => (
-            <Category name={x} technologies={data.technologies} key={x.name} />
+            <Category name={x} technologies={data.technologies} key={x} />
           ))}
         </div>
       </aside>
@@ -94,11 +94,11 @@ export default function Portfolio({
 
 export async function getStaticProps({ params }) {
   const data = await getPortfolio(params.slug);
-  let categories = await getTechnologyCategories();
-  let refinedCategories = categories.map((x) => x.name);
+  const categoriesData = await getTechnologyCategories();
+  let categories = categoriesData.map((x) => x.name);
   // Sorts categories by how many items have that category
   const techlist = data.technologies.map((item) => item.category);
-  refinedCategories = refinedCategories.sort(
+  categories = categories.sort(
     (a, b) =>
       techlist.filter((item) => item === b).length -
       techlist.filter((item) => item === a).length
