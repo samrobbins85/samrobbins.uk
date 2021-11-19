@@ -18,7 +18,13 @@ const components = {
   table: MyTable,
 };
 
-function Category({ name, technologies }) {
+function Category({
+  name,
+  technologies,
+}: {
+  name: string;
+  technologies: { name?: string; link?: string; category?: string }[];
+}) {
   const items = technologies.filter((item) => name === item.category);
   if (items.length === 0) {
     return null;
@@ -116,7 +122,6 @@ export async function getStaticProps({ params }) {
         `https://api.github.com/users/${data.coders[i]}`,
         {
           headers: {
-            // eslint-disable-next-line no-undef
             Authorization: `token ${process.env.GITHUB}`,
           },
         }
