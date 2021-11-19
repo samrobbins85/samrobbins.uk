@@ -2,8 +2,11 @@ import { getAllEssays } from "@/lib/datocms";
 import Head from "next/head";
 import Paper from "@/components/writing/paper";
 import Layout from "@/components/layout";
+import { InferGetStaticPropsType } from "next";
 
-export default function Portfolio({ writings }) {
+export default function Portfolio({
+  writings,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <Head>

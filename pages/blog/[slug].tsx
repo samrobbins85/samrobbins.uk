@@ -8,13 +8,18 @@ import { useEffect } from "react";
 import math from "@/lib/remark-math";
 import "katex/dist/katex.css";
 import remarkUnwrapImages from "remark-unwrap-images";
+import { InferGetStaticPropsType } from "next";
 
 const components = {
   table: MyTable,
   pre: MyPre,
 };
 
-export default function Blog({ dato, content, date }) {
+export default function Blog({
+  dato,
+  content,
+  date,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   useEffect(() => {
     import("@/lib/rendermath").then((renderMath) => {
       renderMath.default();

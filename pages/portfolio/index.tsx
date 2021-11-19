@@ -6,8 +6,12 @@ import OtherGrid from "@/components/portfolio/otherGrid";
 import Layout from "@/components/layout";
 import GridItem from "@/components/griditem";
 import { PortfolioCategories } from "@/lib/graphcms.generated";
+import { InferGetStaticPropsType } from "next";
 
-export default function Portfolio({ portfolios, categories }) {
+export default function Portfolio({
+  portfolios,
+  categories,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter();
   const [category, setCategory] = useState("All");
   useEffect(() => {

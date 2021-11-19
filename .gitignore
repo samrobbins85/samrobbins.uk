@@ -39,3 +39,5 @@ sitemap.xml
 feed.json
 feed.xml
 atom.xml
+
+*.generated.ts

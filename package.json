@@ -2,7 +2,7 @@
   "name": "portfolio-website-v3",
   "version": "1.0.0",
   "scripts": {
-    "dev": "next & codegen:watch",
+    "dev": "next & yarn codegen:watch",
     "prebuild": "yarn codegen",
     "build": "next build",
     "postbuild": "next-sitemap && node feed.mjs",

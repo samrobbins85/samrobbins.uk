@@ -12,7 +12,7 @@ import { MDXRemote } from "next-mdx-remote";
 
 import { WebsiteButton, NPMButton } from "@/components/portfolio/smallbutton";
 import Layout from "@/components/layout";
-import remarkUnwrapImages from "remark-unwrap-images";
+import { InferGetStaticPropsType } from "next";
 
 const components = {
   table: MyTable,
@@ -44,7 +44,12 @@ function Category({ name, technologies }) {
   );
 }
 
-export default function Portfolio({ data, renderedOutput, names, categories }) {
+export default function Portfolio({
+  data,
+  renderedOutput,
+  names,
+  categories,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout title={data.title} description={data.description}>
       <h1 className="text-5xl sm:text-6xl text-center font-bold pt-2">
@@ -76,7 +81,7 @@ export default function Portfolio({ data, renderedOutput, names, categories }) {
       <aside className="slate-bg slate-border max-w-prose mx-auto my-4 border ">
         <div className="flex flex-wrap px-4 gap-y-6 py-6 justify-center text-center">
           {categories.map((x) => (
-            <Category name={x} technologies={data.technologies} key={x} />
+            <Category name={x} technologies={data.technologies} key={x.name} />
           ))}
         </div>
       </aside>

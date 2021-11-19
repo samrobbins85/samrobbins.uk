@@ -4,6 +4,7 @@ import { getSnippetLanguages, getSnippets } from "@/lib/graphcms";
 import Link from "next/link";
 import background from "@/lib/snippet";
 import Layout from "@/components/layout";
+import { InferGetStaticPropsType } from "next";
 
 function Card({ title, slug, language, category }) {
   return (
@@ -26,7 +27,10 @@ function Card({ title, slug, language, category }) {
   );
 }
 
-export default function Snippets({ categories, snippets }) {
+export default function Snippets({
+  categories,
+  snippets,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   const [category, setCategory] = useState("All");
   return (
     <Layout

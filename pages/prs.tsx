@@ -1,7 +1,7 @@
 import getSearch from "@/lib/githubapi";
 import Layout from "@/components/layout";
 import Image from "next/image";
-import { GetStaticProps } from "next";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 const githubLoader = ({ src, width }) => `${src}&s=${width}`;
 
 function GitHubImage(props) {

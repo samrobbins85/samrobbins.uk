@@ -5,7 +5,7 @@ import Nav from "@/components/nav";
 import GridItem from "@/components/griditem";
 import { getPortfolios } from "../lib/graphcms";
 import { getHome } from "../lib/datocms";
-import { GetStaticProps } from "next";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 
 function ContactButton({ email }: { email: string }) {
   return (
@@ -18,7 +18,10 @@ function ContactButton({ email }: { email: string }) {
   );
 }
 
-export default function Home({ portfolios, home }) {
+export default function Home({
+  portfolios,
+  home,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <Head>
@@ -83,11 +86,11 @@ export default function Home({ portfolios, home }) {
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export async function getStaticProps() {
   const portfolios = (await getPortfolios()) || [];
   const home = (await getHome()) || {};
 
   return {
     props: { portfolios, home },
   };
-};
+}

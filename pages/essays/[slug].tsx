@@ -18,6 +18,7 @@ import {
 } from "@/components/writing/chart";
 import Map from "@/components/writing/map";
 import remarkUnwrapImages from "remark-unwrap-images";
+import { InferGetStaticPropsType } from "next";
 const components = {
   table: MyTable,
   img: MyImg,
@@ -31,7 +32,11 @@ const components = {
   Map,
 };
 
-export default function Essay({ data, renderedOutput, date }) {
+export default function Essay({
+  data,
+  renderedOutput,
+  date,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   useEffect(() => {
     import("@/lib/rendermath").then((renderMath) => {
       renderMath.default();
