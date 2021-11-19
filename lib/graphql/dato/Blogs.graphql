@@ -15,3 +15,9 @@ query GetAllBlogs {
     date
   }
 }
+
+query GetAllBlogsWithSlug {
+  allArticles {
+    slug
+  }
+}

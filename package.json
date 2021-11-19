@@ -8,7 +8,9 @@
     "start": "next start",
     "export": "next build && next export",
     "lint": "next lint",
-    "codegen": "DOTENV_CONFIG_PATH='./.env.local' graphql-codegen --config codegen.yml -r dotenv/config"
+    "codegen": "DOTENV_CONFIG_PATH='./.env.local' graphql-codegen --config codegen.yml -r dotenv/config",
+    "codegen:watch": "yarn codegen --watch",
+    "typecheck": "tsc"
   },
   "dependencies": {
     "@headlessui/react": "^1.4.2",

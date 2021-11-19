@@ -1,77 +1,28 @@
-async function fetchAPI(query, { variables } = {}) {
-  const res = await fetch("https://graphql.datocms.com/", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.DATO}`,
-    },
-    body: JSON.stringify({
-      query,
-      variables,
-    }),
-  });
-  const json = await res.json();
-
-  if (json.errors) {
-    console.error(json.errors);
-    throw new Error("Failed to fetch API");
-  }
-
-  return json.data;
-}
-
-import { getSdk } from "./graphql";
+import { getSdk } from "./dato.generated";
 import { GraphQLClient } from "graphql-request";
+
 const client = new GraphQLClient("https://graphql.datocms.com/", {
   headers: { Authorization: `Bearer ${process.env.DATO}` },
 });
 const sdk = getSdk(client);
+
 export async function getAllBlogsWithSlug() {
-  const data = await fetchAPI(`
-    {
-      allArticles {
-        slug
-      }
-    }
-  `);
+  const data = await sdk.GetAllBlogsWithSlug();
   return data.allArticles;
 }
 
 export async function essaySlugs() {
-  const data = await fetchAPI(`
-    {
-      allEssays {
-        slug
-      }
-    }
-  `);
+  const data = await sdk.GetAllEssaysWithSlug();
   return data.allEssays;
 }
 
 export async function getAllBlogs() {
-  const data = await fetchAPI(`
-  {
-    allArticles(orderBy: date_DESC) {
-      slug
-      title
-      description
-      date
-    }
-  }
-  `);
+  const data = await sdk.GetAllBlogs();
   return data.allArticles;
 }
 
 export async function getAllEssays() {
-  const data = await fetchAPI(`
-  {
-    allEssays(orderBy: date_DESC) {
-      slug
-      title
-      date
-    }
-  }
-  `);
+  const data = await sdk.GetAllEssays();
   return data.allEssays;
 }
 
@@ -81,64 +32,16 @@ export async function getAbout() {
 }
 
 export async function getHome() {
-  const data = await fetchAPI(`
-  {
-    homepage {
-      unsplash
-      twitter
-      title
-      npm
-      linkedin
-      github
-      polywork
-      email
-      description
-    }
-  }
-  `);
+  const data = await sdk.GetHome();
   return data.homepage;
 }
 
 export async function getBlog(slug) {
-  //   const data = await fetchAPI(
-  //     `
-  // query MyQuery($slug: String!) {
-  //   article(filter: {slug: {eq: $slug}}) {
-  //     title
-  //     description
-  //     date
-  //     markdown
-  //   }
-  // }
-  //   `,
-
-  //     {
-  //       variables: {
-  //         slug,
-  //       },
-  //     }
-  //   );
   const data = await sdk.GetBlog({ slug });
   return data.article;
 }
 
 export async function getEssay(slug) {
-  const data = await fetchAPI(
-    `
-query MyQuery($slug: String!) {
-  essay(filter: {slug: {eq: $slug}}) {
-    title
-    date
-    content
-  }
-}
-  `,
-
-    {
-      variables: {
-        slug,
-      },
-    }
-  );
+  const data = await sdk.GetEssay({ slug });
   return data.essay;
 }

@@ -73,8 +73,8 @@ export async function getStaticProps() {
   const snippets = await getSnippets();
 
   const categories = {};
-  temp = temp.map((x) => x.name);
-  temp.forEach((element) => {
+  const tempMap = temp.map((x) => x.name);
+  tempMap.forEach((element) => {
     if (snippets.filter((x) => x.language === element).length > 0) {
       categories[element] = snippets.filter(
         (x) => x.language === element

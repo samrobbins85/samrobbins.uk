@@ -90,10 +90,10 @@ export default function Portfolio({ data, renderedOutput, names, categories }) {
 export async function getStaticProps({ params }) {
   const data = await getPortfolio(params.slug);
   let categories = await getTechnologyCategories();
-  categories = categories.map((x) => x.name);
+  let refinedCategories = categories.map((x) => x.name);
   // Sorts categories by how many items have that category
   const techlist = data.technologies.map((item) => item.category);
-  categories = categories.sort(
+  refinedCategories = refinedCategories.sort(
     (a, b) =>
       techlist.filter((item) => item === b).length -
       techlist.filter((item) => item === a).length

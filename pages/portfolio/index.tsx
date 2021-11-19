@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import OtherGrid from "@/components/portfolio/otherGrid";
 import Layout from "@/components/layout";
 import GridItem from "@/components/griditem";
+import { PortfolioCategories } from "@/lib/graphcms.generated";
 
 export default function Portfolio({ portfolios, categories }) {
   const router = useRouter();
@@ -66,10 +67,10 @@ export async function getStaticProps() {
   const portfolios = (await getPortfolios()) || [];
   let temp = await getPortfolioCategories();
   const categories = {};
-  temp = temp.map((x) => x.name);
-  temp.forEach((element) => {
+  let tempMap = temp.map((x) => x.name);
+  tempMap.forEach((element) => {
     categories[element] = portfolios.filter((x) =>
-      x.categories.includes(element)
+      x.categories.includes(element as PortfolioCategories)
     ).length;
   });
   return {
