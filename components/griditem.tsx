@@ -9,8 +9,8 @@ const graphcmsLoader = ({ src, width }) => {
 };
 
 interface Screenshot {
-  width: string;
-  height: string;
+  width?: number;
+  height?: number;
   url: string;
 }
 

@@ -1,0 +1,23 @@
+query GetBlog($slug: String!) {
+  article(filter: { slug: { eq: $slug } }) {
+    title
+    description
+    date
+    markdown
+  }
+}
+
+query GetAllBlogs {
+  allArticles(orderBy: date_DESC) {
+    slug
+    title
+    description
+    date
+  }
+}
+
+query GetAllBlogsWithSlug {
+  allArticles {
+    slug
+  }
+}

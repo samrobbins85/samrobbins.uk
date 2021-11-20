@@ -2,9 +2,9 @@ import Link from "next/link";
 
 interface Portfolio {
   categories: string[];
-  title: string;
+  title?: string;
   slug: string;
-  description: string;
+  description?: string;
 }
 
 export default function OtherGrid({

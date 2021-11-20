@@ -1,0 +1,31 @@
+overwrite: true
+generates:
+  lib/dato.generated.ts:
+    schema:
+      - "https://graphql.datocms.com":
+          headers:
+            Authorization: Bearer ${DATO}
+    documents: "lib/graphql/dato/**.graphql"
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-document-nodes"
+      - "typescript-graphql-request"
+  lib/graphcms.generated.ts:
+    schema:
+      - "${GRAPHCMS_URL}":
+          headers:
+            Authorization: Bearer ${GRAPHCMS_PROD}
+    documents: "lib/graphql/graphcms/**.graphql"
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-document-nodes"
+      - "typescript-graphql-request"
+config:
+  namingConvention:
+    enumValues: keep
+    transformUnderscore: false
+  onlyOperationTypes: true
+  preResolveTypes: true
+  disableDescriptions: true

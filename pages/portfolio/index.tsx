@@ -5,8 +5,13 @@ import { useRouter } from "next/router";
 import OtherGrid from "@/components/portfolio/otherGrid";
 import Layout from "@/components/layout";
 import GridItem from "@/components/griditem";
+import { PortfolioCategories } from "@/lib/graphcms.generated";
+import { InferGetStaticPropsType } from "next";
 
-export default function Portfolio({ portfolios, categories }) {
+export default function Portfolio({
+  portfolios,
+  categories,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter();
   const [category, setCategory] = useState("All");
   useEffect(() => {
@@ -64,12 +69,11 @@ export default function Portfolio({ portfolios, categories }) {
 
 export async function getStaticProps() {
   const portfolios = (await getPortfolios()) || [];
-  let temp = await getPortfolioCategories();
+  let tempCategories = (await getPortfolioCategories()).map((x) => x.name);
   const categories = {};
-  temp = temp.map((x) => x.name);
-  temp.forEach((element) => {
+  tempCategories.forEach((element) => {
     categories[element] = portfolios.filter((x) =>
-      x.categories.includes(element)
+      x.categories.includes(element as PortfolioCategories)
     ).length;
   });
   return {

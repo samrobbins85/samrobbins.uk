@@ -4,11 +4,15 @@ import { MyTable } from "@/components/mdx";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 import Layout from "@/components/layout";
+import { InferGetStaticPropsType } from "next";
 
 const components = {
   table: MyTable,
 };
-export default function Snippet({ data, serialized }) {
+export default function Snippet({
+  data,
+  serialized,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout title={data.title} description={data.description}>
       <h1 className="text-4xl font-semibold pb-2">{data.title}</h1>

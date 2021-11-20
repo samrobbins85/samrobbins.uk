@@ -2,12 +2,16 @@
   "name": "portfolio-website-v3",
   "version": "1.0.0",
   "scripts": {
-    "dev": "next",
+    "dev": "next & yarn codegen:watch",
+    "prebuild": "yarn codegen",
     "build": "next build",
     "postbuild": "next-sitemap && node feed.mjs",
     "start": "next start",
     "export": "next build && next export",
-    "lint": "next lint"
+    "lint": "next lint",
+    "codegen": "DOTENV_CONFIG_PATH='./.env.local' graphql-codegen --config codegen.yml -r dotenv/config",
+    "codegen:watch": "yarn codegen --watch",
+    "typecheck": "tsc"
   },
   "dependencies": {
     "@headlessui/react": "^1.4.2",
@@ -22,6 +26,8 @@
     "dotenv": "^10.0.0",
     "eslint-config-prettier": "^8.3.0",
     "feed": "^4.2.2",
+    "graphql": "^16.0.1",
+    "graphql-request": "^3.6.1",
     "katex": "^0.15.1",
     "next": "^12.0.3",
     "next-mdx-remote": "^3.0.8",
@@ -39,6 +45,13 @@
     "victory": "^36.2.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "2.3.0",
+    "@graphql-codegen/introspection": "2.1.0",
+    "@graphql-codegen/typescript": "2.4.0",
+    "@graphql-codegen/typescript-document-nodes": "2.2.0",
+    "@graphql-codegen/typescript-graphql-files-modules": "2.1.0",
+    "@graphql-codegen/typescript-graphql-request": "^4.3.0",
+    "@graphql-codegen/typescript-operations": "2.2.0",
     "@samrobbins/typography": "2.0.1",
     "@tailwindcss/jit": "^0.1.18",
     "@types/react": "^17.0.34",

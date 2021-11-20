@@ -1,0 +1,38 @@
+query getSnippets {
+  snippets {
+    title
+    language
+    description
+    slug
+  }
+}
+
+query getAllSnippetsWithSlug {
+  snippets {
+    slug
+  }
+}
+
+query getSnippetLanguages {
+  __type(name: "SnippetLanguages") {
+    enumValues {
+      name
+    }
+  }
+}
+
+query getTechnologyCategories {
+  __type(name: "TechnologyCategories") {
+    enumValues {
+      name
+    }
+  }
+}
+
+query getSnippet($slug: String!) {
+  snippet(where: { slug: $slug }) {
+    title
+    description
+    content
+  }
+}

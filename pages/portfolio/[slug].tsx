@@ -12,13 +12,19 @@ import { MDXRemote } from "next-mdx-remote";
 
 import { WebsiteButton, NPMButton } from "@/components/portfolio/smallbutton";
 import Layout from "@/components/layout";
-import remarkUnwrapImages from "remark-unwrap-images";
+import { InferGetStaticPropsType } from "next";
 
 const components = {
   table: MyTable,
 };
 
-function Category({ name, technologies }) {
+function Category({
+  name,
+  technologies,
+}: {
+  name: string;
+  technologies: { name?: string; link?: string; category?: string }[];
+}) {
   const items = technologies.filter((item) => name === item.category);
   if (items.length === 0) {
     return null;
@@ -44,7 +50,12 @@ function Category({ name, technologies }) {
   );
 }
 
-export default function Portfolio({ data, renderedOutput, names, categories }) {
+export default function Portfolio({
+  data,
+  renderedOutput,
+  names,
+  categories,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout title={data.title} description={data.description}>
       <h1 className="text-5xl sm:text-6xl text-center font-bold pt-2">
@@ -89,8 +100,8 @@ export default function Portfolio({ data, renderedOutput, names, categories }) {
 
 export async function getStaticProps({ params }) {
   const data = await getPortfolio(params.slug);
-  let categories = await getTechnologyCategories();
-  categories = categories.map((x) => x.name);
+  const categoriesData = await getTechnologyCategories();
+  let categories = categoriesData.map((x) => x.name);
   // Sorts categories by how many items have that category
   const techlist = data.technologies.map((item) => item.category);
   categories = categories.sort(
@@ -111,7 +122,6 @@ export async function getStaticProps({ params }) {
         `https://api.github.com/users/${data.coders[i]}`,
         {
           headers: {
-            // eslint-disable-next-line no-undef
             Authorization: `token ${process.env.GITHUB}`,
           },
         }

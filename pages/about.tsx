@@ -6,7 +6,10 @@ import { getAbout } from "../lib/datocms";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import Job from "@/components/about/job";
-export default function About({ about }) {
+import { InferGetStaticPropsType } from "next";
+export default function About({
+  about,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   const [expand, setExpand] = useState(false);
   const { resolvedTheme } = useTheme();
   return (

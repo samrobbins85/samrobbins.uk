@@ -34,7 +34,7 @@ export default function Categories({
 }: {
   setCategory: Function;
   category: string | Boolean;
-  categories: string[];
+  categories: any;
 }) {
   return (
     <>

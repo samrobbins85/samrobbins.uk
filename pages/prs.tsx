@@ -1,11 +1,10 @@
 import getSearch from "@/lib/githubapi";
 import Layout from "@/components/layout";
-import Image from "next/image";
+import Image, { ImageProps } from "next/image";
 import { GetStaticProps } from "next";
 const githubLoader = ({ src, width }) => `${src}&s=${width}`;
 
-function GitHubImage(props) {
-  // eslint-disable-next-line jsx-a11y/alt-text
+function GitHubImage(props: ImageProps) {
   return <Image {...props} loader={githubLoader} />;
 }
 

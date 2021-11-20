@@ -1,8 +1,11 @@
 import { getAllBlogs } from "@/lib/datocms";
 import Link from "next/link";
 import Layout from "@/components/layout";
+import { InferGetStaticPropsType } from "next";
 
-export default function Blog({ blogs }) {
+export default function Blog({
+  blogs,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout title="Blog" description="Blogs about a range of technical topics">
       <h1 className="text-5xl font-semibold text-center text-radix-mint11">
