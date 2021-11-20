@@ -69,10 +69,9 @@ export default function Portfolio({
 
 export async function getStaticProps() {
   const portfolios = (await getPortfolios()) || [];
-  let temp = await getPortfolioCategories();
+  let tempCategories = (await getPortfolioCategories()).map((x) => x.name);
   const categories = {};
-  let tempMap = temp.map((x) => x.name);
-  tempMap.forEach((element) => {
+  tempCategories.forEach((element) => {
     categories[element] = portfolios.filter((x) =>
       x.categories.includes(element as PortfolioCategories)
     ).length;

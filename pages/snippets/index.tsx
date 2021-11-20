@@ -28,7 +28,7 @@ function Card({ title, slug, language, category }) {
 }
 
 export default function Snippets({
-  categories,
+  tags,
   snippets,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const [category, setCategory] = useState("All");
@@ -50,7 +50,7 @@ export default function Snippets({
         <Categories
           setCategory={setCategory}
           category={category}
-          categories={categories}
+          categories={tags}
         />
       </div>
       <div className="flex flex-wrap justify-center gap-x-4 gap-y-4 text-black">
@@ -73,19 +73,16 @@ export default function Snippets({
 }
 
 export async function getStaticProps() {
-  let temp = await getSnippetLanguages();
+  let languages = (await getSnippetLanguages()).map((x) => x.name);
   const snippets = await getSnippets();
 
-  const categories = {};
-  const tempMap = temp.map((x) => x.name);
-  tempMap.forEach((element) => {
+  const tags = {};
+  languages.forEach((element) => {
     if (snippets.filter((x) => x.language === element).length > 0) {
-      categories[element] = snippets.filter(
-        (x) => x.language === element
-      ).length;
+      tags[element] = snippets.filter((x) => x.language === element).length;
     }
   });
   return {
-    props: { categories, snippets },
+    props: { tags, snippets },
   };
 }
