@@ -7,7 +7,6 @@ extends:
   - "plugin:jsx-a11y/recommended"
   - "plugin:react-hooks/recommended"
   - "next"
-  - "next/core-web-vitals"
   - "prettier"
 parserOptions:
   ecmaFeatures:

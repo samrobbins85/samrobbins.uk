@@ -5,8 +5,7 @@ const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   darkMode: "class",
-  mode: "jit",
-  purge: [
+  content: [
     "./components/**/*.{js,ts,jsx,tsx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./lib/snippet.js",
@@ -14,15 +13,6 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        gray: colors.coolGray,
-        teal: colors.teal,
-        orange: colors.orange,
-        fuchsia: colors.fuchsia,
-        cyan: colors.cyan,
-        lime: colors.lime,
-        sky: colors.sky,
-        rose: colors.rose,
-        emerald: colors.emerald,
         npm: "#CB3837",
         gmail: "#EA4335",
         twitter: "#1DA1F2",
@@ -53,17 +43,6 @@ module.exports = {
       height: {
         18: "4.5rem",
       },
-    },
-  },
-  variants: {
-    extend: {
-      display: ["hover"],
-      backgroundColor: ["active"],
-      fontWeight: ["active", "focus"],
-      boxShadow: ["group-focus"],
-      outline: ["group-focus"],
-      ringColor: ["hover", "active"],
-      outlinePlugin: ["hover", "focus", "group-focus"],
     },
   },
   plugins: [
