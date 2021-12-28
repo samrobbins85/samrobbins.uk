@@ -30,6 +30,9 @@ module.exports = {
         "65ch": "65ch",
         prose: "85ch",
       },
+      minWidth: {
+        16: "4rem",
+      },
       flex: {
         "1/4": "1 0 25%",
         "1/2": "1 0 50%",
