@@ -5,6 +5,7 @@ import { GetStaticProps } from "next";
 const githubLoader = ({ src, width }) => `${src}&s=${width}`;
 
 function GitHubImage(props: ImageProps) {
+  // eslint-disable-next-line jsx-a11y/alt-text
   return <Image {...props} loader={githubLoader} />;
 }
 

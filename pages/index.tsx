@@ -5,7 +5,7 @@ import Nav from "@/components/nav";
 import GridItem from "@/components/griditem";
 import { getPortfolios } from "../lib/graphcms";
 import { getHome } from "../lib/datocms";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { InferGetStaticPropsType } from "next";
 
 function ContactButton({ email }: { email: string }) {
   return (
