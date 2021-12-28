@@ -20,7 +20,7 @@ on:
       - main
     # Remove the line above to run when pushing to master
   pull_request:
-    branches: [master]
+    branches: [main]
 
 ###############
 # Set the Job #
@@ -47,7 +47,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: "12"
-      - run: npm install
+      - run: yarn
 
       ################################
       # Run Linter against code base #
