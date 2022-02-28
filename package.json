@@ -32,6 +32,7 @@
     "next-mdx-remote": "^3.0.8",
     "next-themes": "^0.0.15",
     "node-fetch": "^3.1.0",
+    "plaiceholder": "^2.2.0",
     "postcss": "^8.4.4",
     "radix-colors-for-tailwind": "2.0.0",
     "react": "^17.0.2",
@@ -41,6 +42,7 @@
     "remark-behead": "^2.3.3",
     "remark-numbered-footnotes": "^3.0.0",
     "remark-unwrap-images": "^3.0.1",
+    "sharp": "^0.29.3",
     "victory": "^36.2.0"
   },
   "devDependencies": {
