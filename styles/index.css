@@ -83,3 +83,18 @@ body,
   background: linear-gradient(to right, #ffffff, #68246d);
   height: 0.5rem;
 }
+
+.masonry {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  width: auto;
+  gap: 1rem;
+}
+.masonry_column {
+  background-clip: padding-box;
+}
+
+.masonry_column > div {
+  padding-bottom: 1rem;
+}

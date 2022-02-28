@@ -37,6 +37,7 @@
     "radix-colors-for-tailwind": "2.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-masonry-css": "^1.0.16",
     "react-simple-maps": "^2.3.0",
     "react-tooltip": "^4.2.21",
     "remark-behead": "^2.3.3",

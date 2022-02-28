@@ -1,28 +1,34 @@
 // import DatoImage from "@/components/datoimage";
 import Layout from "@/components/layout";
-import { getPlaiceholder } from "plaiceholder";
 import Image from "next/image";
+import Masonry from "react-masonry-css";
+function unsplashLoader({ src, width, quality }) {
+  return `${src}&w=${width}&q=${quality || 75}`;
+}
 export default function Photos({ unsplash }) {
   console.log(unsplash);
   return (
     // <p>Placeholder</p>
     <Layout title="Photos" description="My Photography">
-      {unsplash.map((item) => (
-        <div key={item.id}>
-          <Image
-            {...item}
-            placeholder="blur"
-            alt="Img"
-            // src={item.urls.regular}
-            // alt={item.alt_description}
-            // width={item.width}
-            // height={item.height}
-            // placeholder="blur"
-            // blurDataURL={item.blurDataURL}
-          />
-          <p>{item.alt_description}</p>
-        </div>
-      ))}
+      <Masonry
+        breakpointCols={3}
+        className="masonry"
+        columnClassName="masonry_column"
+      >
+        {unsplash.map((item) => (
+          <div key={item.id}>
+            <Image
+              src={item.urls.raw}
+              alt={item.alt_description}
+              loader={unsplashLoader}
+              width={item.width}
+              height={item.height}
+              layout="responsive"
+              sizes="50vw"
+            />
+          </div>
+        ))}
+      </Masonry>
     </Layout>
   );
 }
@@ -37,22 +43,11 @@ export async function getStaticProps() {
     }
   );
   const unsplash = await res.json();
-  // await unsplash.forEach(async (item, index) => {
-  //   const { base64 } = await getPlaiceholder(item.urls.regular);
-  //   test[index].blur_hash = base64;
-  // });
-  let ret = await Promise.all(
-    unsplash.map(async (item) => {
-      const { base64, img } = await getPlaiceholder(item.urls.regular, {
-        size: 10,
-      });
-      return { ...img, blurDataURL: base64, id: item.id };
-    })
-  );
+  console.log(unsplash);
 
   return {
     props: {
-      unsplash: ret,
+      unsplash,
     },
   };
 }
