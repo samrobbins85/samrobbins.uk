@@ -2,7 +2,7 @@ import Trophy from "@/svg/trophy";
 import { MortarBoardIcon } from "@primer/octicons-react";
 import Pass from "@/svg/pass";
 import Podium from "@/svg/podium";
-import { CodeIcon, PencilIcon } from "@heroicons/react/solid";
+import { CodeIcon, PencilIcon, HeartIcon } from "@heroicons/react/solid";
 
 function TimelineIcon({ type }) {
   switch (type) {
@@ -29,6 +29,8 @@ function TimelineIcon({ type }) {
       return <Podium aria-hidden="true" className="text-nord11 h-6 w-6" />;
     case "Writing":
       return <PencilIcon aria-hidden="true" className="text-nord12 h-6 w-6" />;
+    case "Volunteering":
+      return <HeartIcon aria-hidden="true" className="text-nord11 h-6 w-6" />;
     default:
       return (
         <CodeIcon
