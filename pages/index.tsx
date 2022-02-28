@@ -33,7 +33,9 @@ export default function Home({
 
         <meta
           property="og:image"
-          content={`https://og.samrobbins.uk/api/${escape("Sam Robbins")}`}
+          content={`https://og.samrobbins.uk/api/${encodeURIComponent(
+            "Sam Robbins"
+          )}`}
         />
         <meta property="og:title" content="Sam Robbins" />
         <meta
