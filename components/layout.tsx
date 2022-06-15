@@ -15,7 +15,7 @@ export default function Layout({
   return (
     <>
       <Head>
-        <title>{title} | Sam Robbins</title>
+        <title>{`${title} | Sam Robbins`}</title>
         <meta
           property="og:image"
           content={`https://og.samrobbins.uk/api/${escape(title)}`}
