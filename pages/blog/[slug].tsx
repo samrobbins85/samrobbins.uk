@@ -4,8 +4,8 @@ import Layout from "@/components/layout";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 import { MyTable, MyPre } from "@/components/mdx";
-import { useEffect } from "react";
-import math from "@/lib/remark-math";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.css";
 import remarkUnwrapImages from "remark-unwrap-images";
 import { InferGetStaticPropsType } from "next";
@@ -20,11 +20,6 @@ export default function Blog({
   content,
   date,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  useEffect(() => {
-    import("@/lib/rendermath").then((renderMath) => {
-      renderMath.default();
-    });
-  }, []);
   return (
     <Layout title={dato.title} description={dato.description}>
       <header className="py-2 pb-4">
@@ -44,8 +39,8 @@ export async function getStaticProps({ params }) {
   const dato = await getBlog(params.slug);
   const content = await serialize(dato.markdown, {
     mdxOptions: {
-      remarkPlugins: [math, remarkUnwrapImages],
-      rehypePlugins: [rehypePrism],
+      remarkPlugins: [remarkMath, remarkUnwrapImages],
+      rehypePlugins: [rehypeKatex, rehypePrism],
     },
   });
   const date = new Date(Date.parse(dato.date)).toLocaleString("en-gb", {

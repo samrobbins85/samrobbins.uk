@@ -1,8 +1,6 @@
-import math from "@/lib/remark-math";
 import rehypePrism from "@mapbox/rehype-prism";
 import footnotes from "remark-numbered-footnotes";
 import { MyTable, MyImg } from "@/components/mdx";
-import { useEffect } from "react";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 import Layout from "@/components/layout";
@@ -32,16 +30,14 @@ const components = {
   Map,
 };
 
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
+
 export default function Essay({
   data,
   renderedOutput,
   date,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  useEffect(() => {
-    import("@/lib/rendermath").then((renderMath) => {
-      renderMath.default();
-    });
-  }, []);
   return (
     <Layout title={data.title}>
       <header className="font-serif pb-8">
@@ -62,11 +58,11 @@ export async function getStaticProps({ params }) {
     mdxOptions: {
       remarkPlugins: [
         footnotes,
-        math,
+        remarkMath,
         [behead, { depth: 1 }],
         remarkUnwrapImages,
       ],
-      rehypePlugins: [rehypePrism],
+      rehypePlugins: [rehypeKatex, rehypePrism],
     },
   });
   const date = new Date(data.date).toLocaleString("en-gb", {

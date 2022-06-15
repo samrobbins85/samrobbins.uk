@@ -22,7 +22,9 @@ function Button({
       onClick={onClick}
     >
       <span className={`capitalize ${count && "pr-2"}`}>{title}</span>{" "}
-      {count && <span className="text-sm text-radix-gray11">{count}</span>}
+      {count && (
+        <span className="text-sm text-radix-gray11">{count.toString()}</span>
+      )}
     </button>
   );
 }

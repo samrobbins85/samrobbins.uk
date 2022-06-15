@@ -17,6 +17,7 @@ import ActiveLink from "@/components/ActiveLink";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
 const items = [
   { name: "About", href: "/about", icon: UserIcon },
@@ -134,13 +135,15 @@ function MobileItem({ data }) {
   );
 }
 
-function ThemeComponent({
-  setTheme,
-  resolvedTheme,
-}: {
-  setTheme: Function;
-  resolvedTheme: string;
-}) {
+function ThemeComponent() {
+  const [mounted, setMounted] = useState(false);
+
+  const { resolvedTheme, setTheme } = useTheme();
+
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null;
+
   function switchTheme(theme: string, setTheme: Function) {
     if (theme === "light") {
       setTheme("dark");
@@ -162,7 +165,6 @@ function ThemeComponent({
 }
 
 export default function Nav() {
-  const { resolvedTheme, setTheme } = useTheme();
   return (
     <Popover as="nav" className="relative z-10">
       <div className="border-b-2 border-radix-slate6 h-18 md:grid md:grid-cols-12">
@@ -193,14 +195,14 @@ export default function Nav() {
           </Popover.Group>
         </div>
         <div className="col-start-12 hidden md:grid justify-center content-center auto-rows-min ">
-          <ThemeComponent setTheme={setTheme} resolvedTheme={resolvedTheme} />
+          <ThemeComponent />
         </div>
       </div>
 
       <Popover.Panel className="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden">
         <div className="rounded-lg shadow-lg bg-radix-slate3 pt-5 pb-6 px-5">
           <div className="flex items-center justify-between">
-            <ThemeComponent setTheme={setTheme} resolvedTheme={resolvedTheme} />
+            <ThemeComponent />
             <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center focus:outline-radix-sky8 focus:outline-solid text-radix-slate11 hover:bg-radix-slate4">
               <span className="sr-only">Close menu</span>
               <XIcon className="h-6 w-6 " aria-hidden="true" />
