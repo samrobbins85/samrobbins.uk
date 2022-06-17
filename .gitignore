@@ -41,3 +41,6 @@ feed.xml
 atom.xml
 
 *.generated.ts
+
+# storybook
+storybook-static
