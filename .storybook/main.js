@@ -1,6 +1,12 @@
 const path = require("path");
 module.exports = {
   stories: ["../**/*.stories.mdx", "../**/*.stories.@(js|jsx|ts|tsx)"],
+  typescript: {
+    reactDocgenTypescriptOptions: {
+      shouldExtractLiteralValuesFromEnum: true,
+      shouldRemoveUndefinedFromOptional: true,
+    },
+  },
   addons: [
     "@storybook/addon-links",
     "@storybook/addon-essentials",

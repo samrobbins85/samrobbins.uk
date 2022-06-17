@@ -1,0 +1,35 @@
+{
+  // Place your samrobbins.uk workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+  // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+  // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+  // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+  // Placeholders with the same ids are connected.
+  // Example:
+  "New story": {
+    "prefix": "story",
+    "body": [
+      "import { Canvas, Meta, Story, ArgsTable } from \"@storybook/addon-docs\";",
+      "",
+      "import ${TM_FILENAME_BASE/(.*)\\..+$/$1/} from \"./${TM_FILENAME_BASE/(.*)\\..+$/$1/}\";",
+      "",
+      "export const Template = (args) => <${TM_FILENAME_BASE/(.*)\\..+$/$1/} {...args} />;",
+      "",
+      "<Meta",
+      "  title=\"Design-System/$0/${TM_FILENAME_BASE/(.*)\\..+$/$1/}\"",
+      "  component={${TM_FILENAME_BASE/(.*)\\..+$/$1/}}",
+      "/>",
+      "",
+      "# Job",
+      "",
+      "ADD DESCRIPTION HERE",
+      "",
+      "<Canvas>",
+      "  <Story name=\"Default\" args={{}} />",
+      "</Canvas>",
+      "",
+      "<ArgsTable of={${TM_FILENAME_BASE/(.*)\\..+$/$1/}} story=\"Default\" />"
+    ],
+    "description": "Add a template story"
+  }
+}

@@ -1,11 +1,11 @@
-import TimeLineItem from "@/components/about/timeline";
+import TimeLineItem from "@/components/about/TimelineItem";
 import { useState } from "react";
 import { ChevronDownIcon } from "@primer/octicons-react";
 import Layout from "@/components/layout";
 import { getAbout } from "../lib/datocms";
 import Image from "next/image";
 import { useTheme } from "next-themes";
-import Job from "@/components/about/job";
+import Job from "@/components/about/Job";
 import { InferGetStaticPropsType } from "next";
 export default function About({
   about,

@@ -1,0 +1,60 @@
+import { Canvas, Meta, Story, ArgsTable } from "@storybook/addon-docs";
+import Npm from "@/components/svg/npm";
+import {
+  Linkedin,
+  Twitter,
+  Github,
+  Polywork,
+} from "@icons-pack/react-simple-icons";
+import SocialLinks from "./SocialLinks";
+
+export const Template = (args) => <SocialLinks {...args} />;
+
+<Meta title="Design-System/Home/SocialLinks" component={SocialLinks} />
+
+# Job
+
+Links for the homepage linking to social media
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      links: [
+        {
+          name: "GitHub",
+          icon: Github,
+          link: "https://github.com/samrobbins85",
+          className: "hover:text-radix-slate12 focus:text-radix-slate12",
+          modifier: "w-6",
+        },
+        {
+          name: "npm",
+          icon: Npm,
+          link: "https://www.npmjs.com/~samrobbins",
+          className: "hover:text-npm focus:text-npm",
+        },
+        {
+          name: "Twitter",
+          icon: Twitter,
+          link: "https://twitter.com/samrobbins85",
+          className: "hover:text-twitter focus:text-twitter",
+        },
+        {
+          name: "Polywork",
+          icon: Polywork,
+          link: "https://www.polywork.com/samrobbins",
+          className: "hover:text-polywork focus:text-polywork",
+        },
+        {
+          name: "LinkedIn",
+          icon: Linkedin,
+          link: "https://www.linkedin.com/in/sam-robbins-gb/",
+          className: "hover:text-linkedin focus:text-linkedin",
+        },
+      ],
+    }}
+  />
+</Canvas>
+
+<ArgsTable of={SocialLinks} story="Default" />

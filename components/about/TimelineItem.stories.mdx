@@ -1,12 +1,12 @@
 import { Canvas, Meta, Story, ArgsTable } from "@storybook/addon-docs";
 
-import Timeline from "./timeline";
+import TimelineItem from "./TimelineItem";
 
-export const Template = (args) => <Timeline {...args} />;
+export const Template = (args) => <TimelineItem {...args} />;
 
-<Meta title="Design-System/About/Timeline" component={Timeline} />
+<Meta title="Design-System/About/TimelineItem" component={TimelineItem} />
 
-# Timeline
+# TimelineItem
 
 This is used on the about page to show items in the timeline
 
@@ -41,46 +41,48 @@ If the category provided isn't one of these, then the icon of angle brackets wil
   />
 </Canvas>
 
+<ArgsTable of={TimelineItem} story="Single" />
+
 <Canvas>
   <Story name="All Examples">
     <ul className="max-w-md mx-auto">
-      <Timeline
+      <TimelineItem
         category="Hackathon"
         title="DurHack"
         date="2018"
         description="Hackathon"
       />
-      <Timeline
+      <TimelineItem
         category="Event"
         title="CyberUK"
         date="2022"
         description="Event"
       />
-      <Timeline
+      <TimelineItem
         category="Education"
         title="Durham University"
         date="2021"
         description="Education"
       />
-      <Timeline
+      <TimelineItem
         category="Award"
         title="Cloudflare Developer Challenge"
         date="2021"
         description="Award"
       />
-      <Timeline
+      <TimelineItem
         category="Speaking"
         title="DurHack"
         date="2020"
         description="Speaking"
       />
-      <Timeline
+      <TimelineItem
         category="Writing"
         title="Stack Overflow"
         date="2022"
         description="Writing"
       />
-      <Timeline
+      <TimelineItem
         category="Volunteering"
         title="Durhack"
         date="2022"
