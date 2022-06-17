@@ -3,21 +3,10 @@
     "target": "es5",
     "baseUrl": ".",
     "paths": {
-      "@/components/*": [
-        "components/*"
-      ],
-      "@/lib/*": [
-        "lib/*"
-      ],
-      "@/svg/*": [
-        "components/svg/*"
-      ]
+      "@/components/*": ["components/*"],
+      "@/lib/*": ["lib/*"]
     },
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
@@ -38,7 +27,5 @@
     "pages/_app.jsx",
     "pages/portfolio/index.jsx"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

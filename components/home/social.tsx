@@ -1,4 +1,4 @@
-import Npm from "@/svg/npm";
+import Npm from "@/components/svg/npm";
 import {
   Linkedin,
   Twitter,

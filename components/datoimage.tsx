@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { ImageProps } from "next/image";
 
 function normalizeSrc(src) {
   return src[0] === "/" ? src.slice(1) : src;
@@ -17,7 +17,7 @@ function imgixLoader({ src, width, quality }) {
   return `${normalizeSrc(src)}${paramsString}`;
 }
 
-export default function DatoImage(props) {
+export default function DatoImage(props: ImageProps) {
   // eslint-disable-next-line jsx-a11y/alt-text
   return <Image loader={imgixLoader} {...props} />;
 }

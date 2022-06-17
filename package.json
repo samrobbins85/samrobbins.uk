@@ -23,6 +23,7 @@
     "@next/bundle-analyzer": "^12.1.6",
     "@primer/octicons-react": "^17.3.0",
     "@samrobbins/custom-typography": "^1.2.0",
+    "@storybook/addon-docs": "^6.5.9",
     "@storybook/addon-postcss": "^2.0.0",
     "d3-scale": "4.0.2",
     "dotenv": "^16.0.1",

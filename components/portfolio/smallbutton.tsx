@@ -1,5 +1,5 @@
 import { GlobeAltIcon } from "@heroicons/react/outline";
-import Npm from "@/svg/npm";
+import Npm from "@/components/svg/npm";
 import { MarkGithubIcon } from "@primer/octicons-react";
 
 function GenericButton({

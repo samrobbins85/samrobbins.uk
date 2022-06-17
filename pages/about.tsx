@@ -82,7 +82,14 @@ export default function About({
           {about.timeline
             .slice(0, expand ? about.timeline.length : 5)
             .map((item) => (
-              <TimeLineItem data={item} key={item.description} />
+              <TimeLineItem
+                category={item.category}
+                link={item.link}
+                title={item.title}
+                date={item.date}
+                description={item.description}
+                key={item.description}
+              />
             ))}
         </ul>
         {!expand && (

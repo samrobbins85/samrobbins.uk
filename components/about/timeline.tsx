@@ -1,10 +1,10 @@
-import Trophy from "@/svg/trophy";
+import Trophy from "@/components/svg/trophy";
 import { MortarBoardIcon } from "@primer/octicons-react";
-import Pass from "@/svg/pass";
-import Podium from "@/svg/podium";
+import Pass from "@/components/svg/pass";
+import Podium from "@/components/svg/podium";
 import { CodeIcon, PencilIcon, HeartIcon } from "@heroicons/react/solid";
 
-function TimelineIcon({ type }) {
+function TimelineIcon({ type }: { type: string }) {
   switch (type) {
     case "Event":
       return (
@@ -41,51 +41,42 @@ function TimelineIcon({ type }) {
   }
 }
 
-function Description({
-  title,
-  date,
-  description,
-  link,
-}: {
+interface Props {
+  category: string;
+  link?: string;
   title: string;
   date: string;
   description: string;
-  link: string;
-}) {
-  return (
-    <>
-      <div className="flex justify-between">
-        {link ? (
-          <a className="hover:underline text-radix-cyan11" href={link}>
-            <h3 className="font-medium">{title}</h3>
-          </a>
-        ) : (
-          <h3 className="font-medium">{title}</h3>
-        )}
-        <p className="pl-4 text-sm tracking-wide text-radix-slate12 text-right">
-          {new Date(date).toLocaleString("en-gb", {
-            month: "long",
-            year: "numeric",
-          })}
-        </p>
-      </div>
-      <div className="text-radix-slate11">{description}</div>
-    </>
-  );
 }
 
-export default function TimeLineItem({ data }) {
+export default function TimeLineItem({
+  category,
+  link,
+  title,
+  date,
+  description,
+}: Props) {
   return (
     <li>
       <div className="pb-8 relative flex items-start space-x-3">
-        <TimelineIcon type={data.category} />
+        <TimelineIcon type={category} />
         <div className="min-w-0 flex-1 z-10 w-64">
-          <Description
-            title={data.title}
-            date={data.date}
-            description={data.description}
-            link={data.link}
-          />
+          <div className="flex justify-between">
+            {link ? (
+              <a className="hover:underline text-radix-cyan11" href={link}>
+                <h3 className="font-medium">{title}</h3>
+              </a>
+            ) : (
+              <h3 className="font-medium">{title}</h3>
+            )}
+            <p className="pl-4 text-sm tracking-wide text-radix-slate12 text-right">
+              {new Date(date).toLocaleString("en-gb", {
+                month: "long",
+                year: "numeric",
+              })}
+            </p>
+          </div>
+          <div className="text-radix-slate11">{description}</div>
         </div>
       </div>
     </li>
