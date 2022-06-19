@@ -1,5 +1,5 @@
 import rehypePrism from "@mapbox/rehype-prism";
-import footnotes from "remark-numbered-footnotes";
+import remarkGfm from "remark-gfm";
 import { MyTable, MyImg } from "@/components/mdx";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
@@ -57,8 +57,8 @@ export async function getStaticProps({ params }) {
   const renderedOutput = await serialize(data.content, {
     mdxOptions: {
       remarkPlugins: [
-        footnotes,
         remarkMath,
+        remarkGfm,
         [behead, { depth: 1 }],
         remarkUnwrapImages,
       ],
