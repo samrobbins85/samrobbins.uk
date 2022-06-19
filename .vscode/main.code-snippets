@@ -20,7 +20,7 @@
       "  component={${TM_FILENAME_BASE/(.*)\\..+$/$1/}}",
       "/>",
       "",
-      "# Job",
+      "# ${TM_FILENAME_BASE/(.*)\\..+$/$1/}",
       "",
       "ADD DESCRIPTION HERE",
       "",

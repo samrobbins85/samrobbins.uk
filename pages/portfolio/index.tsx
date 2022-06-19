@@ -2,7 +2,7 @@ import { getPortfolios, getPortfolioCategories } from "@/lib/graphcms";
 import Categories from "@/components/categories";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import OtherGrid from "@/components/portfolio/otherGrid";
+import PortfolioGrid from "@/components/portfolio/PortfolioGrid";
 import Layout from "@/components/layout";
 import GridItem from "@/components/griditem";
 import { PortfolioCategories } from "@/lib/graphcms.generated";
@@ -61,7 +61,7 @@ export default function Portfolio({
             categories={categories}
           />
         </div>
-        <OtherGrid portfolios={portfolios} category={category} />
+        <PortfolioGrid portfolios={portfolios} category={category} />
       </div>
     </Layout>
   );

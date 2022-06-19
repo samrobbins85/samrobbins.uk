@@ -46,7 +46,7 @@ export function NPMButton({ url }) {
   return (
     <GenericButton
       url={url}
-      label="npm"
+      label="NPM"
       icon={<Npm aria-hidden="true" className="h-6" />}
     />
   );

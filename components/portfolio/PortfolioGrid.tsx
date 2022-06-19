@@ -7,7 +7,7 @@ interface Portfolio {
   description?: string;
 }
 
-export default function OtherGrid({
+export default function PortfolioGrid({
   portfolios,
   category,
 }: {

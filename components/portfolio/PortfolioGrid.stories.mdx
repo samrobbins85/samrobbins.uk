@@ -1,0 +1,47 @@
+import { Canvas, Meta, Story, ArgsTable } from "@storybook/addon-docs";
+
+import PortfolioGrid from "./PortfolioGrid";
+
+export const Template = (args) => <PortfolioGrid {...args} />;
+
+<Meta title="Design-System/Portfolio/PortfolioGrid" component={PortfolioGrid} />
+
+# PortfolioGrid
+
+Shows a list of portfolio items. The special category "All" will show all items, otherwise, it will show the items that match with that category.
+
+Portfolios have the interface:
+
+```
+interface Portfolio {
+  categories: string[];
+  title?: string;
+  slug: string;
+  description?: string;
+}
+```
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      category: "All",
+      portfolios: [
+        {
+          categories: ["One"],
+          title: "Hello",
+          description: "World",
+          slug: "/hello-world",
+        },
+        {
+          categories: ["Two"],
+          title: "Foo",
+          description: "Bar",
+          slug: "/foo-bar",
+        },
+      ],
+    }}
+  />
+</Canvas>
+
+<ArgsTable of={PortfolioGrid} story="Default" />
