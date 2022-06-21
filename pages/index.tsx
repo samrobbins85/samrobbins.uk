@@ -2,7 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import SocialLinks from "@/components/home/SocialLinks";
 import Nav from "@/components/nav";
-import GridItem from "@/components/griditem";
+import GridItem from "@/components/GridItem";
 import { getPortfolios } from "../lib/graphcms";
 import { getHome } from "../lib/datocms";
 import { InferGetStaticPropsType } from "next";

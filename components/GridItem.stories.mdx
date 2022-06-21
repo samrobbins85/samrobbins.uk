@@ -1,0 +1,33 @@
+import { Canvas, Meta, Story, ArgsTable } from "@storybook/addon-docs";
+
+import GridItem from "./GridItem";
+
+export const Template = (args) => <GridItem {...args} />;
+
+<Meta
+  title="Design-System/GridItem"
+  component={GridItem}
+  argTypes={{ wide: { control: { type: "boolean" } } }}
+/>
+
+# GridItem
+
+Used for displaying main portfolio items
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      title: "Hello World",
+      description: "Foo Bar",
+      slug: "/hello",
+      screenshot: {
+        url: "https://media.graphassets.com/S4zK1CsqR5OHuLe40WWv",
+        height: 975,
+        width: 1920,
+      },
+    }}
+  />
+</Canvas>
+
+<ArgsTable of={GridItem} story="Default" />

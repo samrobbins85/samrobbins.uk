@@ -1,4 +1,4 @@
-import Categories from "@/components/categories";
+import Categories from "@/components/Categories";
 import { useState } from "react";
 import { getSnippetLanguages, getSnippets } from "@/lib/graphcms";
 import Link from "next/link";
@@ -46,13 +46,12 @@ export default function Snippets({
           "Little bits of code I use that don't deserve a blog, but are still  useful"
         }
       </h2>
-      <div className="flex justify-center gap-x-4 text-lg py-6 mb-6 flex-wrap gap-y-8 ">
-        <Categories
-          setCategory={setCategory}
-          category={category}
-          categories={tags}
-        />
-      </div>
+
+      <Categories
+        setCategory={setCategory}
+        category={category}
+        categories={tags}
+      />
       <div className="flex flex-wrap justify-center gap-x-4 gap-y-4 text-black">
         {snippets
           .filter((item) =>

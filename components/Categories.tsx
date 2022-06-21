@@ -39,7 +39,7 @@ export default function Categories({
   categories: any;
 }) {
   return (
-    <>
+    <div className="flex justify-center gap-x-4 text-lg py-6 mb-6 flex-wrap gap-y-8 ">
       <Button
         title="All"
         onClick={() => setCategory("All")}
@@ -56,6 +56,6 @@ export default function Categories({
           key={item}
         />
       ))}
-    </>
+    </div>
   );
 }

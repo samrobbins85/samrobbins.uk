@@ -1,10 +1,10 @@
 import { getPortfolios, getPortfolioCategories } from "@/lib/graphcms";
-import Categories from "@/components/categories";
+import Categories from "@/components/Categories";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import PortfolioGrid from "@/components/portfolio/PortfolioGrid";
 import Layout from "@/components/layout";
-import GridItem from "@/components/griditem";
+import GridItem from "@/components/GridItem";
 import { PortfolioCategories } from "@/lib/graphcms.generated";
 import { InferGetStaticPropsType } from "next";
 
@@ -54,13 +54,11 @@ export default function Portfolio({
       </div>
 
       <div className="mx-auto max-w-6xl py-4">
-        <div className="flex justify-center gap-x-4 text-lg py-6 mb-6 flex-wrap gap-y-8 ">
-          <Categories
-            setCategory={setCategory}
-            category={category}
-            categories={categories}
-          />
-        </div>
+        <Categories
+          setCategory={setCategory}
+          category={category}
+          categories={categories}
+        />
         <PortfolioGrid portfolios={portfolios} category={category} />
       </div>
     </Layout>
