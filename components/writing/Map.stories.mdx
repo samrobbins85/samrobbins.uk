@@ -1,0 +1,42 @@
+import { Canvas, Meta, Story, ArgsTable } from "@storybook/addon-docs";
+
+import Map from "./Map";
+
+export const Template = (args) => <Map {...args} />;
+
+<Meta title="Design-System/Writing/Map" component={Map} />
+
+# Map
+
+This allows you to create a chloropleth map using the NUTS1 regions of the UK, going from UKC to UKK
+
+![UK NUTS Regions](https://upload.wikimedia.org/wikipedia/commons/c/c7/NUTS_1_statistical_regions_of_England_map.svg)
+
+<Canvas>
+  <Story
+    name="Default"
+    decorators={[
+      (Story) => (
+        <div className="max-w-md mx-auto prose prose-serif dark:prose-light dark:prose-serifLight">
+          <Story />
+        </div>
+      ),
+    ]}
+    args={{
+      caption: "Sandstone",
+      data: {
+        UKC: 0.2222222222,
+        UKD: 0.2727272727,
+        UKE: 0.0769230769,
+        UKF: 0.0,
+        UKG: 0.2830188679,
+        UKH: 0.2222222222,
+        UKI: null,
+        UKJ: 0.0322580645,
+        UKK: 0.0434782609,
+      },
+    }}
+  />
+</Canvas>
+
+<ArgsTable of={Map} story="Default" />

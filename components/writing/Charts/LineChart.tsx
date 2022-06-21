@@ -10,26 +10,19 @@ import {
 } from "victory";
 
 interface Line {
-  data: Object[];
-  data1: Object[];
   width?: number;
   xlabel?: string;
   ylabel?: string;
-  dataName: string;
-  data1Name: string;
   caption?: string;
+  dataSet?: {
+    name: string;
+    fill: string;
+    stroke: string;
+    data: { x: string; y: string }[];
+  }[];
 }
 
-function LineChart({
-  data,
-  width,
-  xlabel,
-  ylabel,
-  data1,
-  dataName,
-  data1Name,
-  caption,
-}: Line) {
+function LineChart({ width, xlabel, ylabel, caption, dataSet }: Line) {
   return (
     <figure className="grid justify-center">
       <div className="overflow-x-auto">
@@ -54,10 +47,10 @@ function LineChart({
               border: { stroke: "var(--slate12)" },
               labels: { fill: "var(--slate12)" },
             }}
-            data={[
-              { name: dataName, symbol: { fill: "#68246d" } },
-              { name: data1Name, symbol: { fill: "#00aeef" } },
-            ]}
+            data={dataSet.map((item) => ({
+              name: item.name,
+              symbol: { fill: item.fill },
+            }))}
           />
           <VictoryAxis
             label={xlabel}
@@ -78,46 +71,28 @@ function LineChart({
               tickLabels: { fill: "var(--slate12)" },
             }}
           />
-          <VictoryGroup data={data}>
-            <VictoryLine
-              x="x"
-              y="y"
-              style={{
-                data: {
-                  stroke: "#cba8b1",
-                },
-              }}
-            />
-            <VictoryScatter
-              x="x"
-              y="y"
-              style={{
-                data: {
-                  fill: "#68246d",
-                },
-              }}
-            />
-          </VictoryGroup>
-          <VictoryGroup data={data1}>
-            <VictoryLine
-              x="x"
-              y="y"
-              style={{
-                data: {
-                  stroke: "#a5c8d0",
-                },
-              }}
-            />
-            <VictoryScatter
-              x="x"
-              y="y"
-              style={{
-                data: {
-                  fill: "#00aeef",
-                },
-              }}
-            />
-          </VictoryGroup>
+          {dataSet.map((item) => (
+            <VictoryGroup key={item.name} data={item.data}>
+              <VictoryLine
+                x="x"
+                y="y"
+                style={{
+                  data: {
+                    stroke: item.stroke,
+                  },
+                }}
+              />
+              <VictoryScatter
+                x="x"
+                y="y"
+                style={{
+                  data: {
+                    fill: item.fill,
+                  },
+                }}
+              />
+            </VictoryGroup>
+          ))}
         </VictoryChart>
       </div>
       <figcaption>{caption}</figcaption>

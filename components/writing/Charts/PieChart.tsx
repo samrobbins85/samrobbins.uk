@@ -1,14 +1,12 @@
 import { VictoryPie } from "victory";
 
-function PieChart({
-  data,
-  caption,
-  height,
-}: {
-  data: Object[];
+interface Props {
+  data: { x: string; y: number }[];
   caption: string;
   height: number;
-}) {
+}
+
+function PieChart({ data, caption, height }: Props) {
   return (
     <figure className="max-w-md mx-auto">
       <VictoryPie

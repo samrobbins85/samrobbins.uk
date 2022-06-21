@@ -1,14 +1,12 @@
 import Link from "next/link";
 
-export default function Paper({
-  slug,
-  title,
-  date,
-}: {
+interface Props {
   slug: string;
   title: string;
   date: string;
-}) {
+}
+
+export default function Essay({ slug, title, date }: Props) {
   return (
     <Link href={`/essays/${slug}`}>
       <a>

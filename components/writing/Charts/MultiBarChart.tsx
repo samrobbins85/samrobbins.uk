@@ -8,6 +8,16 @@ import {
   VictoryLegend,
 } from "victory";
 
+interface Props {
+  data: { title: string; data: { x: string; y: string }[] }[];
+  axisLabel: string;
+  caption: string;
+  width: number;
+  padding: number;
+  legendPos: number;
+  offset: number;
+}
+
 function BarMulti({
   data,
   axisLabel,
@@ -16,7 +26,7 @@ function BarMulti({
   padding,
   legendPos,
   offset,
-}) {
+}: Props) {
   return (
     <figure className="grid justify-center">
       <div className="overflow-x-auto">

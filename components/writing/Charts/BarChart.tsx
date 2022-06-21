@@ -7,7 +7,7 @@ import {
 } from "victory";
 
 interface Bar {
-  data: Object[];
+  data: { x: string; y: number }[];
   width?: number;
   xlabel?: string;
   ylabel?: string;

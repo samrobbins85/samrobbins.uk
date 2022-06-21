@@ -1,28 +1,37 @@
 import rehypePrism from "@mapbox/rehype-prism";
 import remarkGfm from "remark-gfm";
+import dynamic from "next/dynamic";
 import { MyTable, MyImg } from "@/components/mdx";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 import Layout from "@/components/layout";
 import { essaySlugs, getEssay } from "@/lib/datocms";
-import { VictoryBar, VictoryChart, VictoryAxis } from "victory";
 import behead from "remark-behead";
 import "katex/dist/katex.css";
-import {
-  LineChart,
-  BarChart,
-  PieChart,
-  BarMulti,
-} from "@/components/writing/chart";
-import Map from "@/components/writing/map";
+import Map from "@/components/writing/Map";
 import remarkUnwrapImages from "remark-unwrap-images";
 import { InferGetStaticPropsType } from "next";
+const LineChart = dynamic(
+  () => import("@/components/writing/Charts/LineChart"),
+  {
+    ssr: false,
+  }
+);
+const BarChart = dynamic(() => import("@/components/writing/Charts/BarChart"), {
+  ssr: false,
+});
+const PieChart = dynamic(() => import("@/components/writing/Charts/PieChart"), {
+  ssr: false,
+});
+const BarMulti = dynamic(
+  () => import("@/components/writing/Charts/MultiBarChart"),
+  {
+    ssr: false,
+  }
+);
 const components = {
   table: MyTable,
   img: MyImg,
-  VictoryBar,
-  VictoryChart,
-  VictoryAxis,
   BarChart,
   LineChart,
   PieChart,

@@ -1,6 +1,6 @@
 import { getAllEssays } from "@/lib/datocms";
 import Head from "next/head";
-import Paper from "@/components/writing/paper";
+import Essay from "@/components/writing/Essay";
 import Layout from "@/components/layout";
 import { InferGetStaticPropsType } from "next";
 
@@ -29,7 +29,7 @@ export default function Portfolio({
         </header>
         <div className="flex flex-wrap container mx-auto justify-center py-4 px-4 gap-4">
           {writings.map((item) => (
-            <Paper
+            <Essay
               slug={item.slug}
               title={item.title}
               date={item.date}

@@ -9,7 +9,24 @@ import dynamic from "next/dynamic";
 import { useState, memo } from "react";
 const DynamicTooltip = dynamic(() => import("react-tooltip"), { ssr: false });
 
-function PreMemo({ data, setContent }: { data: Object; setContent: Function }) {
+interface NUTSRegions {
+  UKC?: number;
+  UKD?: number;
+  UKE?: number;
+  UKF?: number;
+  UKG?: number;
+  UKH?: number;
+  UKI?: number;
+  UKJ?: number;
+  UKK?: number;
+}
+
+interface PreMemoProps {
+  data: NUTSRegions;
+  setContent: Function;
+}
+
+function PreMemo({ data, setContent }: PreMemoProps) {
   const max_value = Math.max(...Object.values(data));
 
   const colorscale = scaleLinear()
@@ -39,7 +56,7 @@ function PreMemo({ data, setContent }: { data: Object; setContent: Function }) {
                 onMouseEnter={() =>
                   setContent(
                     `${geo.properties.nuts118nm}: ${(
-                      data[geo.properties.nuts118cd] * 100
+                      data[geo.properties.nuts118cd] * 100 || 0
                     ).toFixed(1)}%`
                   )
                 }
@@ -55,13 +72,12 @@ function PreMemo({ data, setContent }: { data: Object; setContent: Function }) {
 
 const PostMemo = memo(PreMemo);
 
-export default function Map({
-  data,
-  caption,
-}: {
-  data: Object;
+interface Props {
+  data: NUTSRegions;
   caption: string;
-}) {
+}
+
+export default function Map({ data, caption }: Props) {
   const [content, setContent] = useState("");
 
   const max_value = Math.max(...Object.values(data));

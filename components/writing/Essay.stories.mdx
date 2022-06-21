@@ -1,0 +1,20 @@
+import { Canvas, Meta, Story, ArgsTable } from "@storybook/addon-docs";
+
+import Essay from "./Essay";
+
+export const Template = (args) => <Essay {...args} />;
+
+<Meta title="Design-System/Writing/Essay" component={Essay} />
+
+# Essay
+
+Used for each of my essay items
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{ slug: "/essay", title: "Essay", date: "2022" }}
+  />
+</Canvas>
+
+<ArgsTable of={Essay} story="Default" />

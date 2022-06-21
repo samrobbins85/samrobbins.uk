@@ -8,7 +8,7 @@ export const Template = (args) => <LineChart {...args} />;
 
 # LineChart
 
-This takes two sets of data `data` and `data1` and shows them in a line chart to compare them
+This takes a parameter `dataSet` which is an array of the lines to be shown on the chart
 
 <Canvas>
   <Story
@@ -21,31 +21,41 @@ This takes two sets of data `data` and `data1` and shows them in a line chart to
       ),
     ]}
     args={{
-      data: [
-        { x: 10, y: 158 },
-        { x: 20, y: 287 },
-        { x: 30, y: 438 },
-        { x: 40, y: 572 },
-        { x: 50, y: 708 },
-        { x: 60, y: 856 },
-        { x: 70, y: 1077 },
-        { x: 80, y: 1157 },
+      dataSet: [
+        {
+          name: "JavaScript",
+          fill: "#68246d",
+          stroke: "#cba8b1",
+          data: [
+            { x: 10, y: 158 },
+            { x: 20, y: 287 },
+            { x: 30, y: 438 },
+            { x: 40, y: 572 },
+            { x: 50, y: 708 },
+            { x: 60, y: 856 },
+            { x: 70, y: 1077 },
+            { x: 80, y: 1157 },
+          ],
+        },
+        {
+          name: "Web Assembly",
+          fill: "#00aeef",
+          stroke: "#a5c8d0",
+          data: [
+            { x: 10, y: 106 },
+            { x: 20, y: 213 },
+            { x: 30, y: 323 },
+            { x: 40, y: 428 },
+            { x: 50, y: 574 },
+            { x: 60, y: 646 },
+            { x: 70, y: 757 },
+            { x: 80, y: 870 },
+          ],
+        },
       ],
-      data1: [
-        { x: 10, y: 106 },
-        { x: 20, y: 213 },
-        { x: 30, y: 323 },
-        { x: 40, y: 428 },
-        { x: 50, y: 574 },
-        { x: 60, y: 646 },
-        { x: 70, y: 757 },
-        { x: 80, y: 870 },
-      ],
-      dataName: "JavaScript",
-      data1Name: "Web Assembly",
-      xlabel: "Time (ms)",
-      xlabel: "Resolution (MP)",
       caption: "Relationship between time and resolution",
+      xlabel: "Time (ms)",
+      ylabel: "Resolution (MP)",
     }}
   />
 </Canvas>
