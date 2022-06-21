@@ -1,5 +1,5 @@
 import { GlobeAltIcon } from "@heroicons/react/outline";
-import Npm from "@/svg/npm";
+import Npm from "@/components/svg/npm";
 import { MarkGithubIcon } from "@primer/octicons-react";
 
 function GenericButton({
@@ -46,7 +46,7 @@ export function NPMButton({ url }) {
   return (
     <GenericButton
       url={url}
-      label="npm"
+      label="NPM"
       icon={<Npm aria-hidden="true" className="h-6" />}
     />
   );

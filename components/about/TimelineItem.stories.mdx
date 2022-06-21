@@ -1,0 +1,93 @@
+import { Canvas, Meta, Story, ArgsTable } from "@storybook/addon-docs";
+
+import TimelineItem from "./TimelineItem";
+
+export const Template = (args) => <TimelineItem {...args} />;
+
+<Meta title="Design-System/About/TimelineItem" component={TimelineItem} />
+
+# TimelineItem
+
+This is used on the about page to show items in the timeline
+
+Category can be
+
+- `Event`
+- `Education`
+- `Hackathon`
+- `Award`
+- `Speaking`
+- `Writing`
+- `Volunteering`
+
+If the category provided isn't one of these, then the icon of angle brackets will be used
+
+<Canvas>
+  <Story
+    name="Single"
+    decorators={[
+      (Story) => (
+        <ul>
+          <Story />
+        </ul>
+      ),
+    ]}
+    args={{
+      category: "Hackathon",
+      title: "Durhack",
+      date: "2018",
+      description: "Hackathon",
+    }}
+  />
+</Canvas>
+
+<ArgsTable of={TimelineItem} story="Single" />
+
+<Canvas>
+  <Story name="All Examples">
+    <ul className="max-w-md mx-auto">
+      <TimelineItem
+        category="Hackathon"
+        title="DurHack"
+        date="2018"
+        description="Hackathon"
+      />
+      <TimelineItem
+        category="Event"
+        title="CyberUK"
+        date="2022"
+        description="Event"
+      />
+      <TimelineItem
+        category="Education"
+        title="Durham University"
+        date="2021"
+        description="Education"
+      />
+      <TimelineItem
+        category="Award"
+        title="Cloudflare Developer Challenge"
+        date="2021"
+        description="Award"
+      />
+      <TimelineItem
+        category="Speaking"
+        title="DurHack"
+        date="2020"
+        description="Speaking"
+      />
+      <TimelineItem
+        category="Writing"
+        title="Stack Overflow"
+        date="2022"
+        description="Writing"
+      />
+      <TimelineItem
+        category="Volunteering"
+        title="Durhack"
+        date="2022"
+        description="Volunteering"
+      />
+    </ul>
+  </Story>
+</Canvas>

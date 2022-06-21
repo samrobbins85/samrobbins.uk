@@ -1,11 +1,18 @@
 import Head from "next/head";
 import Link from "next/link";
-import SocialLinks from "@/components/home/social";
+import SocialLinks from "@/components/home/SocialLinks";
 import Nav from "@/components/nav";
-import GridItem from "@/components/griditem";
+import GridItem from "@/components/GridItem";
 import { getPortfolios } from "../lib/graphcms";
 import { getHome } from "../lib/datocms";
 import { InferGetStaticPropsType } from "next";
+import Npm from "@/components/svg/npm";
+import {
+  Linkedin,
+  Twitter,
+  Github,
+  Polywork,
+} from "@icons-pack/react-simple-icons";
 
 function ContactButton({ email }: { email: string }) {
   return (
@@ -17,6 +24,40 @@ function ContactButton({ email }: { email: string }) {
     </a>
   );
 }
+
+const links = [
+  {
+    name: "GitHub",
+    icon: Github,
+    link: "https://github.com/samrobbins85",
+    className: "hover:text-radix-slate12 focus:text-radix-slate12",
+    modifier: "w-6",
+  },
+  {
+    name: "npm",
+    icon: Npm,
+    link: "https://www.npmjs.com/~samrobbins",
+    className: "hover:text-npm focus:text-npm",
+  },
+  {
+    name: "Twitter",
+    icon: Twitter,
+    link: "https://twitter.com/samrobbins85",
+    className: "hover:text-twitter focus:text-twitter",
+  },
+  {
+    name: "Polywork",
+    icon: Polywork,
+    link: "https://www.polywork.com/samrobbins",
+    className: "hover:text-polywork focus:text-polywork",
+  },
+  {
+    name: "LinkedIn",
+    icon: Linkedin,
+    link: "https://www.linkedin.com/in/sam-robbins-gb/",
+    className: "hover:text-linkedin focus:text-linkedin",
+  },
+];
 
 export default function Home({
   portfolios,
@@ -52,9 +93,7 @@ export default function Home({
           <h2 className="text-lg text-radix-slate11">{home.description}</h2>
           <div className="grid sm:flex gap-x-4 pt-8 pb-4 items-start gap-y-4 flex-wrap justify-center sm:justify-start">
             <ContactButton email={home.email} />
-            <div className="flex flex-wrap gap-x-4 gap-y-2 py-2 justify-center ">
-              <SocialLinks />
-            </div>
+            <SocialLinks links={links} />
           </div>
         </header>
         <section>

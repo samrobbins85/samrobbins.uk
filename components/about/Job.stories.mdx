@@ -1,0 +1,29 @@
+import { Canvas, Meta, Story, ArgsTable } from "@storybook/addon-docs";
+
+import Job from "./Job";
+
+export const Template = (args) => <Job {...args} />;
+
+<Meta title="Design-System/About/Job" component={Job} />
+
+# Job
+
+This is used on the about page to show Jobs, the logo uses `next/image` with an imgix loader
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      logo: {
+        url: "https://www.datocms-assets.com/39153/1628106184-cybsafe.svg",
+        width: 196,
+        height: 203,
+      },
+      company: "CybSafe",
+      title: "Software Developer",
+      duration: "Aug 2021-Present",
+    }}
+  />
+</Canvas>
+
+<ArgsTable of={Job} story="Default" />

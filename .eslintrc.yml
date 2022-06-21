@@ -5,6 +5,7 @@ extends:
   - "eslint:recommended"
   - "next"
   - "prettier"
+  - "plugin:storybook/recommended"
 parserOptions:
   ecmaFeatures:
     jsx: true

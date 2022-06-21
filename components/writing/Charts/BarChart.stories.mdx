@@ -1,0 +1,37 @@
+import { Canvas, Meta, Story, ArgsTable } from "@storybook/addon-docs";
+
+import BarChart from "./BarChart";
+
+export const Template = (args) => <BarChart {...args} />;
+
+<Meta title="Design-System/Writing/Charts/BarChart" component={BarChart} />
+
+# BarChart
+
+The width sets the `width` on the underlying `<VictoryChart/>`, measured in pixels
+
+<Canvas>
+  <Story
+    name="Default"
+    decorators={[
+      (Story) => (
+        <div className="mx-auto prose prose-serif dark:prose-light dark:prose-serifLight">
+          <Story />
+        </div>
+      ),
+    ]}
+    args={{
+      data: [
+        { x: "No changes", y: 1031 },
+        { x: "LTO", y: 846 },
+        { x: "Opt-s", y: 2275 },
+        { x: "Opt-z", y: 3846 },
+      ],
+      width: 700,
+      ylabel: "Time(ms)",
+      caption: "Processing time of Web Assembly optimizations",
+    }}
+  />
+</Canvas>
+
+<ArgsTable of={BarChart} story="Default" />

@@ -1,0 +1,50 @@
+import { Canvas, Meta, Story, ArgsTable } from "@storybook/addon-docs";
+
+import MultiBarChart from "./MultiBarChart";
+
+export const Template = (args) => <MultiBarChart {...args} />;
+
+<Meta
+  title="Design-System/Writing/Charts/MultiBarChart"
+  component={MultiBarChart}
+/>
+
+# MultiBarChart
+
+`padding` determines the padding around the chart that sits within the axes, so the higher the value the further the column will be away from the y axis etc.
+
+`legendPos` determines the x position of the legend, the larger this is, the further right
+
+`offset` is the distance between the two (or more) bars in each section
+
+`axisLabel` is the label to be shown on the y axis
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      data: [
+        {
+          title: "JavaScript",
+          data: [
+            { x: "JPEG", y: 2.48 },
+            { x: "Gaussian", y: 12 },
+          ],
+        },
+        {
+          title: "Web Assembly",
+          data: [
+            { x: "JPEG", y: 1.6 },
+            { x: "Gaussian", y: 1.14 },
+          ],
+        },
+      ],
+      padding: 80,
+      legendPos: 150,
+      offset: 60,
+      axisLabel: "Time (seconds)",
+    }}
+  />
+</Canvas>
+
+<ArgsTable of={MultiBarChart} story="Default" />

@@ -18,7 +18,7 @@ export default function Layout({
         <title>{`${title} | Sam Robbins`}</title>
         <meta
           property="og:image"
-          content={`https://og.samrobbins.uk/api/${escape(title)}`}
+          content={`https://og.samrobbins.uk/api/${encodeURIComponent(title)}`}
         />
         <meta property="og:title" content={title} />
         {description && (

@@ -14,19 +14,22 @@ interface Screenshot {
   url: string;
 }
 
+interface Props {
+  title: string;
+  description: string;
+  screenshot: Screenshot;
+  slug: string;
+  wide?: Boolean;
+}
+
 export default function GridItem({
   title,
   description,
   screenshot,
   slug,
   wide,
-}: {
-  title: string;
-  description: string;
-  screenshot: Screenshot;
-  slug: string;
-  wide?: Boolean;
-}) {
+}: Props) {
+  console.log(screenshot);
   return (
     <div
       className={`bg-radix-slate3 p-2 grid ${
@@ -34,19 +37,17 @@ export default function GridItem({
       } rounded `}
     >
       <div className="text-center">
-        <p className="text-2xl font-semibold text-center pt-4">{title}</p>
+        <Link href={`/portfolio/${slug}`}>
+          <a>
+            <h3 className="text-2xl font-semibold text-center pt-4 hover:underline mb-2 text-radix-cyan11">
+              {title}
+            </h3>
+          </a>
+        </Link>
+
         <p className={`py-4 text-center text-radix-slate11 ${!wide && "h-16"}`}>
           {description}
         </p>
-        {wide && (
-          <div className="flex justify-center">
-            <Link href={`/portfolio/${slug}`}>
-              <a className="hidden sm:block hover:underline text-radix-cyan11">
-                Find out more
-              </a>
-            </Link>
-          </div>
-        )}
       </div>
       <div className="p-4">
         <Image
@@ -57,17 +58,6 @@ export default function GridItem({
           sizes="(min-width: 768px) 42ch, 80vw"
           alt={title}
         />
-      </div>
-      <div className="flex justify-center">
-        <Link href={`/portfolio/${slug}`}>
-          <a
-            className={`${
-              wide && "sm:hidden"
-            } hover:underline mb-2 text-center text-radix-cyan11`}
-          >
-            Find out more
-          </a>
-        </Link>
       </div>
     </div>
   );
