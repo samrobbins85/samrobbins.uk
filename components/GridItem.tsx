@@ -29,7 +29,6 @@ export default function GridItem({
   slug,
   wide,
 }: Props) {
-  console.log(screenshot);
   return (
     <div
       className={`bg-radix-slate3 p-2 grid ${
