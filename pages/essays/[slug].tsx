@@ -1,4 +1,4 @@
-import rehypePrism from "@mapbox/rehype-prism";
+import rehypePrism from "rehype-prism-plus";
 import remarkGfm from "remark-gfm";
 import dynamic from "next/dynamic";
 import { MyTable, MyImg } from "@/components/mdx";

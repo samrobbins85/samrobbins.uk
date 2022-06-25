@@ -3,7 +3,7 @@ import {
   getAllPortfoliosWithSlug,
   getTechnologyCategories,
 } from "@/lib/graphcms";
-import rehypePrism from "@mapbox/rehype-prism";
+import rehypePrism from "rehype-prism-plus";
 import GitHubButton from "@/components/portfolio/GitHubButton";
 import Coder from "@/components/portfolio/Contributor";
 import { MyTable } from "@/components/mdx";

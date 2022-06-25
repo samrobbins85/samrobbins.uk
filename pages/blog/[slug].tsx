@@ -1,5 +1,5 @@
 import { getBlog, getAllBlogsWithSlug } from "@/lib/datocms";
-import rehypePrism from "@mapbox/rehype-prism";
+import rehypePrism from "rehype-prism-plus";
 import Layout from "@/components/layout";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
