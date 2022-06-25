@@ -22,10 +22,23 @@ generates:
       - "typescript-operations"
       - "typescript-document-nodes"
       - "typescript-graphql-request"
+  lib/github.generated.ts:
+    schema:
+      - https://api.github.com/graphql:
+          headers:
+            Authorization: Bearer ${GITHUB}
+    documents: "lib/graphql/github/**.graphql"
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-document-nodes"
+      - "typescript-graphql-request"
+
 config:
   namingConvention:
     enumValues: keep
     transformUnderscore: false
   onlyOperationTypes: true
-  preResolveTypes: true
   disableDescriptions: true
+  preResolveTypes: true
+  skipTypename: true
