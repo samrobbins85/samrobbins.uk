@@ -35,13 +35,10 @@ generates:
       - "typescript-graphql-request"
 
 config:
+  namingConvention:
+    enumValues: keep
+    transformUnderscore: false
   onlyOperationTypes: true
   disableDescriptions: true
   preResolveTypes: true
   skipTypename: true
-
-plugins:
-  - "typescript"
-  - "typescript-operations"
-  - "typescript-document-nodes"
-  - "typescript-graphql-request"
