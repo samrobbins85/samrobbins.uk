@@ -28,7 +28,7 @@ function BarMulti({
   offset,
 }: Props) {
   return (
-    <figure className="grid justify-center">
+    <figure className="grid justify-center bleed">
       <div className="overflow-x-auto">
         <VictoryChart
           width={width}

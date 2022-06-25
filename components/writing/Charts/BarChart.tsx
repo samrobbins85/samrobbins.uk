@@ -16,7 +16,7 @@ interface Bar {
 
 function BarChart({ data, width, xlabel, ylabel, caption }: Bar) {
   return (
-    <figure className="grid justify-center">
+    <figure className="grid justify-center bleed">
       <div className="overflow-x-auto">
         <VictoryChart
           domainPadding={40}
