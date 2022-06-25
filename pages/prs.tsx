@@ -1,7 +1,7 @@
-import getSearch from "@/lib/githubapi";
 import Layout from "@/components/layout";
 import Image, { ImageProps } from "next/image";
-import { GetStaticProps } from "next";
+import { InferGetStaticPropsType } from "next";
+import { getPRs } from "@/lib/github";
 const githubLoader = ({ src, width }) => `${src}&s=${width}`;
 
 function GitHubImage(props: ImageProps) {
@@ -48,7 +48,9 @@ function PullRequest({
   );
 }
 
-export default function Home({ prs }) {
+export default function Home({
+  prs,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout
       title="Pull Requests"
@@ -75,10 +77,9 @@ export default function Home({ prs }) {
     </Layout>
   );
 }
-
-export const getStaticProps: GetStaticProps = async () => {
-  let prs = await getSearch();
-  prs = prs.map((x) => x.node);
+export const getStaticProps = async () => {
+  let data = await getPRs();
+  let prs = data as Extract<typeof data[number], { title: string }>[];
   prs.forEach((_, index) => {
     const date = new Date(prs[index].createdAt).toLocaleString("en-gb", {
       day: "numeric",
