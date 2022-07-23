@@ -2,14 +2,14 @@ import { getPortfolios, getPortfolioCategories } from "@/lib/graphcms";
 import Categories from "@/components/Categories";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import PortfolioGrid from "@/components/portfolio/PortfolioGrid";
+import ProjectGrid from "@/components/projects/ProjectGrid";
 import Layout from "@/components/layout";
 import GridItem from "@/components/GridItem";
 import { PortfolioCategories } from "@/lib/graphcms.generated";
 import { InferGetStaticPropsType } from "next";
 
-export default function Portfolio({
-  portfolios,
+export default function Projects({
+  projects,
   categories,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   const router = useRouter();
@@ -30,16 +30,16 @@ export default function Portfolio({
   }, []);
   return (
     <Layout
-      title="Portfolio"
+      title="Projects"
       description="Projects I have made in my own time or as part of my degree"
       fullWidth
     >
       <h1 className="text-5xl font-semibold text-center text-radix-mint11">
-        Portfolio
+        Projects
       </h1>
 
       <div className="flex justify-center mx-auto gap-x-8 gap-y-8 py-4 flex-wrap">
-        {portfolios
+        {projects
           .filter((item) => item.featured)
           .slice(0, 3)
           .map((item) => (
@@ -59,22 +59,22 @@ export default function Portfolio({
           category={category}
           categories={categories}
         />
-        <PortfolioGrid portfolios={portfolios} category={category} />
+        <ProjectGrid projects={projects} category={category} />
       </div>
     </Layout>
   );
 }
 
 export async function getStaticProps() {
-  const portfolios = (await getPortfolios()) || [];
+  const projects = (await getPortfolios()) || [];
   let tempCategories = (await getPortfolioCategories()).map((x) => x.name);
   const categories = {};
   tempCategories.forEach((element) => {
-    categories[element] = portfolios.filter((x) =>
+    categories[element] = projects.filter((x) =>
       x.categories.includes(element as PortfolioCategories)
     ).length;
   });
   return {
-    props: { portfolios, categories },
+    props: { projects, categories },
   };
 }

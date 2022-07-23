@@ -36,7 +36,7 @@ export default function GridItem({
       } rounded `}
     >
       <div className="text-center">
-        <Link href={`/portfolio/${slug}`}>
+        <Link href={`/projects/${slug}`}>
           <a>
             <h3 className="text-2xl font-semibold text-center pt-4 hover:underline mb-2 text-radix-cyan11">
               {title}

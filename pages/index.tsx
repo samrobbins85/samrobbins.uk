@@ -115,9 +115,10 @@ export default function Home({
           </div>
           <div>
             <p className="text-center">
-              To see all my projects, check out my{" "}
-              <Link href="/portfolio">
-                <a className="hover:underline text-radix-cyan11">portfolio</a>
+              <Link href="/projects">
+                <a className="hover:underline text-radix-cyan11">
+                  View all projects
+                </a>
               </Link>
             </p>
           </div>

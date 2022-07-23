@@ -4,13 +4,13 @@ import {
   getTechnologyCategories,
 } from "@/lib/graphcms";
 import rehypePrism from "rehype-prism-plus";
-import GitHubButton from "@/components/portfolio/GitHubButton";
-import Coder from "@/components/portfolio/Contributor";
+import GitHubButton from "@/components/projects/GitHubButton";
+import Coder from "@/components/projects/Contributor";
 import { MyTable } from "@/components/mdx";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
 
-import { WebsiteButton, NPMButton } from "@/components/portfolio/SmallButton";
+import { WebsiteButton, NPMButton } from "@/components/projects/SmallButton";
 import Layout from "@/components/layout";
 import { InferGetStaticPropsType } from "next";
 

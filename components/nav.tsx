@@ -31,7 +31,7 @@ const items = [
   {
     name: "Code",
     items: [
-      { name: "Portfolio", href: "/portfolio", icon: CollectionIcon },
+      { name: "Projects", href: "/projects", icon: CollectionIcon },
       { name: "Snippets", href: "/snippets", icon: ScissorsIcon },
       { name: "Pull Requests", href: "/prs", icon: GitPullRequestIcon },
     ],
