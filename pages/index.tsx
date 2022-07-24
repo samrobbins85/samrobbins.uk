@@ -1,10 +1,7 @@
 import Head from "next/head";
-import Link from "next/link";
 import SocialLinks from "@/components/home/SocialLinks";
 import Nav from "@/components/nav";
-import GridItem from "@/components/GridItem";
-import { getPortfolios } from "../lib/graphcms";
-import { getHome } from "../lib/datocms";
+import { getHome, getAbout } from "../lib/datocms";
 import { InferGetStaticPropsType } from "next";
 import Npm from "@/components/svg/npm";
 import {
@@ -13,6 +10,8 @@ import {
   Github,
   Polywork,
 } from "@icons-pack/react-simple-icons";
+import Job from "@/components/about/Job";
+import TimeLineItem from "@/components/about/TimelineItem";
 
 function ContactButton({ email }: { email: string }) {
   return (
@@ -60,8 +59,8 @@ const links = [
 ];
 
 export default function Home({
-  portfolios,
   home,
+  about,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
@@ -96,32 +95,44 @@ export default function Home({
             <SocialLinks links={links} />
           </div>
         </header>
+
+        <section className="pt-4">
+          <h2 className="text-3xl font-semibold">Jobs</h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {about.jobs.map((item) => (
+              <Job
+                key={item.company}
+                logo={item.logo}
+                title={item.role}
+                duration={item.duration}
+                company={item.company}
+              />
+            ))}
+          </div>
+          <p className="flex justify-center italic">
+            For more details, check out my&nbsp;
+            <a
+              className="hover:underline text-radix-cyan11"
+              href="https://cv.samrobbins.uk"
+            >
+              CV
+            </a>
+          </p>
+        </section>
         <section>
-          <h2 className="text-3xl font-semibold">Projects</h2>
-          <div className="grid gap-8 py-4">
-            {portfolios
-              .filter((item) => item.featured)
-              .slice(0, 3)
-              .map((item) => (
-                <GridItem
-                  title={item.title}
-                  description={item.description}
-                  screenshot={item.screenshot}
-                  slug={item.slug}
-                  key={item.title}
-                  wide
-                />
-              ))}
-          </div>
-          <div>
-            <p className="text-center">
-              <Link href="/projects">
-                <a className="hover:underline text-radix-cyan11">
-                  View all projects
-                </a>
-              </Link>
-            </p>
-          </div>
+          <h2 className="text-3xl font-semibold py-6">Timeline</h2>
+          <ul className="px-1">
+            {about.timeline.map((item) => (
+              <TimeLineItem
+                category={item.category}
+                link={item.link}
+                title={item.title}
+                date={item.date}
+                description={item.description}
+                key={item.description}
+              />
+            ))}
+          </ul>
         </section>
       </main>
     </>
@@ -129,10 +140,22 @@ export default function Home({
 }
 
 export async function getStaticProps() {
-  const portfolios = (await getPortfolios()) || [];
   const home = (await getHome()) || {};
+  const about = await getAbout();
+  // I think this is no longer necessary, but better safe than sorry
+  about.timeline = about.timeline
+    .sort((a, b) => {
+      if (a.date > b.date) {
+        return 1;
+      }
+      if (b.date > a.date) {
+        return -1;
+      }
+      return 0;
+    })
+    .reverse();
 
   return {
-    props: { portfolios, home },
+    props: { home, about },
   };
 }

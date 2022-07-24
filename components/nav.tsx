@@ -4,7 +4,6 @@ import {
   XIcon,
   DocumentTextIcon,
   AcademicCapIcon,
-  UserIcon,
   CollectionIcon,
   HomeIcon,
   SunIcon,
@@ -19,24 +18,27 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
-const items = [
-  { name: "About", href: "/about", icon: UserIcon },
-  {
-    name: "Writing",
-    items: [
-      { name: "Blog", href: "/blog", icon: DocumentTextIcon },
-      { name: "Essays", href: "/essays", icon: AcademicCapIcon },
-    ],
-  },
-  {
-    name: "Code",
-    items: [
-      { name: "Projects", href: "/projects", icon: CollectionIcon },
-      { name: "Snippets", href: "/snippets", icon: ScissorsIcon },
-      { name: "Pull Requests", href: "/prs", icon: GitPullRequestIcon },
-    ],
-  },
+type page = { name: string; href: string; icon: any };
+
+type Items = (page | { name: string; items: page[] })[];
+
+const items: Items = [
+  { name: "Projects", href: "/projects", icon: CollectionIcon },
+  { name: "Blog", href: "/blog", icon: DocumentTextIcon },
+  { name: "Essays", href: "/essays", icon: AcademicCapIcon },
+  { name: "Snippets", href: "/snippets", icon: ScissorsIcon },
+  { name: "Pull Requests", href: "/prs", icon: GitPullRequestIcon },
 ];
+
+// If I ever want to bring it back, dropdowns look like this
+// {
+//   name: "Code",
+//   items: [
+//     { name: "Projects", href: "/projects", icon: CollectionIcon },
+//     { name: "Snippets", href: "/snippets", icon: ScissorsIcon },
+//     { name: "Pull Requests", href: "/prs", icon: GitPullRequestIcon },
+//   ],
+// },
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -44,9 +46,8 @@ function classNames(...classes) {
 
 function DesktopDropdown({ data }) {
   const { asPath } = useRouter();
-  const onPage = items
-    .find((x) => x.name === data.name)
-    .items.map((x) => x.href)
+  const onPage = data.items
+    .map((x) => x.href)
     .find((x) => asPath.startsWith(x));
   return (
     <Popover className="relative">

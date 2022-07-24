@@ -3,6 +3,7 @@ import { MortarBoardIcon } from "@primer/octicons-react";
 import Pass from "@/components/svg/pass";
 import Podium from "@/components/svg/podium";
 import { CodeIcon, PencilIcon, HeartIcon } from "@heroicons/react/solid";
+import Link from "next/link";
 
 function TimelineIcon({ type }: { type: string }) {
   switch (type) {
@@ -41,6 +42,26 @@ function TimelineIcon({ type }: { type: string }) {
   }
 }
 
+function TimelineTitle({ title, link }: { title: string; link?: string }) {
+  const Base = () => <h3 className="font-medium">{title}</h3>;
+  if (link && link[0] === "/") {
+    return (
+      <Link href={link}>
+        <a className="hover:underline text-radix-cyan11">
+          <Base />
+        </a>
+      </Link>
+    );
+  } else if (link) {
+    return (
+      <a className="hover:underline text-radix-cyan11" href={link}>
+        <Base />
+      </a>
+    );
+  }
+  return <Base />;
+}
+
 interface Props {
   category: string;
   link?: string;
@@ -62,13 +83,7 @@ export default function TimeLineItem({
         <TimelineIcon type={category} />
         <div className="min-w-0 flex-1 z-10 w-64">
           <div className="flex justify-between">
-            {link ? (
-              <a className="hover:underline text-radix-cyan11" href={link}>
-                <h3 className="font-medium">{title}</h3>
-              </a>
-            ) : (
-              <h3 className="font-medium">{title}</h3>
-            )}
+            <TimelineTitle title={title} link={link} />
             <p className="pl-4 text-sm tracking-wide text-radix-slate12 text-right">
               {new Date(date).toLocaleString("en-gb", {
                 month: "long",

@@ -56,6 +56,11 @@ module.exports = withBundleAnalyzer({
         permanent: true,
       },
       {
+        source: "/about",
+        destination: "/",
+        permanent: true,
+      },
+      {
         source: "/portfolio/:slug",
         destination: "/projects/:slug",
         permanent: true,
