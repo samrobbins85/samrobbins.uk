@@ -6,11 +6,15 @@ import ProjectGrid from "@/components/projects/ProjectGrid";
 import Layout from "@/components/layout";
 import { PortfolioCategories } from "@/lib/graphcms.generated";
 import { InferGetStaticPropsType } from "next";
-
+import { getIcons, stringToIcon, minifyIconSet } from "@iconify/utils";
+import { lookupCollection } from "@iconify/json";
+import { addCollection } from "@iconify/react";
 export default function Projects({
   projects,
   categories,
+  iconSets,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  iconSets.forEach((item) => addCollection(item));
   const router = useRouter();
   const [category, setCategory] = useState("All");
   useEffect(() => {
@@ -58,7 +62,28 @@ export async function getStaticProps() {
       x.categories.includes(element as PortfolioCategories)
     ).length;
   });
+
+  const icons = projects.map((item) => stringToIcon(item.icon));
+  const byGroup = icons.reduce(function (r, a) {
+    r[a.prefix] = r[a.prefix] || [];
+    r[a.prefix].push(a.name);
+    return r;
+  }, Object.create({}));
+
+  const getData = async () => {
+    return Promise.all(
+      Object.keys(byGroup).map(async (collection) => {
+        const coll = await lookupCollection(collection);
+        const set = await getIcons(coll, byGroup[collection]);
+        minifyIconSet(set);
+        return set;
+      })
+    );
+  };
+
+  const iconSets = await getData();
+
   return {
-    props: { projects, categories },
+    props: { projects, categories, iconSets },
   };
 }
