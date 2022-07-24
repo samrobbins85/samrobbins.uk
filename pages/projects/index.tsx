@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import ProjectGrid from "@/components/projects/ProjectGrid";
 import Layout from "@/components/layout";
-import GridItem from "@/components/GridItem";
 import { PortfolioCategories } from "@/lib/graphcms.generated";
 import { InferGetStaticPropsType } from "next";
 
@@ -37,21 +36,6 @@ export default function Projects({
       <h1 className="text-5xl font-semibold text-center text-radix-mint11">
         Projects
       </h1>
-
-      <div className="flex justify-center mx-auto gap-x-8 gap-y-8 py-4 flex-wrap">
-        {projects
-          .filter((item) => item.featured)
-          .slice(0, 3)
-          .map((item) => (
-            <GridItem
-              title={item.title}
-              description={item.description}
-              screenshot={item.screenshot}
-              slug={item.slug}
-              key={item.title}
-            />
-          ))}
-      </div>
 
       <div className="mx-auto max-w-6xl py-4">
         <Categories

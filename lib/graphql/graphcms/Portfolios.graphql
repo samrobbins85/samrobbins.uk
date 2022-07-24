@@ -13,12 +13,7 @@ query getPortfolios {
     description
     featured
     categories
-    coverImage {
-      handle
-      width
-      height
-      url
-    }
+    icon
     screenshot {
       handle
       width
