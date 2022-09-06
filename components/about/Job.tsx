@@ -17,10 +17,11 @@ export default function Job({ company, logo, title, duration }: Props) {
       <div className="h-16 w-16 min-w-16 flex">
         <DatoImage
           aria-hidden="true"
+          className="object-contain"
           src={logo.url}
           width={logo.width}
           height={logo.height}
-          alt={title}
+          alt={company + " logo"}
         />
       </div>
       <div className="grid">
