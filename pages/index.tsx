@@ -86,7 +86,7 @@ export default function Home({
       <Nav />
       <main className="py-6 px-4 max-w-85ch mx-auto">
         <header>
-          <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8 text-radix-mint11">
+          <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8 text-radix-slate12">
             {home.title}
           </h1>
           <h2 className="text-lg text-radix-slate11">{home.description}</h2>

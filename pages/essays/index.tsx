@@ -23,7 +23,7 @@ export default function Portfolio({
         description="Essays I've written at university and for other purposes"
       >
         <header>
-          <h1 className="text-5xl font-medium text-center font-serif text-radix-mint11">
+          <h1 className="text-5xl font-medium text-center font-serif text-radix-slate12">
             Essays
           </h1>
         </header>

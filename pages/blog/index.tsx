@@ -8,7 +8,7 @@ export default function Blog({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout title="Blog" description="Blogs about a range of technical topics">
-      <h1 className="text-5xl font-semibold text-center text-radix-mint11">
+      <h1 className="text-5xl font-semibold text-center text-radix-slate12">
         Blog
       </h1>
 

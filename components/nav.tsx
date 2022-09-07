@@ -159,8 +159,12 @@ function ThemeComponent() {
       onClick={() => switchTheme(resolvedTheme, setTheme)}
       aria-label="Toggle Dark Mode"
     >
-      {resolvedTheme === "light" && <MoonIcon className="h-6 w-6 text-nord0" />}
-      {resolvedTheme === "dark" && <SunIcon className="h-6 w-6 text-nord13" />}
+      {resolvedTheme === "light" && (
+        <MoonIcon className="h-6 w-6 text-radix-slate11" />
+      )}
+      {resolvedTheme === "dark" && (
+        <SunIcon className="h-6 w-6 text-radix-amber10" />
+      )}
     </button>
   );
 }

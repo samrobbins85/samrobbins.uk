@@ -8,12 +8,7 @@ import Link from "next/link";
 function TimelineIcon({ type }: { type: string }) {
   switch (type) {
     case "Event":
-      return (
-        <Pass
-          aria-hidden="true"
-          className="text-nord2 dark:text-nord4 h-6 w-6"
-        />
-      );
+      return <Pass aria-hidden="true" className="text-radix-slate11 h-6 w-6" />;
     case "Education":
       return (
         <MortarBoardIcon

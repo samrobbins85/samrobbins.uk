@@ -56,7 +56,7 @@ export default function Home({
       title="Pull Requests"
       description="Contributions made to open source projects on GitHub"
     >
-      <h1 className="text-5xl font-semibold pb-6 text-center text-radix-mint11">
+      <h1 className="text-5xl font-semibold pb-6 text-center text-radix-slate12">
         Pull Requests
       </h1>
       <div className="grid gap-y-4">
