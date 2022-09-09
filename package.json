@@ -19,7 +19,7 @@
     "@headlessui/react": "^1.7.0",
     "@heroicons/react": "^2.0.10",
     "@iconify/react": "^3.2.2",
-    "@icons-pack/react-simple-icons": "^4.6.1",
+    "@icons-pack/react-simple-icons": "^5.5.0",
     "@next/bundle-analyzer": "^12.3.0",
     "@primer/octicons-react": "^17.5.0",
     "@samrobbins/custom-typography": "^1.2.0",

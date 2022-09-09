@@ -1,10 +1,8 @@
 import React from "react";
-import { Icon } from "@icons-pack/react-simple-icons";
-
 type Props = {
   links: {
     name: string;
-    icon: Icon;
+    icon: any;
     link: string;
     className: string;
     modifier?: string;
