@@ -2,7 +2,11 @@ import Trophy from "@/components/svg/trophy";
 import { MortarBoardIcon } from "@primer/octicons-react";
 import Pass from "@/components/svg/pass";
 import Podium from "@/components/svg/podium";
-import { CodeIcon, PencilIcon, HeartIcon } from "@heroicons/react/solid";
+import {
+  CodeBracketIcon,
+  PencilIcon,
+  HeartIcon,
+} from "@heroicons/react/20/solid";
 import Link from "next/link";
 
 function TimelineIcon({ type }: { type: string }) {
@@ -18,7 +22,9 @@ function TimelineIcon({ type }: { type: string }) {
         />
       );
     case "Hackathon":
-      return <CodeIcon aria-hidden="true" className="text-nord10 h-6 w-6" />;
+      return (
+        <CodeBracketIcon aria-hidden="true" className="text-nord10 h-6 w-6" />
+      );
     case "Award":
       return <Trophy aria-hidden="true" className="text-nord13 h-6 w-6" />;
     case "Speaking":
@@ -29,7 +35,7 @@ function TimelineIcon({ type }: { type: string }) {
       return <HeartIcon aria-hidden="true" className="text-nord11 h-6 w-6" />;
     default:
       return (
-        <CodeIcon
+        <CodeBracketIcon
           aria-hidden="true"
           className="text-blue-700 dark:text-blue-200 h-6 w-6"
         />

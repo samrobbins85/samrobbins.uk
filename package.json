@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.0",
-    "@heroicons/react": "^1.0.6",
+    "@heroicons/react": "^2.0.10",
     "@iconify/react": "^3.2.2",
     "@icons-pack/react-simple-icons": "^4.6.1",
     "@next/bundle-analyzer": "^12.3.0",

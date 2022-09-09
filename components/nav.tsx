@@ -1,17 +1,17 @@
 import { Popover, Transition } from "@headlessui/react";
 import {
-  MenuIcon,
-  XIcon,
+  Bars3Icon,
+  XMarkIcon,
   DocumentTextIcon,
   AcademicCapIcon,
-  CollectionIcon,
+  RectangleStackIcon,
   HomeIcon,
   SunIcon,
   MoonIcon,
   ScissorsIcon,
-} from "@heroicons/react/outline";
+} from "@heroicons/react/24/outline";
 import { GitPullRequestIcon } from "@primer/octicons-react";
-import { ChevronDownIcon } from "@heroicons/react/solid";
+import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import ActiveLink from "@/components/ActiveLink";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -23,7 +23,7 @@ type page = { name: string; href: string; icon: any };
 type Items = (page | { name: string; items: page[] })[];
 
 const items: Items = [
-  { name: "Projects", href: "/projects", icon: CollectionIcon },
+  { name: "Projects", href: "/projects", icon: RectangleStackIcon },
   { name: "Blog", href: "/blog", icon: DocumentTextIcon },
   { name: "Essays", href: "/essays", icon: AcademicCapIcon },
   { name: "Snippets", href: "/snippets", icon: ScissorsIcon },
@@ -183,7 +183,7 @@ export default function Nav() {
           <div className="-my-2 md:hidden px-4">
             <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center hover:bg-radix-slate4 focus:outline-solid focus:outline-radix-sky8 focus:outline-0.5">
               <span className="sr-only">Open menu</span>
-              <MenuIcon
+              <Bars3Icon
                 className="h-6 w-6 text-radix-slate11 "
                 aria-hidden="true"
               />
@@ -210,7 +210,7 @@ export default function Nav() {
             <ThemeComponent />
             <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center focus:outline-radix-sky8 focus:outline-solid text-radix-slate11 hover:bg-radix-slate4">
               <span className="sr-only">Close menu</span>
-              <XIcon className="h-6 w-6 " aria-hidden="true" />
+              <XMarkIcon className="h-6 w-6 " aria-hidden="true" />
             </Popover.Button>
           </div>
           <div className="grid gap-y-8 mt-4">
