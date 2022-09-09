@@ -29,7 +29,7 @@ interface PreMemoProps {
 function PreMemo({ data, setContent }: PreMemoProps) {
   const max_value = Math.max(...Object.values(data));
 
-  const colorscale = scaleLinear()
+  const colorscale = scaleLinear<string>()
     .domain([0, max_value])
     .range(["#FFFFFF", "#68246D"]);
 
