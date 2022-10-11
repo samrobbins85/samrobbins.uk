@@ -21,19 +21,20 @@ export default function handler(req: NextRequest) {
           alignItems: "center",
           justifyContent: "center",
           backgroundColor: "#fbfcfd",
-          fontSize: 32,
+          fontSize: 64,
           fontWeight: 600,
+          fontFamily: "Inter",
         }}
       >
-        <h1 style={{ fontSize: 64, textAlign: "center", fontWeight: 800 }}>
+        <h1 style={{ fontSize: 128, textAlign: "center", fontWeight: 900 }}>
           {title}
         </h1>
-        {hasTitle && <p>Sam Robbins</p>}
+        {hasTitle && <div>Sam Robbins</div>}
       </div>
     ),
     {
-      width: 600,
-      height: 400,
+      width: 1200,
+      height: 630,
     }
   );
 }
