@@ -71,12 +71,7 @@ export default function Home({
           content="The personal website of Sam Robbins, software developer"
         />
 
-        <meta
-          property="og:image"
-          content={`https://og.samrobbins.uk/api/${encodeURIComponent(
-            "Sam Robbins"
-          )}`}
-        />
+        <meta property="og:image" content="/api/og" />
         <meta property="og:title" content="Sam Robbins" />
         <meta
           property="og:description"

@@ -25,6 +25,7 @@
     "@samrobbins/custom-typography": "^1.2.0",
     "@storybook/addon-docs": "^6.5.12",
     "@storybook/addon-postcss": "^2.0.0",
+    "@vercel/og": "^0.0.16",
     "d3-scale": "4.0.2",
     "dotenv": "^16.0.3",
     "eslint-config-prettier": "^8.5.0",
