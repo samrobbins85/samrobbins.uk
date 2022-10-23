@@ -5,9 +5,6 @@ function normalizeSrc(src) {
 }
 
 function imgixLoader({ src, width, quality }) {
-  if (src.endsWith(".svg")) {
-    return src;
-  }
   const params = ["auto=format", "fit=max", `w=${width}`];
   let paramsString = "";
   if (quality) {
