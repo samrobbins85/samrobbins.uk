@@ -37,11 +37,9 @@ export default function GridItem({
     >
       <div className="text-center">
         <Link href={`/projects/${slug}`}>
-          <a>
-            <h3 className="text-2xl font-semibold text-center pt-4 hover:underline mb-2 text-radix-cyan11">
-              {title}
-            </h3>
-          </a>
+          <h3 className="text-2xl font-semibold text-center pt-4 hover:underline mb-2 text-radix-cyan11">
+            {title}
+          </h3>
         </Link>
 
         <p className={`py-4 text-center text-radix-slate11 ${!wide && "h-16"}`}>

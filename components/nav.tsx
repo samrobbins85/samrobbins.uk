@@ -86,14 +86,13 @@ function DesktopDropdown({ data }) {
                     key={item.name}
                     href={item.href}
                     activeClassName="!text-radix-slate12 font-semibold"
+                    className="-m-3 p-3 flex items-start rounded-lg hover:bg-radix-slate5 focus:outline-none focus:bg-radix-slate5 text-radix-slate11"
                   >
-                    <a className="-m-3 p-3 flex items-start rounded-lg hover:bg-radix-slate5 focus:outline-none focus:bg-radix-slate5 text-radix-slate11">
-                      <item.icon
-                        className="flex-shrink-0 h-6 w-6 text-radix-sky11"
-                        aria-hidden="true"
-                      />
-                      <p className="ml-4 text-base">{item.name}</p>
-                    </a>
+                    <item.icon
+                      className="flex-shrink-0 h-6 w-6 text-radix-sky11"
+                      aria-hidden="true"
+                    />
+                    <p className="ml-4 text-base">{item.name}</p>
                   </ActiveLink>
                 ))}
               </div>
@@ -110,10 +109,9 @@ function DesktopSingle({ data }) {
     <ActiveLink
       href={data.href}
       activeClassName="!text-radix-slate12 font-semibold"
+      className="text-base font-medium text-radix-slate11 hover:text-radix-slate12 outline-radix-sky8 focus-visible:outline-solid outline-0.5 outline-offset-1 rounded-md"
     >
-      <a className="text-base font-medium text-radix-slate11 hover:text-radix-slate12 outline-radix-sky8 focus-visible:outline-solid outline-0.5 outline-offset-1 rounded-md">
-        {data.name}
-      </a>
+      {data.name}
     </ActiveLink>
   );
 }
@@ -124,14 +122,13 @@ function MobileItem({ data }) {
       key={data.name}
       href={data.href}
       activeClassName="!text-radix-slate12"
+      className="-m-3 p-3 flex items-center rounded-md hover:bg-radix-slate5 text-radix-slate11 focus:bg-radix-slate5 focus:outline-none"
     >
-      <a className="-m-3 p-3 flex items-center rounded-md hover:bg-radix-slate5 text-radix-slate11 focus:bg-radix-slate5 focus:outline-none">
-        <data.icon
-          className="flex-shrink-0 h-6 w-6 text-radix-sky11"
-          aria-hidden="true"
-        />
-        <span className="ml-3 text-base font-medium ">{data.name}</span>
-      </a>
+      <data.icon
+        className="flex-shrink-0 h-6 w-6 text-radix-sky11"
+        aria-hidden="true"
+      />
+      <span className="ml-3 text-base font-medium ">{data.name}</span>
     </ActiveLink>
   );
 }
@@ -174,11 +171,12 @@ export default function Nav() {
     <Popover as="nav" className="relative z-10">
       <div className="border-b-2 border-radix-slate6 h-18 md:grid md:grid-cols-12">
         <div className="flex justify-between items-center md:justify-center md:space-x-10 md:col-start-2 md:col-end-12 h-full">
-          <Link href="/">
-            <a className="ml-4 md:hidden -my-2 focus-visible:outline-solid outline-radix-sky8 outline-0.5 rounded-md p-2">
-              <span className="sr-only">Home</span>
-              <HomeIcon className="h-8 w-8 text-radix-slate11" />
-            </a>
+          <Link
+            href="/"
+            className="ml-4 md:hidden -my-2 focus-visible:outline-solid outline-radix-sky8 outline-0.5 rounded-md p-2"
+          >
+            <span className="sr-only">Home</span>
+            <HomeIcon className="h-8 w-8 text-radix-slate11" />
           </Link>
           <div className="-my-2 md:hidden px-4">
             <Popover.Button className="rounded-md p-2 inline-flex items-center justify-center hover:bg-radix-slate4 focus:outline-solid focus:outline-radix-sky8 focus:outline-0.5">

@@ -4,8 +4,8 @@ interface Props {
   company: string;
   logo: {
     url: string;
-    width?: number | string;
-    height?: number | string;
+    width?: number;
+    height?: number;
   };
   title: string;
   duration: string;

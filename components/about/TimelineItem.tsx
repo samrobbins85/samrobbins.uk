@@ -47,10 +47,8 @@ function TimelineTitle({ title, link }: { title: string; link?: string }) {
   const Base = () => <h3 className="font-medium">{title}</h3>;
   if (link && link[0] === "/") {
     return (
-      <Link href={link}>
-        <a className="hover:underline text-radix-cyan11">
-          <Base />
-        </a>
+      <Link href={link} className="hover:underline text-radix-cyan11">
+        <Base />
       </Link>
     );
   } else if (link) {

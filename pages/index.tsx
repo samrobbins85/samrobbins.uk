@@ -12,7 +12,6 @@ import {
 } from "@icons-pack/react-simple-icons";
 import Job from "@/components/about/Job";
 import TimeLineItem from "@/components/about/TimelineItem";
-
 function ContactButton({ email }: { email: string }) {
   return (
     <a
