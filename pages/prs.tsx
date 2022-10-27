@@ -25,7 +25,7 @@ function PullRequest({
         <GitHubImage
           src={image}
           alt={owner_name}
-          layout="fill"
+          fill
           className="h-12 w-12"
           sizes="10vw"
         />
