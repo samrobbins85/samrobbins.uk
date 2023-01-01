@@ -52,7 +52,7 @@ module.exports = {
     require("tailwind-nord"),
     require("@samrobbins/custom-typography"),
     require("radix-colors-for-tailwind")({
-      colors: ["cyan", "sky", "blue", "purple", "slate", "mint"],
+      colors: ["cyan", "sky", "blue", "purple", "slate", "amber"],
     }),
   ],
 };

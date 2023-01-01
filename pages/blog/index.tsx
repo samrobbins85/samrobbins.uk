@@ -8,7 +8,7 @@ export default function Blog({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout title="Blog" description="Blogs about a range of technical topics">
-      <h1 className="text-5xl font-semibold text-center text-radix-mint11">
+      <h1 className="text-5xl font-semibold text-center text-radix-slate12">
         Blog
       </h1>
 
@@ -16,11 +16,9 @@ export default function Blog({
         {blogs.map((item) => (
           <article className="py-4" key={item.title}>
             <Link href={`/blog/${item.slug}`}>
-              <a>
-                <h2 className="font-semibold text-xl sm:text-2xl text-radix-cyan11">
-                  {item.title}
-                </h2>
-              </a>
+              <h2 className="font-semibold text-xl sm:text-2xl text-radix-cyan11">
+                {item.title}
+              </h2>
             </Link>
             <div className="py-1">
               <time

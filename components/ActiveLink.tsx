@@ -1,29 +1,25 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
-import React, { Children } from "react";
+import React from "react";
 
-const ActiveLink = ({ children, activeClassName, ...props }) => {
+const ActiveLink = ({ children, activeClassName, className, ...props }) => {
   const { asPath } = useRouter();
-  const child = Children.only(children);
-  const childClassName = child.props.className || "";
-  let className;
+  let newClassName;
   if (props.href === "/") {
-    className =
+    newClassName =
       asPath === props.href || asPath === props.as
-        ? `${childClassName} ${activeClassName}`.trim()
-        : childClassName;
+        ? `${className} ${activeClassName}`.trim()
+        : className;
   } else {
-    className =
+    newClassName =
       asPath.startsWith(props.href) || asPath.startsWith(props.as)
-        ? `${childClassName} ${activeClassName}`.trim()
-        : childClassName;
+        ? `${className} ${activeClassName}`.trim()
+        : className;
   }
 
   return (
-    <Link href={props.href} {...props}>
-      {React.cloneElement(child, {
-        className: className || null,
-      })}
+    <Link href={props.href} className={newClassName} {...props}>
+      {children}
     </Link>
   );
 };

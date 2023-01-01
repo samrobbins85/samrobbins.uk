@@ -8,21 +8,22 @@ import { InferGetStaticPropsType } from "next";
 
 function Card({ title, slug, language, category }) {
   return (
-    <Link href={`/snippets/${slug}`}>
-      <a className="w-full sm:w-1/2 lg:w-1/4 outline-gray-800 outline-offset-1 focus:outline-solid outline-1/2 rounded bg-nord0">
-        <div className="h-full py-2 ">
-          {category === "All" && (
-            <div
-              className={`${background(
-                language
-              )} w-min px-2 rounded-r mb-2 mt-1 font-semibold`}
-            >
-              {language}
-            </div>
-          )}
-          <h3 className="text-xl text-white font-mono px-2">{title}</h3>
-        </div>
-      </a>
+    <Link
+      href={`/snippets/${slug}`}
+      className="w-full sm:w-1/2 lg:w-1/4 outline-gray-800 outline-offset-1 focus:outline-solid outline-1/2 rounded bg-nord0"
+    >
+      <div className="h-full py-2 ">
+        {category === "All" && (
+          <div
+            className={`${background(
+              language
+            )} w-min px-2 rounded-r mb-2 mt-1 font-semibold`}
+          >
+            {language}
+          </div>
+        )}
+        <h3 className="text-xl text-white font-mono px-2">{title}</h3>
+      </div>
     </Link>
   );
 }
@@ -38,7 +39,7 @@ export default function Snippets({
       description="Little bits of code I use that don't deserve a blog, but are still
     useful"
     >
-      <h1 className="text-5xl font-medium font-mono text-center text-radix-mint11">
+      <h1 className="text-5xl font-medium font-mono text-center text-radix-slate12">
         Snippets
       </h1>
       <h2 className="text-xl text-radix-slate11 py-2 text-center">

@@ -2,18 +2,17 @@ import Trophy from "@/components/svg/trophy";
 import { MortarBoardIcon } from "@primer/octicons-react";
 import Pass from "@/components/svg/pass";
 import Podium from "@/components/svg/podium";
-import { CodeIcon, PencilIcon, HeartIcon } from "@heroicons/react/solid";
+import {
+  CodeBracketIcon,
+  PencilIcon,
+  HeartIcon,
+} from "@heroicons/react/20/solid";
 import Link from "next/link";
 
 function TimelineIcon({ type }: { type: string }) {
   switch (type) {
     case "Event":
-      return (
-        <Pass
-          aria-hidden="true"
-          className="text-nord2 dark:text-nord4 h-6 w-6"
-        />
-      );
+      return <Pass aria-hidden="true" className="text-radix-slate11 h-6 w-6" />;
     case "Education":
       return (
         <MortarBoardIcon
@@ -23,7 +22,9 @@ function TimelineIcon({ type }: { type: string }) {
         />
       );
     case "Hackathon":
-      return <CodeIcon aria-hidden="true" className="text-nord10 h-6 w-6" />;
+      return (
+        <CodeBracketIcon aria-hidden="true" className="text-nord10 h-6 w-6" />
+      );
     case "Award":
       return <Trophy aria-hidden="true" className="text-nord13 h-6 w-6" />;
     case "Speaking":
@@ -34,7 +35,7 @@ function TimelineIcon({ type }: { type: string }) {
       return <HeartIcon aria-hidden="true" className="text-nord11 h-6 w-6" />;
     default:
       return (
-        <CodeIcon
+        <CodeBracketIcon
           aria-hidden="true"
           className="text-blue-700 dark:text-blue-200 h-6 w-6"
         />
@@ -46,10 +47,8 @@ function TimelineTitle({ title, link }: { title: string; link?: string }) {
   const Base = () => <h3 className="font-medium">{title}</h3>;
   if (link && link[0] === "/") {
     return (
-      <Link href={link}>
-        <a className="hover:underline text-radix-cyan11">
-          <Base />
-        </a>
+      <Link href={link} className="hover:underline text-radix-cyan11">
+        <Base />
       </Link>
     );
   } else if (link) {
