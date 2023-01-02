@@ -7,7 +7,7 @@ function BookCollection({ data }) {
     <div className="flex flex-wrap justify-center gap-x-10 gap-y-6">
       {data.map((item) => (
         <div key={item.title} className="px-4 w-52">
-          <div className="h-72 ">
+          <div className="h-72">
             <img
               className="object-contain h-full object-bottom"
               src={item.thumbnail}
@@ -27,7 +27,6 @@ function BookCollection({ data }) {
 }
 
 export default function Books({ read, reading }) {
-  console.log(read);
   return (
     <>
       <Head>
@@ -41,6 +40,7 @@ export default function Books({ read, reading }) {
       </Head>
       <Layout title="Books">
         <div className="font-serif">
+          <h1 className="text-5xl text-center">Books</h1>
           <h2 className="text-3xl font-semibold pt-4 pb-6">Reading</h2>
           <BookCollection data={reading} />
           <h2 className="text-3xl font-semibold pt-4 pb-6">Read</h2>
@@ -55,14 +55,15 @@ async function dataFromFeed(feed) {
   return Promise.all(
     feed.items.map(async (item) => {
       const url = item.link.split("-").slice(-1)[0];
-      const data = await fetch(`https://oku.club/api/books/${url}`);
-      const result = await data.json();
+      const data = await (
+        await fetch(`https://oku.club/api/books/${url}`)
+      ).json();
 
       return {
         author: item.creator,
         title: item.title,
         link: item.link,
-        thumbnail: result.book.imageLinks.thumbnail,
+        thumbnail: data.book.imageLinks.thumbnail,
       };
     })
   );
@@ -78,5 +79,5 @@ export const getStaticProps = async () => {
   );
   const read = await dataFromFeed(readFeed);
   const reading = await dataFromFeed(readingFeed);
-  return { props: { read, reading } };
+  return { props: { read, reading }, revalidate: 86400 };
 };
