@@ -1,39 +1,58 @@
 import Layout from "@/components/layout";
 import Parser from "rss-parser";
-export default function Books({ feed, books }) {
-  console.log(feed);
-  console.log(books);
+import Head from "next/head";
+
+function BookCollection({ data }) {
   return (
-    <Layout title="Books">
-      <h2>Reading</h2>
-      <h2 className="text-3xl font-semibold pt-4 pb-6">Read</h2>
-      <div className="flex flex-wrap justify-center gap-8">
-        {books.map((item) => (
-          <div key={item.title} className="px-4 w-52">
-            <div className="flex items-end h-72">
-              <img
-                className="w-52 py-4 "
-                src={item.thumbnail}
-                alt={item.title}
-              />
-            </div>
-            <p className="text-center">
-              <a href={item.link} className="text-lg">
-                {item.title}
-              </a>
-            </p>
-            <p className="text-gray-600 text-center pb-4">{item.author}</p>
+    <div className="flex flex-wrap justify-center gap-x-10 gap-y-6">
+      {data.map((item) => (
+        <div key={item.title} className="px-4 w-52">
+          <div className="h-72 ">
+            <img
+              className="object-contain h-full object-bottom"
+              src={item.thumbnail}
+              alt={item.title}
+            />
           </div>
-        ))}
-      </div>
-    </Layout>
+          <p>
+            <a href={item.link} className="text-lg">
+              {item.title}
+            </a>
+          </p>
+          <p className="text-gray-600 pb-4">{item.author}</p>
+        </div>
+      ))}
+    </div>
   );
 }
 
-export const getStaticProps = async () => {
-  let parser = new Parser();
-  const feed = await parser.parseURL("https://oku.club/rss/collection/IcU8v");
-  const books = await Promise.all(
+export default function Books({ read, reading }) {
+  console.log(read);
+  return (
+    <>
+      <Head>
+        <link
+          rel="preload"
+          href="/fonts/newsreader-normal.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+      </Head>
+      <Layout title="Books">
+        <div className="font-serif">
+          <h2 className="text-3xl font-semibold pt-4 pb-6">Reading</h2>
+          <BookCollection data={reading} />
+          <h2 className="text-3xl font-semibold pt-4 pb-6">Read</h2>
+          <BookCollection data={read} />
+        </div>
+      </Layout>
+    </>
+  );
+}
+
+async function dataFromFeed(feed) {
+  return Promise.all(
     feed.items.map(async (item) => {
       const url = item.link.split("-").slice(-1)[0];
       const data = await fetch(`https://oku.club/api/books/${url}`);
@@ -47,5 +66,17 @@ export const getStaticProps = async () => {
       };
     })
   );
-  return { props: { feed, books } };
+}
+
+export const getStaticProps = async () => {
+  let parser = new Parser();
+  const readFeed = await parser.parseURL(
+    "https://oku.club/rss/collection/IcU8v"
+  );
+  const readingFeed = await parser.parseURL(
+    "https://oku.club/rss/collection/WSiHD"
+  );
+  const read = await dataFromFeed(readFeed);
+  const reading = await dataFromFeed(readingFeed);
+  return { props: { read, reading } };
 };
