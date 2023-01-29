@@ -9,11 +9,12 @@ interface Props {
   };
   title: string;
   link: string;
+  date: string;
 }
 
-export default function Writing({ publisher, logo, title, link }: Props) {
+export default function Writing({ publisher, logo, title, link, date }: Props) {
   return (
-    <div className="flex gap-x-6 px-6 py-4 items-center">
+    <div className="flex gap-x-6 px-6 py-4 items-start">
       <div className="h-16 w-16 min-w-16 flex justify-center">
         <DatoImage
           unoptimized={logo.url.endsWith(".svg")}
@@ -25,14 +26,27 @@ export default function Writing({ publisher, logo, title, link }: Props) {
           alt={publisher + " logo"}
         />
       </div>
-      <div className="grid">
+      <div className="grid  content-baseline">
         <a
           className="hover:underline text-radix-cyan11 font-semibold"
           href={link}
         >
           {title}
         </a>
-        <span className="text-radix-slate11">{publisher}</span>
+        <span className="text-radix-slate11">
+          {publisher} -{" "}
+          {new Date(date).toLocaleString("en-gb", {
+            month: "long",
+            year: "numeric",
+          })}
+        </span>
+        {/* <span className="text-radix-slate11">
+          {" "}
+          {new Date(date).toLocaleString("en-gb", {
+            month: "long",
+            year: "numeric",
+          })}
+        </span> */}
       </div>
     </div>
   );

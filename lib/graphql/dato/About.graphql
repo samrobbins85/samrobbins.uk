@@ -5,6 +5,7 @@ query getAbout {
       link
       description
       publisher
+      date
       logo {
         url
         width

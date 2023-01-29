@@ -112,7 +112,8 @@ export default function Home({
                 logo={item.logo}
                 title={item.title}
                 publisher={item.publisher}
-                link=""
+                link={item.link}
+                date={item.date}
               />
             ))}
           </div>
