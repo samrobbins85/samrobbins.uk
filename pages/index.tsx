@@ -4,14 +4,10 @@ import Nav from "@/components/nav";
 import { getHome, getAbout } from "../lib/datocms";
 import { InferGetStaticPropsType } from "next";
 import Npm from "@/components/svg/npm";
-import {
-  Linkedin,
-  Twitter,
-  Github,
-  Polywork,
-} from "@icons-pack/react-simple-icons";
+import { Linkedin, Twitter, Github } from "@icons-pack/react-simple-icons";
 import Job from "@/components/about/Job";
 import TimeLineItem from "@/components/about/TimelineItem";
+import Writing from "@/components/about/Writing";
 function ContactButton({ email }: { email: string }) {
   return (
     <a
@@ -42,12 +38,6 @@ const links = [
     icon: Twitter,
     link: "https://twitter.com/samrobbins85",
     className: "hover:text-twitter focus:text-twitter",
-  },
-  {
-    name: "Polywork",
-    icon: Polywork,
-    link: "https://www.polywork.com/samrobbins",
-    className: "hover:text-polywork focus:text-polywork",
   },
   {
     name: "LinkedIn",
@@ -112,6 +102,20 @@ export default function Home({
               CV
             </a>
           </p>
+        </section>
+        <section>
+          <h2 className="text-3xl font-semibold py-6">Writing</h2>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {about.articles.map((item) => (
+              <Writing
+                key={item.title}
+                logo={item.logo}
+                title={item.title}
+                publisher={item.publisher}
+                link=""
+              />
+            ))}
+          </div>
         </section>
         <section>
           <h2 className="text-3xl font-semibold py-6">Timeline</h2>
