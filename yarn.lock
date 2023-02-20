@@ -2502,10 +2502,10 @@
     kolorist "^1.5.1"
     local-pkg "^0.4.2"
 
-"@icons-pack/react-simple-icons@^5.11.0":
-  version "5.11.0"
-  resolved "https://registry.yarnpkg.com/@icons-pack/react-simple-icons/-/react-simple-icons-5.11.0.tgz#63051f38201222a63404887ad65440fe10babac5"
-  integrity sha512-hFJ4Q4JcYe/wQUab+gIug1BONjBUelaUVFYsZ1FKv5CEX/fP56qGet4CPmx18BqDhxrOehidYNlLyGppXL9/7w==
+"@icons-pack/react-simple-icons@^6.3.0":
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/@icons-pack/react-simple-icons/-/react-simple-icons-6.3.0.tgz#4318a82f6f7f29a763e5b09af59ac797626a0901"
+  integrity sha512-6YSIln+gWj01E0E3BvnkEDpe3+39aalRrQB89hheMHp3bHffDD6rtqOYQhH6eRGGNhiRb/4k8LDeQenp3kXQWw==
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
