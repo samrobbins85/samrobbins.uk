@@ -7,7 +7,12 @@ import {
 import { scaleLinear } from "d3-scale";
 import dynamic from "next/dynamic";
 import { useState, memo } from "react";
-const DynamicTooltip = dynamic(() => import("react-tooltip"), { ssr: false });
+import "react-tooltip/dist/react-tooltip.css";
+
+const DynamicTooltip = dynamic(
+  () => import("react-tooltip").then((mod) => mod.Tooltip),
+  { ssr: false }
+);
 
 interface NUTSRegions {
   UKC?: number;
@@ -24,9 +29,10 @@ interface NUTSRegions {
 interface PreMemoProps {
   data: NUTSRegions;
   setContent: Function;
+  id: string;
 }
 
-function PreMemo({ data, setContent }: PreMemoProps) {
+function PreMemo({ data, setContent, id }: PreMemoProps) {
   const max_value = Math.max(...Object.values(data));
 
   const colorscale = scaleLinear<string>()
@@ -39,7 +45,7 @@ function PreMemo({ data, setContent }: PreMemoProps) {
   };
   const altUrl = "/nuts1.json";
   return (
-    <ComposableMap data-tip="" projectionConfig={PROJECTION_CONFIG}>
+    <ComposableMap data-tooltip-id={id} projectionConfig={PROJECTION_CONFIG}>
       <ZoomableGroup>
         <Geographies geography={altUrl}>
           {({ geographies }) =>
@@ -85,8 +91,8 @@ export default function Map({ data, caption }: Props) {
   return (
     <figure>
       <div className="border border-radix-slate6">
-        <PostMemo data={data} setContent={setContent} />
-        <DynamicTooltip>{content}</DynamicTooltip>
+        <PostMemo data={data} setContent={setContent} id={caption} />
+        <DynamicTooltip float id={caption} content={content} />
         <div className="mb-4 px-20">
           <div className="flex justify-between">
             <span>0%</span>
