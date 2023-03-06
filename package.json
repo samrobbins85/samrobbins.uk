@@ -22,7 +22,7 @@
     "@icons-pack/react-simple-icons": "6.2.0",
     "@next/bundle-analyzer": "^13.1.6",
     "@next/font": "^13.1.6",
-    "@primer/octicons-react": "^17.12.0",
+    "@primer/octicons-react": "^18.0.0",
     "@samrobbins/custom-typography": "^1.2.0",
     "@storybook/addon-docs": "^6.5.16",
     "@storybook/addon-postcss": "^2.0.0",
