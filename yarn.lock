@@ -2688,10 +2688,10 @@
     kolorist "^1.7.0"
     local-pkg "^0.4.3"
 
-"@icons-pack/react-simple-icons@6.2.0":
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/@icons-pack/react-simple-icons/-/react-simple-icons-6.2.0.tgz#0c3823ef2cf9848b2d8ffb2f58f15bdd6b0576f9"
-  integrity sha512-YZzB5oHRvOslOIiug97dLqfhv7U0+78JOa8w5Aqxq2Ulr2bVBrqtFV+hMKXhcZjlPdFzpUrFfAJ9AHLe4FdYqQ==
+"@icons-pack/react-simple-icons@7.1.1":
+  version "7.1.1"
+  resolved "https://registry.yarnpkg.com/@icons-pack/react-simple-icons/-/react-simple-icons-7.1.1.tgz#8b45e36a05ed5b490b8f646e4b81475b73ae641c"
+  integrity sha512-rqKuRx+o8zZ3Z6a1Y0lAKrlhRbhKusR3XhWOSMs68Tiz4si+erq+Ti6+ocW3Z5lbsAjPtmRLG+svwLttigcEcg==
 
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
