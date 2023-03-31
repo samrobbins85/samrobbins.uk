@@ -1,5 +1,5 @@
 import Link from "next/link";
-import etBook from "pages/essays/font";
+import etBook from "@/lib/font";
 
 interface Props {
   slug: string;

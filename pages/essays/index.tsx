@@ -2,7 +2,7 @@ import { getAllEssays } from "@/lib/datocms";
 import Essay from "@/components/writing/Essay";
 import Layout from "@/components/layout";
 import { InferGetStaticPropsType } from "next";
-import etBook from "./font";
+import etBook from "@/lib/font";
 
 export default function Portfolio({
   writings,

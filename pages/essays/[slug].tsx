@@ -41,7 +41,7 @@ const components = {
 
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-import etBook from "./font";
+import etBook from "@/lib/font";
 
 export default function Essay({
   data,
