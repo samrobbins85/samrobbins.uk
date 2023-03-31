@@ -39,8 +39,8 @@ module.exports = {
       },
       fontFamily: {
         latex: ["Latin Modern"],
-        sans: ["Inter var", ...defaultTheme.fontFamily.sans],
-        serif: ["et-book", ...defaultTheme.fontFamily.serif],
+        sans: ["var(--font-inter)", ...defaultTheme.fontFamily.sans],
+        serif: ["var(--font-etBook)", ...defaultTheme.fontFamily.serif],
       },
       height: {
         18: "4.5rem",

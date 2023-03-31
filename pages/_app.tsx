@@ -3,6 +3,9 @@ import Head from "next/head";
 import { ThemeProvider } from "next-themes";
 import Script from "next/script";
 import type { AppProps } from "next/app";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 interface CustomComponent {
   Component: {
@@ -26,7 +29,9 @@ function MyApp({ Component, pageProps }: CustomApp) {
         forcedTheme={Component.theme || undefined}
         attribute="class"
       >
-        <Component {...pageProps} />
+        <div className={`${inter.variable} font-sans`}>
+          <Component {...pageProps} />
+        </div>
       </ThemeProvider>
     </>
   );

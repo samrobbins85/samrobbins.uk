@@ -41,6 +41,7 @@ const components = {
 
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import etBook from "./font";
 
 export default function Essay({
   data,
@@ -49,12 +50,14 @@ export default function Essay({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <Layout title={data.title}>
-      <header className="font-serif pb-8">
+      <header className={`font-serif ${etBook.className} pb-8`}>
         <h1 className="text-center text-4xl">{data.title}</h1>
         <p className="text-center text-2xl italic">{date}</p>
       </header>
 
-      <article className="mx-auto prose prose-serif dark:prose-light dark:prose-serifLight">
+      <article
+        className={`mx-auto ${etBook.className} prose prose-serif dark:prose-light dark:prose-serifLight`}
+      >
         <MDXRemote {...renderedOutput} components={components} />
       </article>
     </Layout>

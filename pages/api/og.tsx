@@ -5,11 +5,11 @@ export const config = {
 };
 
 const fontLight = fetch(
-  new URL("../../public/inter-latin-ext-400-normal.woff", import.meta.url)
+  new URL("../../fonts/inter/inter-latin-ext-400-normal.woff", import.meta.url)
 ).then((res) => res.arrayBuffer());
 
 const fontBold = fetch(
-  new URL("../../public/inter-latin-ext-700-normal.woff", import.meta.url)
+  new URL("../../fonts/inter/inter-latin-ext-700-normal.woff", import.meta.url)
 ).then((res) => res.arrayBuffer());
 
 export default async function handler(req: NextRequest) {
