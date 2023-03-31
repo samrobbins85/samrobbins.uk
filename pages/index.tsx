@@ -4,7 +4,11 @@ import Nav from "@/components/nav";
 import { getHome, getAbout } from "../lib/datocms";
 import { InferGetStaticPropsType } from "next";
 import Npm from "@/components/svg/npm";
-import { Linkedin, Twitter, Github } from "@icons-pack/react-simple-icons";
+import {
+  SiLinkedin,
+  SiTwitter,
+  SiGithub,
+} from "@icons-pack/react-simple-icons";
 import Job from "@/components/about/Job";
 import TimeLineItem from "@/components/about/TimelineItem";
 import Writing from "@/components/about/Writing";
@@ -22,7 +26,7 @@ function ContactButton({ email }: { email: string }) {
 const links = [
   {
     name: "GitHub",
-    icon: Github,
+    icon: SiGithub,
     link: "https://github.com/samrobbins85",
     className: "hover:text-radix-slate12 focus:text-radix-slate12",
     modifier: "w-6",
@@ -35,13 +39,13 @@ const links = [
   },
   {
     name: "Twitter",
-    icon: Twitter,
+    icon: SiTwitter,
     link: "https://twitter.com/samrobbins85",
     className: "hover:text-twitter focus:text-twitter",
   },
   {
     name: "LinkedIn",
-    icon: Linkedin,
+    icon: SiLinkedin,
     link: "https://www.linkedin.com/in/sam-robbins-gb/",
     className: "hover:text-linkedin focus:text-linkedin",
   },
