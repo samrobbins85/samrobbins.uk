@@ -60,7 +60,7 @@
     "@graphql-codegen/typescript-operations": "3.0.2",
     "@iconify/json": "^2.2.42",
     "@iconify/utils": "^2.1.5",
-    "@storybook/addon-actions": "^6.5.16",
+    "@storybook/addon-actions": "^7.0.2",
     "@storybook/addon-essentials": "^6.5.16",
     "@storybook/addon-interactions": "^6.5.16",
     "@storybook/addon-links": "^6.5.16",
