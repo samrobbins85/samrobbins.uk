@@ -51,7 +51,7 @@
     "@babel/core": "^7.21.4",
     "@graphql-codegen/cli": "3.3.0",
     "@graphql-codegen/typescript": "3.0.3",
-    "@graphql-codegen/typescript-document-nodes": "3.0.3",
+    "@graphql-codegen/typescript-document-nodes": "4.0.0",
     "@graphql-codegen/typescript-graphql-request": "^4.5.9",
     "@graphql-codegen/typescript-operations": "3.0.3",
     "@iconify/json": "^2.2.52",
