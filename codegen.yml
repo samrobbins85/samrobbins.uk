@@ -27,6 +27,7 @@ generates:
       - https://api.github.com/graphql:
           headers:
             Authorization: Bearer ${GITHUB}
+            User-Agent: samrobbins85
     documents: "lib/graphql/github/**.graphql"
     plugins:
       - "typescript"

@@ -1,6 +1,5 @@
 import rehypePrism from "rehype-prism-plus";
 import remarkGfm from "remark-gfm";
-import dynamic from "next/dynamic";
 import { MyTable, MyImg } from "@/components/mdx";
 import { serialize } from "next-mdx-remote/serialize";
 import { MDXRemote } from "next-mdx-remote";
@@ -11,24 +10,10 @@ import "katex/dist/katex.css";
 import Map from "@/components/writing/Map";
 import remarkUnwrapImages from "remark-unwrap-images";
 import { InferGetStaticPropsType } from "next";
-const LineChart = dynamic(
-  () => import("@/components/writing/Charts/LineChart"),
-  {
-    ssr: false,
-  }
-);
-const BarChart = dynamic(() => import("@/components/writing/Charts/BarChart"), {
-  ssr: false,
-});
-const PieChart = dynamic(() => import("@/components/writing/Charts/PieChart"), {
-  ssr: false,
-});
-const BarMulti = dynamic(
-  () => import("@/components/writing/Charts/MultiBarChart"),
-  {
-    ssr: false,
-  }
-);
+import { LineChart, BarChart, PieChart, BarMulti } from "@/components/writing/chart";
+
+
+
 const components = {
   table: MyTable,
   img: MyImg,
