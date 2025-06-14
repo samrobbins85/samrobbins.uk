@@ -33,13 +33,7 @@ export default function Writing({ publisher, logo, title, link, date }: Props) {
         >
           {title}
         </a>
-        <span className="text-radix-slate11">
-          {publisher} -{" "}
-          {new Date(date).toLocaleString("en-gb", {
-            month: "long",
-            year: "numeric",
-          })}
-        </span>
+        <span className="text-radix-slate11">{publisher}</span>
         {/* <span className="text-radix-slate11">
           {" "}
           {new Date(date).toLocaleString("en-gb", {

@@ -44,3 +44,4 @@ atom.xml
 
 # storybook
 storybook-static
+.env

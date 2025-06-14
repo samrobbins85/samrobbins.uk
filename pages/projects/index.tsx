@@ -9,6 +9,7 @@ import { InferGetStaticPropsType } from "next";
 import { getIcons, stringToIcon, minifyIconSet } from "@iconify/utils";
 import { lookupCollection } from "@iconify/json";
 import { addCollection } from "@iconify/react";
+
 export default function Projects({
   projects,
   categories,
