@@ -29,7 +29,7 @@ export default function Layout({
         )}
       </Head>
       <Nav />
-      <main className={`${!fullWidth && "max-w-85ch"} mx-auto p-4`}>
+      <main className={`${!fullWidth && "max-w-7xl"} mx-auto p-4`}>
         {children}
       </main>
     </>

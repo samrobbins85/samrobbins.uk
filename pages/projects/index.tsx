@@ -36,7 +36,6 @@ export default function Projects({
     <Layout
       title="Projects"
       description="Projects I have made in my own time or as part of my degree"
-      fullWidth
     >
       <h1 className="text-5xl font-semibold text-center text-radix-slate12">
         Projects

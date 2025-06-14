@@ -81,7 +81,7 @@ export default function Home({
         />
       </Head>
       <Nav />
-      <main className="py-6 px-4 max-w-85ch mx-auto">
+      <main className="py-6 px-4 max-w-7xl mx-auto">
         <header>
           <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8 text-radix-slate12">
             {home.title}
@@ -133,7 +133,7 @@ export default function Home({
         </section>
         <section>
           <h2 className="text-3xl font-semibold py-6">Projects</h2>
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid sm:grid-cols-2 gap-x-4">
             {projects.map((x) => (
               <div className="flex gap-x-6 px-6 py-4 items-start" key={x.title}>
                 <div className="h-16 w-16 min-w-16 flex justify-center items-center">
@@ -157,7 +157,7 @@ export default function Home({
           <div className="flex justify-center">
             <Link
               href="/projects"
-              className="border rounded-lg px-4 py-2 hover:bg-radix-slate2"
+              className="border rounded-lg px-4 py-2 hover:bg-radix-slate3 slate-border-int"
             >
               View all projects
             </Link>

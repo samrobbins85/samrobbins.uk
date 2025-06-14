@@ -16,7 +16,7 @@ export default function ProjectGrid({
   category: string;
 }) {
   return (
-    <div className="flex flex-wrap  justify-center mx-auto gap-x-4 gap-y-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-auto gap-x-4 gap-y-4">
       {projects
         .filter((item) =>
           category !== "All" ? item.categories.includes(category) : item
@@ -25,7 +25,7 @@ export default function ProjectGrid({
           <Link
             href={`/projects/${x.slug}`}
             key={x.title}
-            className="group focus:outline-none w-full sm:w-2/5 lg:w-1/4"
+            className="group focus:outline-none w-full"
           >
             <article className="px-2 py-2 rounded h-full border-2 group-focus:border-radix-slate7 border-transparent group-hover:bg-radix-slate2 flex items-center">
               <div className="flex items-center gap-x-4 ">
