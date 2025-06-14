@@ -10,9 +10,12 @@ import "katex/dist/katex.css";
 import Map from "@/components/writing/Map";
 import remarkUnwrapImages from "remark-unwrap-images";
 import { InferGetStaticPropsType } from "next";
-import { LineChart, BarChart, PieChart, BarMulti } from "@/components/writing/chart";
-
-
+import {
+  LineChart,
+  BarChart,
+  PieChart,
+  BarMulti,
+} from "@/components/writing/chart";
 
 const components = {
   table: MyTable,

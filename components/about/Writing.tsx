@@ -12,7 +12,7 @@ interface Props {
   date: string;
 }
 
-export default function Writing({ publisher, logo, title, link, date }: Props) {
+export default function Writing({ publisher, logo, title, link }: Props) {
   return (
     <div className="flex gap-x-6 px-6 py-4 items-start">
       <div className="h-16 w-16 min-w-16 flex justify-center">
