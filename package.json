@@ -33,6 +33,7 @@
     "next-mdx-remote": "^5.0.0",
     "next-themes": "^0.2.1",
     "node-fetch": "^3.3.2",
+    "p-limit": "^6.2.0",
     "postcss": "^8.4.31",
     "radix-colors-for-tailwind": "2.0.0",
     "react": "^19.1.0",
