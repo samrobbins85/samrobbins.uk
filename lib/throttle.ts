@@ -1,2 +1,2 @@
 import pLimit from "p-limit";
-export const limit = pLimit(3);
+export const limit = pLimit(2);
