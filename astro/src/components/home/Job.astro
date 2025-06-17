@@ -1,0 +1,16 @@
+---
+import { Image } from "astro:assets";
+
+const { logo, title, company, duration } = Astro.props;
+---
+
+<div class="flex gap-x-6 px-6 py-4 items-center">
+  <div class="h-16 w-16 min-w-16 flex">
+    <Image src={logo} alt={company + " logo"} />
+  </div>
+  <div class="grid">
+    <span class="font-semibold">{title}</span>
+    <span class="text-radix-slate11">{company}</span>
+    <span class="text-radix-slate11">{duration}</span>
+  </div>
+</div>

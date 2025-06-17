@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:svg="http://www.w3.org/2000/svg" id="LOGO_PROTOTYP" data-name="LOGO PROTOTYP" viewBox="0 0 46.900906 46.902313" version="1.1" width="46.900906" height="46.902313">
+  
+  <defs id="defs24">
+    <style id="style2">.cls-1{opacity:0.05;}.cls-2{fill:#fff;}.cls-3{fill:url(#linear-gradient);}.cls-4{fill:url(#linear-gradient-2);}</style>
+    <linearGradient id="linear-gradient" x1="23.780001" y1="46.509998" x2="23.780001" y2="88.279999" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.3" id="stop4"/>
+      <stop offset="0.02" stop-color="#fff" stop-opacity="0.28" id="stop6"/>
+      <stop offset="0.28" stop-color="#fff" stop-opacity="0.13" id="stop8"/>
+      <stop offset="0.48" stop-color="#fff" stop-opacity="0.04" id="stop10"/>
+      <stop offset="0.6" stop-color="#fff" stop-opacity="0" id="stop12"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="42.5" y1="52.360001" x2="42.5" y2="93.489998" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff" stop-opacity="0.2" id="stop15"/>
+      <stop offset="0.14" stop-color="#fff" stop-opacity="0.13" id="stop17"/>
+      <stop offset="0.36" stop-color="#fff" stop-opacity="0.04" id="stop19"/>
+      <stop offset="0.5" stop-color="#fff" stop-opacity="0" id="stop21"/>
+    </linearGradient>
+  </defs>
+  <title id="title26">Zeichenfläche 4</title>
+  <g id="S" transform="translate(-9.1316616,-0.05384244)">
+    <g id="Kasten" style="fill:#cf3f35;fill-opacity:1">
+      <path class="cls-2" d="m 36.57,30.11 a 27.55,27.55 0 0 0 -7,-3.78 28.32,28.32 0 0 1 -5.36,-2.87 q -6,-4.18 -6,-10.37 a 10.63,10.63 0 0 1 2.19,-6.9 10.19,10.19 0 0 1 0.86,-0.94 l -8.55,2 a 4.62,4.62 0 0 0 -3.46,5.54 l 7.08,30.59 a 4.62,4.62 0 0 0 5.53,3.46 L 25.36,46 25.09,45.93 A 33.76,33.76 0 0 1 18.31,43 L 22,34.84 a 16.3,16.3 0 0 0 10.4,3.66 c 4,0 6,-1.43 6,-4.27 a 5.26,5.26 0 0 0 -1.83,-4.12 z" id="path32" style="fill:#cf3f35;fill-opacity:1"/>
+      <path class="cls-2" d="M 55.91,34.22 48.83,3.63 A 4.62,4.62 0 0 0 43.3,0.17 l -5.15,1.19 q 0.89,0.14 1.76,0.33 a 28.13,28.13 0 0 1 6.65,2.39 l -3,8 C 41.32,10.16 38.19,9.2 34.19,9.2 q -5.38,0 -5.39,4.28 a 3.86,3.86 0 0 0 1.77,3 36.82,36.82 0 0 0 7.56,3.66 23.64,23.64 0 0 1 6.39,3.55 12.68,12.68 0 0 1 2,2 12.35,12.35 0 0 1 2.55,7.85 11.85,11.85 0 0 1 -2.45,7.58 l 5.83,-1.35 a 4.61,4.61 0 0 0 3.46,-5.55 z" id="path34" style="fill:#cf3f35;fill-opacity:1"/>
+    </g>
+  </g>
+  <g id="S-2" data-name="S" transform="translate(-9.1316616,-0.05384244)"/>
+</svg>
