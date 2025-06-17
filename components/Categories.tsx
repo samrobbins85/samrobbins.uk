@@ -46,16 +46,18 @@ export default function Categories({
         item="All"
         category={category}
       />
-      {Object.keys(categories).map((item) => (
-        <Button
-          title={item.replace(/_/g, " ")}
-          onClick={() => setCategory(item)}
-          item={item}
-          count={categories[item]}
-          category={category}
-          key={item}
-        />
-      ))}
+      {Object.keys(categories)
+        .sort((a, b) => categories[b] - categories[a])
+        .map((item) => (
+          <Button
+            title={item.replace(/_/g, " ")}
+            onClick={() => setCategory(item)}
+            item={item}
+            count={categories[item]}
+            category={category}
+            key={item}
+          />
+        ))}
     </div>
   );
 }

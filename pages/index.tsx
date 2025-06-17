@@ -10,8 +10,13 @@ import {
   SiGithub,
 } from "@icons-pack/react-simple-icons";
 import Job from "@/components/about/Job";
-import TimeLineItem from "@/components/about/TimelineItem";
 import Writing from "@/components/about/Writing";
+import { getPortfolioCategories, getPortfolios } from "@/lib/graphcms";
+import { PortfolioCategories } from "@/lib/graphcms.generated";
+import { getIcons, minifyIconSet, stringToIcon } from "@iconify/utils";
+import { lookupCollection } from "@iconify/json";
+import { addCollection, Icon } from "@iconify/react";
+import Link from "next/link";
 function ContactButton({ email }: { email: string }) {
   return (
     <a
@@ -54,7 +59,11 @@ const links = [
 export default function Home({
   home,
   about,
+  projects,
+  iconSets,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  iconSets.forEach((item) => addCollection(item));
+
   return (
     <>
       <Head>
@@ -72,7 +81,7 @@ export default function Home({
         />
       </Head>
       <Nav />
-      <main className="py-6 px-4 max-w-85ch mx-auto">
+      <main className="py-6 px-4 max-w-7xl mx-auto">
         <header>
           <h1 className="text-4xl sm:text-5xl font-bold py-4 pb-8 text-radix-slate12">
             {home.title}
@@ -123,6 +132,38 @@ export default function Home({
           </div>
         </section>
         <section>
+          <h2 className="text-3xl font-semibold py-6">Projects</h2>
+          <div className="grid sm:grid-cols-2 gap-x-4">
+            {projects.map((x) => (
+              <div className="flex gap-x-6 px-6 py-4 items-start" key={x.title}>
+                <div className="h-16 w-16 min-w-16 flex justify-center items-center">
+                  <Icon
+                    icon={x.icon}
+                    className="h-8 w-8 text-radix-slate9 grayscale"
+                  />
+                </div>
+                <div className="grid content-baseline">
+                  <Link
+                    href={`/projects/${x.slug}`}
+                    className="hover:underline text-radix-cyan11 font-semibold"
+                  >
+                    {x.title}
+                  </Link>
+                  <span className="text-radix-slate11">{x.description}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="flex justify-center">
+            <Link
+              href="/projects"
+              className="border rounded-lg px-4 py-2 hover:bg-radix-slate3 slate-border-int"
+            >
+              View all projects
+            </Link>
+          </div>
+        </section>
+        {/* <section>
           <h2 className="text-3xl font-semibold py-6">Timeline</h2>
           <ul className="px-1">
             {about.timeline.map((item) => (
@@ -136,7 +177,7 @@ export default function Home({
               />
             ))}
           </ul>
-        </section>
+        </section> */}
       </main>
     </>
   );
@@ -144,6 +185,35 @@ export default function Home({
 
 export async function getStaticProps() {
   const home = (await getHome()) || {};
+  const projects = (await getPortfolios()).slice(0, 6) || [];
+  let tempCategories = (await getPortfolioCategories()).map((x) => x.name);
+  const categories = {};
+  tempCategories.forEach((element) => {
+    categories[element] = projects.filter((x) =>
+      x.categories.includes(element as PortfolioCategories)
+    ).length;
+  });
+
+  const icons = projects.map((item) => stringToIcon(item.icon));
+  const byGroup = icons.reduce(function (r, a) {
+    r[a.prefix] = r[a.prefix] || [];
+    r[a.prefix].push(a.name);
+    return r;
+  }, Object.create({}));
+
+  const getData = async () => {
+    return Promise.all(
+      Object.keys(byGroup).map(async (collection) => {
+        const coll = await lookupCollection(collection);
+        const set = await getIcons(coll, byGroup[collection]);
+        minifyIconSet(set);
+        return set;
+      })
+    );
+  };
+
+  const iconSets = await getData();
+
   const about = await getAbout();
   // I think this is no longer necessary, but better safe than sorry
   about.timeline = about.timeline
@@ -159,6 +229,6 @@ export async function getStaticProps() {
     .reverse();
 
   return {
-    props: { home, about },
+    props: { home, about, projects, iconSets },
   };
 }

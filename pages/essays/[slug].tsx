@@ -8,11 +8,14 @@ import { essaySlugs, getEssay } from "@/lib/datocms";
 import behead from "remark-behead";
 import "katex/dist/katex.css";
 import Map from "@/components/writing/Map";
-import remarkUnwrapImages from "remark-unwrap-images";
+import rehypeUnwrapImages from "rehype-unwrap-images";
 import { InferGetStaticPropsType } from "next";
-import { LineChart, BarChart, PieChart, BarMulti } from "@/components/writing/chart";
-
-
+import {
+  LineChart,
+  BarChart,
+  PieChart,
+  BarMulti,
+} from "@/components/writing/chart";
 
 const components = {
   table: MyTable,
@@ -53,13 +56,8 @@ export async function getStaticProps({ params }) {
   const data = await getEssay(params.slug);
   const renderedOutput = await serialize(data.content, {
     mdxOptions: {
-      remarkPlugins: [
-        remarkMath,
-        remarkGfm,
-        [behead, { depth: 1 }],
-        remarkUnwrapImages,
-      ],
-      rehypePlugins: [rehypeKatex, rehypePrism],
+      remarkPlugins: [remarkMath, remarkGfm, [behead, { depth: 1 }]],
+      rehypePlugins: [rehypeKatex, rehypePrism, rehypeUnwrapImages],
     },
   });
   const date = new Date(data.date).toLocaleString("en-gb", {

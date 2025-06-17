@@ -9,6 +9,7 @@ import { InferGetStaticPropsType } from "next";
 import { getIcons, stringToIcon, minifyIconSet } from "@iconify/utils";
 import { lookupCollection } from "@iconify/json";
 import { addCollection } from "@iconify/react";
+
 export default function Projects({
   projects,
   categories,
@@ -35,7 +36,6 @@ export default function Projects({
     <Layout
       title="Projects"
       description="Projects I have made in my own time or as part of my degree"
-      fullWidth
     >
       <h1 className="text-5xl font-semibold text-center text-radix-slate12">
         Projects

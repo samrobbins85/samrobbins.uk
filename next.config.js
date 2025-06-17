@@ -11,6 +11,10 @@ module.exports = {
   eslint: {
     dirs: ["pages", "components"],
   },
+  experimental: {
+    workerThreads: false,
+    cpus: 1,
+  },
   async redirects() {
     return [
       {

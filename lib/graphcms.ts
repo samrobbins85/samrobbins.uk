@@ -1,51 +1,51 @@
 import { GraphQLClient } from "graphql-request";
 import { getSdk } from "./graphcms.generated";
+import { limit } from "./throttle";
 const client = new GraphQLClient(process.env.GRAPHCMS_URL, {
   headers: { Authorization: `Bearer ${process.env.GRAPHCMS_PROD}` },
 });
 const sdk = getSdk(client);
 
 export async function getAllPortfoliosWithSlug() {
-  const data = await sdk.getAllPortfoliosWithSlug();
-  return data.portfolios;
+  return limit(() =>
+    sdk.getAllPortfoliosWithSlug().then((res) => res.portfolios)
+  );
 }
 
 export async function getAllSnippetsWithSlug() {
-  const data = await sdk.getAllSnippetsWithSlug();
-  return data.snippets;
+  return limit(() => sdk.getAllSnippetsWithSlug().then((res) => res.snippets));
 }
 
 export async function getPortfolios() {
-  const data = await sdk.getPortfolios();
-  return data.portfolios;
+  return limit(() => sdk.getPortfolios().then((res) => res.portfolios));
 }
 
 export async function getSnippets() {
-  const data = await sdk.getSnippets();
-  return data.snippets;
+  return limit(() => sdk.getSnippets().then((res) => res.snippets));
 }
 
 export async function getPortfolioCategories() {
-  const data = await sdk.getPortfolioCategories();
-  return data.__type.enumValues;
+  return limit(() =>
+    sdk.getPortfolioCategories().then((res) => res.__type.enumValues)
+  );
 }
 
 export async function getSnippetLanguages() {
-  const data = await sdk.getSnippetLanguages();
-  return data.__type.enumValues;
+  return limit(() =>
+    sdk.getSnippetLanguages().then((res) => res.__type.enumValues)
+  );
 }
 
 export async function getTechnologyCategories() {
-  const data = await sdk.getTechnologyCategories();
-  return data.__type.enumValues;
+  return limit(() =>
+    sdk.getTechnologyCategories().then((res) => res.__type.enumValues)
+  );
 }
 
-export async function getPortfolio(slug) {
-  const data = await sdk.getPortfolio({ slug });
-  return data.portfolio;
+export async function getPortfolio(slug: string) {
+  return limit(() => sdk.getPortfolio({ slug }).then((res) => res.portfolio));
 }
 
-export async function getSnippet(slug) {
-  const data = await sdk.getSnippet({ slug });
-  return data.snippet;
+export async function getSnippet(slug: string) {
+  return limit(() => sdk.getSnippet({ slug }).then((res) => res.snippet));
 }

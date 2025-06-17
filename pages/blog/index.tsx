@@ -16,7 +16,7 @@ export default function Blog({
         {blogs.map((item) => (
           <article className="py-4" key={item.title}>
             <Link href={`/blog/${item.slug}`}>
-              <h2 className="font-semibold text-xl sm:text-2xl text-radix-cyan11">
+              <h2 className="font-semibold text-xl sm:text-2xl text-radix-cyan11 hover:underline">
                 {item.title}
               </h2>
             </Link>

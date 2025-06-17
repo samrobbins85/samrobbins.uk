@@ -7,8 +7,8 @@ import { MyTable, MyPre } from "@/components/mdx";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import "katex/dist/katex.css";
-import remarkUnwrapImages from "remark-unwrap-images";
 import { InferGetStaticPropsType } from "next";
+import rehypeUnwrapImages from "rehype-unwrap-images";
 
 const components = {
   table: MyTable,
@@ -39,8 +39,8 @@ export async function getStaticProps({ params }) {
   const dato = await getBlog(params.slug);
   const content = await serialize(dato.markdown, {
     mdxOptions: {
-      remarkPlugins: [remarkMath, remarkUnwrapImages],
-      rehypePlugins: [rehypeKatex, rehypePrism],
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [rehypeKatex, rehypePrism, rehypeUnwrapImages],
     },
   });
   const date = new Date(Date.parse(dato.date)).toLocaleString("en-gb", {
