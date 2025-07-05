@@ -10,9 +10,12 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.3.0",
+    "@headlessui/react": "^2.2.4",
+    "@heroicons/react": "^2.2.0",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/si": "^1.2.3",
     "@iconify-json/simple-icons": "^1.2.38",
+    "@primer/octicons-react": "^19.15.3",
     "@tailwindcss/vite": "^4.1.10",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",

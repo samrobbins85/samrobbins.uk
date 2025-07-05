@@ -4,8 +4,10 @@ import SocialLinks from "../components/home/SocialLinks.astro";
 import Layout from "../layouts/Layout.astro";
 import Job from "../components/home/Job.astro";
 import Writing from "../components/home/Writing.astro";
+import { Icon } from "astro-icon/components";
 const jobs = await getCollection("jobs");
 const writing = await getCollection("writing");
+const projects = await getCollection("projects");
 ---
 
 <Layout>
@@ -69,22 +71,39 @@ const writing = await getCollection("writing");
         }
       </div>
     </section>
-    <!-- <section>
-      <h2 class="text-3xl font-semibold py-6">Timeline</h2>
-      <ul class="px-1">
+    <section>
+      <h2 class="text-3xl font-semibold py-6">Projects</h2>
+      <div class="grid sm:grid-cols-2 gap-x-4">
         {
-          about.timeline.map((item) => (
-            <TimeLineItem
-              category={item.category}
-              link={item.link}
-              title={item.title}
-              date={item.date}
-              description={item.description}
-              key={item.description}
-            />
+          projects.slice(0, 6).map((x) => (
+            <div class="flex gap-x-6 px-6 py-4 items-start">
+              <div class="h-16 w-16 min-w-16 flex justify-center items-center">
+                <Icon
+                  name={x.data.icon}
+                  class="h-8 w-8 text-radix-slate9 grayscale"
+                />
+              </div>
+              <div class="grid content-baseline">
+                <a
+                  href={`/projects/${x.data.slug}`}
+                  class="hover:underline text-radix-cyan11 font-semibold"
+                >
+                  {x.data.title}
+                </a>
+                <span class="text-radix-slate11">{x.data.description}</span>
+              </div>
+            </div>
           ))
         }
-      </ul>
-    </section>  -->
+      </div>
+      <div class="flex justify-center">
+        <a
+          href="/projects"
+          class="border rounded-lg px-4 py-2 hover:bg-radix-slate3 slate-border-int"
+        >
+          View all projects
+        </a>
+      </div>
+    </section>
   </main>
 </Layout>

@@ -1,4 +1,4 @@
-import { defineCollection, z } from "astro:content";
+import { defineCollection, reference, z } from "astro:content";
 
 import { glob } from "astro/loaders";
 
@@ -25,4 +25,37 @@ const writing = defineCollection({
     }),
 });
 
-export const collections = { jobs, writing };
+const technologies = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/data/technologies" }),
+  schema: z.object({
+    name: z.string(),
+    link: z.string(),
+    category: z.enum([
+      "APIs",
+      "CMS",
+      "Frameworks",
+      "Hardware",
+      "Infrastructure",
+      "Languages",
+      "Libraries",
+      "Styling",
+    ]),
+  }),
+});
+
+const projects = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/data/projects" }),
+  schema: z.object({
+    title: z.string(),
+    slug: z.string(),
+    description: z.string(),
+    date: z.date(),
+    icon: z.string(),
+    website: z.string().optional(),
+    github: z.string().optional(),
+    npm: z.string().optional(),
+    technologies: reference("technologies").array(),
+  }),
+});
+
+export const collections = { jobs, writing, projects, technologies };
