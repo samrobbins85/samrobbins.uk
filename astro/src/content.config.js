@@ -26,7 +26,7 @@ const writing = defineCollection({
 });
 
 const technologies = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/data/technologies" }),
+  loader: glob({ pattern: "**/*.yaml", base: "./src/data/technologies" }),
   schema: z.object({
     name: z.string(),
     link: z.string(),

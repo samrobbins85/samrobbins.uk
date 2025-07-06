@@ -1,0 +1,33 @@
+---
+import { getCollection, getEntries, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects.map((project) => {
+    const technologies = getEntries(project.data.technologies);
+    return {
+      params: { project: project.data.slug },
+      props: {
+        project: { ...project, data: { ...project.data, ...technologies } },
+      },
+    };
+  });
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<Layout>
+  <h1 class="text-5xl sm:text-6xl text-center font-bold pt-2">
+    {project.data.title}
+  </h1>
+  <h2 class="text-center text-radix-slate11 text-lg pt-6">
+    {project.data.description}
+  </h2>
+  <div
+    class="prose dark:prose-invert max-w-85ch mx-auto mt-8 prose-code:before:hidden prose-code:after:hidden prose-code:font-normal prose-code:bg-radix-slate3 prose-code:px-1 py-px"
+  >
+    <Content />
+  </div>
+</Layout>

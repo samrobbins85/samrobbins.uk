@@ -8,6 +8,8 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./lib/snippet.js",
+    "./src/**/*.{js,ts,jsx,tsx,astro}",
+    "./src/pages/**/*.{js,ts,jsx,tsx,astro}",
   ],
   theme: {
     extend: {
