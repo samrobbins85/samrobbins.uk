@@ -27,12 +27,14 @@
     "alpinejs": "^3.14.9",
     "astro": "^5.9.4",
     "astro-icon": "^1.1.5",
+    "lodash": "^4.17.21",
     "radix-colors-for-tailwind": "^2.0.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "tailwindcss": "^4.1.10"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.16"
+    "@tailwindcss/typography": "^0.5.16",
+    "@types/lodash": "^4.17.20"
   }
 }

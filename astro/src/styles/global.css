@@ -3,7 +3,6 @@
 @theme inline {
   --font-sans: var(--font-inter);
 }
-@plugin "@tailwindcss/typography";
 
 @config "../../tailwind.config.js";
 
@@ -20,4 +19,8 @@ html.dark .astro-code span {
 .astro-code,
 .astro-code span {
   background-color: #f0f0f3 !important;
+}
+
+:root {
+  --radix-slate3: #f1f3f5;
 }

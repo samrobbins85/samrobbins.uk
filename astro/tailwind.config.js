@@ -47,9 +47,41 @@ module.exports = {
       height: {
         18: "4.5rem",
       },
+      typography: {
+        DEFAULT: {
+          css: {
+            code: {
+              "&::before": {
+                display: "none",
+              },
+              "&::after": {
+                display: "none",
+              },
+              fontWeight: "400",
+              backgroundColor: "var(--slate3)",
+              paddingLeft: "0.25rem",
+              paddingRight: "0.25rem",
+              borderRadius: "0.25rem",
+            },
+            a: {
+              color: "var(--slate11)",
+              borderBottom: "1px dashed",
+              borderBottomColor: "var(--slate11)",
+              fontWeight: "500",
+              transition: "all 300ms ease 0s",
+              textDecoration: "none",
+              "&:hover": {
+                backgroundColor: "var(--sky3)",
+              },
+            },
+          },
+        },
+      },
     },
   },
   plugins: [
+    require("@tailwindcss/typography"), // Add this line
+
     require("radix-colors-for-tailwind")({
       colors: ["cyan", "sky", "blue", "purple", "slate", "amber"],
     }),
