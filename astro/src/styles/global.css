@@ -24,3 +24,7 @@ html.dark .astro-code span {
 :root {
   --radix-slate3: #f1f3f5;
 }
+
+[x-cloak] {
+  display: none !important;
+}

@@ -7,11 +7,11 @@ import { Icon } from "astro-icon/components";
     @click="toggle()"
     class="p-2 hover:bg-radix-slate4 rounded-lg focus:outline-solid focus:outline-radix-sky8 focus:outline-0.5"
   >
-    <div x-show="theme === 'dark'" class="flex items-center gap-2">
+    <div x-cloak x-show="theme === 'dark'" class="flex items-center gap-2">
       <span class="sr-only">Dark theme</span>
       <Icon class="size-6 text-radix-slate11" name="heroicons:moon" />
     </div>
-    <div x-show="theme === 'light'" class="flex items-center gap-2">
+    <div x-cloak x-show="theme === 'light'" class="flex items-center gap-2">
       <span class="sr-only">Light theme</span>
       <Icon class="size-6 text-radix-amber10" name="heroicons:sun" />
     </div>
