@@ -22,7 +22,6 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const technologies = project.data.technologies.map((tech) => tech?.data);
 const groupedTechnologies = _.groupBy(technologies, "category");
-console.log(groupedTechnologies);
 
 const { Content } = await render(project);
 ---
