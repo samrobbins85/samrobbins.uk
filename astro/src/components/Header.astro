@@ -1,0 +1,94 @@
+---
+import { Icon } from "astro-icon/components";
+import ThemeSwitcher from "../components/ThemeSwitcher.astro";
+
+const items = [
+  { name: "Projects", href: "/projects", icon: "heroicons:rectangle-stack" },
+  { name: "Blog", href: "/blog", icon: "heroicons:document-text" },
+  { name: "Essays", href: "/essays", icon: "heroicons:academic-cap" },
+  { name: "Snippets", href: "/snippets", icon: "heroicons:scissors" },
+  { name: "Pull Requests", href: "/prs", icon: "octicon:git-pull-request-24" },
+];
+---
+
+<div class="relative z-10" x-data="{open: false}">
+  <div class="border-b-2 border-radix-slate6 h-18 md:grid md:grid-cols-12">
+    <div
+      class="flex justify-between items-center md:justify-center md:space-x-10 md:col-start-2 md:col-end-12 h-full"
+    >
+      <a
+        href="/"
+        class="ml-4 md:hidden -my-2 focus-visible:outline-solid outline-radix-sky8 outline-0.5 rounded-md p-2"
+      >
+        <span class="sr-only">Home</span>
+        <Icon name="heroicons:home" class="h-8 w-8 text-radix-slate11" />
+      </a>
+      <div class="-my-2 md:hidden px-4">
+        <button
+          x-on:click="open=true"
+          class="rounded-md p-2 inline-flex items-center justify-center hover:bg-radix-slate4 focus:outline-solid focus:outline-radix-sky8 focus:outline-0.5"
+        >
+          <span class="sr-only">Open menu</span>
+          <Icon name="heroicons:bars-3" class="h-6 w-6 text-radix-slate11" />
+        </button>
+      </div>
+      <div class="hidden md:flex space-x-10">
+        <a
+          href="/"
+          class="text-base font-medium text-radix-slate11 hover:text-radix-slate12 outline-radix-sky8 focus-visible:outline-solid outline-0.5 outline-offset-1 rounded-md"
+        >
+          Home
+        </a>
+        {
+          items.map((item) => (
+            <a
+              href={item.href}
+              class="text-base font-medium text-radix-slate11 hover:text-radix-slate12 outline-radix-sky8 focus-visible:outline-solid outline-0.5 outline-offset-1 rounded-md"
+            >
+              {item.name}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+    <div
+      class="col-start-12 hidden md:grid justify-center content-center auto-rows-min"
+    >
+      <ThemeSwitcher />
+    </div>
+  </div>
+  <div
+    x-show="open"
+    class="absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
+  >
+    <div class="rounded-lg shadow-lg bg-radix-slate3 pt-5 pb-6 px-5">
+      <div class="flex items-center justify-between">
+        <ThemeSwitcher />
+        <button
+          class="rounded-md p-2 inline-flex items-center justify-center focus:outline-radix-sky8 focus:outline-solid text-radix-slate11 hover:bg-radix-slate4"
+          x-on:click="open = false"
+        >
+          <span class="sr-only"> Close Menu </span>
+          <Icon name="heroicons:x-mark" class="size-6" aria-hidden="true" />
+        </button>
+      </div>
+      <div class="grid gap-y-8 mt-4">
+        {
+          items.map((item) => (
+            <a
+              href={item.href}
+              class="-m-3 p-3 flex items-center rounded-md hover:bg-radix-slate5 text-radix-slate11 focus:bg-radix-slate5 focus:outline-none"
+            >
+              <Icon
+                name={item.icon}
+                class="flex-shrink-0 h-6 w-6 text-radix-sky11"
+                aria-hidden="true"
+              />
+              <span class="ml-3 text-base font-medium ">{item.name}</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>

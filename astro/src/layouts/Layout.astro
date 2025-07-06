@@ -1,5 +1,5 @@
 ---
-import Nav from "../components/nav";
+import Header from "../components/Header.astro";
 import "../styles/global.css";
 ---
 
@@ -12,8 +12,8 @@ import "../styles/global.css";
     <meta name="generator" content={Astro.generator} />
     <title>Astro Basics</title>
   </head>
-  <body>
-    <Nav client:load />
+  <body class="bg-radix-slate1 text-radix-slate12">
+    <Header />
     <slot />
   </body>
 </html>

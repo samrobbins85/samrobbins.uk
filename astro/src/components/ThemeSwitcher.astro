@@ -1,0 +1,49 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div x-data="themeManager()" x-init="init()">
+  <button
+    @click="toggle()"
+    class="p-2 hover:bg-radix-slate4 rounded-lg focus:outline-solid focus:outline-radix-sky8 focus:outline-0.5"
+  >
+    <div x-show="theme === 'dark'" class="flex items-center gap-2">
+      <span class="sr-only">Dark theme</span>
+      <Icon class="size-6 text-radix-slate11" name="heroicons:moon" />
+    </div>
+    <div x-show="theme === 'light'" class="flex items-center gap-2">
+      <span class="sr-only">Light theme</span>
+      <Icon class="size-6 text-radix-amber10" name="heroicons:sun" />
+    </div>
+  </button>
+</div>
+
+<script>
+  declare global {
+    interface Window {
+      themeManager: () => any;
+    }
+  }
+  window.themeManager = () => ({
+    theme: "light",
+    init() {
+      const saved = localStorage.getItem("theme");
+      if (saved === "light" || saved === "dark") {
+        this.theme = saved;
+      } else {
+        this.theme = window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      }
+      this.apply();
+    },
+    toggle() {
+      this.theme = this.theme === "dark" ? "light" : "dark";
+      localStorage.setItem("theme", this.theme);
+      this.apply();
+    },
+    apply() {
+      document.documentElement.classList.toggle("dark", this.theme === "dark");
+    },
+  });
+</script>
