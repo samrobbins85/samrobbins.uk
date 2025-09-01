@@ -1,6 +1,6 @@
 ---
 title: "Pokedex"
-slug: "Pokedex"
+slug: "pokedex"
 description: "A Pokedex made using PokeAPI"
 date: 2021-02-24
 icon: "ic:baseline-catching-pokemon"
