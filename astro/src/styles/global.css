@@ -1,3 +1,4 @@
+@import "https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css";
 @import "tailwindcss";
 
 @theme inline {

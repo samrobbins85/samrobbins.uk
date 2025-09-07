@@ -36,6 +36,8 @@
     "radix-colors-for-tailwind": "^2.0.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0",
     "tailwindcss": "^4.1.10"
   },
   "devDependencies": {
