@@ -1,0 +1,32 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const essays = await getCollection("essays");
+  const paths = essays.map((essay) => {
+    return {
+      params: { essay: essay.id },
+      props: {
+        essay,
+      },
+    };
+  });
+  return paths;
+}
+const { essay } = Astro.props;
+const { Content } = await render(essay);
+---
+
+<Layout title="Essays">
+  <div class="flex justify-center">
+    <h1 class="text-4xl text-center pt-2 font-serif pb-4 w-170">
+      {essay.data.title}
+    </h1>
+  </div>
+  <div
+    class="prose max-w-[85ch] mx-auto font-serif prose-img:mx-auto prose-figcaption:text-center prose-headings:italic"
+  >
+    <Content />
+  </div>
+</Layout>

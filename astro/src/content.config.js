@@ -67,4 +67,19 @@ const blogs = defineCollection({
   }),
 });
 
-export const collections = { jobs, writing, projects, technologies, blogs };
+const essays = defineCollection({
+  loader: glob({ pattern: "**/*.mdx", base: "./src/data/essays" }),
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),
+  }),
+});
+
+export const collections = {
+  jobs,
+  writing,
+  projects,
+  technologies,
+  blogs,
+  essays,
+};

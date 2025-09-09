@@ -7,6 +7,9 @@ import icon from "astro-icon";
 import alpinejs from "@astrojs/alpinejs";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import behead from "remark-behead";
+
+import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,13 +17,35 @@ export default defineConfig({
     plugins: [tailwindcss()],
   },
 
-  integrations: [react(), icon(), alpinejs()],
+  integrations: [react(), icon(), alpinejs(), mdx()],
   experimental: {
     fonts: [
       {
         provider: fontProviders.google(),
         name: "Inter",
         cssVariable: "--font-inter",
+      },
+      {
+        provider: "local",
+        name: "ETBook",
+        cssVariable: "--font-etBook",
+        variants: [
+          {
+            weight: "normal",
+            style: "normal",
+            src: ["./src/assets/fonts/et-book/normal.woff2"],
+          },
+          {
+            weight: "normal",
+            style: "italic",
+            src: ["./src/assets/fonts/et-book/italic.woff2"],
+          },
+          {
+            weight: "bold",
+            style: "normal",
+            src: ["./src/assets/fonts/et-book/bold.woff2"],
+          },
+        ],
       },
     ],
   },
@@ -31,7 +56,7 @@ export default defineConfig({
         dark: "github-dark",
       },
     },
-    remarkPlugins: [remarkMath],
+    remarkPlugins: [remarkMath, [behead, { depth: 1 }]],
     rehypePlugins: [rehypeKatex],
   },
 });

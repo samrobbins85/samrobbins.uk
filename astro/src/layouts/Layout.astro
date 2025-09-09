@@ -1,5 +1,6 @@
 ---
 import Header from "../components/Header.astro";
+import { Font } from "astro:assets";
 import "../styles/global.css";
 const { title } = Astro.props;
 ---
@@ -10,7 +11,7 @@ const { title } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
+    <Font cssVariable="--font-etBook" preload />
     <title>{title}</title>
   </head>
   <body class="bg-radix-slate1 text-radix-slate12">

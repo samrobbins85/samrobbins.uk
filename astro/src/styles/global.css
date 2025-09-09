@@ -3,6 +3,7 @@
 
 @theme inline {
   --font-sans: var(--font-inter);
+  --font-serif: var(--font-etBook);
 }
 
 @config "../../tailwind.config.js";
