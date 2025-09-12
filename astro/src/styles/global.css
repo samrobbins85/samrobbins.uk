@@ -30,3 +30,8 @@ html.dark .astro-code span {
 [x-cloak] {
   display: none !important;
 }
+
+.map-key {
+  background: linear-gradient(to right, #ffffff, #68246d);
+  height: 0.5rem;
+}
