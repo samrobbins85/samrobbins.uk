@@ -10,6 +10,7 @@ const jobs = defineCollection({
       company: z.string(),
       duration: z.string(),
       logo: image(),
+      sortdate: z.date(),
     }),
 });
 

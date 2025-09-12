@@ -9,12 +9,12 @@ const essays = await getCollection("essays");
   <h1 class="text-5xl font-semibold text-center text-radix-slate12 font-serif">
     Essays
   </h1>
-  <ul class="flex flex-col gap-y-4 pt-4">
+  <ul class="flex flex-col gap-y-6 pt-4">
     {
       essays
         .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
         .map((essay) => (
-          <li class="font-serif group border rounded-xl w-full p-4">
+          <li class="font-serif group w-full">
             <a href={`/essays/${essay.id}`} class="flex flex-col gap-y-1">
               <span class="group-hover:underline text-xl sm:text-2xl">
                 {essay.data.title}

@@ -36,38 +36,35 @@ const projects = await getCollection("projects");
       <h2 class="text-3xl font-semibold">Jobs</h2>
       <div class="grid sm:grid-cols-2 gap-4">
         {
-          jobs.map((job) => (
-            <Job
-              logo={job.data.logo}
-              title={job.data.role}
-              duration={job.data.duration}
-              company={job.data.company}
-            />
-          ))
+          jobs
+            .sort(
+              (a, b) => b.data.sortdate.getTime() - a.data.sortdate.getTime()
+            )
+            .map((job) => (
+              <Job
+                logo={job.data.logo}
+                title={job.data.role}
+                duration={job.data.duration}
+                company={job.data.company}
+              />
+            ))
         }
       </div>
-      <p class="flex justify-center italic">
-        For more details, check out my&nbsp;
-        <a
-          class="hover:underline text-radix-cyan11"
-          href="https://cv.samrobbins.uk"
-        >
-          CV
-        </a>
-      </p>
     </section>
     <section>
       <h2 class="text-3xl font-semibold py-6">Writing</h2>
       <div class="grid sm:grid-cols-2 gap-4">
         {
-          writing.map((article) => (
-            <Writing
-              logo={article.data.logo}
-              title={article.data.title}
-              publisher={article.data.publisher}
-              link={article.data.link}
-            />
-          ))
+          writing
+            .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+            .map((article) => (
+              <Writing
+                logo={article.data.logo}
+                title={article.data.title}
+                publisher={article.data.publisher}
+                link={article.data.link}
+              />
+            ))
         }
       </div>
     </section>
