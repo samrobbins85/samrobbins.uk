@@ -77,6 +77,16 @@ const essays = defineCollection({
   }),
 });
 
+const snippets = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/data/snippets" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string().optional(),
+    date: z.date(),
+    language: z.enum(["JavaScript", "Shell", "LaTeX", "Python"]),
+  }),
+});
+
 export const collections = {
   jobs,
   writing,
@@ -84,4 +94,5 @@ export const collections = {
   technologies,
   blogs,
   essays,
+  snippets,
 };

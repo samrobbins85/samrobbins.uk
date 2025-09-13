@@ -20,6 +20,7 @@ module.exports = {
         linkedin: "#0A66C2",
         polywork: "#543DE0",
         "nord6.1": "#f8f9fb",
+        nord0: "#2e3440",
         link: "#0077aa",
         darkLink: "#96d0ff",
       },
@@ -80,8 +81,7 @@ module.exports = {
     },
   },
   plugins: [
-    require("@tailwindcss/typography"), // Add this line
-
+    require("@tailwindcss/typography"),
     require("radix-colors-for-tailwind")({
       colors: ["cyan", "sky", "blue", "purple", "slate", "amber"],
     }),
