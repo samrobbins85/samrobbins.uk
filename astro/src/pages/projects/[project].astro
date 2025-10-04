@@ -26,7 +26,10 @@ const groupedTechnologies = _.groupBy(technologies, "category");
 const { Content } = await render(project);
 ---
 
-<Layout title={project.data.title}>
+<Layout
+  title={project.data.title}
+  ogImageUrl={`/og/projects/${project.data.slug}.png`}
+>
   <h1 class="text-5xl text-center font-bold pt-2">
     {project.data.title}
   </h1>

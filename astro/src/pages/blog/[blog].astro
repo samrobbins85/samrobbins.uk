@@ -18,7 +18,7 @@ const { blog } = Astro.props;
 const { Content } = await render(blog);
 ---
 
-<Layout title={blog.data.title} slug={blog.id}>
+<Layout title={blog.data.title} ogImageUrl={`/og/blog/${blog.id}`}>
   <h1 class="text-5xl text-center font-bold pt-2">
     {blog.data.title}
   </h1>

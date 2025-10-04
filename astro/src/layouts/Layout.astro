@@ -3,11 +3,7 @@ import Header from "../components/Header.astro";
 import { Font } from "astro:assets";
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
-const { title, slug } = Astro.props;
-let ogImageUrl;
-if (slug) {
-  ogImageUrl = `/og/${slug}.png`;
-}
+const { title, ogImageUrl } = Astro.props;
 ---
 
 <!doctype html>

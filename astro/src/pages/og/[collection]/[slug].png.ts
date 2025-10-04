@@ -7,16 +7,29 @@ import fs from "fs/promises";
 const fontData = await fs.readFile("./src/assets/fonts/Inter-Regular.ttf");
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blogs");
+  const collections = ["blogs", "projects", "snippets", "essays"] as const;
+  const paths = [];
 
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: { post },
-  }));
+  for (const collectionName of collections) {
+    const items = await getCollection(collectionName);
+
+    for (const item of items) {
+      paths.push({
+        params: {
+          collection: collectionName,
+          // @ts-ignore
+          slug: item.data?.slug ?? item.id,
+        },
+        props: { item, collectionName },
+      });
+    }
+  }
+
+  return paths;
 }
 
 export const GET: APIRoute = async ({ props }) => {
-  const { post } = props;
+  const { item } = props;
 
   const svg = await satori(
     {
@@ -44,7 +57,7 @@ export const GET: APIRoute = async ({ props }) => {
                 lineHeight: 1.2,
                 textAlign: "center",
               },
-              children: post.data.title,
+              children: item.data.title,
             },
           },
           {
@@ -76,7 +89,6 @@ export const GET: APIRoute = async ({ props }) => {
     }
   );
 
-  // Convert SVG to PNG
   const png = await sharp(Buffer.from(svg)).png().toBuffer();
 
   return new Response(png as any, {

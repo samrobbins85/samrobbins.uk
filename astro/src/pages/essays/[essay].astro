@@ -18,7 +18,7 @@ const { essay } = Astro.props;
 const { Content } = await render(essay);
 ---
 
-<Layout title={essay.data.title}>
+<Layout title={essay.data.title} ogImageUrl={`/og/essays/${essay.id}.png`}>
   <div class="flex justify-center">
     <h1 class="text-4xl text-center pt-2 font-serif pb-4 w-170">
       {essay.data.title}
