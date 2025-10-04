@@ -14,7 +14,15 @@ const { title, ogImageUrl } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <Font cssVariable="--font-etBook" preload />
     <title>{title ? `${title} | Sam Robbins` : "Sam Robbins"}</title>
-    {ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+    {
+      ogImageUrl && (
+        <meta
+          property="og:image"
+          content={`https://${import.meta.env.VERCEL_URL}${ogImageUrl}`}
+        />
+      )
+    }
+    <link rel="sitemap" href="/sitemap-index.xml" />
     <ClientRouter />
   </head><body class="bg-radix-slate1 text-radix-slate12">
     <Header />

@@ -11,13 +11,16 @@ import behead from "remark-behead";
 
 import mdx from "@astrojs/mdx";
 
+import sitemap from "@astrojs/sitemap";
+
 // https://astro.build/config
 export default defineConfig({
+  site: `https://samrobbins.uk`,
   vite: {
     plugins: [tailwindcss()],
   },
 
-  integrations: [react(), icon(), alpinejs(), mdx()],
+  integrations: [react(), icon(), alpinejs(), mdx(), sitemap()],
   experimental: {
     fonts: [
       {
