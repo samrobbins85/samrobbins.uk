@@ -11,6 +11,23 @@ export async function getStaticPaths() {
   const paths = [];
 
   for (const collectionName of collections) {
+    paths.push({
+      params: {
+        collection: collectionName,
+        slug: "index",
+      },
+      props: {
+        item: {
+          data: {
+            title:
+              collectionName.charAt(0).toUpperCase() + collectionName.slice(1),
+          },
+        },
+      },
+    });
+  }
+
+  for (const collectionName of collections) {
     const items = await getCollection(collectionName);
 
     for (const item of items) {

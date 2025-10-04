@@ -5,7 +5,7 @@ import Layout from "../../layouts/Layout.astro";
 const blogs = await getCollection("blogs");
 ---
 
-<Layout title="Blog">
+<Layout title="Blog" ogImageUrl={`/og/blog/index.png`}>
   <h1 class="text-5xl font-semibold text-center text-radix-slate12">Blog</h1>
   <div class="grid">
     {

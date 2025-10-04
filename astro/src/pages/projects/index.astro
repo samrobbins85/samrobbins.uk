@@ -6,7 +6,7 @@ import { Icon } from "astro-icon/components";
 const projects = await getCollection("projects");
 ---
 
-<Layout title="Projects">
+<Layout title="Projects" ogImageUrl={`/og/projects/index.png`}>
   <h1 class="text-5xl font-semibold text-center text-radix-slate12">
     Projects
   </h1>
