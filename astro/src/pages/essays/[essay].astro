@@ -18,7 +18,7 @@ const { essay } = Astro.props;
 const { Content } = await render(essay);
 ---
 
-<Layout title="Essays">
+<Layout title={essay.data.title}>
   <div class="flex justify-center">
     <h1 class="text-4xl text-center pt-2 font-serif pb-4 w-170">
       {essay.data.title}
