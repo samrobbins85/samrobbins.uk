@@ -1,0 +1,47 @@
+---
+import { Icon } from "astro-icon/components";
+
+const links = [
+  {
+    name: "GitHub",
+    icon: "simple-icons:github",
+    link: "https://github.com/samrobbins85",
+    className: "hover:text-radix-slate12 focus:text-radix-slate12",
+    modifier: "w-6",
+  },
+  {
+    name: "npm",
+    icon: "npm",
+    link: "https://www.npmjs.com/~samrobbins",
+    className: "hover:text-npm focus:text-npm",
+  },
+  {
+    name: "LinkedIn",
+    icon: "linkedin",
+    link: "https://www.linkedin.com/in/sam-robbins-gb/",
+    className: "hover:text-linkedin focus:text-linkedin",
+  },
+];
+---
+
+<div class="flex flex-wrap gap-x-4 gap-y-2 py-2 justify-center">
+  {
+    links.map((link) => (
+      <a
+        href={link.link}
+        class={`text-radix-slate11 ${link.className}`}
+        aria-label={link.name}
+      >
+        <Icon
+          name={link.icon}
+          class={`h-6 w-full ${" " + link.modifier || ""}`}
+        />
+        {/* <link.icon
+          aria-hidden="true"
+          size={24}
+          className={`h-6${" " + link.modifier || ""}`}
+        /> */}
+      </a>
+    ))
+  }
+</div>

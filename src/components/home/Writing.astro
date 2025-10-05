@@ -1,0 +1,19 @@
+---
+import { Image } from "astro:assets";
+
+const { logo, publisher, link, title } = Astro.props;
+---
+
+<div class="flex gap-x-6 px-6 py-4 items-start">
+  <div class="h-16 w-16 min-w-16 flex justify-center">
+    <Image src={logo} alt={publisher + " logo"} class="object-contain" />
+  </div>
+  <div class="grid content-baseline">
+    <a class="hover:underline text-radix-cyan11 font-semibold" href={link}>
+      {title}
+    </a>
+    <span class="text-radix-slate11">
+      {publisher}
+    </span>
+  </div>
+</div>

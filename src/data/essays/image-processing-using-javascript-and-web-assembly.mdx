@@ -1,0 +1,945 @@
+---
+title: "Image Processing using JavaScript and Web Assembly"
+date: 2021-04-28
+description: "This study evaluates the performance benefits of using Web Assembly over JavaScript for browser-based image processing tasks by implementing and benchmarking algorithms such as JPEG compression, Gaussian blur, brightness, and contrast. Results show that Web Assembly significantly outperforms JavaScript for complex computations—achieving up to 8× speed improvements and reduced memory usage—though native applications like ImageMagick remain superior, highlighting Web Assembly’s strengths and limitations in modern web development."
+---
+
+import BarChart from '../../components/mdx/BarChart'
+import BarMulti from '../../components/mdx/MultiBarChart'
+import LineChart from '../../components/mdx/LineChart'
+import PieChart from '../../components/mdx/PieChart'
+
+# Introduction 
+
+Image processing is a widely used technique for a range of problems. In
+most modern cameras there will be some aspect of image processing at the
+time of capture, whether it is enhancements to the image or an image
+codec, such as JPEG. After capture there is often additional image
+Sophisticated image processing techniques don’t just have benefit for
+the sharing of photos, but are also used medically, such as for
+processing CT images [^zhang2017applications].
+
+The performance of image processing was greatly improved with the
+introduction of Digital Signal Processors (DSP), these are specialized
+chips for performing signal processing tasks, such as the discrete
+cosine transform. In mobile devices these are now often integrated into
+the System on a Chip (SOC) [^angoletta2008digital], however with the
+increase in computational performance since DSPs were introduced, these
+algorithms can also be run on the main processor.
+
+Traditionally image processing has been done in applications like Adobe
+Photoshop, however as the amount of time people spend in browsers is
+increasing web based photo editors are becoming more common. In a study
+by Forrester Consulting, workers are spending 1/3 of the work day on
+average in a web browser, so it is an area many companies are targeting
+to launch new products [^cloud_worker].
+
+In 1995 JavaScript was introduced as a method for introducing
+interactivity to web applications, since then there were some
+improvements made for programmers who wanted to perform computationally
+intensive tasks with their website, such as Web Workers, introduced in
+2009 [^hickson]. However, one of the biggest steps forward is the
+introduction of Web Assembly in 2017, allowing for assembly code to be
+executed by web browsers [^haas2017bringing].
+
+Web Assembly is a compilation target for languages that support it,
+meaning that you take the code in the language of your choice and
+compile it into a `.wasm` file. This file can then be called using
+JavaScript to make it behave like a standard JavaScript library.
+
+Using Web Assembly over JavaScript proposes advantages such as being
+able to use your existing codebase, rather than having to translate it
+into JavaScript. There are also additional benefits depending on what
+language is chosen, such as static types, which can allow for easier
+debugging. JavaScript offers this through TypeScript, but as it is an
+additional feature, it isn’t as prevalent as a language that offers it
+natively.
+
+When it comes to producing a web application, the computation can be run
+on either the client (web browser) or the server, each coming with
+advantages and disadvantages. Running code on the server allows for the
+site to be performant on low power devices such as mobile phones,
+however by running code on the client it isn’t required to send data
+between the client and server on every interaction. This allows the site
+to continue being ran during times of intermittent connection and
+reduces the latency of operations. Running code on the client also
+allows for the site to be turned into a progressive web app, which only
+need to be connected to the internet once for installation similarly to
+an app [^biorn2017progressive].
+
+## Research Question
+
+The Research question is to find in which cases Web Assembly offers a
+benefit over JavaScript, finding this out by implementing image
+processing algorithms using both mechanisms.
+
+## Objectives
+
+The basic aim is compare the performance of one complex algorithm
+between Web Assembly and JPEG, for a complex algorithm, it should not
+simply loop over the pixels of the image, and instead be performing more
+sophisticated techniques. The intermediate aim is to extend this to
+multiple complex algorithms. The advanced aim is to look into tweaks
+that can be used to improve performance, such as compile time
+optimizations for Web Assembly.
+
+# Related Work
+
+## Language options for Web Assembly
+
+Web Assembly is compatible with any language that compiles to assembly,
+meaning there is a large range of languages to choose from. However, as
+Web Assembly doesn’t currently have a garbage collector, it is most
+efficient to choose a language that doesn’t do garbage collection, such
+as C [^haas2017bringing]. Garbage collection is the process of
+reclaiming memory that is no longer in use by the program, this helps to
+reduce the memory impact of a program. Alongside C, Rust is another
+language that doesn’t have garbage collection and advertises itself as
+good to use for Web Assembly.
+
+One advantage of Rust is that it has a large ecosystem of packages to
+help with the production of Web Assembly code. One such library is
+wasm-bindgen which allows for binding functions and other features in
+Rust to the JavaScript produced, allowing for multiple functions to be
+included in one Web Assembly file [^wasmbindgen]. It also provides
+availability for using native browser functions, such as `window.alert`,
+within Rust functions. Another is wasm-pack which creates a JavaScript
+library containing the generated Web Assembly code, making it easier to
+integrate into a web application.
+
+## History of Rust
+
+The Rust language came from a project by an employee of the Mozilla
+foundation and was supported by Mozilla and their employees. Since then,
+the ownership has been transferred to the Rust foundation in order to
+become more run by the community [^rustfoundation]. The intention of
+Rust is to offer a new alternative to C++, a language that first
+appeared in 1985, and so over this time has developed a range of legacy
+issues caused by having to not cause large changes that would require
+existing code to be changed.
+
+## Important metrics
+
+There are a range of metrics that are important when evaluating the
+performance of web tools. Response time is one such metric, and measures
+the time it takes to receive feedback from an operation. This applies
+for both the time it takes for a page to load and when doing something
+on a webpage. Research by Nielson [^nielsen1994usability] discovered that:
+
+- 0.1 second is the limit for instantaneous feeling
+
+- 1.0 seconds is the limit for the user’s flow of thought to remain
+  uninterrupted
+
+- 10 seconds is the limit for keeping the user’s attention.
+
+While this paper was written many years ago, the results are still
+regarded as correct with current computer systems, with the author
+writing an update in 2014 that:
+
+> These guidelines have been the same for 46 years now, so they are also not likely to change with whatever implementation technology comes next. [^responsetimes]
+
+This is because the measurements were made based on human psychology,
+rather than with interaction of a specific computer, allowing the
+results to remain applicable through the years.
+
+Making these results actionable, Google introduced Core Web Vitals,
+which are metrics about how fast a page loads to determine how well it
+performs [^webvitals]. One such metric is Largest Contentful Paint,
+which measures the time taken for most of the page to be loaded in, and
+suggests that it should occur within 2.5 seconds to be classified as
+“Good”.
+
+## Web Assembly Image Processing in use
+
+Squoosh by Google Chrome is a tool to compress images and implements
+many of its codecs using Web Assembly. This approach was also adopted by
+Next.js for their image component to improve performance, reducing the
+installed size by 27.3 MB from a total installed size of 96.5 MB
+[^nextjs]. This did lead to a large increase in the lines of code in the
+project as they were previously using an external package for this,
+however, as the popularity of Web Assembly increases, the number of
+packages to do this will increase. One example of such a package is
+`photon` which provides abstractions on top of the `image` Rust library
+[^photon].
+
+## Performance of Web Assembly
+
+Alongside image processing, Web Assembly is also used for a range of
+other purposes. Figma is a tool for designers, and implemented Web
+Assembly to improve their load times 3$\times$ compared to their
+previous solution which translated assembly to JavaScript [^figmawasm].
+
+Another implementation of Web Assembly is in determining the quality of
+DNA sequencing data, as used by fastq.bio [^fastq]. In this
+implementation they achieved a $9\times$ performance improvement,
+managing to increase that to $21 \times$ with some additional
+optimizations such as using a single function call.
+
+However, when running code natively, Web Assembly may not be the best
+solution. A JavaScript bundler is a program which creates large files
+from the smaller JavaScript files needed for a web application; this is
+useful as better performance can be achieved by sending a few large
+files compared to lots of smaller files. The author of a native
+JavaScript bundler observed that there was a 10$\times$ speed
+improvement by running it natively, compared to using Web Assembly
+[^esbuild].
+
+This behaviour was also observed in [^jangda2019not], where peak
+slowdowns were observed of 2.5$\times$ in Google Chrome compared to the
+native code. These benchmarks are taken from SPEC CPU2006 and SPEC
+CPU2017. A sample of these results are shown in the below table
+
+| Benchmark | Field                   | Native time(s) | Google Chrome time(s) |
+| --------- | ----------------------- | -------------- | --------------------- |
+| bzip2     | Compression             | 370            | 864                   |
+| mcf       | Combinatorial           | 221            | 180                   |
+| milc      | Chromodynamics          | 375            | 369                   |
+| namd      | Molecular Dynamics      | 271            | 369                   |
+| gobmk     | Artificial Intelligence | 352            | 537                   |
+
+As one can see from these results, Native isn’t guaranteed to be faster
+than Web Assembly, however this is often the case.
+
+## Current Image Processing Techniques
+
+One of the most popular image processing libraries for JavaScript is
+Sharp with over 1,700,000 weekly downloads, this uses native code in the
+form of libvips and claims to be the fastest module for resizing. A
+slightly less popular library is jimp with over 1,400,000 weekly
+downloads, the difference with this library is that it is written
+entirely in JavaScript and so can be run in the browser. The difference
+between these and other libraries was measured on a task of resizing an
+image [^sharp]. These results are shown in the below table
+
+| Library     | Best ops/sec | Best speedup |
+| ----------- | ------------ | ------------ |
+| jimp        | 0.77         | 1.0          |
+| mapnik      | 3.39         | 4.4          |
+| gm          | 4.33         | 5.6          |
+| imagemagick | 4.39         | 5.7          |
+| sharp       | 25.60        | 33.2         |
+
+This shows native libraries being significantly faster than the solution
+in pure JavaScript, which means that even with the slowdown of Web
+Assembly compared to native code as discussed before, Web Assembly
+should still outperform JavaScript in this regard.
+
+## Image formats
+
+There are a range of image formats in use, and the encoding and decoding
+of images is a computationally intensive task. The Web Almanac studies
+over 7 million websites and found that 40.26% of images are of the jpg
+image format and 26.90% in png [^webalmanac]. JPEG is a high performance
+image codec with a study by Cloudinary showing JPEG to have an encoding
+speed of 49 MP/s and a decoding speed of 108 MP/s [^cloudinary]. JPEG
+has both lossless and lossy versions, and in a study of lossless
+compression of 382 images, these results are shown in the below table [^ukrit2011survey].
+
+| Algorithm     | Compression Speed (MB/s) | Compression Ratio |
+| ------------- | ------------------------ | ----------------- |
+| Lossless JPEG | 11.9                     | 3.04              |
+| JPEG-LS       | 19.6                     | 4.21              |
+| JPEG 2000     | 4.0                      | 3.79              |
+| PNG           | 3.6                      | 3.35              |
+
+As one can see from these results, the compression ratio is very
+comparable between the various implementations of JPEG and PNG, however
+the compression speed greatly differs, with some JPEG algorithms
+significantly outperforming PNG.
+
+# Solution
+
+## Platform
+
+Web Assembly can run in a wide variety of places, there are the
+different browsers, Chrome, Firefox and Safari, along with different
+platforms, web and mobile. Each of these will implement their processing
+of both JavaScript and Web Assembly differently, which makes choosing
+the platform an important topic. Google Chrome has a majority market
+share, making it a good choice as the results are most widely applicable
+[^webmarketshare].
+
+<PieChart
+  data={[
+    { x: "Chrome", y: 64 },
+    { x: "Safari", y: 19 },
+    { x: "Firefox", y: 4 },
+    { x: "Others", y: 19 },
+  ]}
+	height={300}
+	caption="Browser Market Share"
+/>
+
+While the browser itself is important, the JavaScript engine is what
+will impact the results. This is the computer program responsible for
+executing JavaScript and Web Assembly code. The JavaScript engine inside
+Google Chrome is called V8, and is open source, allowing for other
+projects to use it. One such project is Node.js which allows for running
+JavaScript from the command line. This has become incredibly popular for
+the construction of web backends, with over 78,000 stars on GitHub. The
+benefit of using this over a browser is that the metrics will still be
+transferable to browsers, and allows for reducing the number of external
+factors that impact the computation. An example of this is that a
+browser will manage the resources available to each of its tabs, meaning
+that having more tabs open could affect the result, whereas the
+resources of Node.js are managed by the operating system. This also
+makes it easier to collect metrics such as memory usage and timing and
+the process runs as a system process.
+
+## Use of existing libraries
+
+In order to speed up the development of areas whose performance I’m not
+measuring, existing image processing libraries are used to do some of
+the work. For example in decoding a provided image into the simple r,g,b
+values so that the encoder can then be run on them.
+
+For Rust these libraries are referred to as “crates” and for JavaScript
+these are provided as npm libraries. Rust is both a newer language, and
+less widely used than JavaScript, meaning that it has a smaller range of
+available libraries, so when it came to choosing a crate, there was only
+one major option, the `image` crate.
+
+With JavaScript there is more choice, allowing for choosing based on the
+desired features. Jimp is being used for this experiment as it has a
+wide range of features and is very popular.
+
+## Choice of algorithms
+
+There is a wide range of algorithms to choose from when it comes to
+image processing. The algorithms have been chosen to ensure they cover a
+wide range of performance characteristics. Some of the algorithms
+require a large amount of processing and are expected to take over a
+second, whereas others just manipulate each pixel in turn and so are
+expected to complete much faster. This is to provide a full picture of
+if there is a certain type of algorithm that benefits from one of the
+two approaches.
+
+When editing photos, the operation that tends to take the most time is
+exporting the images to JPEG, so the main algorithm chosen is the JPEG
+algorithm [^jpeg].
+
+## Implementation of JPEG
+
+Both implementation use prewitten code to decode an image into a long
+string of r,g,b,a values and the width and height of the image. The
+first step is the transformation of the image from the r,g,b colour
+space into the YCbCr colour space. Doing this is the simple task of
+calculating fractions based on the r,g and b values, so is not
+especially intensive.
+
+Next is downsampling; this isn’t required by the JPEG standard, but can
+be used to further reduce image size. This reduces the resolution of the
+Cb and Cr components. It is done on these components as brightness (Y)
+is much more noticeable to the human eye compared to the other
+components, meaning the resolution can be reduced without a noticeable
+decrease in quality. To do this, each $2\times 2$ pixel area is averaged
+to a single pixel. On the borders where it isn’t possible to get this
+area, the average is just calculated based on the available pixels.
+
+For the next part of the algorithm, each component is split into
+$8\times 8$ blocks. This exhibits the same problem as the previous step
+as at the edges a full $8\times 8$ block may not be possible. The
+implementation created solves this by replacing the pixels with black,
+however other implementations may use an average of the existing pixels
+to ensure there is less influence on the image.
+
+The next step, the discrete cosine transform, is the most intensive step
+of the whole algorithm. The simplest way to implement this is to
+multiply each $8\times 8$ matrix by another $8\times 8$ matrix. For each
+entry in the resulting matrix there will be $8$ multiplications. In this
+implementation the naive implementation of Matrix multiplication is
+used, giving $8^3 = 512$ multiplications in total per block. There is an
+opportunity to improve the number of multiplications required here using
+Strassen’s algorithm, which would use $8^{\log_2(7)}=343$
+multiplications [^strassen1969gaussian]. However, it has been found that
+this algorithm is only better than the naive method for large matrices,
+and so on an $8\times 8$ matrix, the naive algorithm has better
+performance [^huang2016strassen].
+
+The next step is quantization, this is a lossy operation to keep only
+the lower frequency data as the human eye struggles to distinguish the
+strength of high frequency brightness variation. In order to apply
+quantization, for each element in the matrix, it is divided by the value
+in the same position of a quantization matrix and rounded. JPEG has a
+variety of quantization matrices, allowing for the user to specify their
+desired quality, with the matrices having lower values for higher
+qualities. Implementing the quantization matrix will lead to many of the
+elements being zero, allowing for easier encoding.
+
+This encoding begins with run length encoding, intended for allowing for
+the encoding of runs of zeroes. This algorithm uses “zigzag encoding” in
+which the order in which the elements are processed is defined by a
+zigzag pattern, shown below.
+
+![Zigzag Pattern](https://www.datocms-assets.com/39153/1626275542-zigzag.png)
+
+This then forms a sequence of values, ideally with many zeros at the
+end. As the length is something that is already known, the encoding can
+stop when the rest of the sequence is just zeroes. The most common
+encoding to use for this is Huffman, however the specification does
+allow for using arithmetic coding.
+
+### Writing to the file
+
+The remainder of the algorithm involves correctly writing the data to a
+file. For this the source code for the JPEG encoders in the libraries
+discussed previously is being used, as this work isn’t computationally
+intensive, but requires a lot of detail in order to ensure it is done
+correctly.
+
+## Library provided functions
+
+As both libraries provide algorithms for Gaussian Blur, Brightness and
+Contrast, they have been used for the testing, rather than writing the
+algorithms again.
+
+### Gaussian Blur
+
+Gaussian blur has a wide variety of applications, but is particularly
+useful for image denoising. The blurring effect helps to reduce noise
+artefacts caused by low light, and this is particularly useful in low
+end cameras such as mobile phones due to their small sensor size leading
+to poor performance in low light.
+
+For the Gaussian Blur implementation, the built-in implementations
+available in jimp and the image crate have been used. These behave in a
+very similar way and so are suitable for comparison, and the same values
+are used for both implementation.
+
+Below is an image before and after a Gaussian blur, for this comparison,
+the Gaussian blur has been done with a large sigma, resulting in a large
+blur to make it clear what the process is doing, however in denoising,
+this value will be much lower.
+
+![Before Blur](https://www.datocms-assets.com/39153/1626275572-noblur.png "Before Blur")
+
+![After Blur](https://www.datocms-assets.com/39153/1626275609-blur.png "After Blur")
+
+### Brightness
+
+The implementation of brightness has two sections, depending on if the
+provided value is positive or negative. If the value is negative then
+the desired operation is to reduce the values of all the pixels, and so
+needing to multiply by a value less than one. So for a pixel value V and
+brightness value B, the new pixel value will be $V'$.
+
+$$
+V'=V\times(1+B)
+$$
+
+However, if the brightness value is greater than 1, then the new pixel
+value will be
+
+$$
+V'=(255-V)\times B
+$$
+
+### Contrast
+
+The exact implementation of contrast can vary, but the basic algorithm
+follows the following structure:
+
+The user provides a value C of the contrast they want implemented, from
+this F is calculated in the following manner:
+
+$$
+F=\frac{259(C+255)}{255(259-C)}
+$$
+
+Then for each channel (r, g or b) on each pixel, the new value V’ is
+calculated from the initial value V
+
+$$
+V'=F(V-128)+128
+$$
+
+This has the impact that if the pixel value is under 128, then the new
+value will be reduced, however if it is over 128, then it will be
+increased. This follows with the intuition of contrast in that the darks
+should be made darker and the lights lighter.
+
+## Web Assembly optimizations
+
+JavaScript comes with no options for optimizing performance, as it is
+run by the browser as JavaScript. However, as Rust is first compiled to
+assembly, it offers a range of ways to trade off between size and speed,
+and some methods that have the potential to improve both. Each of the
+following methods can be used at the same time to provide further
+improvements.
+
+1.  Link Time Optimization
+
+    This takes the intermediate representation of the code, allowing the
+    whole codebase to be optimized together, rather than optimizing each
+    file individually. Doing this can help to improve both the size and
+    performance of the code.
+
+2.  Rust compiler opt-level
+
+    This allows the user to specify how far they are willing to optimize
+    size at the detriment of performance, this has two options, `s` and
+    `z`, with z being the most optimized for size.
+
+3.  `wasm-opt`
+
+    This is a tool which allows for optimizing a `.wasm` file after it
+    has been created, to optimize for either speed or size. It provides
+    the following options:
+
+    - `-Os` : optimize for size
+
+    - `-Oz` : optimize aggressively for size
+
+    - `-O` : optimize for speed
+
+    - `-O3` : optimize aggressively for speed
+
+### Results
+
+The performance of the various options are to be evaluated in order to
+determine what should be used when collecting the results, as both
+JavaScript and Web Assembly should be performing at the best they can be
+made. For this experiment, the Gaussian blur method has been used as it
+is computationally intensive.
+
+For the Web Assembly optimizations, the measurements are based on the
+Gaussian blur task. The first measurement to take is how long each
+process takes.
+
+<BarChart
+  data={[
+    { x: "No changes", y: 1031 },
+    { x: "LTO", y: 846 },
+    { x: "Opt-s", y: 2275 },
+    { x: "Opt-z", y: 3846 },
+    { x: "-Os", y: 1078 },
+    { x: "-Oz", y: 1087 },
+    { x: "-O", y: 1154 },
+    { x: "-O3", y: 1028 },
+  ]}
+  width={1000}
+  ylabel="Time(ms)"
+  caption="Processing time of Web Assembly optimizations"
+/>
+
+These measurements need to be contrasted with the file sizes they
+produce to fully evaluate the benefit of each optimization, as if for
+the small increase in performance there was a large cost in file size it
+would not be feasible.
+
+<BarChart
+  data={[
+    { x: "No changes", y: 1100 },
+    { x: "LTO", y: 902 },
+    { x: "Opt-s", y: 954 },
+    { x: "Opt-z", y: 979 },
+    { x: "-Os", y: 981 },
+    { x: "-Oz", y: 981 },
+    { x: "-O", y: 981 },
+    { x: "-O3", y: 984 },
+  ]}
+  width={1000}
+  ylabel="Size(Kilobytes)"
+  caption="File size of Web Assembly optimizations"
+/>
+
+From the results, the file size isn’t greatly affected by the
+optimization method chosen, however choosing any does provide a
+reduction in comparison to not choosing any optimizations. However, when
+it comes to computation time, there is a large range of results, with
+only Link Time optimization providing an improvement over not making any
+changes, with the methods designed to provide a smaller file size taking
+considerably longer, despite not leading to a large difference in file
+size. Overall, compiling with Link Time Optimization seems to provide an
+overall better performing program, both when it comes to size and speed.
+
+## Testing
+
+For JPEG, as the intensive section is the multiplication of matrices,
+there aren’t properties of the image that lead to one taking longer than
+another. The exception to this is the overall size of the image as this
+determines the number of blocks that are created from the image. So for
+evaluation of the algorithms the size is the only factor to consider
+when choosing an image.
+
+The other algorithms similarly don’t change with anything other than the
+size of the image as they are going over each pixel of the image and
+performing manipulation on them, so the choice of image isn’t important
+for these either.
+
+The first evaluation is to determine the running time of the algorithm.
+The for JavaScript the testing method uses the built-in `console.time`
+method in JavaScript to time how long a function takes. In Rust the
+`web_sys` crate is used, which allows for the performing of the
+`console.time` method over commands in Rust, helping to gather more
+accurate measurements.This is measured just over the actual function
+that performs the algorithm, rather than the whole process, so get more
+accurate results about the algorithm itself.
+
+Memory usage is also an important metric, especially on mobile devices
+that might have small amounts of memory. This can be measured using the
+`/usr/bin/time` command on Linux devices, which measures both the time
+taken and memory usage of a command. This metric is less accurate than
+the timing evaluation already discussed as it measures the memory usage
+of the whole command, rather than just of the JPEG conversion. To try
+and counteract this difference, the code outside the JPEG conversion is
+kept as similar as possible to ensure it has the same memory
+consumption.
+
+In order to improve the accuracy of the calculations of the Web Assembly
+implementation, the `web_sys` crate has been used, which allows for
+running `console.time` inside Rust code.This displayed a discrepancy of
+around 100ms between the internal and external time, which is
+insignificant on some of the longer running programs, but can lead to
+significant discrepancy for the shorter running programs.
+
+A full profiler hasn’t been used here as there aren’t widely used
+JavaScript profilers that evaluate at the level of how long each
+function takes. Instead, they focus on things such as response time and
+CPU utilization of the overall program, which doesn’t deliver the
+results I’d look for.
+
+## Verification and Validation
+
+In order to verify the testing setup was only measuring the algorithm,
+an experiment was done to test if there were any constants involved in
+the implementation of brightness. To do this, a 100 MP photo was used,
+and scaled down to increments of 10 MP between 10 and 80 MP. If there
+was no constant, the expected result would be for the y-axis intercept
+to be zero, otherwise the intercept will show what the constant is.
+
+<LineChart
+	dataSet={[
+		{
+			name: "JavaScript",
+			fill: "#68246d",
+			stroke: "#cba8b1",
+			data: [
+				{ x: 10, y: 158 },
+				{ x: 20, y: 287 },
+				{ x: 30, y: 438 },
+				{ x: 40, y: 572 },
+				{ x: 50, y: 708 },
+				{ x: 60, y: 856 },
+				{ x: 70, y: 1077 },
+				{ x: 80, y: 1157 },
+			],
+		},
+		{
+			name: "Web Assembly",
+			fill: "#00aeef",
+			stroke: "#a5c8d0",
+			data: [
+				{ x: 10, y: 106 },
+				{ x: 20, y: 213 },
+				{ x: 30, y: 323 },
+				{ x: 40, y: 428 },
+				{ x: 50, y: 574 },
+				{ x: 60, y: 646 },
+				{ x: 70, y: 757 },
+				{ x: 80, y: 870 },
+			],
+		},
+	]}
+	ylabel="Time (ms)"
+	xlabel="Resolution (MP)"
+	caption="Relationship between time and resolution"
+/>
+
+Extrapolating the results found to a resolution of 0 megapixels, it can
+be seen that the y-axis intercept is very close to zero. This verifies
+that there isn’t a significant constant included, and so that the
+results are more accurate.
+
+To verify the results, they are compared against a basic conversion
+using imagemagick, this is a popular command line tool for converting
+between image formats. Due to this not having the overhead of either Web
+Assembly or JavaScript it is expected for this to be faster than both
+implementations, but it allows for getting a rough idea of how long the
+algorithm should take. As this command does both the decoding from one
+format and the encoding to another, it is required to also measure the
+implementations produced in the same way for verification.
+
+## Stages of the life cycle undertaken
+
+The development of this project was done using the Waterfall methodology
+[^royce1987managing]. The main components of this are shown below.
+
+![Waterfall process](https://www.datocms-assets.com/39153/1626275649-waterfall.png)
+
+Emphasis was particularly places on the system requirement and testing
+sections of this cycle, ensuring that appropriate algorithms were used
+and that testing was done to see if they followed the expected pattern
+or produced different results.
+
+# Results
+
+Testing was done on a 24MP, 11 Megabyte, PNG format photo of a deer. The
+computation was done on an Intel i5 6600 processor with 16 GB of RAM on
+Node.js version 14.6.0.
+
+The below chart shows the time comparison of the JavaScript and Web
+Assembly implementations.
+
+<BarMulti
+  data={[
+    {
+      title: "JavaScript",
+      data: [
+        { x: "JPEG", y: 2.48 },
+        { x: "Gaussian", y: 12 },
+      ],
+    },
+    {
+      title: "Web Assembly",
+      data: [
+        { x: "JPEG", y: 1.6 },
+        { x: "Gaussian", y: 1.14 },
+      ],
+    },
+  ]}
+	padding={80}
+	legendPos={150}
+	offset={60}
+  axisLabel="Time (seconds)"
+					
+/>
+
+<BarMulti
+  data={[
+    {
+      title: "JavaScript",
+      data: [
+        { x: "Brightness", y: 102 },
+        { x: "Contrast", y: 103 },
+      ],
+    },
+    {
+      title: "Web Assembly",
+      data: [
+        { x: "Brightness", y: 78 },
+        { x: "Contrast", y: 278 },
+      ],
+    },
+  ]}
+	padding={80}
+	legendPos={150}
+	offset={60}
+  axisLabel="Time (ms)"
+/>
+
+In addition to time taken, memory consumption was also measured for the
+JPEG encoding, including comparison to imagemagick, a command line
+conversion tool. This measurement was only applicable for JPEG encoding
+as in every process imagemagick will do image encoding to produce an
+output, so the measurement wouldn’t just be measuring the algorithm in
+question.
+
+<BarChart
+  data={[
+    { x: "JavaScript", y: 3.17 },
+    { x: "Web Assembly", y: 2.79 },
+    { x: "ImageMagick", y: 0.37 },
+  ]}
+  ylabel="Time(Seconds)"
+  caption="Time taken for the full process"
+/>
+
+<BarChart
+  data={[
+    { x: "JavaScript", y: 61.4 },
+    { x: "Web Assembly", y: 28.8 },
+    { x: "ImageMagick", y: 10.6 },
+  ]}
+  ylabel="Memory(megabytes)"
+  caption="Memory consumption of process"
+/>
+
+# Evaluation
+
+## Solution Strengths
+
+The Web Assembly solution offers significant improvement over JavaScript
+for complex algorithms, being $8.3 \times$ faster at performing the
+Gaussian blur task and $1.55 \times$ faster at performing JPEG encoding.
+For the Gaussian blur, with a processing time of 12 seconds for
+JavaScript, this takes it above the 10-second limit for keeping the
+user’s attention, as discussed in [^nielsen1994usability], giving Web
+Assembly a big advantage in making the application feel responsive.
+These improvements are roughly in line with the results found by
+fastq.bio in their implementation [^fastq].
+
+The Web Assembly implementation also has much lower memory consumption,
+which is important for low power devices such as mobile phones with low
+memory capacity. This is likely due to the increased control the
+language has for memory management, allowing the programmer to specify
+how much memory they want and when they don’t want it anymore. In
+contrast, JavaScript handles all the memory management itself, making
+assumptions about when memory can be freed.
+
+Rust has a big advantage in developer experience for having static
+types, meaning that the language server is capable of telling the
+developer what parameters a function takes, and what their types are.
+This is very useful for debugging as it may be the case that an
+incorrect type of variable has been passed to a function, in JavaScript
+this could either lead to unexpected behaviour, or cause an error
+further down the chain, whereas in Rust, this problem will be
+immediately highlighted to the user in their IDE. This also makes it
+easier to remember what functions do without looking at documentation as
+you can see what parameters they need and what type of data you will get
+out from it. JavaScript does offer the ability for static types through
+TypeScript, a superset of the language that includes types, however due
+to this being an addition to the language, not all packages provide it,
+so the benefit isn’t as large as with Rust.
+
+Being able to easily package up Web Assembly using a tool like
+`wasm-pack` helps to eliminate the complexity of learning a new language
+for some developers. This is because developers who create Web Assembly
+code can package it in a way that from the outside is indistinguishable
+from if it had been written in JavaScript. Other developers can then
+easily use this in their code without having to know anything about Web
+Assembly, and just enjoy the performance benefits it can provide.
+
+## Solution Limitations
+
+Both the JavaScript and Web Assembly options had significantly worse
+performance in comparison to the native code of imagemagick, with Web
+Assembly being $7.5 \times$ slower, which is in line with the results
+found in the related work section of this paper. There is still
+significant overhead to running code in websites, and the benefit of the
+flexibility has to outweigh it.
+
+While the benefits of static types have been discussed in the strengths
+section, this also comes with its downsides in that it makes code much
+more verbose when having to include types for everything, and requires
+additional thinking to ensure everything has the correct type.
+JavaScript also has a much wider range of built-in functions which came
+in useful when creating the algorithm, such as the `map` function which
+condensed the size of the matrix multiplication code.
+
+JavaScript also has the benefit of being able to write your entire
+codebase in one language, rather than having to separate out into a
+different language for some tasks. This approach has already gained
+popularity through the use of Node.js for a backend, allowing for the
+use of JavaScript there as well as in the frontend. It also reduces the
+complexity of the build step for the application, as it would be
+required to build each piece of Web Assembly, before finally bundling
+everything together to publish on the web. These disadvantages
+particularly take place in small tasks such as adjusting the brightness
+where all the effort of converting to Web Assembly saves 25ms.
+
+The results show that with Web Assembly, the contrast implementation is
+slower than both the JavaScript implementation and the Web Assembly
+implementation of brightness. This was surprising as both algorithms
+took the same time with JavaScript. On closer inspection of the source
+code of both libraries, while jimp (the JavaScript library) was using a
+contrast algorithm like described in the solution section, image (the
+Rust Crate), used a different algorithm for calculating contrast which
+was significantly less efficient.
+
+For the JavaScript implementation, the formula for the final $V'$ was
+
+$$
+V'=\frac{(C+1)\times (V-127)}{(1-C)}+127
+$$
+
+whereas in Rust it was implemented as
+
+$$
+V'=\bigg(\bigg(\bigg(\frac{V}{\max}-0.5)\times\bigg(\frac{100+C}{100}\bigg)^2\bigg)+0.5\bigg)\times \max
+$$
+
+Note here that the JavaScript takes in the decimal version of the
+contrast (e.g. 0.2), whereas Rust takes in a percentage (e.g. 20), so
+these functions will produce very different results for the same value
+of C.
+
+The Rust implementation has significantly more usage of both
+multiplication and division. Note that the `max` value is the maximum
+value a pixel’s colour can be, so 255 for standard images. Whilst it is
+possible that this contrast calculation provides a more desired effect,
+it also causes the decrease in performance found in the results.
+
+However, on observation of the images, the effect seems to be extremely
+similar, A contrast of 20% has been used, which produces a noticeable
+difference compared to the original image, but the two output images
+look extremely similar.
+
+![Original Image](https://www.datocms-assets.com/39153/1626275572-noblur.png "Original Image")
+
+![JavaScript Implementation](https://www.datocms-assets.com/39153/1626279048-jsprocessed.png "JavaScript Implementation")
+
+![Web Assembly Implementation](https://www.datocms-assets.com/39153/1626279020-wasmprocessed.png "Web Assembly Implementation")
+
+## Self appraisal
+
+The decision to use Rust for this project was a good choice, providing a
+range of tools that made the development process easier, such as
+`wasm-pack`. However, it may also have been a good experience using C or
+C++ due to their age in that they would have more algorithm examples and
+more complete libraries.
+
+The functions chosen provided the expected results, making them useful
+in proving the hypothesis, however it would have been good to be able to
+find an algorithm for which JavaScript was faster than Web Assembly.
+This may lie outside the realm of image processing algorithms, requiring
+a different approach entirely, or may have occurred when implementing
+the same algorithms in different ways, such as comparing iterative and
+recursive methods.
+
+# Conclusions
+
+In this paper, we have demonstrated Web Assembly offering considerable
+performance improvements over JavaScript, with it being up to $8\times$
+faster. However, we also demonstrated areas where Web Assembly is not
+suitable, such as when you have the option to run native code. We also
+evaluated what options to choose when compiling Web Assembly, finding
+that Link Time Optimization can provide an improvement both in
+performance and file size.
+
+## Further work
+
+One new development that could help with image processing on the web is
+WebGPU [^webgpu]. This is a standard that allows for access of the GPU
+by both JavaScript and Web Assembly. Due to the nature of image
+processing algorithms in performing parallel operations, such as in JPEG
+where much of the computation is done on the $8\times 8$ blocks, each of
+these can be parallelized. As GPUs are designed for such operations,
+often having many more cores than a CPU, this could lead to a large
+improvement in performance.
+
+This work could also be developed by evaluating methods outside of image
+processing. Looking at more basic algorithms like sorting and searching
+may help to reveal underlying reasons why Web Assembly is faster or
+expose cases where JavaScript is faster. It may also be interesting to
+use multiple languages for Web Assembly to see if this benefit is
+restricted to Rust, or if it applies to all languages.
+
+[^zhang2017applications]: H. Zhang, D. Zeng, H. Zhang, J. Wang, Z. Liang, and J. Ma, “Applications of nonlocal means algorithm in low-dose X-ray CT image processing and reconstruction: A review,” Medical physics, vol. 44, no. 3, pp. 1168–1185, 2017.
+[^angoletta2008digital]: M. E. Angoletta, “Digital signal processor fundamentals and system design,” 2008.
+[^cloud_worker]: Forrester, “Rethink Technology In The Age Of The Cloud Worker,” 2018.
+[^hickson]: I. Hickson, “Web Workers,” W3C, W3C Note, Apr. 2009.
+[^haas2017bringing]: A. Haas et al., “Bringing the web up to speed with WebAssembly,” in Proceedings of the 38th ACM SIGPLAN Conference on Programming Language Design and Implementation, 2017, pp. 185–200.
+[^biorn2017progressive]: A. Biørn-Hansen, T. A. Majchrzak, and T.-M. Grønli, “Progressive web apps: The possible web-native unifier for mobile development,” in International Conference on Web Information Systems and Technologies, 2017, vol. 2, pp. 344–351.
+[^wasmbindgen]: Rust and WebAssembly Working Group , “wasm-bindgen,” 2017. https://github.com/rustwasm/wasm-bindgen (accessed Apr. 07, 2021).
+[^rustfoundation]: A. Williams, “Hello World!,” Rust Foundation, 2021, [Online]. Available: https://foundation.rust-lang.org/posts/2021-02-08-hello-world/
+[^nielsen1994usability]: J. Nielsen, Usability engineering. Morgan Kaufmann, 1994.
+[^responsetimes]: Jakob Nielsen, “Response Times: The 3 Important Limits,” 2014. https://www.nngroup.com/articles/response-times-3-important-limits/ (accessed Apr. 29, 2021).
+[^webvitals]: Philip Walton, “Web Vitals,” 2020. https://web.dev/vitals/ (accessed Apr. 09, 2021).
+[^nextjs]: J. Haddad, “Remove sharp for wasm variant,” Feb. 2021. https://github.com/vercel/next.js/pull/22253
+[^photon]: S. Odwyer, “Photon,” 2019. https://github.com/silvia-odwyer/photon (accessed Mar. 26, 2021).
+[^figmawasm]: E. Wallace, WebAssembly cut Figma’s load time by 3x. 2017. Accessed: Oct. 28, 2020. (Online).
+[^fastq]: R. Aboukhalil, How We Used WebAssembly To Speed Up Our Web App By 20X (Case Study). 2019. Accessed: Nov. 27, 2020. (Online).
+[^esbuild]: “esbuild,” 2020. https://esbuild.github.io/getting-started (accessed Mar. 27, 2021)
+[^jangda2019not]: A. Jangda, B. Powers, E. D. Berger, and A. Guha, “Not so fast: analyzing the performance of webassembly vs. native code,” in 2019 USENIX Annual Technical Conference, 2019, pp. 107–120.
+[^sharp]: Lovell Fuller, “Sharp performance,” 2020. https://sharp.pixelplumbing.com/performance (accessed Mar. 28, 2021).
+[^webalmanac]: R. Levien and others, Web Almanac, 2020th ed. HTTP Archive, 2020.
+[^cloudinary]: Jon Sneyers, “How JPEG XL Compares to Other Image Codecs,” 2020. (accessed Apr. 01, 2021).
+[^ukrit2011survey]: M. F. Ukrit, A. Umamageswari, and G. Suresh, “A survey on lossless compression for medical images,” International Journal of Computer Applications, vol. 31, no. 8, pp. 47–50, 2011.
+[^webmarketshare]: Statcounter, “Browser Market Share Worldwide,” 2021. https://gs.statcounter.com/browser-market-share (accessed Apr. 09, 2021).
+[^jpeg]: INFORMATION TECHNOLOGY – DIGITAL COMPRESSION AND CODING OF CONTINUOUS-TONE STILL IMAGES – REQUIREMENTS AND GUIDELINES. The International Telegraph, 1993.
+[^strassen1969gaussian]: V. Strassen, “Gaussian elimination is not optimal,” Numerische mathematik, vol. 13, no. 4, pp. 354–356, 1969.
+[^huang2016strassen]: J. Huang, T. M. Smith, G. M. Henry, and R. A. Van De Geijn, “Strassen’s algorithm reloaded,” in SC’16: Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis, 2016, pp. 690–701.
+[^royce1987managing]: W. W. Royce, “Managing the development of large software systems: concepts and techniques,” in Proceedings of the 9th international conference on Software Engineering, 1987, pp. 328–338.
+[^webgpu]: GPU for the Web Community Group, “WebGPU,” W3C, Standard, 2021. [Online]. Available: https://gpuweb.github.io/gpuweb/

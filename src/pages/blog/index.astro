@@ -1,0 +1,38 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const blogs = await getCollection("blogs");
+---
+
+<Layout title="Blog" ogImageUrl={`/og/blog/index.png`}>
+  <h1 class="text-5xl font-semibold text-center text-radix-slate12">Blog</h1>
+  <div class="grid">
+    {
+      blogs
+        .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+        .map((item) => (
+          <article class="py-4">
+            <a href={`/blog/${item.id}`}>
+              <h2 class="font-semibold text-xl sm:text-2xl text-radix-cyan11 hover:underline">
+                {item.data.title}
+              </h2>
+            </a>
+            <div class="py-1">
+              <time
+                class="text-radix-slate11 text-sm uppercase"
+                date-time={item.data.date}
+              >
+                {new Date(item.data.date).toLocaleString("en-gb", {
+                  day: "numeric",
+                  month: "short",
+                  year: "numeric",
+                })}
+              </time>
+            </div>
+            <p class="sm:text-lg text-radix-slate11">{item.data.description}</p>
+          </article>
+        ))
+    }
+  </div>
+</Layout>

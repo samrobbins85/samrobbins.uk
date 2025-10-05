@@ -1,0 +1,28 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const blogs = await getCollection("blogs");
+  const paths = blogs.map((blog) => {
+    return {
+      params: { blog: blog.id },
+      props: {
+        blog,
+      },
+    };
+  });
+  return paths;
+}
+const { blog } = Astro.props;
+const { Content } = await render(blog);
+---
+
+<Layout title={blog.data.title} ogImageUrl={`/og/blog/${blog.id}`}>
+  <h1 class="text-5xl text-center font-bold pt-2">
+    {blog.data.title}
+  </h1>
+  <div class="prose dark:prose-invert max-w-85ch mx-auto mt-8">
+    <Content />
+  </div>
+</Layout>

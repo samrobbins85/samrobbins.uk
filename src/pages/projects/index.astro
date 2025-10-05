@@ -1,0 +1,46 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+
+const projects = await getCollection("projects");
+---
+
+<Layout title="Projects" ogImageUrl={`/og/projects/index.png`}>
+  <h1 class="text-5xl font-semibold text-center text-radix-slate12">
+    Projects
+  </h1>
+  <div class="mx-auto max-w-6xl py-4">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mx-auto gap-x-4 gap-y-4"
+    >
+      {
+        projects
+          .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+          .map((project) => (
+            <a
+              href={`/projects/${project.data.slug}`}
+              class="group focus:outline-none w-full"
+            >
+              <article class="px-2 py-2 rounded h-full border-2 group-focus:border-radix-slate7 border-transparent group-hover:bg-radix-slate2 flex items-center">
+                <div class="flex items-center gap-x-4">
+                  <div class="size-8 shrink-0">
+                    <Icon
+                      name={project.data.icon}
+                      class="size-8 text-radix-slate9 grayscale"
+                    />
+                  </div>
+                  <div class="flex flex-col">
+                    <h2 class="w-min-sm">{project.data.title}</h2>
+                    <span class="text-radix-slate11 text-sm">
+                      {project.data.description}
+                    </span>
+                  </div>
+                </div>
+              </article>
+            </a>
+          ))
+      }
+    </div>
+  </div>
+</Layout>

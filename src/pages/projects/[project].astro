@@ -1,0 +1,101 @@
+---
+import { getCollection, getEntries, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+import _ from "lodash";
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  const paths = await Promise.all(
+    projects.map(async (project) => {
+      const technologies = await getEntries(project.data.technologies);
+      return {
+        params: { project: project.data.slug },
+        props: {
+          project: { ...project, data: { ...project.data, technologies } },
+        },
+      };
+    })
+  );
+  return paths;
+}
+
+const { project } = Astro.props;
+const technologies = project.data.technologies.map((tech) => tech?.data);
+const groupedTechnologies = _.groupBy(technologies, "category");
+
+const { Content } = await render(project);
+---
+
+<Layout
+  title={project.data.title}
+  ogImageUrl={`/og/projects/${project.data.slug}.png`}
+>
+  <h1 class="text-5xl text-center font-bold pt-2">
+    {project.data.title}
+  </h1>
+  <h2 class="text-center text-radix-slate11 text-lg pt-6">
+    {project.data.description}
+  </h2>
+  <div class="flex justify-center pt-6 gap-x-12 flex-wrap gap-y-4 items-center">
+    {
+      project.data.website && (
+        <a
+          href={project.data.website}
+          class="text-radix-slate11 hover:text-radix-slate12 hover:bg-radix-slate4 p-2 rounded focus:outline-solid outline-radix-sky8 outline-0.5"
+        >
+          <Icon name="heroicons:globe-alt" class="size-6" />
+        </a>
+      )
+    }
+    {
+      project.data.github && (
+        <a
+          href={project.data.github}
+          class="text-radix-slate11 hover:text-radix-slate12 hover:bg-radix-slate4 p-2 rounded focus:outline-solid outline-radix-sky8 outline-0.5"
+        >
+          <Icon name="octicon:mark-github-24" class="size-6" />
+        </a>
+      )
+    }
+    {
+      project.data.npm && (
+        <a
+          href={project.data.npm}
+          class="text-radix-slate11 hover:text-radix-slate12 hover:bg-radix-slate4 p-2 rounded focus:outline-solid outline-radix-sky8 outline-0.5"
+        >
+          <Icon name="npm" class="h-6" />
+        </a>
+      )
+    }
+  </div>
+  <aside class="slate-bg slate-border max-w-prose mx-auto my-4 border">
+    <div class="flex flex-wrap px-4 gap-y-6 py-6 justify-center text-center">
+      {
+        Object.entries(groupedTechnologies)
+          .sort((a, b) => b[1].length - a[1].length)
+          .map(([category, technologies]) => (
+            <div class="flex-1/2 sm:flex-1/4">
+              <span class="font-semibold text-sm uppercase pb-1 tracking-wide">
+                {category}
+              </span>
+              <ul>
+                {technologies.map((tech) => (
+                  <li>
+                    <a
+                      class="text-radix-cyan11 hover:underline focus:underline"
+                      href={tech?.link}
+                    >
+                      {tech?.name}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+      }
+    </div>
+  </aside>
+  <div class="prose dark:prose-invert max-w-85ch mx-auto mt-8">
+    <Content />
+  </div>
+</Layout>

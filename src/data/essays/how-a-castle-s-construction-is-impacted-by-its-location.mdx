@@ -1,0 +1,292 @@
+---
+title: "How a castle's construction is impacted by its location"
+date: 2021-05-17
+description: "This project investigates how the construction and features of English castles were influenced by their geographic location, using natural language processing to extract architectural traits from official heritage records and mapping them across NUTS1 regions. The analysis reveals strong correlations between castle features—such as building materials, basements, tunnels, and stables—and regional geology, historical threats, and local craftsmanship, highlighting both the physical and socio-political factors that shaped medieval fortifications."
+---
+import Map from '../../components/mdx/Map'
+
+
+# Introduction
+
+The task I have chosen is to model the features of Castles in England by
+geographic location. While there were prehistoric hillforts and Roman
+forts in England prior to this, the main period of castle building in
+England started after the Battle of Hastings in 1066
+[^richardhodges1988oote]. A popular design of these was the Motte and
+Bailey castle, with the castle on a raised area of ground (the motte),
+and a range of supporting buildings protected by a wall (the bailey).
+The materials used here changed from wood to stone as time went on,
+which provided much better defence. As the design of the keep was
+refined, the development then moved onto the outer defences, improving
+the gatehouses and enclosure walls.
+
+Towards the end of the middle ages, the defence aspect of Castles became
+less important, and they started to be used as shows of status, with
+more space, and increasing the size of windows, which reduced the
+defence, but gave better views.
+
+While I have discussed here the studied aspect of how design has changed
+with time, there is less information about how design changes with area.
+Design might change due to the differing requirements of the area, along
+with differences in geology and geography. As discussed, castles are
+continually improved, with new designs based on the times, however some
+castles may have not kept up with these improvements due to the wealth
+of the owners, or because the castles are left behind.
+
+# Sources of data and used modules
+
+The main source of data will be the National Heritage List for England,
+published by Historic England [^nhle]. Data will be obtained from this
+using Beautiful Soup, a web scraping tool for Python [^bs]. The data
+will then be processed by Stanza, a Natural Language Processing Python
+library [^qi2020stanza]. Data is then visualized using plotly in order
+to make the patterns clearer to see [^plotly]. The mapping makes use of
+a map of the UK from the Office of National statistics [^ons].
+
+# Models and implementation
+
+The analysis of text uses multiple of the features from Stanza, first in
+using Part of Speech Tagging in order to find nouns and plural nouns in
+the sentences, as these are most likely to be the features I am looking
+for.
+
+I am also using the provided lemmas feature in order to just extract the
+singular versions of the nouns, so that if in some cases a feature is
+discussed in plural, and in some cases singular, they will be treated
+the same. This has both benefits and drawbacks, providing a benefit in
+increasing the matching, however the use of the plural may convey
+information about the features, such as if a castle has multiple towers,
+compared to one tower.
+
+The dependencies provided are also used to match together compound
+nouns, such as "curtain wall", as this provides more information than
+the separate nouns "curtain" and "wall".
+
+In order to categorize the castles into sections, I am using NUTS1
+regions of England [^nuts], this is an EU specification which divides up
+countries, in this case, dividing England into 9 regions. There is the
+option to get more granular with NUTS2 and NUTS3 regions being smaller
+than NUTS1, however given the limited dataset of around 230 castles, I
+wanted to ensure there were many castles per region so that the trends
+would be visible.
+
+The location of each castle is extracted from the webpage, using an
+Ordnance Survey Grid Reference. This is then turned into latitude and
+longitude coordinates, which is finally converted into a NUTS region.
+One area in which this caused some trouble is in castles on small
+islands, as the converter must have been using a map that excluded these
+for performance. However the only case in which I discovered this was
+Lindisfarne castle, so not a significant proportion of the data, and so
+shouldn't affect the trends seen.
+
+In order to simplify the categorization process, first I ran the code to
+generate an ordered list of features by how many times they occur. This
+list was then filtered to just the top 50 that I wanted to observe. This
+was done to ensure they were significant findings, as if it was just
+from one castle, it doesn't imply any trend. For these 50 features, a
+dictionary was created under each NUTS1 region with each features, and
+as the program went through the castles, the number was incremented if
+the feature was found in that region. Also kept track of was the total
+number of castles in each region so that the number of features could be
+divided by the number of castles to get an average value, ensuring that
+regions that just had more castles didn't look like they had more of a
+certain feature.
+
+# Evaluation of models
+
+On evaluating the heatmaps, features did come out as showing as more
+prominent from certain areas, they can be shown below. You will see that
+London is white on this map as none of the castles in the dataset were
+in the London area.
+
+The simplest evaluation of these results is to look at the description
+of building materials. Due to the difficulty of transportation at the
+time castles were being built, they use materials from the local area,
+and so they reflect geological surveys.
+
+The most obvious of these are sandstone, limestone and flint, as shown
+below
+
+<Map
+  client:only
+  caption="Flint"
+  data={{
+    UKC: 0.0,
+    UKD: 0.0,
+    UKE: 0.0,
+    UKF: 0.0,
+    UKG: 0.0,
+    UKH: 0.4444444444,
+    UKI: null,
+    UKJ: 0.1290322581,
+    UKK: 0.0,
+  }}
+/>
+
+<Map
+  client:only
+  caption="Sandstone"
+  data={{
+    UKC: 0.2222222222,
+    UKD: 0.2727272727,
+    UKE: 0.0769230769,
+    UKF: 0.0,
+    UKG: 0.2830188679,
+    UKH: 0.2222222222,
+    UKI: null,
+    UKJ: 0.0322580645,
+    UKK: 0.0434782609,
+  }}
+/>
+
+<Map
+  client:only
+  caption="Limestone"
+  data={{
+    UKC: 0.037037037,
+    UKD: 0.0,
+    UKE: 0.1538461538,
+    UKF: 0.2941176471,
+    UKG: 0.0188679245,
+    UKH: 0.1111111111,
+    UKI: null,
+    UKJ: 0.064516129,
+    UKK: 0.0434782609,
+  }}
+/>
+
+Data from the British Geological Survey shows a large flint deposit in
+the south east area where flint is featured so heavily [^bgs]. Sandstone
+covers the west of England, curving round to the North East, with the
+rest featuring limestone instead. This map can be viewed on the [BGS website](https://mapapps.bgs.ac.uk/geologyofbritain/home.html)
+
+In addition to these two natural resources, the derivatives of natural
+resources can also be seen, with the South West using a lot more brick
+than other areas. These observations are supported by the observations
+found by Hislop that brick castles are restricted to the east and south
+east. [^hislopmalcolm2016cb:a].
+
+<Map
+  client:only
+  caption="Brick"
+  data={{
+    UKC: 0.0,
+    UKD: 0.0454545455,
+    UKE: 0.0,
+    UKF: 0.2941176471,
+    UKG: 0.1509433962,
+    UKH: 0.3333333333,
+    UKI: null,
+    UKJ: 0.2258064516,
+    UKK: 0.0,
+  }}
+/>
+
+![London Clay](https://www.datocms-assets.com/39153/1626514371-geologicalmapoflondonbasin.jpg "London clay formation")
+
+This is likely due to the large amount of Clay in the Thames valley,
+named the London Clay Formation [^sumbler1996london]. This can be seen above.
+
+Geology can also have an impact on the features the castles have, along
+with what they're made of. Tunnels are used in castles for seige
+warfare, however they have also been used for connecting sections of
+castles, such as the Castle of La Roche-Guyoon [^hislopmalcolm2016cb:a],
+where tunnels were made through the chalk. Due to the lack of machines,
+the ease of digging the rock the castle was built on was important for
+this, and this can be seen with east anglia, which has a large amount of
+chalk bedrock, being more common for building tunnels.
+
+<Map
+  client:only
+  caption="Tunnel"
+  data={{
+    UKC: 0.0740740741,
+    UKD: 0.0,
+    UKE: 0.0769230769,
+    UKF: 0.0,
+    UKG: 0.0,
+    UKH: 0.1111111111,
+    UKI: null,
+    UKJ: 0.0,
+    UKK: 0.0,
+  }}
+/>
+
+One of the features most distinctly confined to one area is the use of a
+Basement. This trend started with Norham Castle near the Scottish border
+[^hislopmalcolm2016cb:a] and remained in the North. This is true for a
+few features, the reason behind which is hypothesized to be the
+influence of the Palatinate of Durham [^hislopmalcolm2016cb:a] as
+they employed master builders and master masons who worked on many of
+the castles in the area, and so used similar techniques.
+
+<Map
+  client:only
+  caption="Basement"
+  data={{
+    UKC: 0.3333333333,
+    UKD: 0.0909090909,
+    UKE: 0.1153846154,
+    UKF: 0.1176470588,
+    UKG: 0.1132075472,
+    UKH: 0.1111111111,
+    UKI: null,
+    UKJ: 0.0967741935,
+    UKK: 0.1304347826,
+  }}
+/>
+
+Near the Scottish border, castles had to defend against Border Reivers, who's main
+activity was stealing animals from land around the Scottish border [^moffat2011reivers].
+It can be seen that in Northern areas, stables are more important parts of the castles,
+allowing to protect horses from the Reivers.
+
+<Map
+  client:only
+  caption="Stable"
+  data={{
+    UKC: 0.0740740741,
+    UKD: 0.0909090909,
+    UKE: 0.0769230769,
+    UKF: 0.0,
+    UKG: 0.0188679245,
+    UKH: 0.0,
+    UKI: null,
+    UKJ: 0.0,
+    UKK: 0.0,
+  }}
+/>
+
+# Conclusion
+
+The results found could be compared with other factors in order to
+explain the reasons for the patterns shown. The strongest of these are
+the materials used for the castles as those building the castles had no
+choice but to use local materials, whereas specific features may change
+over time or for the specific challenges a castle faces. However, other
+features can also be observed having differences based on area for a
+variety of reasons, including the masons that worked on the castles and
+the requirements the castle has.
+
+One limitation of this work is that it is done based on the descriptions
+provided in the listings, which didn't follow any specific structure.
+This means that features may just be neglected to be mentioned in the
+description for certain castles. Another limitation is the size of the
+dataset, with around 230 castles, the sample size isn't big enough to
+draw definite conclusions about areas.
+
+Future work in this area could benefit from consultation with historians
+in each area as there isn't much research in how the design of castles
+depend on their location.
+
+[^richardhodges1988oote]: R. Hodges, “Origins of the English castle,” Nature, vol. 333, no. 6169, p. 112, 1988.
+[^nhle]: Historic England, “National Heritage List for England,” 2021. https://historicengland.org.uk/listing/the-list (accessed Apr. 19, 2021).
+[^bs]: Leonard Richardson, “Beautiful Soup,” 2004. https://www.crummy.com/software/BeautifulSoup/bs4/doc/ (accessed Apr. 19, 2021).
+[^qi2020stanza]: P. Qi, Y. Zhang, Y. Zhang, J. Bolton, and C. D. Manning, “Stanza: A Python Natural Language Processing Toolkit for Many Human Languages,” 2020. [Online]. Available: https://nlp.stanford.edu/pubs/qi2020stanza.pdf
+[^plotly]: P. T. Inc., “Collaborative data science,” 2015. https://plot.ly
+[^ons]: “NUTS Level 1 (January 2018) Full Clipped Boundaries in the United Kingdom ,” 2019. https://data.gov.uk/dataset/2aa6727d-c5f0-462a-a367-904c750bbb34/nuts-level-1-january-2018-full-clipped-boundaries-in-the-united-kingdom
+[^nuts]: Eurostat, “Background - NUTS - Nomenclature of territorial units for statistics - Eurostat,” 2021. https://ec.europa.eu/eurostat/web/nuts/background
+[^bgs]: B. G. Survey, “Geology of Britain viewer,” 2021. https://mapapps.bgs.ac.uk/geologyofbritain/home.html
+[^sumbler1996london]: M. Sumbler, London and the Thames Valley, vol. 13. British Regional Geology S., 1996.
+[^hislopmalcolm2016cb:a]: M. Hislop, Castle builders : approaches to castle design and construction in the Middle Ages. 2016.
+[^moffat2011reivers]: A. Moffat, The Reivers: The Story of the Border Reivers. Birlinn, 2011. [Online]. Available: https://books.google.co.uk/books?id=y8y8BQAAQBAJ

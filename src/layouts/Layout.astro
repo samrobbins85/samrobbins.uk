@@ -1,0 +1,42 @@
+---
+import Header from "../components/Header.astro";
+import { Font } from "astro:assets";
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+const { title, ogImageUrl } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" transition:animate="none">
+  <head>
+    <meta charset=" UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <Font cssVariable="--font-etBook" preload />
+    <title>{title ? `${title} | Sam Robbins` : "Sam Robbins"}</title>
+    {
+      ogImageUrl && (
+        <meta
+          property="og:image"
+          content={`https://${import.meta.env.VERCEL_URL}${ogImageUrl}`}
+        />
+      )
+    }
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <ClientRouter />
+  </head><body class="bg-radix-slate1 text-radix-slate12">
+    <Header />
+    <main class="max-w-6xl mx-auto p-4">
+      <slot />
+    </main>
+  </body>
+</html>
+
+<style>
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>

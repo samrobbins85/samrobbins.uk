@@ -1,0 +1,31 @@
+---
+import { getCollection, render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const snippets = await getCollection("snippets");
+  const paths = snippets.map((snippet) => {
+    return {
+      params: { snippet: snippet.id },
+      props: {
+        snippet,
+      },
+    };
+  });
+  return paths;
+}
+const { snippet } = Astro.props;
+const { Content } = await render(snippet);
+---
+
+<Layout
+  title={snippet.data.title}
+  ogImageUrl={`/og/snippets/${snippet.id}.png`}
+>
+  <h1 class="text-5xl text-center font-bold pt-2">
+    {snippet.data.title}
+  </h1>
+  <div class="prose dark:prose-invert max-w-85ch mx-auto mt-8">
+    <Content />
+  </div>
+</Layout>

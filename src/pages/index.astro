@@ -1,0 +1,109 @@
+---
+import { getCollection } from "astro:content";
+import SocialLinks from "../components/home/SocialLinks.astro";
+import Layout from "../layouts/Layout.astro";
+import Job from "../components/home/Job.astro";
+import Writing from "../components/home/Writing.astro";
+import { Icon } from "astro-icon/components";
+const jobs = await getCollection("jobs");
+const writing = await getCollection("writing");
+const projects = await getCollection("projects");
+---
+
+<Layout ogImageUrl="/og/index.png">
+  <div>
+    <div>
+      <h1 class="text-4xl sm:text-5xl font-bold py-4 pb-8 text-radix-slate12">
+        Hi, I‘m Sam Robbins
+      </h1>
+      <h2 class="text-lg text-radix-slate11">
+        Senior Software Engineer at UK National Innovation Centre for Ageing
+      </h2>
+      <div
+        class="grid sm:flex gap-x-4 pt-8 pb-4 items-start gap-y-4 flex-wrap justify-center sm:justify-start"
+      >
+        <a
+          href={`mailto:samrobbinsgb@gmail.com`}
+          class="w-32 text-center px-4 py-2 rounded justify-self-center slate-bg-int text-radix-slate11 border slate-border-int font-semibold"
+        >
+          Contact Me
+        </a>
+        <SocialLinks />
+      </div>
+    </div>
+
+    <section class="pt-4">
+      <h2 class="text-3xl font-semibold">Jobs</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        {
+          jobs
+            .sort(
+              (a, b) => b.data.sortdate.getTime() - a.data.sortdate.getTime()
+            )
+            .map((job) => (
+              <Job
+                logo={job.data.logo}
+                title={job.data.role}
+                duration={job.data.duration}
+                company={job.data.company}
+              />
+            ))
+        }
+      </div>
+    </section>
+    <section>
+      <h2 class="text-3xl font-semibold py-6">Writing</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        {
+          writing
+            .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+            .map((article) => (
+              <Writing
+                logo={article.data.logo}
+                title={article.data.title}
+                publisher={article.data.publisher}
+                link={article.data.link}
+              />
+            ))
+        }
+      </div>
+    </section>
+    <section>
+      <h2 class="text-3xl font-semibold py-6">Projects</h2>
+      <div class="grid sm:grid-cols-2 gap-x-4">
+        {
+          projects
+            .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+            .slice(0, 6)
+            .map((x) => (
+              <div class="flex gap-x-6 px-6 py-4 items-start">
+                <div class="h-16 w-16 min-w-16 flex justify-center items-center">
+                  <Icon
+                    name={x.data.icon}
+                    class="h-8 w-8 text-radix-slate9 grayscale"
+                  />
+                </div>
+                <div class="grid content-baseline">
+                  <a
+                    href={`/projects/${x.data.slug}`}
+                    class="hover:underline text-radix-cyan11 font-semibold"
+                  >
+                    {x.data.title}
+                  </a>
+                  <span class="text-radix-slate11">{x.data.description}</span>
+                </div>
+              </div>
+            ))
+        }
+      </div>
+      <div class="flex justify-center">
+        <a
+          href="/projects"
+          class="border rounded-lg px-4 py-2 hover:bg-radix-slate3 slate-border-int"
+        >
+          View all projects
+        </a>
+      </div>
+    </section>
+  </div>
+</Layout>

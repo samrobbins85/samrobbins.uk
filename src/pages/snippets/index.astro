@@ -1,0 +1,46 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+
+const snippets = await getCollection("snippets");
+const colors = {
+  JavaScript: "bg-yellow-200",
+  CSS: "bg-blue-200",
+  HTML: "bg-orange-200",
+  LaTeX: "bg-teal-200",
+  Shell: "bg-green-200",
+  Python: "bg-blue-200",
+};
+function background(language: keyof typeof colors) {
+  return colors[language] ?? "bg-gray-200";
+}
+---
+
+<Layout title="Snippets" ogImageUrl={`/og/snippets/index.png`}>
+  <h1 class="text-5xl font-semibold text-center text-radix-slate12">
+    Snippets
+  </h1>
+  <div class="flex flex-wrap justify-center gap-4 text-black pt-4">
+    {
+      snippets
+        .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
+        .map((snippet) => (
+          <a
+            href={`/snippets/${snippet.id}`}
+            class="w-full sm:w-1/2 lg:w-1/4 outline-gray-800 outline-offset-1 focus:outline-solid outline-1/2 rounded bg-nord0"
+          >
+            <div class="h-full py-2">
+              <div
+                class={`w-min px-2 rounded-r mb-2 mt-1 font-semibold ${background(snippet.data.language)}`}
+              >
+                {snippet.data.language}
+              </div>
+              <h3 class="text-xl text-white font-mono px-2">
+                {snippet.data.title}
+              </h3>
+            </div>
+          </a>
+        ))
+    }
+  </div>
+</Layout>
