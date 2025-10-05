@@ -1,0 +1,7 @@
+{
+  "name": "personal-website",
+  "compatibility_date": "2025-10-03",
+  "assets": {
+    "directory": "./dist"
+  }
+}
