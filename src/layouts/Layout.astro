@@ -3,7 +3,8 @@ import Header from "../components/Header.astro";
 import { Font } from "astro:assets";
 import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
-const { title, ogImageUrl } = Astro.props;
+const { title, ogImageUrl, showWebSite } = Astro.props;
+const shownTitle = title ? `${title} | Sam Robbins` : "Sam Robbins";
 ---
 
 <!doctype html>
@@ -13,7 +14,8 @@ const { title, ogImageUrl } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <Font cssVariable="--font-etBook" preload />
-    <title>{title ? `${title} | Sam Robbins` : "Sam Robbins"}</title>
+    <meta property="og:title" content={shownTitle} />
+    <title>{shownTitle}</title>
     {
       ogImageUrl && (
         <meta
@@ -21,6 +23,16 @@ const { title, ogImageUrl } = Astro.props;
           content={`https://${import.meta.env.VERCEL_URL}${ogImageUrl}`}
         />
       )
+    }
+    {showWebSite && (
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Sam Robbins",
+        "url": "https://samrobbins.uk/"
+      }
+      </script>)
     }
     <link rel="sitemap" href="/sitemap-index.xml" />
     <ClientRouter />
