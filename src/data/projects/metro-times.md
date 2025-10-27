@@ -1,7 +1,7 @@
 ---
 title: "Metro times"
 slug: "metro-times"
-description: "A WatchOS app showing live times of the Tyne and Wear Metro"
+description: "A Wear OS app showing live times of the Tyne and Wear Metro"
 date: 2025-06-15
 icon: "mdi:metro"
 github: "https://github.com/samrobbins85/metro-times"
