@@ -4,7 +4,7 @@ slug: "train-departures"
 description: "A command line train departure board"
 date: 2021-08-20
 icon: "fe:train"
-website: "https://trains.pages.dev/"
+website: "https://departure-board.samrobbins.uk"
 github: "https://github.com/samrobbins85/trains"
 technologies:
   - cloudflare-workers
@@ -27,13 +27,13 @@ This project was inspired by [wttr.in](https://wttr.in), which provides weather 
 Using curl (or equivalent) you can fetch your closest train station with
 
 ```
-curl trains-production.samrobbins.workers.dev
+curl trains.samrobbins.uk
 ```
 
 and a specific station with
 
 ```
-curl trains-production.samrobbins.workers.dev/kgx
+curl trains.samrobbins.uk/kgx
 ```
 
 replacing kgx with the station of your choice
