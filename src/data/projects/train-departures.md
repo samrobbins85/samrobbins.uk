@@ -18,6 +18,7 @@ technologies:
   - react-router
   - itty-router
   - swr
+  - hono
 ---
 
 This project was inspired by [wttr.in](https://wttr.in), which provides weather forecasts on the command line, and I wondered if I could do the same thing with UK train departure boards.
@@ -38,7 +39,42 @@ curl trains.samrobbins.uk/kgx
 
 replacing kgx with the station of your choice
 
-## Development
+## New version
+
+This was rewritten using Hono and [Rail Data Marketplace](https://raildata.org.uk/dashboard/dataProduct/P-d81d6eaf-8060-4467-a339-1c833e50cbbe/overview). The move to Hono allowed for having one URL that would serve either a website or command line output depending on the user agent, reducing the complexity of the codebase and providing a better user experience. The move from Darwin to the modern Rail Data Marketplace, both maintained by National Rail, allowed me to use their JSON API, removing the need to use an external library to translate my requests. This had the added benefit that I no longer needed to use the Node.js compatibility in cloudflare workers as I was just using regular fetch for my requests.
+
+In Hono the core logic could be reduced to this
+
+```ts
+const handleCRSCode = async (c: Context, code: string, isHome = false) => {
+  const departureData = await getDepartureData(
+    code,
+    c.env.API_TOKEN,
+    c.env.API_URL
+  );
+
+  if (isTerminal(c.req.header("User-Agent"))) {
+    const departureBoard = await getDepartureBoard(departureData);
+
+    return c.body(departureBoard);
+  }
+  return c.render(<DepartureTable data={departureData} isHome={isHome} />);
+};
+
+app.get("/", async (c) => {
+  const closest = nearestStation(c.req.raw.cf);
+  return handleCRSCode(c, closest.crsCode || "KGX", true);
+});
+
+app.get("/:crs", async (c) => {
+  const name = c.req.param("crs");
+  return handleCRSCode(c, name.toUpperCase());
+});
+```
+
+This uses `.body` from hono to render the table in the command line and `.render` to render a JSX file, having the added benefit that I was no longer needlessly shipping React as this renders JSX straight to HTML on the server. The remaining logic remained broadly the same, with some slight tweaks to accommodate the slight difference in API response.
+
+## Original Version
 
 The first step of this was getting the departure board data. Fortunately, National Rail keeps a [public API](https://www.nationalrail.co.uk/100296.aspx) with a very generous 5 million requests per month, which is more than enough for this small project. The only problem with this is that it uses a SOAP API, which OpenRailData accurately describes as "[not necessarily a developer's first choice](<https://wiki.openraildata.com/index.php/NRE_Darwin_Web_Service_(Public)>)". Fortunately because of this, a range of solutions have been created to make the interaction with the API easier. The one I chose was [ldbs-json](https://www.npmjs.com/package/ldbs-json), which provides the responses as JSON and the requests as a simple function call.
 
