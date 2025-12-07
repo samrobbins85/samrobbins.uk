@@ -4,7 +4,7 @@ slug: "train-departures"
 description: "A command line train departure board"
 date: 2021-08-20
 icon: "fe:train"
-website: "https://departure-board.samrobbins.uk"
+website: "https://trains.samrobbins.uk"
 github: "https://github.com/samrobbins85/trains"
 technologies:
   - cloudflare-workers
