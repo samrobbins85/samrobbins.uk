@@ -11,7 +11,7 @@
   "dependencies": {
     "@astrojs/alpinejs": "^0.4.8",
     "@astrojs/mdx": "^4.3.5",
-    "@astrojs/react": "^4.3.0",
+    "@astrojs/react": "^5.0.1",
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.6.0",
     "@headlessui/react": "^2.2.4",
