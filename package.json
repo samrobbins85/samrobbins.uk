@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@astrojs/alpinejs": "^0.4.8",
-    "@astrojs/mdx": "^4.3.5",
+    "@astrojs/mdx": "^5.0.3",
     "@astrojs/react": "^4.3.0",
     "@astrojs/rss": "^4.0.12",
     "@astrojs/sitemap": "^3.6.0",
