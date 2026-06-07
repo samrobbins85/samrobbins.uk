@@ -10,6 +10,7 @@ import rehypeKatex from "rehype-katex";
 import behead from "remark-behead";
 
 import mdx from "@astrojs/mdx";
+import { unified } from "@astrojs/markdown-remark";
 
 import sitemap from "@astrojs/sitemap";
 
@@ -21,17 +22,17 @@ export default defineConfig({
   },
 
   integrations: [react(), icon(), alpinejs(), mdx(), sitemap()],
-  experimental: {
-    fonts: [
-      {
-        provider: fontProviders.google(),
-        name: "Inter",
-        cssVariable: "--font-inter",
-      },
-      {
-        provider: "local",
-        name: "ETBook",
-        cssVariable: "--font-etBook",
+  fonts: [
+    {
+      provider: fontProviders.google(),
+      name: "Inter",
+      cssVariable: "--font-inter",
+    },
+    {
+      provider: fontProviders.local(),
+      name: "ETBook",
+      cssVariable: "--font-etBook",
+      options: {
         variants: [
           {
             weight: "normal",
@@ -50,8 +51,8 @@ export default defineConfig({
           },
         ],
       },
-    ],
-  },
+    },
+  ],
   markdown: {
     shikiConfig: {
       themes: {
@@ -59,7 +60,9 @@ export default defineConfig({
         dark: "github-dark",
       },
     },
-    remarkPlugins: [remarkMath, [behead, { depth: 1 }]],
-    rehypePlugins: [rehypeKatex],
+    processor: unified({
+      remarkPlugins: [remarkMath, [behead, { depth: 1 }]],
+      rehypePlugins: [rehypeKatex],
+    }),
   },
 });
