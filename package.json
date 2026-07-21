@@ -12,7 +12,7 @@
     "@astrojs/alpinejs": "^1.0.0",
     "@astrojs/mdx": "^7.0.0",
     "@astrojs/react": "^6.0.0",
-    "@astrojs/rss": "^4.0.18",
+    "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
     "@headlessui/react": "^2.2.4",
     "@heroicons/react": "^2.2.0",
