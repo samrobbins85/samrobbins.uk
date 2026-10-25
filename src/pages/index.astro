@@ -17,7 +17,8 @@ const projects = await getCollection("projects");
         Hi, I‘m Sam Robbins
       </h1>
       <h2 class="text-lg text-radix-slate11">
-        Senior Software Engineer at UK National Innovation Centre for Ageing
+        Senior Developer at the Bennett Institute for Applied Data Science,
+        Oxford University
       </h2>
       <div
         class="grid sm:flex gap-x-4 pt-8 pb-4 items-start gap-y-4 flex-wrap justify-center sm:justify-start"
@@ -38,13 +39,14 @@ const projects = await getCollection("projects");
         {
           jobs
             .sort(
-              (a, b) => b.data.sortdate.getTime() - a.data.sortdate.getTime()
+              (a, b) => b.data.sortdate.getTime() - a.data.sortdate.getTime(),
             )
             .map((job) => (
               <Job
                 logo={job.data.logo}
                 title={job.data.role}
                 duration={job.data.duration}
+                institution={job.data.institution}
                 company={job.data.company}
               />
             ))

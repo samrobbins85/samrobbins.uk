@@ -9,6 +9,7 @@ const jobs = defineCollection({
     z.object({
       role: z.string(),
       company: z.string(),
+      institution: z.string().optional(),
       duration: z.string(),
       logo: image(),
       sortdate: z.date(),
