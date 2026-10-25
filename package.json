@@ -10,10 +10,11 @@
   },
   "dependencies": {
     "@astrojs/alpinejs": "^1.0.0",
-    "@astrojs/mdx": "^7.0.0",
-    "@astrojs/react": "^6.0.0",
-    "@astrojs/rss": "^4.0.18",
-    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/markdown-remark": "^7.3.4",
+    "@astrojs/mdx": "^8.1.1",
+    "@astrojs/react": "^7.1.1",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.4",
     "@headlessui/react": "^2.2.4",
     "@heroicons/react": "^2.2.0",
     "@iconify-json/clarity": "^1.2.4",
@@ -35,7 +36,7 @@
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "alpinejs": "^3.14.9",
-    "astro": "^7.0.3",
+    "astro": "^7.4.2",
     "astro-icon": "^1.1.5",
     "lodash": "^4.17.23",
     "radix-colors-for-tailwind": "^2.0.0",
@@ -52,6 +53,6 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.16",
     "@types/lodash": "^4.17.20",
-    "vite": "^7.3.2"
+    "vite": "^8.3.5"
   }
 }

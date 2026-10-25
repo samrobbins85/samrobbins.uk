@@ -5,14 +5,22 @@ import tailwindcss from "@tailwindcss/vite";
 import react from "@astrojs/react";
 import icon from "astro-icon";
 import alpinejs from "@astrojs/alpinejs";
-import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
-import behead from "remark-behead";
-
+import { defineMdastPlugin } from "satteri";
 import mdx from "@astrojs/mdx";
-import { unified } from "@astrojs/markdown-remark";
-
+import { satteri } from "@astrojs/markdown-satteri";
 import sitemap from "@astrojs/sitemap";
+
+const beheadPlugin = defineMdastPlugin({
+  name: "behead",
+  heading(node) {
+    const newDepth = Math.min(node.depth + 1, 6) as (typeof node)["depth"];
+
+    return {
+      ...node,
+      depth: newDepth,
+    };
+  },
+});
 
 // https://astro.build/config
 export default defineConfig({
@@ -60,9 +68,11 @@ export default defineConfig({
         dark: "github-dark",
       },
     },
-    processor: unified({
-      remarkPlugins: [remarkMath, [behead, { depth: 1 }]],
-      rehypePlugins: [rehypeKatex],
+    processor: satteri({
+      mdastPlugins: [beheadPlugin],
+      features: {
+        math: true,
+      },
     }),
   },
 });
