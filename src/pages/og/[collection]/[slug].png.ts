@@ -58,6 +58,7 @@ export const GET: APIRoute = async ({ props }) => {
           width: "100%",
           height: "100%",
           backgroundColor: "#FCFCFD",
+          boxSizing: "border-box",
           padding: "80px",
           justifyContent: "space-between",
           alignItems: "center",
@@ -103,7 +104,7 @@ export const GET: APIRoute = async ({ props }) => {
           style: "normal",
         },
       ],
-    }
+    },
   );
 
   const png = await sharp(Buffer.from(svg)).png().toBuffer();
