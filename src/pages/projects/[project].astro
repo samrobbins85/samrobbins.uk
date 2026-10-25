@@ -14,7 +14,7 @@ export async function getStaticPaths() {
           project: { ...project, data: { ...project.data, technologies } },
         },
       };
-    })
+    }),
   );
   return paths;
 }
@@ -68,7 +68,9 @@ const { Content } = await render(project);
       )
     }
   </div>
-  <aside class="slate-bg slate-border max-w-prose mx-auto my-4 border">
+  <aside
+    class="bg-radix-slate3 border-radix-slate6 max-w-prose mx-auto my-4 border"
+  >
     <div class="flex flex-wrap px-4 gap-y-6 py-6 justify-center text-center">
       {
         Object.entries(groupedTechnologies)

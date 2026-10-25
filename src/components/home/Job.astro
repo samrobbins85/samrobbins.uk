@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 const { logo, title, company, duration, institution } = Astro.props;
 ---
 
-<div class="flex gap-x-6 px-6 py-4 items-center">
+<div class="flex gap-x-6 px-2 sm:px-6 py-4 items-center">
   <div class="h-16 w-16 min-w-16 flex">
     <Image src={logo} alt={company + " logo"} />
   </div>

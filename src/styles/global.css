@@ -1,13 +1,106 @@
 @import "https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css";
 @import "tailwindcss";
 
-@theme inline {
-  --font-sans: var(--font-inter);
-  --font-serif: var(--font-etBook);
+@import "@radix-ui/colors/cyan.css";
+@import "@radix-ui/colors/cyan-dark.css";
+@import "@radix-ui/colors/sky.css";
+@import "@radix-ui/colors/sky-dark.css";
+@import "@radix-ui/colors/slate.css";
+@import "@radix-ui/colors/slate-dark.css";
+@import "@radix-ui/colors/amber.css";
+@import "@radix-ui/colors/amber-dark.css";
+
+@plugin "@tailwindcss/typography";
+
+/* darkMode: "class" */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Only needed for files outside automatic detection */
+@source "../../lib/snippet.js";
+
+@theme {
+  --color-npm: #cb3837;
+  --color-gmail: #ea4335;
+  --color-twitter: #1da1f2;
+  --color-linkedin: #0a66c2;
+  --color-polywork: #543de0;
+  --color-nord6-1: #f8f9fb;
+  --color-nord0: #2e3440;
+  --color-link: #0077aa;
+  --color-dark-link: #96d0ff;
+
+  --container-85ch: 85ch;
+  --container-65ch: 65ch;
+  --container-prose: 85ch;
+
+  --font-latex: "Latin Modern";
 }
 
-@config "../../tailwind.config.js";
+@theme inline {
+  --color-radix-slate1: var(--slate-1);
+  --color-radix-slate2: var(--slate-2);
+  --color-radix-slate3: var(--slate-3);
+  --color-radix-slate4: var(--slate-4);
+  --color-radix-slate5: var(--slate-5);
+  --color-radix-slate6: var(--slate-6);
+  --color-radix-slate7: var(--slate-7);
+  --color-radix-slate8: var(--slate-8);
+  --color-radix-slate9: var(--slate-9);
+  --color-radix-slate10: var(--slate-10);
+  --color-radix-slate11: var(--slate-11);
+  --color-radix-slate12: var(--slate-12);
+  --color-radix-sky8: var(--sky-8);
+  --color-radix-sky11: var(--sky-11);
+  --color-radix-amber10: var(--amber-10);
+  --color-radix-cyan11: var(--cyan-11);
+}
 
+@theme inline {
+  --font-sans:
+    var(--font-inter), ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-serif:
+    var(--font-etBook), ui-serif, Georgia, Cambria, "Times New Roman", Times,
+    serif;
+}
+
+@utility flex-quarter {
+  flex: 1 0 25%;
+}
+
+@utility flex-half {
+  flex: 1 0 50%;
+}
+
+.prose code {
+  font-weight: 400;
+  background-color: var(--slate-3);
+  padding-inline: 0.25rem;
+  border-radius: 0.25rem;
+}
+
+.astro-code {
+  background-color: var(--slate-3) !important;
+}
+
+.prose code::before,
+.prose code::after {
+  display: none;
+}
+
+.prose a {
+  color: var(--slate-11);
+  border-bottom: 1px dashed var(--slate-11);
+  font-weight: 500;
+  transition: all 300ms ease 0s;
+  text-decoration: none;
+}
+
+.prose a:hover {
+  background-color: var(--sky-3);
+}
+
+/* Shiki code blocks */
 html.dark .astro-code,
 html.dark .astro-code span {
   color: var(--shiki-dark) !important;
@@ -16,15 +109,6 @@ html.dark .astro-code span {
   font-style: var(--shiki-dark-font-style) !important;
   font-weight: var(--shiki-dark-font-weight) !important;
   text-decoration: var(--shiki-dark-text-decoration) !important;
-}
-
-.astro-code,
-.astro-code span {
-  background-color: #f0f0f3 !important;
-}
-
-:root {
-  --radix-slate3: #f1f3f5;
 }
 
 [x-cloak] {

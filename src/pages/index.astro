@@ -25,7 +25,7 @@ const projects = await getCollection("projects");
       >
         <a
           href={`mailto:samrobbinsgb@gmail.com`}
-          class="w-32 text-center px-4 py-2 rounded justify-self-center slate-bg-int text-radix-slate11 border slate-border-int font-semibold"
+          class="w-32 text-center px-4 py-2 rounded justify-self-center bg-radix-slate3 hover:bg-radix-slate4 focus:bg-radix-slate5 text-radix-slate11 border border-radix-slate7 hover:border-radix-slate8 font-semibold"
         >
           Contact Me
         </a>
@@ -78,7 +78,7 @@ const projects = await getCollection("projects");
             .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
             .slice(0, 6)
             .map((x) => (
-              <div class="flex gap-x-6 px-6 py-4 items-start">
+              <div class="flex gap-x-6 px-2 sm:px-6 py-4 items-start">
                 <div class="h-16 w-16 min-w-16 flex justify-center items-center">
                   <Icon
                     name={x.data.icon}
@@ -101,7 +101,7 @@ const projects = await getCollection("projects");
       <div class="flex justify-center">
         <a
           href="/projects"
-          class="border rounded-lg px-4 py-2 hover:bg-radix-slate3 slate-border-int"
+          class="border rounded-lg px-4 py-2 hover:bg-radix-slate3 border-radix-slate7 hover:border-radix-slate8"
         >
           View all projects
         </a>
