@@ -37,7 +37,7 @@
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "alpinejs": "^3.14.9",
-    "astro": "^7.4.2",
+    "astro": "^7.4.12",
     "astro-icon": "^1.1.5",
     "lodash": "^4.17.23",
     "react": "^19.1.0",
